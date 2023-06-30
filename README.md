@@ -4,9 +4,9 @@
 基于nestJs+mongoDB+vue3+element-plus+uni-app技术栈的大前端后台管理系统；可基于当前系统快速构建toG、toB、toC常见业务系统；经过商业项目验证，可放心食用；
 ## 亮点介绍
 ### 1.大前端生态，node全栈开发
-	nestJs+ts：nestJs可以理解为node生态中的spring
-	vue3+ts+element：高效、高性能的前端框架和UI
-	mongoDB：高性能、分布式noSql数据库
+nestJs+ts：一个用于构建高效、可扩展的 Node.js 服务器端应用程序的开发框架。
+vue3+ts+element：高效、高性能的前端框架和UI
+mongoDB：高性能、分布式noSql数据库
 ### 2.代码优先
 	模型字段变动，无需关注数据库，直接修改模型即可
 ### 3.云原生
