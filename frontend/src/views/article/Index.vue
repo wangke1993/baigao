@@ -1,8 +1,14 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="list-box">
     <div class="page-head">
       <Search placeholder="关键字" @handleSearch="handleSearch">
-        <el-button type="primary" v-if="btnShow('add-article')" @click="addArticleFun(null)">添加文章</el-button>
+        <el-button
+          type="primary"
+          v-if="btnShow('add-article')"
+          @click="addArticleFun(null)"
+          >添加文章</el-button
+        >
       </Search>
     </div>
     <el-table :data="state.userListData" row-key="_id">
@@ -31,15 +37,28 @@
       <el-table-column label="操作" width="310">
         <template #default="scope">
           <el-button-group class="ml-4">
-            <el-button d v-if="btnShow('article-edit')" type="primary" :icon="Edit" @click="addArticleFun(scope.row)">编辑
+            <el-button
+              d
+              v-if="btnShow('article-edit')"
+              type="primary"
+              :icon="Edit"
+              @click="addArticleFun(scope.row)"
+              >编辑
             </el-button>
-            <el-button d v-if="btnShow('article-show-signUp') && scope.row.articleClass == 'DC00010006'" type="primary"
-              :icon="Edit" @click="sinUpBox(scope.row)">报名管理
-            </el-button>
-            <el-popconfirm confirm-button-text="确定" cancel-button-text="取消" confirm-button-type="danger" title="确定删除该文章？"
-              @confirm="deleteDictionary(scope.row)">
+            <el-popconfirm
+              confirm-button-text="确定"
+              cancel-button-text="取消"
+              confirm-button-type="danger"
+              title="确定删除该文章？"
+              @confirm="deleteDictionary(scope.row)"
+            >
               <template #reference>
-                <el-button v-if="btnShow('article-delete')" type="danger" :icon="Delete">删除</el-button>
+                <el-button
+                  v-if="btnShow('article-delete')"
+                  type="danger"
+                  :icon="Delete"
+                  >删除</el-button
+                >
               </template>
             </el-popconfirm>
           </el-button-group>
@@ -47,18 +66,26 @@
       </el-table-column>
     </el-table>
     <div class="pagination-box">
-      <el-pagination v-model:currentPage="state.params.pageIndex" v-model:page-size="state.params.pageSize"
-        :page-sizes="[10, 20, 30, 40, 50]" background layout="total, sizes, prev, pager, next, jumper" :total="state.total"
-        :hide-on-single-page="true" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+      <el-pagination
+        v-model:currentPage="state.params.pageIndex"
+        v-model:page-size="state.params.pageSize"
+        :page-sizes="[10, 20, 30, 40, 50]"
+        background
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="state.total"
+        :hide-on-single-page="true"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
     </div>
-    <Addarticle ref="AddarticleRef" @Refresh="RefreshList" />
+    <AddArticle ref="AddArticleRef" @Refresh="RefreshList" />
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive, toRefs, defineComponent } from "vue";
+import { ref, reactive } from "vue";
 import { btnShow } from "../../utils/buttonShow";
-import { Delete, Edit, Plus } from "@element-plus/icons-vue";
-import Addarticle from "@/views/article/components/Addarticle.vue";
+import { Delete, Edit } from "@element-plus/icons-vue";
+import AddArticle from "@/views/article/components/AddArticle.vue";
 import Search from "@/views/article/components/Search.vue";
 import {
   ArticleMangerControllerGetPage,
@@ -66,9 +93,8 @@ import {
 } from "@/api/ArticleMangerControllerApi";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import { DateTime } from "luxon";
-import { alertSuccess, alertWarning } from "@/utils/message";
-const AddarticleRef = ref();
-const SinUpRef = ref();
+import { alertSuccess } from "@/utils/message";
+const AddArticleRef = ref();
 const state = reactive({
   load: false,
   userListData: [],
@@ -84,14 +110,7 @@ const state = reactive({
 });
 // open 发布文章
 const addArticleFun = (items: any) => {
-  AddarticleRef.value.open(items);
-};
-enum SIGNUP_TYPE {
-  "招标公告" = 1,
-  "预招标公告" = 2,
-}
-const sinUpBox = (item: any) => {
-  SinUpRef.value.open(item._id, SIGNUP_TYPE.预招标公告);
+  AddArticleRef.value.open(items);
 };
 const handleSearch = async (searchInfo: any) => {
   state.params.keyWord = searchInfo.keyWord;
@@ -127,7 +146,7 @@ const deleteDictionary = async (row: any) => {
     let data = result.data;
     if (data.status === 1) {
       console.log(data.data);
-      alertSuccess("操作成功!")
+      alertSuccess("操作成功!");
       getList(state.params);
     }
   } catch (err) {
