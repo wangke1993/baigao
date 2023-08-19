@@ -1,13 +1,20 @@
 <template>
-  <el-dialog v-model="dialogFormVisible" :title="title" :close-on-press-escape="false" :close-on-click-modal="false"
-    width="78%" @closed="dialogFormVisible = false">
+  <el-dialog
+    v-model="dialogFormVisible"
+    :title="title"
+    :close-on-press-escape="false"
+    :close-on-click-modal="false"
+    width="78%"
+    @closed="dialogFormVisible = false"
+  >
     <div class="page-head">
       <Search placeholder="关键字" @handleSearch="handleSearch"></Search>
     </div>
     <el-table :data="userListData" row-key="_id">
       <el-table-column type="index" width="80" align="center" label="序号" />
-      <el-table-column prop="articleName" label="字典名称" />
       <el-table-column prop="_id" label="id" />
+      <el-table-column prop="articleName" label="名称" />
+
       <el-table-column label="所属分类">
         <template #default="scope">
           <span>{{ articleClass(scope.row.articleClass) }}</span>
@@ -21,15 +28,24 @@
       </el-table-column>
       <el-table-column label="操作" width="310">
         <template #default="scope">
-          <el-button type="primary" :icon="Edit" @click="selectIetm(scope.row)">选择</el-button>
+          <el-button type="primary" :icon="Edit" @click="selectIetm(scope.row)"
+            >选择</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
 
     <div class="pagination-box">
-      <el-pagination v-model:currentPage="parms.pageIndex" v-model:page-size="parms.pageSize"
-        :page-sizes="[10, 20, 30, 40, 50]" background layout="total, sizes, prev, pager, next, jumper" :total="total"
-        @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+      <el-pagination
+        v-model:currentPage="parms.pageIndex"
+        v-model:page-size="parms.pageSize"
+        :page-sizes="[10, 20, 30, 40, 50]"
+        background
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
     </div>
   </el-dialog>
 </template>
@@ -46,7 +62,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const state = reactive({
       dialogFormVisible: false,
-      title: "文章列表",
+      title: "选择文章",
       parms: {
         pageIndex: 1,
         pageSize: 10,

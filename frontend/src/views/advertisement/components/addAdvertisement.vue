@@ -1,15 +1,30 @@
 <template>
-  <el-dialog v-model="state.dialogFormVisible" :title="state.title" :close-on-press-escape="false"
-    :close-on-click-modal="false" width="78%" @closed="closeForm(ruleFormRef)">
-    <el-form :model="form" v-if="formShow" label-width="120px" :rules="rules" ref="ruleFormRef"
-      @submit.native.prevent="submitForm(ruleFormRef)">
+  <el-dialog
+    v-model="state.dialogFormVisible"
+    :title="state.title"
+    :close-on-press-escape="false"
+    :close-on-click-modal="false"
+    width="78%"
+    @closed="closeForm(ruleFormRef)"
+  >
+    <el-form
+      :model="form"
+      v-if="formShow"
+      label-width="120px"
+      :rules="rules"
+      ref="ruleFormRef"
+    >
       <el-form-item label="广告名称" prop="name">
         <el-input v-model="form.name" placeholder="请输入广告名称" />
-        <!--  onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" -->
       </el-form-item>
       <el-form-item prop="photo" label="广告图片">
-        <el-upload class="avatar-uploader" action="/api/file/upload" :show-file-list="false"
-          :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+        <el-upload
+          class="avatar-uploader"
+          action="/api/file/upload"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
           <div class="avatar-box" v-if="imageUrl">
             <img :src="imageUrl" class="avatar" />
           </div>
@@ -23,33 +38,73 @@
         <el-switch v-model="form.release" />
       </el-form-item>
       <el-form-item label="链接类型" prop="linkType">
-        <el-select v-model="form.linkType" class="m-2" placeholder="请选中链接类型" size="large" @change="selectChange"
-          style="width: 100%">
-          <el-option v-for="(item, index) in state.dictionaryData" :key="index" :label="item.name" :value="item.value" />
+        <el-select
+          v-model="form.linkType"
+          class="m-2"
+          placeholder="请选中链接类型"
+          size="large"
+          @change="selectChange"
+          style="width: 100%"
+        >
+          <el-option
+            v-for="(item, index) in state.dictionaryData"
+            :key="index"
+            :label="item.name"
+            :value="item.value"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="链接值" prop="linkValue">
-        <div style="width: 100%" v-if="form.linkType === 2" @click="openChoiceArticle()">
-          <el-input disabled v-model="form.linkName" placeholder="请选择文章" />
-          <ChoiceArticle ref="ChoiceArticleRef" @selectArticle="selectArticle" />
+        <div v-if="form.linkType === 2">
+          <el-input v-show="false" v-model="form.linkValue" />
+          <el-button type="text" @click="openChoiceArticle()">{{
+            form.linkName ? "重新选择" : "选择文章"
+          }}</el-button>
+          <div>{{ form.linkName }}</div>
+          <ChoiceArticle
+            ref="ChoiceArticleRef"
+            @selectArticle="selectArticle"
+          />
         </div>
-        <el-input v-if="form.linkType === 3" v-model="form.linkName" placeholder="请输入网址" />
+        <el-input
+          v-if="form.linkType === 3"
+          v-model="form.linkName"
+          placeholder="请输入网址"
+        />
       </el-form-item>
       <el-form-item label="广告位置" prop="position">
-        <el-select v-model="form.position" class="m-2" placeholder="请选中广告位置" size="large" style="width: 100%">
-          <el-option v-for="(item, index) in state.positionType" :key="index" :label="item.name" :value="item.value" />
+        <el-select
+          v-model="form.position"
+          class="m-2"
+          placeholder="请选中广告位置"
+          size="large"
+          style="width: 100%"
+        >
+          <el-option
+            v-for="(item, index) in state.positionType"
+            :key="index"
+            :label="item.name"
+            :value="item.value"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="排序" prop="position">
         <el-input v-model="form.sort" placeholder="请输入广告名称" />
       </el-form-item>
       <el-form-item label="备注" prop="remarks">
-        <el-input v-model="form.remarks" type="textarea" :rows="4" placeholder="请输入备注" />
+        <el-input
+          v-model="form.remarks"
+          type="textarea"
+          :rows="4"
+          placeholder="请输入备注"
+        />
       </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="primary" @click="submitForm(ruleFormRef)">发布文章</el-button>
+        <el-button type="primary" @click="submitForm(ruleFormRef)">{{
+          form._id ? "更新" : "保存"
+        }}</el-button>
       </span>
     </template>
   </el-dialog>
@@ -88,7 +143,7 @@ const type = [
   { name: "文章", value: 2 },
   { name: "自定义URL", value: 3 },
 ];
-const emit = defineEmits(['refresh']);
+const emit = defineEmits(["refresh"]);
 const form = ref<typeForm>({
   name: "",
   photo: "",
@@ -109,12 +164,8 @@ const rules = reactive<FormRules>({
   linkType: [
     { required: true, message: "链接类型不能为空", trigger: "change" },
   ],
-  linkName: [
-    { required: true, message: "链接名不能为空", trigger: "blur" },
-  ],
-  linkValue: [
-    { required: true, message: "链接值不能为空", trigger: "blur" },
-  ],
+  linkName: [{ required: true, message: "链接名不能为空", trigger: "blur" }],
+  linkValue: [{ required: true, message: "链接值不能为空", trigger: "blur" }],
   position: [
     { required: true, message: "广告位置不能为空", trigger: "change" },
   ],
@@ -171,8 +222,11 @@ const open = (item: any) => {
       fileIds: item.fileIds,
       sort: item.sort,
     };
-    // 封面
-    imageUrl.value = "/api/" + photo;
+    state.title = _id ? "更新广告" : "添加广告";
+    if (photo) {
+      // 封面
+      imageUrl.value = "/api/" + photo;
+    }
   }
   state.dialogFormVisible = true;
 };

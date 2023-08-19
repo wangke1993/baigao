@@ -1,6 +1,12 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="list-box">
-    <el-button type="primary" v-if="btnShow('add-Advertisement')" @click="addArticleFun(null)">添加广告</el-button>
+    <el-button
+      type="primary"
+      v-if="btnShow('add-Advertisement')"
+      @click="addArticleFun(null)"
+      >添加广告</el-button
+    >
 
     <el-table :data="state.userListData" row-key="_id">
       <el-table-column type="index" width="80" align="center" label="序号" />
@@ -10,7 +16,13 @@
           <span>{{ linkTypeFun(scope.row.linkType) }}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="linkValue" label="链接值" />
+      <el-table-column prop="linkValue" label="链接值">
+        <template #default="scope">
+          <span>{{
+            scope.row.linkType == 2 ? scope.row.linkName : scope.row.linkValue
+          }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="广告位置">
         <template #default="scope">
           <span>{{ dicCodeName(scope.row.position) }}</span>
@@ -24,12 +36,27 @@
       <el-table-column label="操作" width="310">
         <template #default="scope">
           <el-button-group class="ml-4">
-            <el-button v-if="btnShow('ad-edit')" type="primary" :icon="Edit"
-              @click="addArticleFun(scope.row)">编辑</el-button>
-            <el-popconfirm confirm-button-text="确定" cancel-button-text="取消" confirm-button-type="danger" title="确定删除？"
-              @confirm="deleteDictionary(scope.row._id)">
+            <el-button
+              v-if="btnShow('ad-edit')"
+              type="primary"
+              :icon="Edit"
+              @click="addArticleFun(scope.row)"
+              >编辑</el-button
+            >
+            <el-popconfirm
+              confirm-button-text="确定"
+              cancel-button-text="取消"
+              confirm-button-type="danger"
+              title="确定删除？"
+              @confirm="deleteDictionary(scope.row._id)"
+            >
               <template #reference>
-                <el-button v-if="btnShow('ad-delete')" type="danger" :icon="Delete">删除</el-button>
+                <el-button
+                  v-if="btnShow('ad-delete')"
+                  type="danger"
+                  :icon="Delete"
+                  >删除</el-button
+                >
               </template>
             </el-popconfirm>
           </el-button-group>
@@ -37,9 +64,16 @@
       </el-table-column>
     </el-table>
     <div class="pagination-box">
-      <el-pagination v-model:currentPage="state.params.pageIndex" v-model:page-size="state.params.pageSize"
-        :page-sizes="[10, 20, 30, 40, 50]" background layout="total, sizes, prev, pager, next, jumper" :total="state.total"
-        @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+      <el-pagination
+        v-model:currentPage="state.params.pageIndex"
+        v-model:page-size="state.params.pageSize"
+        :page-sizes="[10, 20, 30, 40, 50]"
+        background
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="state.total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
     </div>
     <addAdvertisement ref="AddAdvertisementRef" @refresh="RefreshList" />
   </div>
@@ -154,7 +188,6 @@ getArticleDictionary("DC0002");
 // 根据字典值返回分类名称
 const dicCodeName = (articleClass: string) => {
   let title;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   state.positionType.forEach((item: any) => {
     if (item.value === articleClass) title = item.name;
   });

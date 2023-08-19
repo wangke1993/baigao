@@ -29,12 +29,6 @@ const rotes = [
                 meta: { title: '广告管理' }
             },
             {
-                path: 'collectionAccountManagement',
-                component: () => import('@/views/collectionAccountManagement/Index.vue'),
-                name: 'collectionAccountManagement',
-                meta: { title: '账号管理' }
-            },
-            {
                 path: 'treeClassManagement',
                 component: () => import('@/views/treeClassManagement/Index.vue'),
                 name: 'treeClassManagement',
