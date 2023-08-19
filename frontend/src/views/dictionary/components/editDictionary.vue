@@ -87,6 +87,9 @@
   </el-dialog>
 </template>
 <script lang="ts" setup>
+/**
+ * 新增值、值类型及相关配置
+ */
 import { ref, reactive } from "vue";
 import {
   DataDictionaryControllerCreate,

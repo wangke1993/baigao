@@ -153,6 +153,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+/**
+ * TODO:参数改为分组编辑+数据字典点选的方式，动态生成参数设置界面；参数结构表（存储参数页，页面结构），字典表（存储参数、值、值类型（表单类型））
+ */
 import { ref, reactive } from "vue";
 import {
   SystemConfigControllerUpdate,
