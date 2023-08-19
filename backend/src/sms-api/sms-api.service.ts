@@ -1,26 +1,51 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import UniSMS from 'unisms';
 import { CONF_TYPE, DC0003 } from '../system-config/dto/system-config.schema';
 import { SystemConfigService } from '../system-config/system-config.service';
+import axios from 'axios';
+import { ResStatusData, YunPianTplReq, YunPianTplRes } from './dto/yunpian-tpl-send.dto';
+import { SystemLogService } from 'src/system-log/system-log.service';
 @Injectable()
 export class SmsApiService {
-    private readonly logger = new Logger(SmsApiService.name);
     private client: UniSMS;
     private smsConf: any;
     constructor(
-        private systemConfigService: SystemConfigService
+        private systemConfigService: SystemConfigService,
+        private systemLogService: SystemLogService
     ) {
 
     };
+    /**
+     * 云片网发送短信
+     * https://www.yunpian.com/
+     * @param phone 手机号，字符串或字符串数组
+     * @param templateId 模板id
+     * @param templateData 模板变量{a:'',b:''}
+     * @returns 
+     */
+    async send(phone: string[], templateId: string, templateData: any, req?: any): Promise<YunPianTplRes> {
+        this.smsConf = await this.systemConfigService.getConfigObjByConfType(CONF_TYPE.短信参数设置);
+        if (this.smsConf[DC0003.是否启用短信] == '0') {
+            console.warn('短信发送未开启');
+            return null;
+        }
+        const yunPianTplReq = new YunPianTplReq(phone, templateId, templateData);
+        yunPianTplReq.apikey = this.smsConf[DC0003.短信API密钥];
+        console.log('【发送短信】', JSON.stringify(yunPianTplReq));
+        const res: YunPianTplRes = await yunPianTplReq.send();
+        yunPianTplReq.apikey = '****';
+        this.systemLogService.create('【短信发送】', `请求：${JSON.stringify(yunPianTplReq)},响应${JSON.stringify(res)}`, req)
+        return res;
+    }
     async init() {
-        this.logger.log('初始化短信');
+        console.log('初始化短信');
         this.smsConf = await this.systemConfigService.getConfigObjByConfType(CONF_TYPE.短信参数设置);
         this.client = new UniSMS({
             accessKeyId: this.smsConf[DC0003.短信API密钥]
         })
     }
     /**
-     * 发送短信
+     * UNI发送短信
      * @param phone 手机号，字符串或字符串数组
      * @param templateId 模板id
      * @param templateData 模板变量{a:'',b:''}
@@ -31,10 +56,10 @@ export class SmsApiService {
             await this.init();
         }
         if (this.smsConf[DC0003.是否启用短信] == '0') {
-            this.logger.warn('短信发送未开启');
+            console.warn('短信发送未开启');
             return null;
         }
-        this.logger.log('【发送短信】', phone, templateId, JSON.stringify(templateData));
+        console.log('【发送短信】', phone, templateId, JSON.stringify(templateData));
         try {
             if (phone.length < 1) {
                 throw new Error('手机号不能为空');
@@ -45,11 +70,12 @@ export class SmsApiService {
                 templateId: templateId,
                 templateData: templateData
             });
-            this.logger.log('【发送短信结果】', JSON.stringify(res));
+            console.log('【发送短信结果】', JSON.stringify(res));
             return res;
         } catch (error) {
-            this.logger.error('短信发送异常', error);
+            console.error('短信发送异常', error);
             return null;
         }
     }
+
 }
