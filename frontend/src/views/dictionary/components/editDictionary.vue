@@ -1,5 +1,9 @@
 <template>
-  <el-dialog v-model="state.dialogFormVisible" :title="title" @closed="closeForm(ruleFormRef)">
+  <el-dialog
+    v-model="state.dialogFormVisible"
+    :title="title"
+    @closed="closeForm(ruleFormRef)"
+  >
     <el-form :model="form" :rules="rules" :inline="true" ref="ruleFormRef">
       <el-form-item label="字典值" prop="dicName">
         <el-input v-model="form.dicName" />
@@ -8,7 +12,9 @@
         <el-input v-model="form.remarks" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm(ruleFormRef)">保存</el-button>
+        <el-button type="primary" @click="submitForm(ruleFormRef)"
+          >保存</el-button
+        >
       </el-form-item>
     </el-form>
     <el-table :data="state.userListData" row-key="_id">
@@ -17,32 +23,61 @@
       <el-table-column label="字典名称">
         <template #default="scope">
           <el-button-group class="ml-4">
-            <el-input :disabled="scope.row.disabled ? false : true" v-model="scope.row.dicName" />
+            <el-input
+              :disabled="scope.row.disabled ? false : true"
+              v-model="scope.row.dicName"
+            />
           </el-button-group>
         </template>
       </el-table-column>
       <el-table-column label="备注">
         <template #default="scope">
           <el-button-group class="ml-4">
-            <el-input :disabled="scope.row.disabled ? false : true" v-model="scope.row.remarks" />
+            <el-input
+              :disabled="scope.row.disabled ? false : true"
+              v-model="scope.row.remarks"
+            />
           </el-button-group>
         </template>
       </el-table-column>
       <el-table-column label="操作" width="310">
         <template #default="scope">
           <el-button-group class="ml-4">
-            <el-button v-if="scope.row.disabled" type="primary" :icon="Edit"
-              @click="addDictionaryFun(scope.$index, scope.row, 'submit')">保存
+            <el-button
+              v-if="scope.row.disabled"
+              type="primary"
+              :icon="Edit"
+              @click="addDictionaryFun(scope.$index, scope.row, 'submit')"
+              >保存
             </el-button>
-            <el-button v-if="scope.row.disabled" type="primary" :icon="Close"
-              @click="addDictionaryFun(scope.$index, scope.row, 'cancel')">取消
+            <el-button
+              v-if="scope.row.disabled"
+              type="primary"
+              :icon="Close"
+              @click="addDictionaryFun(scope.$index, scope.row, 'cancel')"
+              >取消
             </el-button>
-            <el-button v-else type="primary" :icon="Edit" @click="addDictionaryFun(scope.$index, scope.row, 'edit')">编辑
+            <el-button
+              v-else
+              type="primary"
+              :icon="Edit"
+              @click="addDictionaryFun(scope.$index, scope.row, 'edit')"
+              >编辑
             </el-button>
-            <el-popconfirm confirm-button-text="确定" cancel-button-text="取消" confirm-button-type="danger" title="确定删除该字典？"
-              @confirm="deleteDictionary(scope.row)">
+            <el-popconfirm
+              confirm-button-text="确定"
+              cancel-button-text="取消"
+              confirm-button-type="danger"
+              title="确定删除该字典？"
+              @confirm="deleteDictionary(scope.row)"
+            >
               <template #reference>
-                <el-button type="danger" v-if="!scope.row.isSystem" :icon="Delete">删除</el-button>
+                <el-button
+                  type="danger"
+                  v-if="!scope.row.isSystem"
+                  :icon="Delete"
+                  >删除</el-button
+                >
               </template>
             </el-popconfirm>
           </el-button-group>
@@ -69,7 +104,7 @@ const form = ref({
   remarks: "",
   dicClass: "",
 });
-const title = ref('字典值管理');
+const title = ref("字典值管理");
 const state = reactive({
   dialogFormVisible: false,
   userListData: [],
@@ -128,13 +163,12 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 };
 
 // 新增字典值
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const postDataDictionaryControllerCreate = async (parms: any) => {
+const postDataDictionaryControllerCreate = async (params: any) => {
   try {
-    let result = await DataDictionaryControllerCreate(parms);
+    let result = await DataDictionaryControllerCreate(params);
     let data = result.data;
     if (data.status === 1) {
-      alertSuccess('操作成功')
+      alertSuccess("操作成功");
       form.value.dicName = "";
       form.value.remarks = "";
       getDataDictionaryControllerGetListByDicClass(form.value.dicClass);
@@ -150,22 +184,26 @@ const addDictionaryFun = (index: number, items: any, type: string) => {
   if (type == "edit") items.disabled = true;
   else if (type == "submit") {
     const { dicName, dicType, remarks, _id } = items;
-    let parms = { dicName, dicType, remarks };
-    postDataDictionaryControllerUpdate(_id, parms);
+    let params = { dicName, dicType, remarks };
+    postDataDictionaryControllerUpdate(_id, params, items);
   } else {
-    getDataDictionaryControllerGetListByDicClass(form.value.dicClass);
+    items.disabled = false;
   }
 };
 
 // 编辑
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const postDataDictionaryControllerUpdate = async (id: any, parms: any) => {
+const postDataDictionaryControllerUpdate = async (
+  id: any,
+  params: any,
+  items: any
+) => {
   try {
-    let result = await DataDictionaryControllerUpdate(id, parms);
+    let result = await DataDictionaryControllerUpdate(id, params);
     let data = result.data;
     if (data.status === 1) {
-      alertSuccess('操作成功')
-      getDataDictionaryControllerGetListByDicClass(form.value.dicClass);
+      alertSuccess("操作成功");
+      items.disabled = false;
     }
   } catch (err) {
     return;
@@ -174,21 +212,20 @@ const postDataDictionaryControllerUpdate = async (id: any, parms: any) => {
 
 // 删除字典分类
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const deleteDictionary = async (parms: any) => {
+const deleteDictionary = async (params: any) => {
   try {
-    let result = await DataDictionaryControllerDelete(parms.dicCode);
+    let result = await DataDictionaryControllerDelete(params.dicCode);
     let data = result.data;
     if (data.status === 1) {
-      alertSuccess('操作成功')
+      alertSuccess("操作成功");
       getDataDictionaryControllerGetListByDicClass(form.value.dicClass);
     }
   } catch (err) {
     return;
   }
 };
-defineEmits(['refreshList'])
+defineEmits(["refreshList"]);
 defineExpose({ open });
-
 </script>
 
 <style lang="scss">

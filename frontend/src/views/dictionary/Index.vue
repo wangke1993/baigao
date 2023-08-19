@@ -26,7 +26,7 @@
       </el-table-column>
     </el-table>
     <div class="pagination-box">
-      <el-pagination v-model:currentPage="parms.pageIndex" v-model:page-size="parms.pageSize"
+      <el-pagination v-model:currentPage="params.pageIndex" v-model:page-size="params.pageSize"
         :page-sizes="[10, 20, 30, 40, 50]" :small="small" background layout="total, sizes, prev, pager, next, jumper"
         :total="total" :hide-on-single-page="true" @size-change="handleSizeChange"
         @current-change="handleCurrentChange" />
@@ -54,7 +54,7 @@ export default defineComponent({
     const EditDictionaryRef = ref();
     const state = reactive({
       userListData: [{ index: 1 }],
-      parms: { pageSize: 10, pageIndex: 1, keyWord: "", dicClass: "" },
+      params: { pageSize: 10, pageIndex: 1, keyWord: "", dicClass: "" },
       total: 0,
       small: false,
       load: false,
@@ -62,10 +62,10 @@ export default defineComponent({
 
     // 获取数据字典列表
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const getDataDictionaryControllerGetPage = async (parms: any) => {
+    const getDataDictionaryControllerGetPage = async (params: any) => {
       try {
         state.load = true;
-        let result = await DataDictionaryControllerGetPage(parms);
+        let result = await DataDictionaryControllerGetPage(params);
         let data = result.data;
         if (data.status === 1) {
           state.userListData = data.data.list;
@@ -76,16 +76,16 @@ export default defineComponent({
       }
       state.load = false;
     };
-    getDataDictionaryControllerGetPage(state.parms);
+    getDataDictionaryControllerGetPage(state.params);
 
     // 分页控制
     const handleSizeChange = (val: number) => {
-      state.parms.pageSize = val;
-      getDataDictionaryControllerGetPage(state.parms);
+      state.params.pageSize = val;
+      getDataDictionaryControllerGetPage(state.params);
     };
     const handleCurrentChange = (val: number) => {
-      state.parms.pageIndex = val;
-      getDataDictionaryControllerGetPage(state.parms);
+      state.params.pageIndex = val;
+      getDataDictionaryControllerGetPage(state.params);
     };
 
     // 打开新增字典分类弹窗
@@ -96,18 +96,18 @@ export default defineComponent({
 
     // 保存字典或者编辑字典刷新列表
     const refreshList = () => {
-      getDataDictionaryControllerGetPage(state.parms);
+      getDataDictionaryControllerGetPage(state.params);
     };
 
     // 删除字典分类
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const deleteDictionary = async (parms: any) => {
+    const deleteDictionary = async (params: any) => {
       try {
-        let result = await DataDictionaryControllerDelete(parms.dicCode);
+        let result = await DataDictionaryControllerDelete(params.dicCode);
         let data = result.data;
         if (data.status === 1) {
           alertSuccess('操作成功!')
-          getDataDictionaryControllerGetPage(state.parms);
+          getDataDictionaryControllerGetPage(state.params);
         }
       } catch (err) {
         return;

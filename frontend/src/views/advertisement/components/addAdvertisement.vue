@@ -185,7 +185,7 @@ const state = reactive({
   title: "添加广告",
   load: false,
   userListData: [],
-  parms: {
+  params: {
     pageIndex: 1,
     pageSize: 10,
     total: 10,
@@ -325,7 +325,7 @@ const getArticleDictionary = async (dicCode: string) => {
 getArticleDictionary("DC0002");
 
 // 创建广告
-const Create = async (parms: any) => {
+const Create = async (params: any) => {
   try {
     const {
       name,
@@ -337,7 +337,7 @@ const Create = async (parms: any) => {
       remarks,
       release,
       sort,
-    } = parms;
+    } = params;
     let result = await AdMangerControllerCreate({
       name,
       photo,
@@ -347,7 +347,7 @@ const Create = async (parms: any) => {
       position,
       remarks,
       release,
-      fileIds: parms.fileIds,
+      fileIds: params.fileIds,
       sort,
     });
     let data = result.data;
@@ -362,7 +362,7 @@ const Create = async (parms: any) => {
 };
 
 // 编辑广告
-const editAdManger = async (parms: any) => {
+const editAdManger = async (params: any) => {
   try {
     const {
       name,
@@ -375,7 +375,7 @@ const editAdManger = async (parms: any) => {
       release,
       _id,
       sort,
-    } = parms;
+    } = params;
     let result = await AdMangerControllerUpdate(_id, {
       name,
       photo,
@@ -385,7 +385,7 @@ const editAdManger = async (parms: any) => {
       position,
       remarks,
       release,
-      fileIds: parms.fileIds,
+      fileIds: params.fileIds,
       sort,
     });
     let data = result.data;

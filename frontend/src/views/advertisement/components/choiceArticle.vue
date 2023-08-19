@@ -37,8 +37,8 @@
 
     <div class="pagination-box">
       <el-pagination
-        v-model:currentPage="parms.pageIndex"
-        v-model:page-size="parms.pageSize"
+        v-model:currentPage="params.pageIndex"
+        v-model:page-size="params.pageSize"
         :page-sizes="[10, 20, 30, 40, 50]"
         background
         layout="total, sizes, prev, pager, next, jumper"
@@ -63,7 +63,7 @@ export default defineComponent({
     const state = reactive({
       dialogFormVisible: false,
       title: "选择文章",
-      parms: {
+      params: {
         pageIndex: 1,
         pageSize: 10,
         keyWord: "", //搜索关键字
@@ -78,14 +78,14 @@ export default defineComponent({
       state.dialogFormVisible = true;
     };
     const handleSearch = async (searchInfo: any) => {
-      state.parms.keyWord = searchInfo.keyWord;
-      state.parms.articleClass = searchInfo.articleClass;
-      getList(state.parms);
+      state.params.keyWord = searchInfo.keyWord;
+      state.params.articleClass = searchInfo.articleClass;
+      getList(state.params);
     };
     // 获取文章列表
-    const getList = async (parms: any) => {
+    const getList = async (params: any) => {
       try {
-        let result = await ArticleMangerControllerGetPage(parms);
+        let result = await ArticleMangerControllerGetPage(params);
         let data = result.data;
         if (data.status === 1) {
           // console.log("获取文章列表", data);
@@ -96,7 +96,7 @@ export default defineComponent({
         return;
       }
     };
-    getList(state.parms);
+    getList(state.params);
 
     // 获取文章分类字典
     const getArticleDictionary = async (dicCode: string) => {
@@ -112,12 +112,12 @@ export default defineComponent({
 
     // 分页控制
     const handleSizeChange = (val: number) => {
-      state.parms.pageSize = val;
-      getList(state.parms);
+      state.params.pageSize = val;
+      getList(state.params);
     };
     const handleCurrentChange = (val: number) => {
-      state.parms.pageIndex = val;
-      getList(state.parms);
+      state.params.pageIndex = val;
+      getList(state.params);
     };
 
     // 根据字典值返回分类名称

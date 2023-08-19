@@ -73,12 +73,12 @@ export default defineComponent({
           // 编辑
           if (form.value._id) {
             const { dicName, dicType, remarks, _id } = form.value;
-            let parms = { dicName, dicType, remarks };
-            postDataDictionaryControllerUpdate(_id, parms);
+            let params = { dicName, dicType, remarks };
+            postDataDictionaryControllerUpdate(_id, params);
           } else {
             const { dicName, dicType, remarks } = form.value;
-            let parms = { dicName, dicType, remarks };
-            postDataDictionaryControllerCreate(parms);
+            let params = { dicName, dicType, remarks };
+            postDataDictionaryControllerCreate(params);
           }
         }
       });
@@ -86,12 +86,12 @@ export default defineComponent({
 
     // 新增
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const postDataDictionaryControllerCreate = async (parms: any) => {
+    const postDataDictionaryControllerCreate = async (params: any) => {
       try {
-        let result = await DataDictionaryControllerCreate(parms);
+        let result = await DataDictionaryControllerCreate(params);
         let data = result.data;
         if (data.status === 1) {
-          alertSuccess('操作成功！')
+          alertSuccess("操作成功！");
           state.dialogFormVisible = false;
           emit("refreshList");
         }
@@ -102,12 +102,12 @@ export default defineComponent({
 
     // 编辑
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const postDataDictionaryControllerUpdate = async (id: any, parms: any) => {
+    const postDataDictionaryControllerUpdate = async (id: any, params: any) => {
       try {
-        let result = await DataDictionaryControllerUpdate(id, parms);
+        let result = await DataDictionaryControllerUpdate(id, params);
         let data = result.data;
         if (data.status === 1) {
-          alertSuccess('操作成功！')
+          alertSuccess("操作成功！");
           state.dialogFormVisible = false;
           emit("refreshList");
         }
