@@ -22,7 +22,7 @@
     </template>
   </el-dialog>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { ref, reactive, toRefs, defineComponent } from "vue";
 import {
   DataDictionaryControllerCreate,
@@ -30,101 +30,86 @@ import {
 } from "../../../api/DataDictionaryControllerApi";
 import type { FormInstance, FormRules } from "element-plus";
 import { alertSuccess } from "@/utils/message";
-export default defineComponent({
-  emits: ["refreshList"],
-  setup(props, { emit }) {
-    const formBase = {
-      dicName: "",
-      dicType: 1,
-      remarks: "",
-      _id: "",
-    };
-    const ruleFormRef = ref<FormInstance>();
-    const form = ref({ ...formBase });
-
-    const state = reactive({
-      dialogFormVisible: false,
-    });
-    // 校验
-    const rules = reactive<FormRules>({
-      dicName: [{ required: true, message: "字典名称", trigger: "blur" }],
-    });
-
-    // 打开弹窗
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const open = (items: any) => {
-      if (items) form.value = items;
-      state.dialogFormVisible = true;
-    };
-
-    // 关闭弹窗
-    const closeForm = (formEl: FormInstance | undefined) => {
-      if (!formEl) return;
-      formEl.resetFields();
-      state.dialogFormVisible = false;
-      form.value = { ...formBase };
-    };
-
-    //
-    const submitForm = async (formEl: FormInstance | undefined) => {
-      if (!formEl) return;
-      await formEl.validate(async (valid, fields) => {
-        if (valid) {
-          // 编辑
-          if (form.value._id) {
-            const { dicName, dicType, remarks, _id } = form.value;
-            let params = { dicName, dicType, remarks };
-            postDataDictionaryControllerUpdate(_id, params);
-          } else {
-            const { dicName, dicType, remarks } = form.value;
-            let params = { dicName, dicType, remarks };
-            postDataDictionaryControllerCreate(params);
-          }
-        }
-      });
-    };
-
-    // 新增
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const postDataDictionaryControllerCreate = async (params: any) => {
-      try {
-        let result = await DataDictionaryControllerCreate(params);
-        let data = result.data;
-        if (data.status === 1) {
-          alertSuccess("操作成功！");
-          state.dialogFormVisible = false;
-          emit("refreshList");
-        }
-      } catch (err) {
-        return;
-      }
-    };
-
-    // 编辑
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const postDataDictionaryControllerUpdate = async (id: any, params: any) => {
-      try {
-        let result = await DataDictionaryControllerUpdate(id, params);
-        let data = result.data;
-        if (data.status === 1) {
-          alertSuccess("操作成功！");
-          state.dialogFormVisible = false;
-          emit("refreshList");
-        }
-      } catch (err) {
-        return;
-      }
-    };
-
-    return {
-      ...toRefs(state),
-      form,
-      rules,
-      ruleFormRef,
-      open,
-      closeForm,
-      submitForm,
-    };
-  },
+const formBase = {
+  dicName: "",
+  dicType: 1,
+  remarks: "",
+  _id: "",
+};
+const emit = defineEmits(["refreshList"]);
+const ruleFormRef = ref<FormInstance>();
+const form = ref({ ...formBase });
+const dialogFormVisible = ref(false);
+// 校验
+const rules = reactive<FormRules>({
+  dicName: [{ required: true, message: "字典名称", trigger: "blur" }],
 });
+
+// 打开弹窗
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const open = (items: any) => {
+  if (items) form.value = { ...items };
+  dialogFormVisible.value = true;
+};
+
+// 关闭弹窗
+const closeForm = (formEl: FormInstance | undefined) => {
+  if (!formEl) return;
+  formEl.resetFields();
+  dialogFormVisible.value = false;
+  form.value = { ...formBase };
+  emit("refreshList");
+};
+
+//
+const submitForm = async (formEl: FormInstance | undefined) => {
+  if (!formEl) return;
+  await formEl.validate(async (valid, fields) => {
+    if (valid) {
+      // 编辑
+      if (form.value._id) {
+        const { dicName, dicType, remarks, _id } = form.value;
+        let params = { dicName, dicType, remarks };
+        postDataDictionaryControllerUpdate(_id, params);
+      } else {
+        const { dicName, dicType, remarks } = form.value;
+        let params = { dicName, dicType, remarks };
+        postDataDictionaryControllerCreate(params);
+      }
+    }
+  });
+};
+
+// 新增
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const postDataDictionaryControllerCreate = async (params: any) => {
+  try {
+    let result = await DataDictionaryControllerCreate(params);
+    let data = result.data;
+    if (data.status === 1) {
+      alertSuccess("操作成功！");
+      dialogFormVisible.value = false;
+      emit("refreshList");
+    }
+  } catch (err) {
+    return;
+  }
+};
+
+// 编辑
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const postDataDictionaryControllerUpdate = async (id: any, params: any) => {
+  try {
+    let result = await DataDictionaryControllerUpdate(id, params);
+    let data = result.data;
+    if (data.status === 1) {
+      alertSuccess("操作成功！");
+      dialogFormVisible.value = false;
+      emit("refreshList");
+    }
+  } catch (err) {
+    return;
+  }
+};
+defineExpose({ open });
 </script>
