@@ -3,26 +3,26 @@ export class WeChatRegisterDto {
     /**
      * openid
      */
-    openId!: String;
+    openId!: string;
     
     /**
      * 用户名称
      */
-    userName!: String;
+    userName!: string;
     
     /**
      * 用户头像
      */
-    avatar!: String;
+    avatar!: string;
     
     /**
      * 用户性别
      */
-    sex!: String;
+    sex!: sring;
     
     /**
      * 上级openId
      */
-    parentOpenId!: String;
+    parentOpenId!: string;
     
 }

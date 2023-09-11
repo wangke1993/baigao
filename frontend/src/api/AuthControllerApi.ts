@@ -20,7 +20,7 @@ export const AuthControllerLogin = (data: LoginFromDto, config?: any) => {
 * code：code;
 * @returns 
 */
-export const AuthControllerWeChatLogin = (code: String, config?: any) => {
+export const AuthControllerWeChatLogin = (code: string, config?: any) => {
    return axios.post(`/api/auth/weChat/login/${code}`, {}, config);
 }
 /**
@@ -52,7 +52,7 @@ export const AuthControllerRegister = (data: WeChatRegisterDto, config?: any) =>
 * code：code;
 * @returns 
 */
-export const AuthControllerGetWeChatPhoneNumber = (code: String, config?: any) => {
+export const AuthControllerGetWeChatPhoneNumber = (code: string, config?: any) => {
    return axios.post(`/api/auth/weChat/phoneNumber/${code}`, {}, config);
 }
 /**
@@ -60,6 +60,6 @@ export const AuthControllerGetWeChatPhoneNumber = (code: String, config?: any) =
 * QRKey：QRKey;
 * @returns 
 */
-export const AuthControllerQRAuthorize = (QRKey: String, config?: any) => {
+export const AuthControllerQRAuthorize = (QRKey: string, config?: any) => {
    return axios.get(`/api/auth/weChat/QRAuthorize/${QRKey}`, { ...config });
 }

@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from "mongodb";
 import { Model } from 'mongoose';
 import { SystemConfig, SystemConfigDocument } from './dto/system-config.schema';
+import { SYSTEM_PAGE_CONFIG, SystemConfigPage } from './dto/system-config-page.dto';
 
 @Injectable()
 export class SystemConfigService {
@@ -83,5 +84,20 @@ export class SystemConfigService {
     async getDetailByConfType(confType: string): Promise<SystemConfig[]> {
         let map: any = { confType: confType }
         return await this.SystemConfigModel.find(map);
+    }
+    /**
+     * 获取参数配置页面配置信息
+     * @returns 页面json配置信息
+     */
+    async getSystemPageConfig(): Promise<SystemConfigPage> {
+        return JSON.parse(await this.getValueByConfSelect(SYSTEM_PAGE_CONFIG));
+    }
+    /**
+     * 更新页面配置信息
+     * @param value 新配置
+     * @returns 
+     */
+    async updateSystemPageConfig(confValue: string): Promise<any> {
+        return await this.SystemConfigModel.updateOne({ confSelect: SYSTEM_PAGE_CONFIG }, { confValue })
     }
 }

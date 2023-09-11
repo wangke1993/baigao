@@ -3,46 +3,46 @@ export class AdminMenuDto {
     /**
      * 名称
      */
-    menuName!: String;
+    menuName!: string;
     
     /**
      * 菜单属性：1菜单，2按钮，3数据接口
      */
-    menuType!: String;
+    menuType!: string;
     
     /**
      * 操作
      */
-    menuActive?: String;
+    menuActive?: string;
     
     /**
      * 权限标识
      */
-    menuPowerTag?: String;
+    menuPowerTag?: string;
     
     /**
      * 菜单图标，仅一级菜单拥有
      */
-    menuIcon?: String;
+    menuIcon?: string;
     
     /**
      * 是否显示:1显示，0不显示
      */
-    isShow!: String;
+    isShow!: string;
     
     /**
      * 父级Id
      */
-    parentId?: String;
+    parentId?: string;
     
     /**
      * 直系上级ids
      */
-    parentDeep?: String[];
+    parentDeep?: string[];
     
     /**
      * 排序,升序，数值越小越靠前
      */
-    sort?: String;
+    sort?: sring;
     
 }

@@ -3,61 +3,61 @@ export class TreeClassificationDto {
     /**
      * 最后更新用户
      */
-    addUser?: String;
+    addUser?: string;
     
     /**
      * 添加时间
      */
-    addDate?: String;
+    addDate?: string;
     
     /**
      * 最后更新用户
      */
-    updateUser?: String;
+    updateUser?: string;
     
     /**
      * 最后更新时间
      */
-    updateDate?: String;
+    updateDate?: string;
     
     /**
      * 文件id数组，只要文章上传文件，保留原有数据且把上传的文件id都push到该数组中。
      */
-    fileIds?: String[];
+    fileIds?: string[];
     
     /**
      * UUID
      */
-    UUID!: String;
+    UUID!: string;
     
     /**
      * 名称
      */
-    name!: String;
+    name!: string;
     
     /**
      * 上级,为0时则为1级
      */
-    parent!: String;
+    parent!: string;
     
     /**
      * 排序
      */
-    sort!: String;
+    sort!: sring;
     
     /**
      * 兄弟节点数量
      */
-    breathCount!: String;
+    breathCount!: sring;
     
     /**
      * 备注
      */
-    remarks!: String;
+    remarks!: string;
     
     /**
      * 数据分类：存储数据字典值
      */
-    dataClass!: String;
+    dataClass!: string;
     
 }

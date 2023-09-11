@@ -3,7 +3,7 @@ export class ResponseInfoDtoDto {
     /**
      * 状态：-1错误，0警告，1成功
      */
-    status!: String;
+    status!: sring;
     
     /**
      * 响应数据
@@ -13,6 +13,6 @@ export class ResponseInfoDtoDto {
     /**
      * 提示消息
      */
-    message!: String;
+    message!: string;
     
 }

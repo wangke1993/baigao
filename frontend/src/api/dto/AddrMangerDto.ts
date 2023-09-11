@@ -3,72 +3,72 @@ export class AddrMangerDto {
     /**
      * 最后更新用户
      */
-    addUser?: String;
+    addUser?: string;
     
     /**
      * 添加时间
      */
-    addDate?: String;
+    addDate?: string;
     
     /**
      * 最后更新用户
      */
-    updateUser?: String;
+    updateUser?: string;
     
     /**
      * 最后更新时间
      */
-    updateDate?: String;
+    updateDate?: string;
     
     /**
      * 文件id数组，只要文章上传文件，保留原有数据且把上传的文件id都push到该数组中。
      */
-    fileIds?: String[];
+    fileIds?: string[];
     
     /**
      * 所属会员
      */
-    memberUUID!: String;
+    memberUUID!: string;
     
     /**
      * 省
      */
-    province!: String;
+    province!: string;
     
     /**
      * 市
      */
-    city!: String;
+    city!: string;
     
     /**
      * 区
      */
-    area!: String;
+    area!: string;
     
     /**
      * 省市区全称
      */
-    administrativeDivisionFullName!: String;
+    administrativeDivisionFullName!: string;
     
     /**
      * 详细地址
      */
-    detailAddr!: String;
+    detailAddr!: string;
     
     /**
      * 联系人名称
      */
-    contacts!: String;
+    contacts!: string;
     
     /**
      * 联系人性别:1男2女
      */
-    contactsSex!: String;
+    contactsSex!: string;
     
     /**
      * 联系人手机号
      */
-    contactsPhone!: String;
+    contactsPhone!: string;
     
     /**
      * 是否是默认地址

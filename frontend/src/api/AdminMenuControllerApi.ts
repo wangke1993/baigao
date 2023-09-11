@@ -19,7 +19,7 @@ export const AdminMenuControllerCreate = (data: AdminMenuDto, config?: any) => {
 * id：id;
 * @returns 
 */
-export const AdminMenuControllerUpdate = (id: String,data: AdminMenuDto, config?: any) => {
+export const AdminMenuControllerUpdate = (id: string,data: AdminMenuDto, config?: any) => {
    return axios.post(`/api/admin/menu/update/${id}`, data, config);
 }
 /**
@@ -35,7 +35,7 @@ export const AdminMenuControllerGetTree = ( config?: any) => {
 * menuType：menuType;
 * @returns 
 */
-export const AdminMenuControllerGetTreeByMenuType = (menuType: String, config?: any) => {
+export const AdminMenuControllerGetTreeByMenuType = (menuType: sring, config?: any) => {
    return axios.get(`/api/admin/menu/getMenu/${menuType}`, { ...config });
 }
 /**
@@ -43,7 +43,7 @@ export const AdminMenuControllerGetTreeByMenuType = (menuType: String, config?: 
 * id：id;
 * @returns 
 */
-export const AdminMenuControllerDelete = (id: String, config?: any) => {
+export const AdminMenuControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/admin/menu/delete/${id}`, config);
 }
              

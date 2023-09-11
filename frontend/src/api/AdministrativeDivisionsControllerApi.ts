@@ -10,6 +10,6 @@ import axios from 'axios';
 * parentCode：parentCode;
 * @returns 
 */
-export const AdministrativeDivisionsControllerGetListByDicClass = (parentCode: String, config?: any) => {
+export const AdministrativeDivisionsControllerGetListByDicClass = (parentCode: string, config?: any) => {
    return axios.get(`/api/admin/administrativeDivisions/getAdministrativeDivisions/${parentCode}`, { ...config });
 }

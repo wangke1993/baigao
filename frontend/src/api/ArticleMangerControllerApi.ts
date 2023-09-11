@@ -19,7 +19,7 @@ export const ArticleMangerControllerCreate = (data: ArticleMangerDto, config?: a
 * id：id;
 * @returns 
 */
-export const ArticleMangerControllerUpdate = (id: String,data: ArticleMangerDto, config?: any) => {
+export const ArticleMangerControllerUpdate = (id: string,data: ArticleMangerDto, config?: any) => {
    return axios.post(`/api/article/update/${id}`, data, config);
 }
 /**
@@ -27,7 +27,7 @@ export const ArticleMangerControllerUpdate = (id: String,data: ArticleMangerDto,
 * id：id;
 * @returns 
 */
-export const ArticleMangerControllerGetDetailByArticleId = (id: String, config?: any) => {
+export const ArticleMangerControllerGetDetailByArticleId = (id: string, config?: any) => {
    return axios.get(`/api/article/getDetail/${id}`, { ...config });
 }
 /**
@@ -35,7 +35,7 @@ export const ArticleMangerControllerGetDetailByArticleId = (id: String, config?:
 * id：id;
 * @returns 
 */
-export const ArticleMangerControllerGetReleaseDetailByArticleId = (id: String, config?: any) => {
+export const ArticleMangerControllerGetReleaseDetailByArticleId = (id: string, config?: any) => {
    return axios.get(`/api/article/getReleaseDetail/${id}`, { ...config });
 }
 /**
@@ -43,7 +43,7 @@ export const ArticleMangerControllerGetReleaseDetailByArticleId = (id: String, c
 * id：id;
 * @returns 
 */
-export const ArticleMangerControllerDelete = (id: String, config?: any) => {
+export const ArticleMangerControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/article/delete/${id}`, config);
 }
              
@@ -52,6 +52,6 @@ export const ArticleMangerControllerDelete = (id: String, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;articleClass：所属分类，取字典管理中：DC0001的值;isRelease：发布状态，0全部，1已发布，2未发布;
 * @returns 
 */
-export const ArticleMangerControllerGetPage = (query: { pageSize: String,pageIndex: String,keyWord: String,articleClass: String,isRelease: String }, config?: any) => {
+export const ArticleMangerControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,articleClass: string,isRelease: sring }, config?: any) => {
    return axios.get(`/api/article/getPage`, { params: query,...config });
 }

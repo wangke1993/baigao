@@ -11,7 +11,7 @@ import type { AddrMangerDto } from './dto/AddrMangerDto';
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;memberRank：会员等级;
 * @returns 
 */
-export const MemberMangerControllerGetMemberPage = (query: { pageSize: String,pageIndex: String,keyWord: String,memberRank: String }, config?: any) => {
+export const MemberMangerControllerGetMemberPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,memberRank: string }, config?: any) => {
    return axios.get(`/api/member/getMemberPage`, { params: query,...config });
 }
 /**
@@ -19,7 +19,7 @@ export const MemberMangerControllerGetMemberPage = (query: { pageSize: String,pa
 * memberUUID：memberUUID;
 * @returns 
 */
-export const MemberMangerControllerGetMemberDetail = (memberUUID: String, config?: any) => {
+export const MemberMangerControllerGetMemberDetail = (memberUUID: string, config?: any) => {
    return axios.get(`/api/member/getMemberDetail/${memberUUID}`, { ...config });
 }
 /**
@@ -27,7 +27,7 @@ export const MemberMangerControllerGetMemberDetail = (memberUUID: String, config
 * memberUUID：memberUUID;
 * @returns 
 */
-export const MemberMangerControllerGetAddrListByAdmin = (memberUUID: String, config?: any) => {
+export const MemberMangerControllerGetAddrListByAdmin = (memberUUID: string, config?: any) => {
    return axios.get(`/api/member/getAddrListByAdmin/${memberUUID}`, { ...config });
 }
 /**
@@ -51,7 +51,7 @@ export const MemberMangerControllerCreate = (data: AddrMangerDto, config?: any) 
 * id：id;
 * @returns 
 */
-export const MemberMangerControllerUpdate = (id: String,data: AddrMangerDto, config?: any) => {
+export const MemberMangerControllerUpdate = (id: string,data: AddrMangerDto, config?: any) => {
    return axios.post(`/api/member/updateAddr/${id}`, data, config);
 }
 /**
@@ -59,7 +59,7 @@ export const MemberMangerControllerUpdate = (id: String,data: AddrMangerDto, con
 * id：id;
 * @returns 
 */
-export const MemberMangerControllerDeleteAddr = (id: String, config?: any) => {
+export const MemberMangerControllerDeleteAddr = (id: string, config?: any) => {
    return axios.delete(`/api/member/deleteAddr/${id}`, config);
 }
              

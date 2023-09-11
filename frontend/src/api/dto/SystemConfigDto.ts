@@ -3,42 +3,42 @@ export class SystemConfigDto {
     /**
      * 最后更新用户
      */
-    addUser?: String;
+    addUser?: string;
     
     /**
      * 添加时间
      */
-    addDate?: String;
+    addDate?: string;
     
     /**
      * 最后更新用户
      */
-    updateUser?: String;
+    updateUser?: string;
     
     /**
      * 最后更新时间
      */
-    updateDate?: String;
+    updateDate?: string;
     
     /**
      * 文件id数组，只要文章上传文件，保留原有数据且把上传的文件id都push到该数组中。
      */
-    fileIds?: String[];
+    fileIds?: string[];
     
     /**
-     * 配置类型
+     * 配置字典类型
      */
-    confType?: String;
+    confType?: string;
     
     /**
-     * 配置选项
+     * 配置选项字典值
      */
-    confSelect?: String;
+    confSelect?: object;
     
     /**
-     * 配置值
+     * 配置值,DC0000为系统页面渲染配置
      */
-    confValue?: String;
+    confValue?: object;
     
     /**
      * 是否已设置值
@@ -46,18 +46,18 @@ export class SystemConfigDto {
     isSet?: boolean;
     
     /**
-     * 是否允许查看
+     * 是否允许查看,实现允许设置不允许查看
      */
     allowFetch?: boolean;
     
     /**
-     * 是否对外展示
+     * 是否公开，不用权限即可使用
      */
     isOpen?: boolean;
     
     /**
      * 备注
      */
-    remarks?: String;
+    remarks?: string;
     
 }

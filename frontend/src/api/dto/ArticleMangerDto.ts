@@ -3,52 +3,52 @@ export class ArticleMangerDto {
     /**
      * 最后更新用户
      */
-    addUser?: String;
+    addUser?: string;
     
     /**
      * 添加时间
      */
-    addDate?: String;
+    addDate?: string;
     
     /**
      * 最后更新用户
      */
-    updateUser?: String;
+    updateUser?: string;
     
     /**
      * 最后更新时间
      */
-    updateDate?: String;
+    updateDate?: string;
     
     /**
      * 文件id数组，只要文章上传文件，保留原有数据且把上传的文件id都push到该数组中。
      */
-    fileIds?: String[];
+    fileIds?: string[];
     
     /**
      * 文章名称
      */
-    articleName!: String;
+    articleName!: string;
     
     /**
      * 封面
      */
-    cover!: String;
+    cover!: string;
     
     /**
      * 所属分类，取字典管理中：DC0001的值
      */
-    articleClass!: String;
+    articleClass!: string;
     
     /**
      * 文章概要
      */
-    syn!: String;
+    syn!: string;
     
     /**
      * 文章内容
      */
-    content!: String;
+    content!: string;
     
     /**
      * 是否发布
@@ -58,11 +58,11 @@ export class ArticleMangerDto {
     /**
      * 预招标公告报名用户
      */
-    signUpUsers?: String[];
+    signUpUsers?: string[];
     
     /**
      * 有效期，不填则永久有效
      */
-    expirationDate?: String;
+    expirationDate?: string;
     
 }

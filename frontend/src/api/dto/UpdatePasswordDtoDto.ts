@@ -3,11 +3,11 @@ export class UpdatePasswordDtoDto {
     /**
      * 原密码
      */
-    oldPassword!: String;
+    oldPassword!: string;
     
     /**
      * 新密码
      */
-    newPassword!: String;
+    newPassword!: string;
     
 }

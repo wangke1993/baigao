@@ -3,17 +3,17 @@ export class RolePermissionsDto {
     /**
      * 角色名称
      */
-    roleName!: String;
+    roleName!: string;
     
     /**
      * 权限列表
      */
-    permissionsList!: String[];
+    permissionsList!: string[];
     
     /**
      * 角色首页
      */
-    indexPath!: String;
+    indexPath!: string;
     
     /**
      * 是否是超级管理员

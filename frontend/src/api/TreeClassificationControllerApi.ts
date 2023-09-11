@@ -19,7 +19,7 @@ export const TreeClassificationControllerCreate = (data: TreeClassificationDto, 
 * id：id;
 * @returns 
 */
-export const TreeClassificationControllerUpdate = (id: String,data: TreeClassificationDto, config?: any) => {
+export const TreeClassificationControllerUpdate = (id: string,data: TreeClassificationDto, config?: any) => {
    return axios.post(`/api/treeClassification/Update/${id}`, data, config);
 }
 /**
@@ -27,7 +27,7 @@ export const TreeClassificationControllerUpdate = (id: String,data: TreeClassifi
 * id：id;
 * @returns 
 */
-export const TreeClassificationControllerDelete = (id: String, config?: any) => {
+export const TreeClassificationControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/treeClassification/Delete/${id}`, config);
 }
              
@@ -36,7 +36,7 @@ export const TreeClassificationControllerDelete = (id: String, config?: any) => 
 * dataClass：dataClass;keyWord：undefined;
 * @returns 
 */
-export const TreeClassificationControllerGetTree = (dataClass: String,query: { keyWord: String }, config?: any) => {
+export const TreeClassificationControllerGetTree = (dataClass: string,query: { keyWord: string }, config?: any) => {
    return axios.get(`/api/treeClassification/getTree/${dataClass}`, { params: query,...config });
 }
 /**
@@ -44,7 +44,7 @@ export const TreeClassificationControllerGetTree = (dataClass: String,query: { k
 * direction：direction;
 * @returns 
 */
-export const TreeClassificationControllerMove = (direction: String,data: TreeClassificationDto, config?: any) => {
+export const TreeClassificationControllerMove = (direction: sring,data: TreeClassificationDto, config?: any) => {
    return axios.post(`/api/treeClassification/move/${direction}`, data, config);
 }
 /**
@@ -52,6 +52,6 @@ export const TreeClassificationControllerMove = (direction: String,data: TreeCla
 * dataClass：dataClass;
 * @returns 
 */
-export const TreeClassificationControllerGetLastList = (dataClass: String, config?: any) => {
+export const TreeClassificationControllerGetLastList = (dataClass: string, config?: any) => {
    return axios.post(`/api/treeClassification/getLastList/${dataClass}`, {}, config);
 }

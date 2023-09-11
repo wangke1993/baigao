@@ -2,34 +2,40 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ApiProperty } from "@nestjs/swagger";
 import { Document } from 'mongoose';
 import { BaseSchema } from "src/common-dto/base.schema";
+import { SystemConfigPage } from "./system-config-page.dto";
 
 @Schema()
 export class SystemConfig extends BaseSchema {
 
     @ApiProperty({
-        description: '配置类型',
+        description: '配置字典类型',
         required: false
     })
     @Prop({
         required: false
     })
     confType: CONF_TYPE;
+    /**
+     * DC0000为系统页面渲染配置，详见SystemConfigPage
+     */
     @ApiProperty({
-        description: '配置选项',
+        description: '配置选项字典值',
         required: false
     })
     @Prop({
-        required: true
+        required: true,
+        type: String
     })
-    confSelect:  DC0003 | DC0008 | DC0005;
+    confSelect: DC0003 | DC0008 | DC0005 | any;
     @ApiProperty({
-        description: '配置值',
+        description: '配置值,DC0000为系统页面渲染配置',
         required: false
     })
     @Prop({
-        required: false
+        required: false,
+        type: String
     })
-    confValue: string;
+    confValue: SystemConfigPage | string | any;
     @ApiProperty({
         description: '是否已设置值',
         required: false
@@ -39,7 +45,7 @@ export class SystemConfig extends BaseSchema {
     })
     isSet: boolean;
     @ApiProperty({
-        description: '是否允许查看',
+        description: '是否允许查看,实现允许设置不允许查看',
         required: false
     })
     @Prop({
@@ -47,7 +53,7 @@ export class SystemConfig extends BaseSchema {
     })
     allowFetch: boolean;
     @ApiProperty({
-        description: '是否对外展示',
+        description: '是否公开，不用权限即可使用',
         required: false
     })
     @Prop({
@@ -62,8 +68,10 @@ export class SystemConfig extends BaseSchema {
         required: false
     })
     remarks: string;
+
 }
 
+// TODO：采用代码生成方式，生成数据字典枚举内容
 export enum CONF_TYPE {
     '短信参数设置' = 'DC0003',
     '小程序参数设置' = 'DC0004',
@@ -88,7 +96,7 @@ export enum DC0005 {
     '退款回调地址' = 'DC00050006',
     'APIv3密钥' = 'DC00050007',
 }
-export enum DC0008{
+export enum DC0008 {
     "游客" = "DC00080001",
 }
 export type SystemConfigDocument = SystemConfig & Document;

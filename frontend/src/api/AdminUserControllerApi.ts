@@ -20,7 +20,7 @@ export const AdminUserControllerCreate = (data: AdminUserDto, config?: any) => {
 * id：id;
 * @returns 
 */
-export const AdminUserControllerUpdate = (id: String,data: AdminUserDto, config?: any) => {
+export const AdminUserControllerUpdate = (id: string,data: AdminUserDto, config?: any) => {
    return axios.post(`/api/adminUser/update/${id}`, data, config);
 }
 /**
@@ -28,7 +28,7 @@ export const AdminUserControllerUpdate = (id: String,data: AdminUserDto, config?
 * id：id;
 * @returns 
 */
-export const AdminUserControllerUpdatePassword = (id: String,data: UpdatePasswordDtoDto, config?: any) => {
+export const AdminUserControllerUpdatePassword = (id: string,data: UpdatePasswordDtoDto, config?: any) => {
    return axios.post(`/api/adminUser/updatePassword/${id}`, data, config);
 }
 /**
@@ -36,7 +36,7 @@ export const AdminUserControllerUpdatePassword = (id: String,data: UpdatePasswor
 * id：id;
 * @returns 
 */
-export const AdminUserControllerResetPassword = (id: String, config?: any) => {
+export const AdminUserControllerResetPassword = (id: string, config?: any) => {
    return axios.post(`/api/adminUser/resetPassword/${id}`, {}, config);
 }
 /**
@@ -44,7 +44,7 @@ export const AdminUserControllerResetPassword = (id: String, config?: any) => {
 * id：id;
 * @returns 
 */
-export const AdminUserControllerDelete = (id: String, config?: any) => {
+export const AdminUserControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/adminUser/delete/${id}`, config);
 }
              
@@ -53,6 +53,6 @@ export const AdminUserControllerDelete = (id: String, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
 * @returns 
 */
-export const AdminUserControllerGetPage = (query: { pageSize: String,pageIndex: String,keyWord: String }, config?: any) => {
+export const AdminUserControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string }, config?: any) => {
    return axios.get(`/api/adminUser/getPage`, { params: query,...config });
 }

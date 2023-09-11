@@ -3,31 +3,31 @@ export class AdminUserDto {
     /**
      * 用户名
      */
-    userName!: String;
+    userName!: string;
     
     /**
      * 密码
      */
-    password!: String;
+    password!: string;
     
     /**
      * 角色ID数组
      */
-    role!: String[];
+    role!: string[];
     
     /**
      * 角色名称数组
      */
-    roleName!: String[];
+    roleName!: string[];
     
     /**
      * 备注
      */
-    remarks!: String;
+    remarks!: string;
     
     /**
      * 用户首页，优先级高于角色首页
      */
-    indexPath!: String;
+    indexPath!: string;
     
 }

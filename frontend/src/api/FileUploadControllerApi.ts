@@ -30,7 +30,7 @@ export const FileUploadControllerUploadPrivate = (file: File, config?: any) => {
 * fileUUID：fileUUID;
 * @returns 
 */
-export const FileUploadControllerGetPrivateFile = (fileUUID: String, config?: any) => {
+export const FileUploadControllerGetPrivateFile = (fileUUID: string, config?: any) => {
    return axios.get(`/api/file/private/${fileUUID}`, { ...config });
 }
 /**
@@ -38,7 +38,7 @@ export const FileUploadControllerGetPrivateFile = (fileUUID: String, config?: an
 * viewUUID：viewUUID;
 * @returns 
 */
-export const FileUploadControllerGetPrivateFileTemp = (viewUUID: String, config?: any) => {
+export const FileUploadControllerGetPrivateFileTemp = (viewUUID: string, config?: any) => {
    return axios.get(`/api/file/privateTemp/${viewUUID}`, { ...config });
 }
 /**
@@ -46,7 +46,7 @@ export const FileUploadControllerGetPrivateFileTemp = (viewUUID: String, config?
 * fileUUID：fileUUID;
 * @returns 
 */
-export const FileUploadControllerDownPrivateTemp = (fileUUID: String, config?: any) => {
+export const FileUploadControllerDownPrivateTemp = (fileUUID: string, config?: any) => {
    return axios.get(`/api/file/downPrivateTemp/${fileUUID}`, { ...config });
 }
 /**
@@ -54,7 +54,7 @@ export const FileUploadControllerDownPrivateTemp = (fileUUID: String, config?: a
 * fileUUID：fileUUID;
 * @returns 
 */
-export const FileUploadControllerDownPrivate = (fileUUID: String, config?: any) => {
+export const FileUploadControllerDownPrivate = (fileUUID: string, config?: any) => {
    return axios.get(`/api/file/downPrivate/${fileUUID}`, { ...config });
 }
 /**
@@ -62,7 +62,7 @@ export const FileUploadControllerDownPrivate = (fileUUID: String, config?: any) 
 * id：id;
 * @returns 
 */
-export const FileUploadControllerDelete = (id: String, config?: any) => {
+export const FileUploadControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/file/delete/${id}`, config);
 }
              
@@ -71,6 +71,6 @@ export const FileUploadControllerDelete = (id: String, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
 * @returns 
 */
-export const FileUploadControllerGetPage = (query: { pageSize: String,pageIndex: String,keyWord: String }, config?: any) => {
+export const FileUploadControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string }, config?: any) => {
    return axios.get(`/api/file/getPage`, { params: query,...config });
 }

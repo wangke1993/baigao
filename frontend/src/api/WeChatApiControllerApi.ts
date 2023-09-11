@@ -10,7 +10,7 @@ import axios from 'axios';
 * startPage：undefined;
 * @returns 
 */
-export const WeChatApiControllerCreateQRUrl = (query: { startPage: String }, config?: any) => {
+export const WeChatApiControllerCreateQRUrl = (query: { startPage: string }, config?: any) => {
    return axios.get(`/api/wechat/createQRUrl`, { params: query,...config });
 }
 /**
@@ -18,7 +18,7 @@ export const WeChatApiControllerCreateQRUrl = (query: { startPage: String }, con
 * page：undefined;scene：undefined;
 * @returns 
 */
-export const WeChatApiControllerCreateWeChatQR = (query: { page: String,scene: String }, config?: any) => {
+export const WeChatApiControllerCreateWeChatQR = (query: { page: string,scene: string }, config?: any) => {
    return axios.get(`/api/wechat/createWeChatQR`, { params: query,...config });
 }
 /**
@@ -26,7 +26,7 @@ export const WeChatApiControllerCreateWeChatQR = (query: { page: String,scene: S
 * page：undefined;
 * @returns 
 */
-export const WeChatApiControllerCreateLoginQRUrl = (query: { page: String }, config?: any) => {
+export const WeChatApiControllerCreateLoginQRUrl = (query: { page: string }, config?: any) => {
    return axios.get(`/api/wechat/createLoginQRUrl`, { params: query,...config });
 }
 /**
@@ -34,7 +34,7 @@ export const WeChatApiControllerCreateLoginQRUrl = (query: { page: String }, con
 * loginKey：undefined;
 * @returns 
 */
-export const WeChatApiControllerChangeQRStatusToSCAN = (query: { loginKey: String }, config?: any) => {
+export const WeChatApiControllerChangeQRStatusToSCAN = (query: { loginKey: string }, config?: any) => {
    return axios.get(`/api/wechat/changeQRStatusToSCAN`, { params: query,...config });
 }
 /**
@@ -42,7 +42,7 @@ export const WeChatApiControllerChangeQRStatusToSCAN = (query: { loginKey: Strin
 * QRKey：QRKey;
 * @returns 
 */
-export const WeChatApiControllerCheckLoginQr = (QRKey: String, config?: any) => {
+export const WeChatApiControllerCheckLoginQr = (QRKey: string, config?: any) => {
    return axios.get(`/api/wechat/checkLoginQr/${QRKey}`, { ...config });
 }
 /**
@@ -50,7 +50,7 @@ export const WeChatApiControllerCheckLoginQr = (QRKey: String, config?: any) => 
 * orderId：orderId;
 * @returns 
 */
-export const WeChatApiControllerOrderPay = (orderId: String, config?: any) => {
+export const WeChatApiControllerOrderPay = (orderId: string, config?: any) => {
    return axios.get(`/api/wechat/orderPay/${orderId}`, { ...config });
 }
 /**
@@ -66,7 +66,7 @@ export const WeChatApiControllerPayNotifyUrl = ( config?: any) => {
 * id：id;refundsCause：undefined;
 * @returns 
 */
-export const WeChatApiControllerOrderRefunds = (id: String,query: { refundsCause: String }, config?: any) => {
+export const WeChatApiControllerOrderRefunds = (id: string,query: { refundsCause: string }, config?: any) => {
    return axios.get(`/api/wechat/orderRefunds/${id}`, { params: query,...config });
 }
 /**
@@ -74,7 +74,7 @@ export const WeChatApiControllerOrderRefunds = (id: String,query: { refundsCause
 * money：money;
 * @returns 
 */
-export const WeChatApiControllerWithdrawal = (money: String, config?: any) => {
+export const WeChatApiControllerWithdrawal = (money: sring, config?: any) => {
    return axios.get(`/api/wechat/withdrawal/${money}`, { ...config });
 }
 /**

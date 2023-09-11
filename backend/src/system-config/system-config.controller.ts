@@ -7,6 +7,7 @@ import { AuthTag } from 'src/decorator/auth-tag.decorator';
 import { SystemLogService } from 'src/system-log/system-log.service';
 import { SystemConfigService } from './system-config.service';
 import { SystemConfig } from './dto/system-config.schema';
+import { SystemConfigPage } from './dto/system-config-page.dto';
 
 @ApiTags('业务参数配置')
 @Controller('systemConfig')
@@ -40,20 +41,20 @@ export class SystemConfigController {
         this.systemLogService.create('业务参数配置', `编辑业务参数配置绑定,${rsp.message},${JSON.stringify(form)},confSelect:${confSelect}`, req);
         return rsp;
     }
-    // @Delete('delete/:id')
-    // @AuthTag('deleteSystemConfig')
-    // @ApiOperation({ description: 'deleteSystemConfig:删除业务参数配置绑定' })
-    // @UseGuards(JwtAuthGuard, PowerGuard)
-    // async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
-    //     const rsp = new ResponseInfoDto<any>();
-    //     try {
-    //         rsp.success('删除成功', await this.systemConfigService.deleteById(id));
-    //     } catch (e) {
-    //         rsp.warring(e.toString());
-    //     }
-    //     this.systemLogService.create('业务参数配置', `删除业务参数配置绑定,${rsp.message},${id}`, req);
-    //     return rsp;
-    // }
+    @Delete('delete/:id')
+    @AuthTag('deleteSystemConfig')
+    @ApiOperation({ description: 'deleteSystemConfig:删除业务参数配置绑定' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const rsp = new ResponseInfoDto<any>();
+        try {
+            rsp.success('删除成功', await this.systemConfigService.deleteById(id));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        this.systemLogService.create('业务参数配置', `删除业务参数配置绑定,${rsp.message},${id}`, req);
+        return rsp;
+    }
     @Get("getAll")
     @AuthTag('getAllSystemConfig')
     @ApiOperation({ description: 'getAllSystemConfig:获取所有配置信息' })
@@ -75,6 +76,34 @@ export class SystemConfigController {
             info.success(`成功`, await this.systemConfigService.getAll(true));
         } catch (e) {
             info.warring(e.toString());
+        }
+        return info;
+    }
+    @Get("getSystemPageConfig")
+    @AuthTag('getSystemPageConfig')
+    @ApiOperation({ description: '获取【参数配置】页面配置信息' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async getSystemPageConfig(): Promise<ResponseInfoDto<SystemConfigPage>> {
+        const info = new ResponseInfoDto<SystemConfigPage>();
+        try {
+            info.success(`成功`, await this.systemConfigService.getSystemPageConfig());
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }
+    @Post("updateSystemPageConfig")
+    @AuthTag('updateSystemPageConfig')
+    @ApiOperation({ description: '更新【参数配置】页面配置信息' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async updateSystemPageConfig(@Body() form: SystemConfig, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const info = new ResponseInfoDto<any>();
+        try {
+            info.success(`成功`, await this.systemConfigService.updateSystemPageConfig(form.confValue));
+            this.systemLogService.create('业务参数配置-成功', `(更新【参数配置】页面配置信息):${JSON.stringify(form.confValue)}`, req);
+        } catch (e) {
+            info.warring(e.toString());
+            this.systemLogService.create('业务参数配置-失败', `(更新【参数配置】页面配置信息)信息：${e.toString},值：${JSON.stringify(form.confValue)}`, req);
         }
         return info;
     }

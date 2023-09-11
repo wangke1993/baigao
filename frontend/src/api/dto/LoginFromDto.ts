@@ -3,11 +3,11 @@ export class LoginFromDto {
     /**
      * 用户名
      */
-    userName!: String;
+    userName!: string;
     
     /**
      * 密码
      */
-    password!: String;
+    password!: string;
     
 }

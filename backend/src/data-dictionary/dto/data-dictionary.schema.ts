@@ -54,14 +54,6 @@ export class DataDictionary extends Document {
     })
     @Prop()
     isSystem: boolean;
-
-    /**
-     * TODO：新增字段，实现自定义配置功能
-     * 配置值：
-     * 是否设置：
-     * 保密：开关，是否展示值
-     * 值dom配置：单行文本，文本域，单选下拉框，多选下拉框，开关，文件
-     */
 }
 export enum DIC_TYPE {
     'class' = 1,

@@ -19,7 +19,7 @@ export const DataDictionaryControllerCreate = (data: DataDictionaryDto, config?:
 * id：id;
 * @returns 
 */
-export const DataDictionaryControllerUpdate = (id: String,data: DataDictionaryDto, config?: any) => {
+export const DataDictionaryControllerUpdate = (id: string,data: DataDictionaryDto, config?: any) => {
    return axios.post(`/api/admin/dic/update/${id}`, data, config);
 }
 /**
@@ -27,7 +27,7 @@ export const DataDictionaryControllerUpdate = (id: String,data: DataDictionaryDt
 * dicClass：dicClass;
 * @returns 
 */
-export const DataDictionaryControllerGetListByDicClass = (dicClass: String, config?: any) => {
+export const DataDictionaryControllerGetListByDicClass = (dicClass: string, config?: any) => {
    return axios.get(`/api/admin/dic/getList/${dicClass}`, { ...config });
 }
 /**
@@ -35,7 +35,7 @@ export const DataDictionaryControllerGetListByDicClass = (dicClass: String, conf
 * dicCode：dicCode;
 * @returns 
 */
-export const DataDictionaryControllerDelete = (dicCode: String, config?: any) => {
+export const DataDictionaryControllerDelete = (dicCode: string, config?: any) => {
    return axios.delete(`/api/admin/dic/delete/${dicCode}`, config);
 }
              
@@ -44,6 +44,6 @@ export const DataDictionaryControllerDelete = (dicCode: String, config?: any) =>
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;dicClass：所属数据字典(dicCode)，为空时查询字典类型分页，有值时，查询字典分类下的字典值;
 * @returns 
 */
-export const DataDictionaryControllerGetPage = (query: { pageSize: String,pageIndex: String,keyWord: String,dicClass: String }, config?: any) => {
+export const DataDictionaryControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,dicClass: string }, config?: any) => {
    return axios.get(`/api/admin/dic/getPage`, { params: query,...config });
 }

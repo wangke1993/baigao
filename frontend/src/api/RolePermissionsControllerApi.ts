@@ -19,7 +19,7 @@ export const RolePermissionsControllerCreate = (data: RolePermissionsDto, config
 * id：id;
 * @returns 
 */
-export const RolePermissionsControllerUpdate = (id: String,data: RolePermissionsDto, config?: any) => {
+export const RolePermissionsControllerUpdate = (id: string,data: RolePermissionsDto, config?: any) => {
    return axios.post(`/api/rolePermissions/update/${id}`, data, config);
 }
 /**
@@ -27,7 +27,7 @@ export const RolePermissionsControllerUpdate = (id: String,data: RolePermissions
 * id：id;
 * @returns 
 */
-export const RolePermissionsControllerDelete = (id: String, config?: any) => {
+export const RolePermissionsControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/rolePermissions/delete/${id}`, config);
 }
              
@@ -36,7 +36,7 @@ export const RolePermissionsControllerDelete = (id: String, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
 * @returns 
 */
-export const RolePermissionsControllerGetPage = (query: { pageSize: String,pageIndex: String,keyWord: String }, config?: any) => {
+export const RolePermissionsControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string }, config?: any) => {
    return axios.get(`/api/rolePermissions/getPage`, { params: query,...config });
 }
 /**
