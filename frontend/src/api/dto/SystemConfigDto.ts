@@ -33,12 +33,12 @@ export class SystemConfigDto {
     /**
      * 配置选项字典值
      */
-    confSelect?: object;
+    confSelect?: string;
     
     /**
      * 配置值,DC0000为系统页面渲染配置
      */
-    confValue?: object;
+    confValue?: string;
     
     /**
      * 是否已设置值

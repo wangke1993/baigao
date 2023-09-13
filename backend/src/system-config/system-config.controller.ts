@@ -41,18 +41,18 @@ export class SystemConfigController {
         this.systemLogService.create('业务参数配置', `编辑业务参数配置绑定,${rsp.message},${JSON.stringify(form)},confSelect:${confSelect}`, req);
         return rsp;
     }
-    @Delete('delete/:id')
+    @Delete('delete/:confSelect')
     @AuthTag('deleteSystemConfig')
     @ApiOperation({ description: 'deleteSystemConfig:删除业务参数配置绑定' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+    async delete(@Param("confSelect") confSelect: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
         const rsp = new ResponseInfoDto<any>();
         try {
-            rsp.success('删除成功', await this.systemConfigService.deleteById(id));
+            rsp.success('删除成功', await this.systemConfigService.deleteByConfSelect(confSelect));
         } catch (e) {
             rsp.warring(e.toString());
         }
-        this.systemLogService.create('业务参数配置', `删除业务参数配置绑定,${rsp.message},${id}`, req);
+        this.systemLogService.create('业务参数配置', `删除业务参数配置绑定,${rsp.message},${confSelect}`, req);
         return rsp;
     }
     @Get("getAll")
@@ -81,10 +81,10 @@ export class SystemConfigController {
     }
     @Get("getSystemPageConfig")
     @AuthTag('getSystemPageConfig')
-    @ApiOperation({ description: '获取【参数配置】页面配置信息' })
+    @ApiOperation({ description: 'getSystemPageConfig:获取【参数配置】页面配置信息' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getSystemPageConfig(): Promise<ResponseInfoDto<SystemConfigPage>> {
-        const info = new ResponseInfoDto<SystemConfigPage>();
+    async getSystemPageConfig(): Promise<ResponseInfoDto<String>> {
+        const info = new ResponseInfoDto<String>();
         try {
             info.success(`成功`, await this.systemConfigService.getSystemPageConfig());
         } catch (e) {
@@ -94,7 +94,7 @@ export class SystemConfigController {
     }
     @Post("updateSystemPageConfig")
     @AuthTag('updateSystemPageConfig')
-    @ApiOperation({ description: '更新【参数配置】页面配置信息' })
+    @ApiOperation({ description: 'updateSystemPageConfig:更新【参数配置】页面配置信息' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async updateSystemPageConfig(@Body() form: SystemConfig, @Req() req: any): Promise<ResponseInfoDto<any>> {
         const info = new ResponseInfoDto<any>();

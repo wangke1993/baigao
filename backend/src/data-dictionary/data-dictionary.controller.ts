@@ -9,6 +9,7 @@ import { SystemLogService } from 'src/system-log/system-log.service';
 import { DataDictionaryService } from './data-dictionary.service';
 import { DataDictionary, DIC_TYPE } from './dto/data-dictionary.schema';
 import { DicPageForm } from './dto/dic-page-form';
+import { DicTree } from './dto/dic-tree.dto';
 
 @ApiTags('数据字典')
 @Controller('admin/dic')
@@ -83,6 +84,19 @@ export class DataDictionaryController {
             } else {
                 info.success(`成功`, await this.dataDictionaryService.getPage(pageForm, DIC_TYPE.class, pageForm.dicClass));
             }
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }
+    @Get("getTree")
+    @AuthTag('getDicTree')
+    @ApiOperation({ description: 'getDicTree:获取数据字典分页' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async getTree(): Promise<ResponseInfoDto<DicTree[]>> {
+        const info = new ResponseInfoDto<DicTree[]>();
+        try {
+            info.success(`成功`, await this.dataDictionaryService.getTree());
         } catch (e) {
             info.warring(e.toString());
         }

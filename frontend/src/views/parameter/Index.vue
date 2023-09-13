@@ -1,408 +1,266 @@
 <template>
-  <div class="list-box">
-    <div class="cell">
-      <div class="updata">
-        <span class="title">短信参数设置</span>
-        <el-button v-loading="state.msnBtnLoading" type="primary" style="width: 80px" @click="saveApiReset">保存</el-button>
-        <a style="margin-left:10px;font-size:12px" href="https://unisms.apistd.com/console/" target="_blank">短信运营商</a>
-      </div>
-      <div class="payment">
-        <el-form style="width: 640px" label-width="180px" :inline="false" class="demo-form-inline">
-          <el-form-item label="是否启用:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-switch v-model="state.msmConf.DC00030003" active-value="1" inactive-value="0" />
-            </div>
-          </el-form-item>
-          <el-form-item label="accessKeyId:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.msmConf.DC00030001" style="width: 380px" placeholder="只能查看不能设置" />
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.msmConf.DC00030001Status ? "已设置" : "未设置"
-              }}</span>
-            </div>
-          </el-form-item>
-          <el-form-item label="签名:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.msmConf.DC00030002" style="width: 380px" placeholder="请输入" />
-            </div>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="updata">
-        <span class="title">会员等级角色绑定</span>
-        <el-button v-loading="state.memberConfLoading" type="primary" style="width: 80px"
-          @click="saveMemberConf">保存</el-button>
-      </div>
-      <div class="payment">
-        <el-form style="width: 640px" label-width="180px" :inline="false" class="demo-form-inline">
-          <el-form-item v-for="item in state.memberConf" :key="item.confSelect" :label="item.remarks">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-select v-model="item.confValue" multiple class="m-2" placeholder="请选择绑定的角色" size="large">
-                <el-option v-for="sItem in state.roleTypeData" :key="sItem.value" :label="sItem.name"
-                  :value="sItem.value" />
-              </el-select>
-            </div>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="updata">
-        <span class="title">小程序参数设置</span>
-        <el-button type="primary" style="width: 80px" @click="saveWeChatConf">保存</el-button>
-        <a style="margin-left:10px;font-size:12px" href="https://mp.weixin.qq.com/" target="_blank">微信小程序</a>
-      </div>
-      <div class="payment">
-        <el-form style="width: 640px" label-width="180px" :inline="false" class="demo-form-inline">
-          <el-form-item label="appId:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.weChatConf.DC00040001" show-password style="width: 380px" placeholder="只能设置不能查看" />
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.weChatConf.DC00040001Status ? "已设置" : "未设置"
-              }}</span>
-            </div>
-          </el-form-item>
-          <el-form-item label="appSecrt:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.weChatConf.DC00040002" show-password style="width: 380px" placeholder="只能设置不能查看" />
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.weChatConf.DC00040002Status ? "已设置" : "未设置"
-              }}</span>
-            </div>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
-    <div class="cell">
-      <div class="updata">
-        <span class="title">支付参数设置</span>
-        <el-button type="primary" style="width: 80px" @click="savePayment">保存</el-button>
-        <a style="margin-left:10px;font-size:12px" href="https://pay.weixin.qq.com/index.php/core/home/login?return_url=F"
-          target="_blank">微信支付</a>
-      </div>
-      <div class="payment">
-        <el-form style="width: 640px" label-width="180px" :inline="false" class="demo-form-inline">
-          <el-form-item label="应用ID:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.payConf.DC00050001" style="width: 380px" placeholder="只能查看不能设置" />
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.payConf.DC00050001Status ? "已设置" : "未设置"
-              }}</span>
-            </div>
-          </el-form-item>
-          <el-form-item label="APIv3密钥:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.payConf.DC00050007" style="width: 380px" placeholder="只能查看不能设置" />
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.payConf.DC00050007Status ? "已设置" : "未设置"
-              }}</span>
-            </div>
-          </el-form-item>
-          <el-form-item label="商户号:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.payConf.DC00050002" style="width: 380px" placeholder="请输入" />
-            </div>
-          </el-form-item>
-          <el-form-item label="支付回调地址:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.payConf.DC00050005" style="width: 380px" placeholder="请输入 "
-                :autosize="{ minRows: 6, maxRows: 10 }" type="textarea" />
-            </div>
-          </el-form-item>
-          <el-form-item label="退款回调地址:">
-            <div style="display: flex; align-items: center; width: 100%">
-              <el-input v-model="state.payConf.DC00050006" style="width: 380px" placeholder="请输入 "
-                :autosize="{ minRows: 6, maxRows: 10 }" type="textarea" />
-            </div>
-          </el-form-item>
-          <el-form-item label="API证书(apiclient_cert):">
-            <el-upload ref="upload03" class="upload-demo" action="/api/file/uploadPrivate" :limit="1"
-              :on-exceed="handleExceed03" :headers="{ Authorization: `Bearer ${token}` }" :on-success="uploadDC00050003"
-              :auto-upload="false">
-              <template #trigger>
-                <el-button type="primary">选择文件</el-button>
+  <div>
+    <el-button
+      v-if="isDev"
+      type="primary"
+      class="add-group-btn"
+      @click="openEditGrep(null)"
+      >新增配置组</el-button
+    >
+    <el-switch v-if="isDev" v-model="isDev"></el-switch>
+    <div class="list-box">
+      <div
+        class="cell"
+        v-for="(groupItem, index) in ConfigPage.group"
+        :key="groupItem.name"
+      >
+        <div class="update">
+          <span class="title">{{ groupItem.name }}</span>
+          <el-button
+            v-loading="ConfigSaveLoading[groupItem.name]"
+            type="primary"
+            @click="save(groupItem.name)"
+            >保存</el-button
+          >
+          <span class="link">
+            <a
+              v-for="link in groupItem.linkArr"
+              :key="link.linkName"
+              :href="link.linkUrl"
+              target="_blank"
+              >{{ link.linkName }}</a
+            >
+          </span>
+          <span v-if="isDev">
+            <el-button
+              type="text"
+              @click="openEditGrepItem(groupItem.configItem, null)"
+              >新增配置项</el-button
+            >
+            <el-button type="text" @click="openEditGrep(groupItem)"
+              >编辑</el-button
+            >
+            <el-popconfirm
+              confirm-button-text="确定"
+              cancel-button-text="取消"
+              confirm-button-type="danger"
+              title="确定删除吗？"
+              @confirm="delGroup(index)"
+            >
+              <template #reference>
+                <el-button type="text">删除</el-button>
               </template>
-              <el-button class="ml-3" type="success" @click="submitUpload03">
-                上传
-              </el-button>
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.payConf.DC00050003Status ? "已上传" : "未上传"
-              }}(只能设置不能查看)</span>
-            </el-upload>
-          </el-form-item>
-          <el-form-item label="API密钥(apiclient_key):">
-            <el-upload ref="upload04" class="upload-demo" action="/api/file/uploadPrivate" :limit="1"
-              :on-exceed="handleExceed04" :headers="{ Authorization: `Bearer ${token}` }" :on-success="uploadDC00050004"
-              :auto-upload="false">
-              <template #trigger>
-                <el-button type="primary">选择文件</el-button>
+            </el-popconfirm>
+          </span>
+          <div class="description" v-if="groupItem.description">
+            说明： {{ groupItem.description }}
+          </div>
+        </div>
+        <div class="payment">
+          <el-form
+            v-if="groupItem.configItem?.length"
+            label-width="120px"
+            :inline="false"
+            style="max-width: 688px"
+          >
+            <FormItem
+              v-for="(configItem, cIndex) in groupItem.configItem"
+              :key="configItem.confSelect"
+              :configGroupItem="configItem"
+              :defaultValue="configItem.defaultValue"
+              :groupName="groupItem.name"
+              @change="formItemChange"
+            >
+              <template #default>
+                <span v-if="isDev">
+                  <el-button
+                    type="text"
+                    @click="copyString(configItem.confSelect)"
+                    >{{ configItem.confSelect }} 复制</el-button
+                  >
+                  <el-button
+                    type="text"
+                    @click="openEditGrepItem(groupItem.configItem, configItem)"
+                    >编辑</el-button
+                  >
+                  <el-popconfirm
+                    confirm-button-text="确定"
+                    cancel-button-text="取消"
+                    confirm-button-type="danger"
+                    title="确定删除吗？"
+                    @confirm="delConfigItem(groupItem.configItem, cIndex)"
+                  >
+                    <template #reference>
+                      <el-button type="text">删除</el-button>
+                    </template>
+                  </el-popconfirm>
+                </span>
               </template>
-              <el-button class="ml-3" type="success" @click="submitUpload04">
-                上传
-              </el-button>
-              <span style="flex-shrink: 0; margin-left: 10px">{{
-                state.payConf.DC00050004Status ? "已上传" : "未上传"
-              }}(只能设置不能查看)</span>
-            </el-upload>
-          </el-form-item>
-        </el-form>
+            </FormItem>
+          </el-form>
+          <div v-else>
+            <el-button
+              type="text"
+              @click="openEditGrepItem(groupItem.configItem, null)"
+              >新增配置项</el-button
+            >
+          </div>
+        </div>
       </div>
     </div>
+    <EditGrep ref="EditGrepRef"></EditGrep>
+    <EditGrepItem ref="EditGrepItemRef"></EditGrepItem>
   </div>
 </template>
 <script lang="ts" setup>
-/**
- * TODO:参数改为分组编辑+数据字典点选的方式，动态生成参数设置界面；参数结构表（存储参数页，页面结构），字典表（存储参数、值、值类型（表单类型））
- */
-import { ref, reactive } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
+import { ConfigGroupItem, SystemConfigPage } from "./SystemConfigPage";
+import EditGrep from "./components/EditGrep.vue";
+import EditGrepItem from "./components/EditGrepItem.vue";
+import FormItem from "./components/FormItem.vue";
+import { alertSuccess, alertWarning } from "@/utils/message";
+import { copyString } from "@/utils/tools";
 import {
+  SystemConfigControllerDelete,
+  SystemConfigControllerGetSystemPageConfig,
   SystemConfigControllerUpdate,
-  SystemConfigControllerGetAll,
+  SystemConfigControllerUpdateSystemPageConfig,
 } from "@/api/SystemConfigControllerApi";
-import { RolePermissionsControllerGetList } from "@/api/RolePermissionsControllerApi";
-import { alertSuccess } from "@/utils/message";
-import { type UploadInstance, type UploadProps, type UploadRawFile, genFileId } from "element-plus";
-import { getToken } from '@/utils/authTokenUtil';
-const state = reactive({
-  appletArticle: new Array<any>(),
-  confType: "",
-  appletArticleIndex: 0,
-  roleTypeData: new Array<any>(),
-  memberConf: new Array<any>(),
-  msmConf: {
-    DC00030001: '',
-    DC00030001Status: false,
-    DC00030002: '',
-    DC00030003: '1'
-  },
-  payConf: {
-    DC00050001: '',
-    DC00050001Status: false,
-    DC00050002: '',
-    DC00050002Status: false,
-    DC00050003: '',
-    DC00050003Status: false,
-    DC00050004: '',
-    DC00050004Status: false,
-    DC00050005: '',
-    DC00050006: '',
-    DC00050007: '',
-    DC00050007Status: false,
-  },
-  weChatConf: {
-    DC00040001: '',  // appID
-    DC00040001Status: false,
-    DC00040002: '',  // appID
-    DC00040002Status: false,
-  },
-  msnBtnLoading: false,
-  memberConfLoading: false
-});
-
-const saveWeChatConf = async () => {
-  await Promise.all([
-    postSystemConfigControllerUpdate('DC00040001', state.weChatConf.DC00040001),
-    postSystemConfigControllerUpdate('DC00040002', state.weChatConf.DC00040002),
-  ])
-  state.weChatConf.DC00040001 = '';
-  state.weChatConf.DC00040002 = '';
-  alertSuccess('保存成功');
-};
-// 保存短信参数设置
-const saveMemberConf = async () => {
-  state.memberConfLoading = true;
-  await Promise.all(state.memberConf.map(item => postSystemConfigControllerUpdate(
-    item.confSelect,
-    item.confValue.join(',')
-  )))
-  state.msmConf.DC00030001 = '';
-  alertSuccess('保存成功');
-  state.memberConfLoading = false;
-};
-
-// 保存短信参数设置
-const saveApiReset = async () => {
-  state.msnBtnLoading = true;
-  await Promise.all([
-    postSystemConfigControllerUpdate(
-      'DC00030001',
-      state.msmConf.DC00030001
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00030002',
-      state.msmConf.DC00030002
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00030003',
-      state.msmConf.DC00030003
-    ),
-  ])
-  state.msmConf.DC00030001 = '';
-  alertSuccess('保存成功');
-  state.msnBtnLoading = false;
-};
-
-// 支付参数设置保存
-const savePayment = async () => {
-  await Promise.all([
-    postSystemConfigControllerUpdate(
-      'DC00050001',
-      state.payConf.DC00050001
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00050002',
-      state.payConf.DC00050002
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00050003',
-      state.payConf.DC00050003
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00050004',
-      state.payConf.DC00050004
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00050005',
-      state.payConf.DC00050005
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00050006',
-      state.payConf.DC00050006
-    ),
-    postSystemConfigControllerUpdate(
-      'DC00050007',
-      state.payConf.DC00050007
-    ),
-  ]);
-  state.payConf.DC00050001 = '';
-  state.payConf.DC00050007 = '';
-  alertSuccess('保存成功');
-};
-
-// 保存设置
-const postSystemConfigControllerUpdate = async (
-  dicCode: any,
-  value: any
+const ConfigPage = ref(new SystemConfigPage());
+const isDev = ref(window.location.hostname == "localhost");
+// isDev.value = false;
+const EditGrepRef = ref();
+const ConfigValueList = ref({} as any);
+const ConfigSaveLoading = ref({} as any);
+const formItemChange = (
+  groupName: string,
+  configGroupItem: ConfigGroupItem,
+  value: string
 ) => {
-  await SystemConfigControllerUpdate(dicCode, {
-    confValue: value,
+  if (configGroupItem.confSelect && ConfigValueList.value[groupName]) {
+    ConfigValueList.value[groupName][configGroupItem.confSelect] = value;
+  }
+};
+const save = async (groupName?: string) => {
+  if (groupName) {
+    console.log(ConfigValueList.value[groupName]);
+    ConfigSaveLoading.value[groupName] = true;
+    const axiosArr = [];
+    for (const dicCode in ConfigValueList.value[groupName]) {
+      axiosArr.push(
+        SystemConfigControllerUpdate(dicCode, {
+          confValue: ConfigValueList.value[groupName][dicCode],
+        })
+      );
+    }
+    await Promise.all(axiosArr);
+    ConfigSaveLoading.value[groupName] = false;
+    alertSuccess("保存成功");
+  }
+};
+const openEditGrep = (groupItem: any) => {
+  EditGrepRef.value.open(ConfigPage.value.group, groupItem);
+};
+
+const EditGrepItemRef = ref();
+const openEditGrepItem = (
+  groupItemList: ConfigGroupItem[] | any,
+  configItem: ConfigGroupItem | any
+) => {
+  EditGrepItemRef.value.open(groupItemList, configItem);
+};
+const delGroup = (index: number) => {
+  const group = ConfigPage.value.group;
+  if (group) {
+    if (!group[index].configItem?.length) {
+      group.splice(index, 1);
+    } else {
+      alertWarning("请先删除所有配置项");
+    }
+  }
+};
+const delConfigItem = async (
+  configGroupItem: ConfigGroupItem[] | any,
+  index: number
+) => {
+  const {
+    data: { status, message },
+  } = await SystemConfigControllerDelete(configGroupItem[index].confSelect);
+  if (status == 1) {
+    configGroupItem.splice(index, 1);
+    alertSuccess("删除成功");
+  } else {
+    alertWarning(message);
+  }
+};
+watchEffect(async () => {
+  if (ConfigPage.value.group) {
+    //保存变更到服务器
+    const {
+      data: { status, message },
+    } = await SystemConfigControllerUpdateSystemPageConfig({
+      confValue: JSON.stringify(ConfigPage.value),
+    });
+    if (status != 1) {
+      alertWarning(message);
+    } else {
+      paramInit();
+    }
+  }
+});
+const paramInit = () => {
+  ConfigPage.value.group.forEach((item) => {
+    if (item.name && !ConfigValueList.value[`${item.name}`]) {
+      ConfigValueList.value[`${item.name}`] = {};
+      /**
+       * ConfigValueList示例
+       * {
+       *  xxx配置:{DC00010001:true}
+       * }
+       */
+    }
+    if (item.name && !ConfigSaveLoading.value[`${item.name}`]) {
+      ConfigSaveLoading.value[`${item.name}`] = false;
+      /**
+       * ConfigSaveLoading示例
+       * {
+       *  xxx配置:false
+       * }
+       */
+    }
   });
-  await getSystemConfigControllerGetAll("");
+  console.log("----------", ConfigSaveLoading.value);
 };
-
-// 获取角色权限列表
-const getRolePermissionsControllerGetList = async () => {
-  try {
-    let { data: { data, status, message } } = await RolePermissionsControllerGetList();
-    if (status === 1) {
-      console.log("获取角色权限列表", data);
-      const result = data.map((item: any) => {
-        return { name: item.roleName, value: item._id };
-      });
-      console.log("result", result);
-      state.roleTypeData = result;
+onMounted(async () => {
+  // const ConfigPageString = window.localStorage.getItem("ConfigPage");
+  // 从服务器获取页面数据
+  const {
+    data: { status, data, message },
+  } = await SystemConfigControllerGetSystemPageConfig();
+  if (status == 1) {
+    const ConfigPageString = data;
+    if (ConfigPageString) {
+      ConfigPage.value = JSON.parse(ConfigPageString);
     }
-  } catch (err) {
-    return;
-  }
-};
-
-getRolePermissionsControllerGetList();
-
-// 获取所有配置信息
-const getSystemConfigControllerGetAll = async (dicCode: string) => {
-  try {
-    let { data: { data, status, message } } = await SystemConfigControllerGetAll(dicCode);
-    if (status === 1) {
-      console.log("获取所有配置信息", data);
-      let ARRDC0003: any = [];
-      state.memberConf = [];
-      data.map((item: any) => {
-        const { _id, remarks, confSelect, confType, confValue, isSet } = item;
-        if (confType == 'DC0008') {
-          state.memberConf.push({ ...item, confValue: confValue.split(',') });
-        }
-        if (confSelect == 'DC00040001') {
-          state.weChatConf.DC00040001Status = isSet;
-        }
-        if (confSelect == 'DC00040002') {
-          state.weChatConf.DC00040002Status = isSet;
-        }
-        if (confSelect == 'DC00050001') {
-          state.payConf.DC00050001Status = isSet;
-        }
-        if (confSelect == 'DC00050002') {
-          state.payConf.DC00050002 = confValue;
-        }
-        if (confSelect == 'DC00050003') {
-          state.payConf.DC00050003Status = isSet;
-        }
-        if (confSelect == 'DC00050004') {
-          state.payConf.DC00050004Status = isSet;
-        }
-        if (confSelect == 'DC00050007') {
-          state.payConf.DC00050007Status = isSet;
-        }
-        if (confSelect == 'DC00050005') {
-          state.payConf.DC00050005 = confValue;
-        }
-        if (confSelect == 'DC00050006') {
-          state.payConf.DC00050006 = confValue;
-        }
-        if (confSelect == "DC00030001") {
-          state.msmConf.DC00030001Status = isSet;
-        } else if (confSelect == "DC00030002") {
-          state.msmConf.DC00030002 = confValue;
-        } else if (confSelect == "DC00030003") {
-          state.msmConf.DC00030003 = confValue;
-        }
-      });
-      state.appletArticle = ARRDC0003;
+    if (!ConfigPage.value.group) {
+      ConfigPage.value.group = [];
     }
-  } catch (err) {
-    return;
+    paramInit();
+    // TODO：从服务器获取配置值，然后赋值
+  } else {
+    alertWarning(message);
   }
-};
-getSystemConfigControllerGetAll("");
-
-const upload03 = ref<UploadInstance>()
-const handleExceed03: UploadProps['onExceed'] = (files) => {
-  upload03.value!.clearFiles()
-  const file = files[0] as UploadRawFile
-  file.uid = genFileId()
-  upload03.value!.handleStart(file)
-}
-const submitUpload03 = () => {
-  upload03.value!.submit()
-}
-const upload04 = ref<UploadInstance>()
-const handleExceed04: UploadProps['onExceed'] = (files) => {
-  upload04.value!.clearFiles()
-  const file = files[0] as UploadRawFile
-  file.uid = genFileId()
-  upload04.value!.handleStart(file)
-}
-const submitUpload04 = () => {
-  upload04.value!.submit()
-}
-const uploadDC00050004 = (res: any) => {
-  // 私钥上传成功
-  state.payConf.DC00050004 = res?.data?.path;
-}
-const uploadDC00050003 = (res: any) => {
-  // 公钥上传成功
-  state.payConf.DC00050003 = res?.data?.path;
-}
-const token = getToken();
+});
+/**
+ * 保存编辑页面配置
+ */
 </script>
 <style lang="scss">
 .list-box {
   padding: 20px;
 
   .cell {
-    .updata {
+    .update {
       border-bottom: 1px solid #ababab;
       padding-bottom: 10px;
 
@@ -412,6 +270,20 @@ const token = getToken();
         font-weight: bold;
         margin-right: 20px;
       }
+      .link {
+        margin-left: 10px;
+        font-size: 12px;
+        margin-right: 20px;
+        a {
+          margin-left: 10px;
+        }
+      }
+    }
+    .description {
+      color: #888;
+      font-size: 13x;
+      margin: 8px 0;
+      margin-bottom: 0;
     }
 
     .items {
@@ -475,10 +347,7 @@ const token = getToken();
     }
   }
 }
-
-.pagination-box {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+.add-group-btn {
+  margin: 10px;
 }
 </style>

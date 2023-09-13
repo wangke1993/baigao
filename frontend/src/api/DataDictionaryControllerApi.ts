@@ -47,3 +47,11 @@ export const DataDictionaryControllerDelete = (dicCode: string, config?: any) =>
 export const DataDictionaryControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,dicClass: string }, config?: any) => {
    return axios.get(`/api/admin/dic/getPage`, { params: query,...config });
 }
+/**
+* getDicTree:获取数据字典分页
+* 
+* @returns 
+*/
+export const DataDictionaryControllerGetTree = ( config?: any) => {
+   return axios.get(`/api/admin/dic/getTree`, { ...config });
+}

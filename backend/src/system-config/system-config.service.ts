@@ -16,6 +16,9 @@ export class SystemConfigService {
     async deleteById(id: string): Promise<any> {
         return this.SystemConfigModel.deleteOne({ _id: new ObjectId(id) });
     }
+    async deleteByConfSelect(confSelect: string): Promise<any> {
+        return this.SystemConfigModel.deleteOne({ confSelect });
+    }
     async create(systemConfig: SystemConfig, req: any): Promise<SystemConfig> {
         systemConfig.updateUser = req?.user?.userName;
         systemConfig.updateDate = new Date();
@@ -25,6 +28,10 @@ export class SystemConfigService {
             systemConfig.isSet = true;
         } else {
             systemConfig.isSet = false;
+        }
+        const old = await this.SystemConfigModel.findOne({ confSelect: systemConfig.confSelect });
+        if (old) {
+            throw Error("配置已存在");
         }
         return new this.SystemConfigModel(systemConfig).save();
     }
@@ -89,8 +96,8 @@ export class SystemConfigService {
      * 获取参数配置页面配置信息
      * @returns 页面json配置信息
      */
-    async getSystemPageConfig(): Promise<SystemConfigPage> {
-        return JSON.parse(await this.getValueByConfSelect(SYSTEM_PAGE_CONFIG));
+    async getSystemPageConfig(): Promise<String> {
+        return await this.getValueByConfSelect(SYSTEM_PAGE_CONFIG);
     }
     /**
      * 更新页面配置信息

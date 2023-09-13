@@ -21,7 +21,7 @@ export class ConfigGroup {
     /**
      * 排序，降序
      */
-    sortDesc: number;
+    sortAsc: number;
 }
 export class ConfigGroupItem {
     /**
@@ -56,6 +56,14 @@ export class ConfigGroupItem {
      * 绑定dom获取配置URL
      */
     dataUrl: string;
+    /**
+     * 排序降序
+     */
+    sortAsc?: number;
+    /**
+    * 默认值
+    */
+    defaultValue?: string;
 }
 export class GroupLink {
     /**

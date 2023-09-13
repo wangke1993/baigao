@@ -24,11 +24,11 @@ export const SystemConfigControllerUpdate = (confSelect: string,data: SystemConf
 }
 /**
 * deleteSystemConfig:删除业务参数配置绑定
-* id：id;
+* confSelect：confSelect;
 * @returns 
 */
-export const SystemConfigControllerDelete = (id: string, config?: any) => {
-   return axios.delete(`/api/systemConfig/delete/${id}`, config);
+export const SystemConfigControllerDelete = (confSelect: string, config?: any) => {
+   return axios.delete(`/api/systemConfig/delete/${confSelect}`, config);
 }
              
 /**
@@ -48,7 +48,7 @@ export const SystemConfigControllerGetOpenAll = ( config?: any) => {
    return axios.get(`/api/systemConfig/getOpenAll`, { ...config });
 }
 /**
-* 获取【参数配置】页面配置信息
+* getSystemPageConfig:获取【参数配置】页面配置信息
 * 
 * @returns 
 */
@@ -56,7 +56,7 @@ export const SystemConfigControllerGetSystemPageConfig = ( config?: any) => {
    return axios.get(`/api/systemConfig/getSystemPageConfig`, { ...config });
 }
 /**
-* 更新【参数配置】页面配置信息
+* updateSystemPageConfig:更新【参数配置】页面配置信息
 * 
 * @returns 
 */

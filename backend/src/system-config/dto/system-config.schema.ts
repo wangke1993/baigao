@@ -26,7 +26,7 @@ export class SystemConfig extends BaseSchema {
         required: true,
         type: String
     })
-    confSelect: DC0003 | DC0008 | DC0005 | any;
+    confSelect: string;
     @ApiProperty({
         description: '配置值,DC0000为系统页面渲染配置',
         required: false
@@ -35,7 +35,7 @@ export class SystemConfig extends BaseSchema {
         required: false,
         type: String
     })
-    confValue: SystemConfigPage | string | any;
+    confValue: string;
     @ApiProperty({
         description: '是否已设置值',
         required: false

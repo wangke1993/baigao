@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { PageRequestDto } from 'src/common-dto/page-request.dto';
 import { PageResponseDto } from 'src/common-dto/page-response.dto';
 import { DataDictionary, DataDictionaryDocument, DIC_TYPE } from './dto/data-dictionary.schema';
+import { DicTree } from './dto/dic-tree.dto';
 
 @Injectable()
 export class DataDictionaryService {
@@ -97,5 +98,17 @@ export class DataDictionaryService {
             dicClass: dicClass
         };
         return await this.DataDictionaryModel.find(map).sort({ addDate: 1 });
+    }
+    async getTree(): Promise<DicTree[]> {
+        const List = await this.DataDictionaryModel.find().sort({ dicCode: 1 });
+        const top = List.filter(item => item.dicType == DIC_TYPE.class);
+        const dicTree: DicTree[] = [];
+        top.forEach(item => {
+            dicTree.push({
+                ...item['_doc'],
+                children: List.filter(child => child.dicType == DIC_TYPE.value && child.dicClass == item.dicCode)
+            })
+        })
+        return dicTree
     }
 }

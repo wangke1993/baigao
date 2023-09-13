@@ -21,5 +21,7 @@ module.exports = {
   rules: {
     "vue/multi-word-component-names": "off",
     "eslint-disable-next-line": "off",
+    "eol-last": 0,
+    "arrow-parens": 0,
   },
 };
