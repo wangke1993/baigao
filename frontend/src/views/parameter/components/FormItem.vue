@@ -28,7 +28,7 @@
       v-model="modelValue"
       :placeholder="props.configGroupItem.description"
       v-if="props.configGroupItem.dom == 'Select'"
-      style="width: 100%;"
+      style="width: 100%"
     >
       <el-option
         v-for="item in selectValue"
@@ -43,7 +43,7 @@
       v-if="props.configGroupItem.dom == 'MoreSelect'"
       multiple
       clearable
-      style="width: 100%;"
+      style="width: 100%"
     >
       <el-option
         v-for="item in selectValue"
@@ -55,11 +55,13 @@
     <el-upload
       ref="uploadRef"
       action="/api/file/uploadPrivate"
+      v-model:file-list="fileList"
       :limit="1"
       :headers="{ Authorization: `Bearer ${token}` }"
       :on-success="uploadSuccess"
       :auto-upload="false"
       v-if="props.configGroupItem.dom == 'File'"
+      style="width: 100%"
     >
       <template #trigger>
         <el-button type="primary">选择文件</el-button>
@@ -73,6 +75,9 @@
         </div>
       </template>
     </el-upload>
+    <h5 v-if="!props.resData?.allowFetch">
+      {{ props.resData?.isSet ? "已设置" : "未设置" }}
+    </h5>
   </el-form-item>
 </template>
 
@@ -80,9 +85,10 @@
 import { defineProps, defineEmits, watchEffect, ref, onMounted } from "vue";
 import { ConfigGroupItem } from "../SystemConfigPage";
 import { getToken } from "@/utils/authTokenUtil";
-import type { UploadInstance } from "element-plus";
+import type { UploadInstance, UploadUserFile } from "element-plus";
 import { alertWarning } from "@/utils/message";
 import axios from "axios";
+import { SystemConfigDto } from "@/api/dto/SystemConfigDto";
 const props = defineProps({
   configGroupItem: {
     type: ConfigGroupItem,
@@ -94,6 +100,10 @@ const props = defineProps({
   },
   groupName: {
     type: String,
+    required: false,
+  },
+  resData: {
+    type: SystemConfigDto,
     required: false,
   },
 });
@@ -110,8 +120,8 @@ const selectValue = ref([
     value: 2,
   },
 ]);
+const fileList = ref<UploadUserFile[]>([]);
 const uploadSuccess = (res: any) => {
-  console.log("上传成功", res);
   const { status, data, message } = res;
   if (status == 1) {
     modelValue.value = JSON.stringify(data);
@@ -140,8 +150,36 @@ watchEffect(() => {
   }
 });
 watchEffect(async () => {
-  if (props.configGroupItem.dom === "Swatch") {
-    modelValue.value = props.defaultValue == "true";
+  if (props.resData) {
+    // 设置服务器返回值
+    console.log("值", props.resData);
+    if (props.configGroupItem.dom === "Swatch") {
+      modelValue.value = props.resData.confValue == "true";
+    } else if (props.configGroupItem.dom === "MoreSelect") {
+      modelValue.value = props.resData.confValue?.split(",");
+    }
+    if (props.configGroupItem.dom === "File") {
+      if (props.resData.confValue) {
+        const fileObj = JSON.parse(props.resData.confValue);
+        fileList.value = [
+          {
+            name: fileObj.fileName,
+            url: fileObj.url,
+          },
+        ];
+      }
+    } else {
+      modelValue.value = props.resData.confValue;
+    }
+  } else {
+    // 设置默认值
+    if (props.configGroupItem.dom === "Swatch") {
+      modelValue.value = props.defaultValue == "true";
+    } else if (props.configGroupItem.dom === "MoreSelect") {
+      modelValue.value = props.defaultValue?.split(",");
+    } else {
+      modelValue.value = props.defaultValue;
+    }
   }
 });
 watchEffect(async () => {

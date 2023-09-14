@@ -69,6 +69,11 @@
               :configGroupItem="configItem"
               :defaultValue="configItem.defaultValue"
               :groupName="groupItem.name"
+              :resData="
+                configItem.confSelect
+                  ? ConfigResValueList[configItem.confSelect]
+                  : null
+              "
               @change="formItemChange"
             >
               <template #default>
@@ -122,15 +127,18 @@ import { alertSuccess, alertWarning } from "@/utils/message";
 import { copyString } from "@/utils/tools";
 import {
   SystemConfigControllerDelete,
+  SystemConfigControllerGetAll,
   SystemConfigControllerGetSystemPageConfig,
   SystemConfigControllerUpdate,
   SystemConfigControllerUpdateSystemPageConfig,
 } from "@/api/SystemConfigControllerApi";
+import type { SystemConfigDto } from "@/api/dto/SystemConfigDto";
 const ConfigPage = ref(new SystemConfigPage());
 const isDev = ref(window.location.hostname == "localhost");
 // isDev.value = false;
 const EditGrepRef = ref();
 const ConfigValueList = ref({} as any);
+const ConfigResValueList = ref({} as any);
 const ConfigSaveLoading = ref({} as any);
 const formItemChange = (
   groupName: string,
@@ -247,6 +255,25 @@ onMounted(async () => {
     }
     paramInit();
     // TODO：从服务器获取配置值，然后赋值
+    const {
+      data: { status, data: resData, message },
+    } = await SystemConfigControllerGetAll();
+    if (status == 1) {
+      resData.forEach((item: SystemConfigDto) => {
+        if (item.confSelect) {
+          ConfigResValueList.value[item.confSelect] = item;
+          /**
+           * ConfigResValueList示例
+           * {
+           *  DC00010001:{}
+           * }
+           */
+        }
+      });
+      console.log("-----------", ConfigResValueList.value);
+    } else {
+      alertWarning(message);
+    }
   } else {
     alertWarning(message);
   }

@@ -42,8 +42,8 @@ export class SystemConfigService {
         delete systemConfig.addUser;
         delete systemConfig.confSelect;
         delete systemConfig.confType;
-        delete systemConfig.isOpen;
-        delete systemConfig.allowFetch;
+        // delete systemConfig.isOpen;
+        // delete systemConfig.allowFetch;
         if (systemConfig.confValue) {
             systemConfig.isSet = true;
         } else {
@@ -56,7 +56,12 @@ export class SystemConfigService {
         if (isOpen) {
             map.isOpen = true;
         }
-        return await this.SystemConfigModel.find(map);
+        return (await this.SystemConfigModel.find(map)).map(item => {
+            if (!item.allowFetch) {
+                item.confValue = "";
+            }
+            return item;
+        });
     }
     async getDetailById(id: string): Promise<SystemConfig> {
         let map: any = { _id: new ObjectId(id) }
