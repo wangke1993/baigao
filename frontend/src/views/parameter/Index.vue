@@ -274,7 +274,6 @@ onMounted(async () => {
            */
         }
       });
-      console.log("-----------", ConfigResValueList.value);
     } else {
       alertWarning(message);
     }
