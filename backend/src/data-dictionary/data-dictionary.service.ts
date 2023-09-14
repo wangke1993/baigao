@@ -32,7 +32,7 @@ export class DataDictionaryService {
         if (dataDictionary.dicType == DIC_TYPE.class) {
             lastDic = await this.DataDictionaryModel.find({
                 dicType: dataDictionary.dicType
-            }).limit(1).sort({ addDate: -1 });
+            }).limit(1).sort({ dicCode: -1 });
             if (lastDic.length > 0) {
                 let lastDicNumber = Number(lastDic[0].dicCode.substring(2, lastDic[0].dicCode.length));
                 lastDicNumber += 1;
@@ -45,7 +45,7 @@ export class DataDictionaryService {
             lastDic = await this.DataDictionaryModel.find({
                 dicType: dataDictionary.dicType,
                 dicClass: dataDictionary.dicClass
-            }).limit(1).sort({ addDate: -1 });
+            }).limit(1).sort({ dicCode: -1 });
             if (lastDic.length > 0) {
                 let lastDicNumber = Number(lastDic[0].dicCode.substring(6, lastDic[0].dicCode.length));
                 lastDicNumber += 1;
