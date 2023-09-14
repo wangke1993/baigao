@@ -11,7 +11,7 @@
  Target Server Version : 60005 (6.0.5)
  File Encoding         : 65001
 
- Date: 14/09/2023 13:51:56
+ Date: 14/09/2023 15:42:01
 */
 
 
@@ -24829,6 +24829,93 @@ db.getCollection("datadictionaries").insert([ {
     isSystem: false,
     __v: NumberInt("0")
 } ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a29fe21ea87bf8d72018"),
+    dicName: "七牛云",
+    dicType: NumberInt("1"),
+    dicCode: "DC0009",
+    remarks: "",
+    addDate: ISODate("2023-09-14T06:05:19.333Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a385e21ea87bf8d72028"),
+    dicName: "启用",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090001",
+    remarks: "",
+    addDate: ISODate("2023-09-14T06:09:09.43Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a66ce21ea87bf8d72055"),
+    dicName: "AccessKey",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090002",
+    remarks: "用户密钥",
+    addDate: ISODate("2023-09-14T06:21:32.558Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a68ee21ea87bf8d72062"),
+    dicName: "SecretKey",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090003",
+    remarks: "加密密钥",
+    addDate: ISODate("2023-09-14T06:22:06.698Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b051e21ea87bf8d7206f"),
+    dicName: "公开空间",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090004",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:03:45.947Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b058e21ea87bf8d72077"),
+    dicName: "私有空间",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090005",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:03:52.443Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b0a1e21ea87bf8d72089"),
+    dicName: "私有空间域名",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090006",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:05:05.613Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b40de21ea87bf8d720a1"),
+    dicName: "公开空间域名",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090007",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:19:41.755Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
 
 // ----------------------------
 // Collection structure for fileuploads
@@ -25098,7 +25185,7 @@ db.getCollection("systemconfigs").insert([ {
     _id: ObjectId("64fee7b0d12e59ce60069fc1"),
     confType: "DC0000",
     confSelect: "DC00000001",
-    confValue: "{\"group\":[{\"name\":\"短信参数配置\",\"configItem\":[{\"confType\":\"DC0003\",\"confSelect\":\"DC00030003\",\"labelName\":\"是否启用\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"Swatch\",\"sortAsc\":1,\"defaultValue\":\"false\"},{\"confType\":\"DC0003\",\"confSelect\":\"DC00030001\",\"labelName\":\"accessKeyId\",\"allowFetch\":false,\"description\":\"云片网accessKeyId，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":2}],\"sortDesc\":0,\"sortAsc\":1,\"linkArr\":[{\"linkName\":\"云片网\",\"linkUrl\":\"https://www.yunpian.com/console/#/iframe?path=admin\"}]},{\"name\":\"会员角色绑定\",\"configItem\":[{\"confType\":\"DC0008\",\"confSelect\":\"DC00080001\",\"labelName\":\"游客\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"MoreSelect\",\"dataUrl\":\"/api/rolePermissions/getList\",\"dataLabel\":\"roleName\",\"dataValue\":\"_id\",\"sortAsc\":0}],\"sortDesc\":1,\"sortAsc\":1},{\"name\":\"小程序相关配置\",\"configItem\":[{\"description\":\"appID\",\"sortAsc\":0,\"allowFetch\":true,\"dom\":\"Input\",\"confSelect\":\"DC00040001\",\"confType\":\"DC0004\",\"labelName\":\"appID\"},{\"confType\":\"DC0004\",\"confSelect\":\"DC00040002\",\"labelName\":\"appSecrt\",\"allowFetch\":false,\"description\":\"appSecrt，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":1}],\"sortDesc\":2,\"sortAsc\":2},{\"name\":\"支付相关配置\",\"configItem\":[{\"confType\":\"DC0005\",\"confSelect\":\"DC00050002\",\"labelName\":\"商户号mchid\",\"allowFetch\":true,\"description\":\"商户号mchid\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050001\",\"labelName\":\"应用appid\",\"allowFetch\":true,\"description\":\"应用appid\",\"dom\":\"Input\",\"sortAsc\":1},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050007\",\"labelName\":\"APIv3密钥\",\"allowFetch\":false,\"description\":\"APIv3密钥，可设置不能查看\",\"dom\":\"Input\",\"sortAsc\":2},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050005\",\"labelName\":\"支付回调地址\",\"allowFetch\":true,\"description\":\"支付回调地址\",\"dom\":\"Area\",\"sortAsc\":3},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050006\",\"labelName\":\"退款回调地址\",\"allowFetch\":true,\"description\":\"退款回调地址\",\"dom\":\"Area\",\"sortAsc\":4},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050003\",\"labelName\":\"api证书\",\"allowFetch\":false,\"description\":\"apiclient_cert.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050004\",\"labelName\":\"api密钥\",\"allowFetch\":true,\"description\":\"apiclient_key.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5}],\"sortDesc\":0,\"sortAsc\":3}]}",
+    confValue: "{\"group\":[{\"name\":\"小程序会员角色绑定\",\"configItem\":[{\"confType\":\"DC0008\",\"confSelect\":\"DC00080001\",\"labelName\":\"游客\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"MoreSelect\",\"dataUrl\":\"/api/rolePermissions/getList\",\"dataLabel\":\"roleName\",\"dataValue\":\"_id\",\"sortAsc\":0}],\"sortDesc\":1,\"sortAsc\":1},{\"name\":\"小程序相关配置\",\"configItem\":[{\"description\":\"appID\",\"sortAsc\":0,\"allowFetch\":true,\"dom\":\"Input\",\"confSelect\":\"DC00040001\",\"confType\":\"DC0004\",\"labelName\":\"appID\"},{\"confType\":\"DC0004\",\"confSelect\":\"DC00040002\",\"labelName\":\"appSecrt\",\"allowFetch\":false,\"description\":\"appSecrt，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":1}],\"sortDesc\":2,\"sortAsc\":2},{\"name\":\"支付相关配置\",\"configItem\":[{\"confType\":\"DC0005\",\"confSelect\":\"DC00050002\",\"labelName\":\"商户号mchid\",\"allowFetch\":true,\"description\":\"商户号mchid\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050001\",\"labelName\":\"应用appid\",\"allowFetch\":true,\"description\":\"应用appid\",\"dom\":\"Input\",\"sortAsc\":1},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050007\",\"labelName\":\"APIv3密钥\",\"allowFetch\":false,\"description\":\"APIv3密钥，可设置不能查看\",\"dom\":\"Input\",\"sortAsc\":2},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050005\",\"labelName\":\"支付回调地址\",\"allowFetch\":true,\"description\":\"支付回调地址\",\"dom\":\"Area\",\"sortAsc\":3},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050006\",\"labelName\":\"退款回调地址\",\"allowFetch\":true,\"description\":\"退款回调地址\",\"dom\":\"Area\",\"sortAsc\":4},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050003\",\"labelName\":\"api证书\",\"allowFetch\":false,\"description\":\"apiclient_cert.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050004\",\"labelName\":\"api密钥\",\"allowFetch\":true,\"description\":\"apiclient_key.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5}],\"sortDesc\":0,\"sortAsc\":3},{\"name\":\"短信参数配置\",\"configItem\":[{\"confType\":\"DC0003\",\"confSelect\":\"DC00030003\",\"labelName\":\"是否启用\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"Swatch\",\"sortAsc\":1,\"defaultValue\":\"false\"},{\"confType\":\"DC0003\",\"confSelect\":\"DC00030001\",\"labelName\":\"accessKeyId\",\"allowFetch\":false,\"description\":\"云片网accessKeyId，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":2}],\"sortDesc\":0,\"sortAsc\":9,\"linkArr\":[{\"linkName\":\"云片网\",\"linkUrl\":\"https://www.yunpian.com/console/#/iframe?path=admin\"}]},{\"name\":\"七牛云设置\",\"linkArr\":[{\"linkName\":\"开发指南\",\"linkUrl\":\"https://developer.qiniu.com/kodo/8596/development-guidelines\"}],\"configItem\":[{\"confType\":\"DC0009\",\"confSelect\":\"DC00090001\",\"labelName\":\"启用\",\"allowFetch\":true,\"isOpen\":true,\"description\":\"\",\"dom\":\"Swatch\",\"sortAsc\":0,\"defaultValue\":\"false\"},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090002\",\"labelName\":\"AccessKey\",\"allowFetch\":false,\"description\":\"用户密钥\",\"dom\":\"Password\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090003\",\"labelName\":\"SecretKey\",\"allowFetch\":false,\"description\":\"加密密钥\",\"dom\":\"Password\",\"sortAsc\":0,\"isOpen\":true},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090004\",\"labelName\":\"公开空间\",\"allowFetch\":true,\"description\":\"公开空间名称\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090007\",\"labelName\":\"公开空间域名\",\"allowFetch\":true,\"description\":\"公开空间域名\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090005\",\"labelName\":\"私有空间\",\"allowFetch\":true,\"description\":\"私有空间\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090006\",\"labelName\":\"私有空间域名\",\"allowFetch\":true,\"description\":\"私有空间域名\",\"dom\":\"Input\",\"sortAsc\":0}],\"sortAsc\":10}]}",
     isSet: true,
     allowFetch: true,
     isOpen: false,
@@ -25257,6 +25344,99 @@ db.getCollection("systemconfigs").insert([ {
     allowFetch: true,
     remarks: "apiclient_key.pem，可设置不能查看",
     __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b624e21ea87bf8d720d7"),
+    addDate: ISODate("2023-09-14T07:28:36.522Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.965Z"),
+    fileIds: [ ],
+    confSelect: "DC00090001",
+    confValue: "false",
+    isSet: true,
+    allowFetch: true,
+    isOpen: true,
+    remarks: "",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b63ce21ea87bf8d720f2"),
+    addDate: ISODate("2023-09-14T07:29:00.44Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.968Z"),
+    fileIds: [ ],
+    confSelect: "DC00090002",
+    isSet: false,
+    allowFetch: false,
+    remarks: "用户密钥",
+    __v: NumberInt("0"),
+    confValue: "",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b648e21ea87bf8d720ff"),
+    addDate: ISODate("2023-09-14T07:29:12.083Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.97Z"),
+    fileIds: [ ],
+    confSelect: "DC00090003",
+    isSet: false,
+    allowFetch: false,
+    remarks: "加密密钥",
+    __v: NumberInt("0"),
+    updateUser: "baigao",
+    isOpen: true,
+    confValue: ""
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b6d4e21ea87bf8d72151"),
+    addDate: ISODate("2023-09-14T07:31:32.418Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.987Z"),
+    fileIds: [ ],
+    confSelect: "DC00090004",
+    isSet: true,
+    allowFetch: true,
+    remarks: "公开空间名称",
+    __v: NumberInt("0"),
+    confValue: "project-public",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b6f8e21ea87bf8d7216b"),
+    addDate: ISODate("2023-09-14T07:32:08.97Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.983Z"),
+    fileIds: [ ],
+    confSelect: "DC00090007",
+    isSet: true,
+    allowFetch: true,
+    remarks: "公开空间域名",
+    __v: NumberInt("0"),
+    confValue: "cdn-public.domain.cn",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b715e21ea87bf8d72182"),
+    addDate: ISODate("2023-09-14T07:32:37.092Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.991Z"),
+    fileIds: [ ],
+    confSelect: "DC00090005",
+    isSet: true,
+    allowFetch: true,
+    remarks: "私有空间",
+    __v: NumberInt("0"),
+    confValue: "project-private",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b724e21ea87bf8d7218f"),
+    addDate: ISODate("2023-09-14T07:32:52.075Z"),
+    updateDate: ISODate("2023-09-14T07:37:41.026Z"),
+    fileIds: [ ],
+    confSelect: "DC00090006",
+    isSet: true,
+    allowFetch: true,
+    remarks: "私有空间域名",
+    __v: NumberInt("0"),
+    confValue: "cdn-private.domain.cn",
     updateUser: "baigao"
 } ]);
 

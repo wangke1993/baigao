@@ -1,7 +1,7 @@
 <template>
   <el-dialog :title="title" v-model="visible" @close="close">
     <el-form :model="form" label-width="188px">
-      <el-form-item label="绑定字典">
+      <el-form-item v-if="!isEdit" label="绑定字典">
         <el-cascader
           v-if="visible"
           v-model="form.confSelect"
