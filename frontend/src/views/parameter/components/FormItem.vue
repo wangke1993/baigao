@@ -75,7 +75,7 @@
         </div>
       </template>
     </el-upload>
-    <h5 v-if="!props.resData?.allowFetch">
+    <h5 v-if="!props.configGroupItem?.allowFetch">
       {{ props.resData?.isSet ? "已设置" : "未设置" }}
     </h5>
   </el-form-item>
@@ -152,13 +152,11 @@ watchEffect(() => {
 watchEffect(async () => {
   if (props.resData) {
     // 设置服务器返回值
-    console.log("值", props.resData);
     if (props.configGroupItem.dom === "Swatch") {
       modelValue.value = props.resData.confValue == "true";
     } else if (props.configGroupItem.dom === "MoreSelect") {
       modelValue.value = props.resData.confValue?.split(",");
-    }
-    if (props.configGroupItem.dom === "File") {
+    } else if (props.configGroupItem.dom === "File") {
       if (props.resData.confValue) {
         const fileObj = JSON.parse(props.resData.confValue);
         fileList.value = [

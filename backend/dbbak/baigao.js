@@ -11,7 +11,7 @@
  Target Server Version : 60005 (6.0.5)
  File Encoding         : 65001
 
- Date: 29/06/2023 20:30:32
+ Date: 14/09/2023 13:51:56
 */
 
 
@@ -1398,6 +1398,86 @@ db.getCollection("adminmenus").insert([ {
     parentId: "6311a60b1df058152135dd67",
     parentDeep: [
         "6311a60b1df058152135dd67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("650032f2c862ace5e9f55e71"),
+    menuName: "获取字典树",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getDicTree",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "62fdb22601ea3ca48e8887bd",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62fdb22601ea3ca48e8887bd"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("650171dde26c92b5cd1aac21"),
+    menuName: "获取【参数配置】页面配置信息",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getSystemPageConfig",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "63060a322c63058e9af25715",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("650171efe26c92b5cd1aac2a"),
+    menuName: "更新【参数配置】页面配置信息",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "updateSystemPageConfig",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "63060a322c63058e9af25715",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6501721ce26c92b5cd1aac33"),
+    menuName: "删除业务参数配置绑定",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "deleteSystemConfig",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "63060a322c63058e9af25715",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65017231e26c92b5cd1aac3c"),
+    menuName: "创建业务参数配置绑定",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "createBindSystemConfig",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "63060a322c63058e9af25715",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
     ],
     sort: NumberInt("0"),
     __v: NumberInt("0")
@@ -24515,7 +24595,7 @@ db.getCollection("datadictionaries").insert([ {
     dicType: NumberInt("2"),
     dicClass: "DC0003",
     dicCode: "DC00030001",
-    remarks: "https://unisms.apistd.com/console/credentials?limit=20&offset=0&status=0",
+    remarks: "云片网accessKeyId",
     addDate: ISODate("2022-08-22T11:27:42.433Z"),
     __v: NumberInt("0"),
     isSystem: true,
@@ -24593,7 +24673,7 @@ db.getCollection("datadictionaries").insert([ {
 } ]);
 db.getCollection("datadictionaries").insert([ {
     _id: ObjectId("6316fcc297d4ce8d0d99d377"),
-    dicName: "公钥publicKey",
+    dicName: "api证书",
     dicType: NumberInt("2"),
     dicClass: "DC0005",
     dicCode: "DC00050003",
@@ -24605,7 +24685,7 @@ db.getCollection("datadictionaries").insert([ {
 } ]);
 db.getCollection("datadictionaries").insert([ {
     _id: ObjectId("6316fcd297d4ce8d0d99d37f"),
-    dicName: "私钥privateKey",
+    dicName: "api密钥",
     dicType: NumberInt("2"),
     dicClass: "DC0005",
     dicCode: "DC00050004",
@@ -24657,7 +24737,7 @@ db.getCollection("datadictionaries").insert([ {
     dicType: NumberInt("2"),
     dicClass: "DC0003",
     dicCode: "DC00030002",
-    remarks: "https://unisms.apistd.com/console/sms/signatures?limit=20&offset=0&status=0",
+    remarks: "",
     addDate: ISODate("2022-09-06T16:25:23.881Z"),
     isSystem: true,
     __v: NumberInt("0"),
@@ -25015,188 +25095,167 @@ db.createCollection("systemconfigs");
 // Documents of systemconfigs
 // ----------------------------
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6304b25a2a43381766319da6"),
-    addDate: ISODate("2022-08-23T10:56:26.576Z"),
-    updateDate: ISODate("2023-06-29T10:12:37.111Z"),
-    fileIds: [ ],
-    confType: "DC0004",
-    confSelect: "DC00040001",
+    _id: ObjectId("64fee7b0d12e59ce60069fc1"),
+    confType: "DC0000",
+    confSelect: "DC00000001",
+    confValue: "{\"group\":[{\"name\":\"短信参数配置\",\"configItem\":[{\"confType\":\"DC0003\",\"confSelect\":\"DC00030003\",\"labelName\":\"是否启用\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"Swatch\",\"sortAsc\":1,\"defaultValue\":\"false\"},{\"confType\":\"DC0003\",\"confSelect\":\"DC00030001\",\"labelName\":\"accessKeyId\",\"allowFetch\":false,\"description\":\"云片网accessKeyId，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":2}],\"sortDesc\":0,\"sortAsc\":1,\"linkArr\":[{\"linkName\":\"云片网\",\"linkUrl\":\"https://www.yunpian.com/console/#/iframe?path=admin\"}]},{\"name\":\"会员角色绑定\",\"configItem\":[{\"confType\":\"DC0008\",\"confSelect\":\"DC00080001\",\"labelName\":\"游客\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"MoreSelect\",\"dataUrl\":\"/api/rolePermissions/getList\",\"dataLabel\":\"roleName\",\"dataValue\":\"_id\",\"sortAsc\":0}],\"sortDesc\":1,\"sortAsc\":1},{\"name\":\"小程序相关配置\",\"configItem\":[{\"description\":\"appID\",\"sortAsc\":0,\"allowFetch\":true,\"dom\":\"Input\",\"confSelect\":\"DC00040001\",\"confType\":\"DC0004\",\"labelName\":\"appID\"},{\"confType\":\"DC0004\",\"confSelect\":\"DC00040002\",\"labelName\":\"appSecrt\",\"allowFetch\":false,\"description\":\"appSecrt，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":1}],\"sortDesc\":2,\"sortAsc\":2},{\"name\":\"支付相关配置\",\"configItem\":[{\"confType\":\"DC0005\",\"confSelect\":\"DC00050002\",\"labelName\":\"商户号mchid\",\"allowFetch\":true,\"description\":\"商户号mchid\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050001\",\"labelName\":\"应用appid\",\"allowFetch\":true,\"description\":\"应用appid\",\"dom\":\"Input\",\"sortAsc\":1},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050007\",\"labelName\":\"APIv3密钥\",\"allowFetch\":false,\"description\":\"APIv3密钥，可设置不能查看\",\"dom\":\"Input\",\"sortAsc\":2},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050005\",\"labelName\":\"支付回调地址\",\"allowFetch\":true,\"description\":\"支付回调地址\",\"dom\":\"Area\",\"sortAsc\":3},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050006\",\"labelName\":\"退款回调地址\",\"allowFetch\":true,\"description\":\"退款回调地址\",\"dom\":\"Area\",\"sortAsc\":4},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050003\",\"labelName\":\"api证书\",\"allowFetch\":false,\"description\":\"apiclient_cert.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050004\",\"labelName\":\"api密钥\",\"allowFetch\":true,\"description\":\"apiclient_key.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5}],\"sortDesc\":0,\"sortAsc\":3}]}",
     isSet: true,
     allowFetch: true,
     isOpen: false,
+    remarks: "页面dom配置信息，参考SystemConfigPage",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("650179f075835df967e48b0d"),
+    addDate: ISODate("2023-09-13T08:59:28.027Z"),
+    updateDate: ISODate("2023-09-14T04:50:51.715Z"),
+    fileIds: [ ],
+    confSelect: "DC00030003",
+    confValue: "false",
+    isSet: true,
+    allowFetch: true,
+    remarks: "",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65017a4075835df967e48b5e"),
+    addDate: ISODate("2023-09-13T09:00:48.884Z"),
+    updateDate: ISODate("2023-09-14T05:25:49.511Z"),
+    fileIds: [ ],
+    confSelect: "DC00040001",
+    isSet: false,
+    allowFetch: true,
     remarks: "appID",
     __v: NumberInt("0"),
-    updateUser: "baigao"
+    updateUser: "baigao",
+    confValue: ""
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6304b2642a43381766319daa"),
-    addDate: ISODate("2022-08-23T10:56:36.439Z"),
-    updateDate: ISODate("2023-06-29T10:12:37.108Z"),
+    _id: ObjectId("65017e4c75835df967e48c7a"),
+    addDate: ISODate("2023-09-13T09:18:04.582Z"),
+    updateDate: ISODate("2023-09-14T05:31:13.628Z"),
     fileIds: [ ],
-    confType: "DC0004",
-    confSelect: "DC00040002",
+    confSelect: "DC00080001",
     isSet: true,
     allowFetch: true,
-    isOpen: false,
-    remarks: "appSecrt",
+    remarks: "",
     __v: NumberInt("0"),
+    confValue: "6311a62a1df058152135dd76",
     updateUser: "baigao"
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6304b2722a43381766319dae"),
-    addDate: ISODate("2022-08-23T10:56:50.139Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.066Z"),
+    _id: ObjectId("65018f1175835df967e48ce9"),
+    addDate: ISODate("2023-09-13T10:29:37.178Z"),
+    updateDate: ISODate("2023-09-14T05:29:45.601Z"),
     fileIds: [ ],
-    confType: "DC0005",
     confSelect: "DC00050001",
     isSet: false,
     allowFetch: true,
-    isOpen: false,
-    remarks: "应用ID",
+    remarks: "应用appid",
     __v: NumberInt("0"),
-    updateUser: "baigao"
+    updateUser: "baigao",
+    confValue: ""
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6304b27d2a43381766319db2"),
-    addDate: ISODate("2022-08-23T10:57:01.686Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.071Z"),
+    _id: ObjectId("65018f1a75835df967e48cf6"),
+    addDate: ISODate("2023-09-13T10:29:46.91Z"),
+    updateDate: ISODate("2023-09-14T05:29:45.597Z"),
     fileIds: [ ],
-    confType: "DC0005",
     confSelect: "DC00050002",
     isSet: false,
     allowFetch: true,
-    isOpen: false,
-    remarks: "商户号",
+    remarks: "商户号mchid",
     __v: NumberInt("0"),
-    updateUser: "baigao"
+    updateUser: "baigao",
+    confValue: ""
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6316fdf354b03c201bb2f64c"),
-    addDate: ISODate("2022-09-06T07:59:47.211Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.075Z"),
+    _id: ObjectId("65018f2775835df967e48d03"),
+    addDate: ISODate("2023-09-13T10:29:59.183Z"),
+    updateDate: ISODate("2023-09-14T05:29:45.608Z"),
     fileIds: [ ],
-    confType: "DC0005",
-    confSelect: "DC00050003",
-    isSet: false,
-    allowFetch: false,
-    isOpen: false,
-    remarks: "API证书,apiclient_cert.pem",
-    __v: NumberInt("0"),
-    updateUser: "baigao"
-} ]);
-db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6316fe2754b03c201bb2f650"),
-    addDate: ISODate("2022-09-06T08:00:39.005Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.079Z"),
-    fileIds: [ ],
-    confType: "DC0005",
-    confSelect: "DC00050004",
-    isSet: false,
-    allowFetch: false,
-    isOpen: false,
-    remarks: "API密钥,apiclient_key.pem",
-    __v: NumberInt("0"),
-    updateUser: "baigao"
-} ]);
-db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("631727e6c198183470481755"),
-    addDate: ISODate("2022-09-06T10:58:45.999Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.082Z"),
-    fileIds: [ ],
-    confType: "DC0005",
     confSelect: "DC00050005",
-    confValue: "https://www.domain.com/api/wechat/payNotifyUrl",
     isSet: true,
     allowFetch: true,
-    isOpen: false,
-    remarks: "支付结果回调地址",
+    remarks: "支付回调地址",
     __v: NumberInt("0"),
-    updateUser: "baigao"
+    updateUser: "baigao",
+    confValue: "https://www.domain.cn/api/wechat/payNotifyUrl"
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("63173e66b232daf49f5a9302"),
-    addDate: ISODate("2022-09-06T12:34:46.715Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.09Z"),
+    _id: ObjectId("65018f3475835df967e48d10"),
+    addDate: ISODate("2023-09-13T10:30:12.981Z"),
+    updateDate: ISODate("2023-09-14T05:29:45.611Z"),
     fileIds: [ ],
-    confType: "DC0005",
     confSelect: "DC00050006",
-    confValue: "https://www.domain.com/api/wechat/refundsNotifyUrl",
     isSet: true,
     allowFetch: true,
-    isOpen: false,
     remarks: "退款回调地址",
     __v: NumberInt("0"),
+    updateUser: "baigao",
+    confValue: "https://www.domain.cn/api/wechat/refundsNotifyUrl"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("650294a2e057d6c348d61173"),
+    addDate: ISODate("2023-09-14T05:05:38.618Z"),
+    updateDate: ISODate("2023-09-14T05:33:28.18Z"),
+    fileIds: [ ],
+    confSelect: "DC00040002",
+    isSet: false,
+    allowFetch: false,
+    remarks: "appSecrt，可设置不能查看",
+    __v: NumberInt("0"),
+    confValue: "",
     updateUser: "baigao"
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("63174c2487734e2ba3b60b47"),
-    addDate: ISODate("2022-09-06T13:33:24.007Z"),
-    updateDate: ISODate("2023-06-29T05:36:47.126Z"),
+    _id: ObjectId("6502956fd53ce1b0a6f6416f"),
+    addDate: ISODate("2023-09-14T05:09:03.262Z"),
+    updateDate: ISODate("2023-09-14T05:33:37.68Z"),
     fileIds: [ ],
-    confType: "DC0005",
+    confSelect: "DC00030001",
+    isSet: false,
+    allowFetch: false,
+    remarks: "云片网accessKeyId，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("650295dad53ce1b0a6f641ca"),
+    addDate: ISODate("2023-09-14T05:10:50.287Z"),
+    updateDate: ISODate("2023-09-14T05:33:12.07Z"),
+    fileIds: [ ],
     confSelect: "DC00050007",
     isSet: false,
     allowFetch: false,
-    isOpen: false,
-    remarks: "APIv3密钥",
+    remarks: "APIv3密钥，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao",
+    confValue: ""
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65029abd12bd145b9eb6f0ff"),
+    addDate: ISODate("2023-09-14T05:31:41.019Z"),
+    updateDate: ISODate("2023-09-14T05:33:59.522Z"),
+    fileIds: [ ],
+    confSelect: "DC00050003",
+    isSet: false,
+    allowFetch: false,
+    remarks: "apiclient_cert.pem，可设置不能查看",
     __v: NumberInt("0"),
     updateUser: "baigao"
 } ]);
 db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("631774e3416e4217f35add27"),
-    addDate: ISODate("2022-09-06T16:27:15.872Z"),
-    updateDate: ISODate("2023-06-29T07:21:14.996Z"),
+    _id: ObjectId("65029ad312bd145b9eb6f10c"),
+    addDate: ISODate("2023-09-14T05:32:03.964Z"),
+    updateDate: ISODate("2023-09-14T05:34:13.796Z"),
     fileIds: [ ],
-    confType: "DC0003",
-    confSelect: "DC00030002",
+    confSelect: "DC00050004",
     isSet: false,
     allowFetch: true,
-    isOpen: false,
-    remarks: "短信签名",
-    __v: NumberInt("0"),
-    updateUser: "baigao"
-} ]);
-db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6304b1b22a43381766319d7a"),
-    addDate: ISODate("2022-08-23T10:53:38.516Z"),
-    updateDate: ISODate("2023-06-29T07:21:14.99Z"),
-    fileIds: [ ],
-    confType: "DC0003",
-    confSelect: "DC00030001",
-    isSet: true,
-    allowFetch: true,
-    isOpen: false,
-    remarks: "短信API密钥",
-    __v: NumberInt("0"),
-    updateUser: "baigao"
-} ]);
-db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("6304b1312a43381766319d5a"),
-    addDate: ISODate("2022-08-23T10:51:29.072Z"),
-    updateDate: ISODate("2023-06-29T09:30:10.359Z"),
-    fileIds: [ ],
-    confType: "DC0008",
-    confSelect: "DC00080001",
-    confValue: "6311a62a1df058152135dd76",
-    isSet: true,
-    allowFetch: true,
-    isOpen: false,
-    remarks: "游客",
-    __v: NumberInt("0"),
-    updateUser: "baigao"
-} ]);
-db.getCollection("systemconfigs").insert([ {
-    _id: ObjectId("642bc362e3f10fbf2b0b1e51"),
-    addDate: ISODate("2022-08-23T10:53:38.516Z"),
-    updateDate: ISODate("2023-06-29T07:21:14.993Z"),
-    fileIds: [ ],
-    confType: "DC0003",
-    confSelect: "DC00030003",
-    confValue: "0",
-    isSet: true,
-    allowFetch: true,
-    isOpen: false,
-    remarks: "是否启用",
+    remarks: "apiclient_key.pem，可设置不能查看",
     __v: NumberInt("0"),
     updateUser: "baigao"
 } ]);

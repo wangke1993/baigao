@@ -24,7 +24,7 @@ export class SystemConfigService {
         systemConfig.updateDate = new Date();
         systemConfig.addUser = req?.user?.userName;
         systemConfig.addDate = new Date();
-        if (systemConfig.confValue) {
+        if (systemConfig.confValue !== "" && systemConfig.confValue != undefined) {
             systemConfig.isSet = true;
         } else {
             systemConfig.isSet = false;
@@ -38,16 +38,22 @@ export class SystemConfigService {
     async update(systemConfig: SystemConfig, confSelect: string, req: any): Promise<any> {
         systemConfig.updateUser = req?.user?.userName;
         systemConfig.updateDate = new Date();
+        const old = await this.SystemConfigModel.findOne({ confSelect });
         delete systemConfig.addDate;
         delete systemConfig.addUser;
         delete systemConfig.confSelect;
         delete systemConfig.confType;
         // delete systemConfig.isOpen;
         // delete systemConfig.allowFetch;
-        if (systemConfig.confValue) {
+        if (old.isSet && !old.allowFetch && (systemConfig.confValue === "" || systemConfig.confValue === undefined)) {
+            // 已经设置了，且只可设置的项目，空参数时值不做改变
+            delete systemConfig.confValue;
+            delete systemConfig.updateUser;
+            delete systemConfig.updateDate;
+        } else if (systemConfig.confValue !== "" && systemConfig.confValue != undefined) {
             systemConfig.isSet = true;
         } else {
-            delete systemConfig.confValue;
+            systemConfig.isSet = false;
         }
         return await this.SystemConfigModel.updateOne({ confSelect: confSelect }, { $set: { ...systemConfig } });
     }
