@@ -201,8 +201,12 @@ const delConfigItem = async (
     alertWarning(message);
   }
 };
+let oldConfigPage = "";
 watchEffect(async () => {
-  if (ConfigPage.value.group) {
+  if (
+    ConfigPage.value.group &&
+    oldConfigPage != JSON.stringify(ConfigPage.value)
+  ) {
     //保存变更到服务器
     const {
       data: { status, message },
@@ -212,6 +216,7 @@ watchEffect(async () => {
     if (status != 1) {
       alertWarning(message);
     } else {
+      oldConfigPage = JSON.stringify(ConfigPage.value);
       paramInit();
     }
   }
@@ -237,7 +242,6 @@ const paramInit = () => {
        */
     }
   });
-  console.log("----------", ConfigSaveLoading.value);
 };
 onMounted(async () => {
   // const ConfigPageString = window.localStorage.getItem("ConfigPage");
@@ -247,6 +251,7 @@ onMounted(async () => {
   } = await SystemConfigControllerGetSystemPageConfig();
   if (status == 1) {
     const ConfigPageString = data;
+    oldConfigPage = data;
     if (ConfigPageString) {
       ConfigPage.value = JSON.parse(ConfigPageString);
     }
@@ -254,7 +259,6 @@ onMounted(async () => {
       ConfigPage.value.group = [];
     }
     paramInit();
-    // TODO：从服务器获取配置值，然后赋值
     const {
       data: { status, data: resData, message },
     } = await SystemConfigControllerGetAll();
