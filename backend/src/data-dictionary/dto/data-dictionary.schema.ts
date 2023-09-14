@@ -38,22 +38,28 @@ export class DataDictionary extends Document {
     dicCode: string;
     @ApiProperty({
         required: false,
+        description: '值',
+    })
+    @Prop()
+    value: string;
+    @ApiProperty({
+        required: false,
         description: '备注',
     })
     @Prop()
     remarks: string;
     @ApiProperty({
         required: false,
-        description: '添加时间',
-    })
-    @Prop()
-    addDate: Date;
-    @ApiProperty({
-        required: false,
         description: '系统值标识，系统值不能被删除',
     })
     @Prop()
     isSystem: boolean;
+    @ApiProperty({
+        required: false,
+        description: '添加时间',
+    })
+    @Prop()
+    addDate: Date;
 }
 export enum DIC_TYPE {
     'class' = 1,

@@ -8,6 +8,9 @@
       <el-form-item label="字典值" prop="dicName">
         <el-input v-model="form.dicName" />
       </el-form-item>
+      <el-form-item label="值" prop="value">
+        <el-input v-model="form.value" />
+      </el-form-item>
       <el-form-item label="备注" prop="remarks">
         <el-input v-model="form.remarks" />
       </el-form-item>
@@ -26,6 +29,16 @@
             <el-input
               :disabled="scope.row.disabled ? false : true"
               v-model="scope.row.dicName"
+            />
+          </el-button-group>
+        </template>
+      </el-table-column>
+      <el-table-column label="值">
+        <template #default="scope">
+          <el-button-group class="ml-4">
+            <el-input
+              :disabled="scope.row.disabled ? false : true"
+              v-model="scope.row.value"
             />
           </el-button-group>
         </template>
@@ -106,6 +119,7 @@ const form = ref({
   dicType: 2,
   remarks: "",
   dicClass: "",
+  value: "",
 });
 const title = ref("字典值管理");
 const state = reactive({
@@ -137,6 +151,7 @@ const closeForm = (formEl: FormInstance | undefined) => {
     dicType: 2,
     remarks: "",
     dicClass: "",
+    value: "",
   };
 };
 
@@ -173,6 +188,7 @@ const postDataDictionaryControllerCreate = async (params: any) => {
     if (data.status === 1) {
       alertSuccess("操作成功");
       form.value.dicName = "";
+      form.value.value = "";
       form.value.remarks = "";
       getDataDictionaryControllerGetListByDicClass(form.value.dicClass);
     }
