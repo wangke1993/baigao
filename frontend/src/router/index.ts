@@ -50,6 +50,20 @@ const defaultRoutes = [
     },
     component: () => import('@/views/404.vue'),
   },
+  {
+    path: '/dev',
+    component: layout,
+    name: 'dev',
+    meta: { title: '开发工具' },
+    children: [
+      {
+        path: 'autoCode',
+        component: () => import('@/views/dev/AutoCode.vue'),
+        name: 'autoCode',
+        meta: { title: '开发工具' }
+      },
+    ]
+  }
   // ...index
 ];
 const router = createRouter({

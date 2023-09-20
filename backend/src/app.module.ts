@@ -23,6 +23,7 @@ import { DelayTaskModule } from './delay-task/delay-task.module';
 import { CreateDelayTaskModule } from './delay-task/create-delay-task.module';
 import { TreeClassificationModule } from './tree-classification/tree-classification.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { SystemDevModule } from './system-dev/system-dev.module';
 const configService = new ConfigService();
 @Module({
   imports: [
@@ -62,6 +63,7 @@ const configService = new ConfigService();
     // DelayTaskModule,
     // CreateDelayTaskModule,
     TreeClassificationModule,
+    SystemDevModule
   ],
   controllers: [AppController],
   providers: [AppService],

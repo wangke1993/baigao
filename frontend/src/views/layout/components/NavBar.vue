@@ -5,11 +5,21 @@
     </el-icon>
     <el-breadcrumb class="nav-path">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item v-for="v, i in permissionStore.menuDeep[route.path]" :key="i">{{ v }}</el-breadcrumb-item>
+      <el-breadcrumb-item
+        v-for="(v, i) in permissionStore.menuDeep[route.path]"
+        :key="i"
+        >{{ v }}</el-breadcrumb-item
+      >
     </el-breadcrumb>
     <div class="nav-right">
-      <el-autocomplete v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" clearable
-        class="inline-input w-50" placeholder="功能搜索">
+      <el-autocomplete
+        v-model="searchKey"
+        @select="handleSelect"
+        :fetch-suggestions="querySearch"
+        clearable
+        class="inline-input w-50"
+        placeholder="功能搜索"
+      >
         <template #prefix>
           <el-icon class="el-input__icon">
             <search />
@@ -17,13 +27,16 @@
         </template>
       </el-autocomplete>
       <div class="user-avatar">
-        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+        <el-avatar
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        />
         <el-icon class="user-menu-down">
           <CaretBottom />
         </el-icon>
         <ul class="user-menu">
           <!-- <li>个人中心</li>
           <li>重置密码</li> -->
+          <li v-if="isDev" @click="toDev">开发工具</li>
           <li @click="loginOut">退出登录</li>
         </ul>
       </div>
@@ -32,11 +45,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useTabsStore } from '@/stores/tabs';
+import { useTabsStore } from "@/stores/tabs";
 import { usePermissionStore } from "@/stores/permission";
-import { deleteToken } from '@/utils/authTokenUtil';
-import { useRoute, useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { deleteToken } from "@/utils/authTokenUtil";
+import { useRoute, useRouter } from "vue-router";
+import { ref } from "vue";
 const router = useRouter();
 const route = useRoute();
 const emit = defineEmits(["openOffMenu"]);
@@ -45,22 +58,27 @@ const openOffMenu = () => {
 };
 const tabsStore = useTabsStore();
 const permissionStore = usePermissionStore();
-const searchKey = ref('');
+const searchKey = ref("");
 const loginOut = () => {
   deleteToken();
   tabsStore.clean();
   permissionStore.clean();
-  router.replace('/login');
-}
+  router.replace("/login");
+};
+const isDev = ref(window.location.hostname == "localhost");
+const toDev = () => {
+  router.push("/dev/autoCode");
+};
 const querySearch = (queryString: string, cb: any) => {
   const arr: any[] = permissionStore.menuList;
-  const results = arr.filter(m => m.value.indexOf(queryString) >= 0 && m.isShow === '1');
-  cb(results)
-}
+  const results = arr.filter(
+    (m) => m.value.indexOf(queryString) >= 0 && m.isShow === "1"
+  );
+  cb(results);
+};
 const handleSelect = (item: any) => {
   router.push(item.menuActive);
-}
-
+};
 </script>
 
 <style lang="scss" scoped>

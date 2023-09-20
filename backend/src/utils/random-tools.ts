@@ -1,3 +1,5 @@
+import { randomUUID } from "crypto";
+
 /**
  * 生成数字随机数
  * @param minNum ：起始值
@@ -43,4 +45,11 @@ export const randomXNumberRepeatable = (n: number, minNum: number, maxNum: numbe
         numArr.push(num);
     }
     return numArr;
+}
+/**
+ * 获取UUID，不带横杠
+ * @returns 去横杠UUID
+ */
+export const UUID = () => {
+    return randomUUID().replace(/-/g, "");
 }

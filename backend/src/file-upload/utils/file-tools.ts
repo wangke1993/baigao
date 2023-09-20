@@ -1,6 +1,7 @@
-import { existsSync, mkdirSync, rm, writeFile } from "fs";
+import { existsSync, lstatSync, mkdirSync, readdirSync, rm, rmdirSync, statSync, unlinkSync, writeFile } from "fs";
 import { FILE_TYPE } from "../dto/file-upload.schema";
 import { Logger } from "@nestjs/common";
+import { join } from 'path';
 const logger = new Logger('fileTools');
 enum ROOT_DIR {
     'public' = 'public',
@@ -104,4 +105,24 @@ export const getFileType = (fileName: string) => {
         return FILE_TYPE.GZIP;
     }
     return FILE_TYPE.other;
+}
+/**
+ * 递归删除文件夹
+ * @param folderPath 
+ */
+export const deleteFolderRecursive = (folderPath: string) => {
+    if (!statSync(folderPath).isDirectory()) {
+        unlinkSync(folderPath);
+    }
+    if (existsSync(folderPath)) {
+        readdirSync(folderPath).forEach((file) => {
+            const curPath = join(folderPath, file);
+            if (lstatSync(curPath).isDirectory()) {
+                deleteFolderRecursive(curPath);
+            } else {
+                unlinkSync(curPath);
+            }
+        });
+        rmdirSync(folderPath);
+    }
 }
