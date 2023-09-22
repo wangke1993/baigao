@@ -129,7 +129,43 @@ export class SystemDevController {
         }
         return rsp;
     }
-
+    @Get('getModuleList')
+    @AuthTag('getModuleList')
+    @ApiOperation({ description: '获取模型列表' })
+    @UseGuards(JwtAuthGuard)
+    async getModuleList(@Query('keyWord') keyWord: String): Promise<ResponseInfoDto<ModuleConf[]>> {
+        const rsp = new ResponseInfoDto<any>();
+        try {
+            rsp.success('获取成功', await this.systemDev.getModuleList(keyWord));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        return rsp;
+    }
+    @Get('getModuleFieldList')
+    @ApiOperation({ description: '获取模型列表' })
+    @UseGuards(JwtAuthGuard)
+    async getModuleFieldList(@Query('keyWord') keyWord: String): Promise<ResponseInfoDto<ModuleConf[]>> {
+        const rsp = new ResponseInfoDto<any>();
+        try {
+            rsp.success('获取成功', await this.systemDev.getModuleFieldList(keyWord));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        return rsp;
+    }
+    @Get('getModuleSearchList')
+    @ApiOperation({ description: '获取模型列表' })
+    @UseGuards(JwtAuthGuard)
+    async getModuleSearchList(): Promise<ResponseInfoDto<ModuleConf[]>> {
+        const rsp = new ResponseInfoDto<any>();
+        try {
+            rsp.success('获取成功', await this.systemDev.getModuleSearchList());
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        return rsp;
+    }
 
     @Get('createCode')
     @AuthTag('createCode')

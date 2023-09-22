@@ -68,7 +68,7 @@ export class SystemDevService {
         moduleConfDto.addDate = new Date();
         moduleConfDto.UUID = UUID();
         // 英文名称不能重复
-        if (((await this.moduleConf.findOne({ nameEn: moduleConfDto.nameEn })).UUID)) {
+        if (((await this.moduleConf.findOne({ nameEn: moduleConfDto.nameEn }))?.UUID)) {
             throw new Error("英文名称不能重复");
         }
         return new this.moduleConf(moduleConfDto).save();
@@ -80,7 +80,7 @@ export class SystemDevService {
         moduleFieldDto.addDate = new Date();
         moduleFieldDto.UUID = UUID();
         // 英文名称不能重复
-        if (((await this.moduleField.findOne({ nameEn: moduleFieldDto.nameEn })).UUID)) {
+        if (((await this.moduleField.findOne({ nameEn: moduleFieldDto.nameEn }))?.UUID)) {
             throw new Error("英文名称不能重复");
         }
         return new this.moduleField(moduleFieldDto).save();
@@ -91,7 +91,7 @@ export class SystemDevService {
         moduleSearchDto.addUser = req?.user?.userName;
         moduleSearchDto.addDate = new Date();
         // 字段不能重复
-        if (((await this.moduleSearch.findOne({ fieldUUID: moduleSearchDto.fieldUUID }))._id)) {
+        if (((await this.moduleSearch.findOne({ fieldUUID: moduleSearchDto.fieldUUID }))?._id)) {
             throw new Error("一个字段仅可配置一次");
         }
         return new this.moduleSearch(moduleSearchDto).save();
