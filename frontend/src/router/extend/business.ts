@@ -9,8 +9,8 @@
 const layout = () => import('@/views/layout/Index.vue');
 const rotes = [
     {
-        path: '/commodity',
-        name: 'commodity',
+        path: '/business',
+        name: 'business',
         component: layout,
         meta: {
             title: '业务管理'
