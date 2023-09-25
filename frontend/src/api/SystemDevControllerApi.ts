@@ -6,6 +6,7 @@ import axios from 'axios';
 import type { ModuleConfDto } from './dto/ModuleConfDto';
 import type { ModuleFieldDto } from './dto/ModuleFieldDto';
 import type { ModuleSearchDto } from './dto/ModuleSearchDto';
+import type { CreateCodeConfDtoDto } from './dto/CreateCodeConfDtoDto';
 
 
 /**
@@ -109,9 +110,9 @@ export const SystemDevControllerGetModuleSearchList = (moduleUUID: string, confi
 }
 /**
 * 生成代码
-* 
+* UUID：UUID;
 * @returns 
 */
-export const SystemDevControllerGetPath = ( config?: any) => {
-   return axios.get(`/api/systemDev/createCode`, { ...config });
+export const SystemDevControllerGetPath = (UUID: string,data: CreateCodeConfDtoDto, config?: any) => {
+   return axios.post(`/api/systemDev/createCode/${UUID}`, data, config);
 }

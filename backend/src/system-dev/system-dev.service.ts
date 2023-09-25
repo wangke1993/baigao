@@ -7,6 +7,8 @@ import { ModuleField } from './dto/module-field.schema';
 import { ModuleSearch } from './dto/module-search.schema';
 import { TransactionHelper } from 'src/transaction/transaction.helper';
 import { UUID } from 'src/utils/random-tools';
+import { CreateCodeConfDto, CreateConf } from './dto/create-code-conf.dto';
+import { DevTools } from './dev-tools';
 
 @Injectable()
 export class SystemDevService {
@@ -155,5 +157,28 @@ export class SystemDevService {
     }
     async getModuleSearchList(moduleUUID: String): Promise<ModuleField[]> {
         return await this.moduleSearch.find({ moduleUUID });
+    }
+    async createCode(UUID: String, createCodeConfDto: CreateCodeConfDto): Promise<any> {
+        /**
+         * 生成后端代码
+         *  增删改查
+         */
+        createCodeConfDto.isTemp = true;
+        createCodeConfDto.backend = true;
+        createCodeConfDto.frontend = false;
+        createCodeConfDto.config = new CreateConf();
+        createCodeConfDto.config.add = true;
+        createCodeConfDto.config.del = true;
+        createCodeConfDto.config.query = true;
+        createCodeConfDto.config.update = true;
+        const devTools = new DevTools(createCodeConfDto);
+        const moduleConf = await this.moduleConf.findOne({ UUID });
+        const fieldList = await this.getModuleFieldList(UUID, "");
+        devTools.createModuleDir(moduleConf.nameEn);
+        devTools.createDto(moduleConf, fieldList);
+        /**
+         * 生成前端代码
+         * 
+         */
     }
 }

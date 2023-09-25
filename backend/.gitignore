@@ -3,6 +3,7 @@
 /node_modules
 /public
 /private
+/src/temp
 apiDoc.json
 
 # Logs

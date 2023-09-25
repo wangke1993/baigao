@@ -2,6 +2,7 @@
   <div class="dev-box">
     <div class="top-box">
       <el-button type="primary" @click="create()">新增模型</el-button>
+      <div>UUID:{{ moduleForm.UUID }}</div>
       <div class="right" v-if="moduleForm.UUID">
         <el-button type="primary">生成</el-button>
         <el-button type="primary">挂载目录</el-button>
@@ -95,8 +96,16 @@
           </el-row>
         </el-form>
         <div class="more-conf" v-if="moduleForm.UUID">
-          <ModuleField ref="moduleFieldListRef" :moduleForm="moduleForm" @list-change="(data:Array<ModuleFieldDto>)=>moduleFieldList = data" />
-          <ModuleSearch ref="moduleSearchListRef" :moduleForm="moduleForm" :moduleFieldList="moduleFieldList" />
+          <ModuleField
+            ref="moduleFieldListRef"
+            :moduleForm="moduleForm"
+            @list-change="(data:Array<ModuleFieldDto>)=>moduleFieldList = data"
+          />
+          <ModuleSearch
+            ref="moduleSearchListRef"
+            :moduleForm="moduleForm"
+            :moduleFieldList="moduleFieldList"
+          />
         </div>
       </div>
     </div>
@@ -212,7 +221,7 @@ const delModule = async (id?: string) => {
 };
 const moduleFieldListRef = ref();
 const moduleSearchListRef = ref();
-const moduleFieldList = ref(new Array<ModuleFieldDto>())
+const moduleFieldList = ref(new Array<ModuleFieldDto>());
 const moduleDetail = (item: ModuleConfDto) => {
   moduleForm.value = item;
   showConf.value.content = true;
@@ -222,7 +231,6 @@ const moduleDetail = (item: ModuleConfDto) => {
   });
 };
 //#endregion
-
 </script>
 <style lang="scss" scoped>
 .empty-box {

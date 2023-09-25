@@ -75,6 +75,16 @@ export class ModuleField extends BaseSchema {
         default: false,
     })
     notRepeat: Boolean;
+    @ApiProperty({
+        description: '不能为空',
+        required: false,
+    })
+    @Prop({
+        required: false,
+        type: Boolean,
+        default: false,
+    })
+    notNull: Boolean;
 
     @ApiProperty({
         description: '列表显示',

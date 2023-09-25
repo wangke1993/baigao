@@ -1,0 +1,26 @@
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { ApiProperty } from "@nestjs/swagger";
+import { Document } from 'mongoose';
+import { BaseSchema } from "src/common-dto/base.schema";
+
+@Schema()
+export class <%= getBigModuleTitle(moduleConf.nameEn) %> extends BaseSchema {
+    
+    <% for (let i = 0; i < fieldList.length; i++) { %>
+    @ApiProperty({
+        description: '<%=fieldList[i].name %>',
+        required: <%=fieldList[i].notNull %>
+    })
+    @Prop({<% if (fieldList[i].notNull) { %>
+        required: [true,"<%=fieldList[i].name %>(<%=fieldList[i].nameEn %>)不能为空"],<% } else { %>
+        required: false,<% } %><% if (fieldList[i].defaultValue) { %>
+        default: <%=fieldList[i].defaultValue%>,<% } %>
+        type: <%=getBigModuleTitle(fieldList[i].type)%>
+    })
+    <%=fieldList[i].nameEn %>: <%=fieldList[i].type %>;
+    <% } %>
+}
+
+export type <%= getBigModuleTitle(moduleConf.nameEn) %>Document = <%= getBigModuleTitle(moduleConf.nameEn) %> & Document;
+
+export const <%= getBigModuleTitle(moduleConf.nameEn) %>Schema = SchemaFactory.createForClass(<%= getBigModuleTitle(moduleConf.nameEn) %>);

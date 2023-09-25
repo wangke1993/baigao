@@ -11,6 +11,7 @@ import { SystemDevService } from './system-dev.service';
 import { ModuleConf } from './dto/module-conf.schema';
 import { ModuleField } from './dto/module-field.schema';
 import { ModuleSearch } from './dto/module-search.schema';
+import { CreateCodeConfDto } from './dto/create-code-conf.dto';
 
 @ApiTags("开发工具")
 @Controller('/systemDev')
@@ -167,49 +168,13 @@ export class SystemDevController {
         return rsp;
     }
 
-    @Get('createCode')
-    @AuthTag('createCode')
+    @Post('createCode/:UUID')
     @ApiOperation({ description: '生成代码' })
-    async getPath(): Promise<ResponseInfoDto<any>> {
+    // @UseGuards(JwtAuthGuard)
+    async getPath(@Param('UUID') UUID: String, @Body() conf: CreateCodeConfDto): Promise<ResponseInfoDto<any>> {
         const info = new ResponseInfoDto<any>();
         try {
-            const pathConf = {
-                backend: __dirname.replace('dist\\system-dev', 'src'),
-                frontend: __dirname.replace('backend', 'frontend').replace('dist\\system-dev', 'src'),
-                temp: __dirname.replace('dist\\system-dev', 'dist\\temp'),
-            }
-            mkdirSync(pathConf.temp);
-            // 判断src存在即为开发环境，否则为生产环境
-
-            // 创建文件夹
-            // const moduleName = "company-manger";
-            // const backendPath = `${pathConf.backend}/${moduleName}`;
-            // if (!existsSync(backendPath)) {
-            //     mkdirSync(backendPath);
-            // }
-
-            // 创建文件
-            // if (existsSync(backendPath)) {
-            //     const dtoFileList = ['company-manger.dto.ts'];
-            //     const fileList = [
-            //         'company-manger.controller.ts',
-            //         'company-manger.module.ts',
-            //         'company-manger.service.ts',
-            //     ]
-            //     if (!existsSync(`${backendPath}/dto`)) {
-            //         mkdirSync(`${backendPath}/dto`);
-            //     }
-            //     dtoFileList.map(path => {
-            //         writeFileSync(`${backendPath}/dto/${path}`, "//dto");
-            //     });
-            //     fileList.map(path => {
-            //         writeFileSync(`${backendPath}/${path}`, "//业务文件");
-            //     })
-            // }
-
-            // 删除文件夹
-            // deleteFolderRecursive(`${pathConf.backend}/company-manger`);
-            info.success(`成功`, pathConf);
+            info.success("成功", this.systemDev.createCode(UUID, conf));
         } catch (e) {
             info.warring(e.toString());
         }

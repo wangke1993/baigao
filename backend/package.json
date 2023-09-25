@@ -35,6 +35,7 @@
     "axios": "^0.27.2",
     "crypto": "^1.0.1",
     "csurf": "^1.11.0",
+    "ejs": "^3.1.9",
     "express-rate-limit": "^6.3.0",
     "helmet": "^5.0.2",
     "ioredis": "^5.0.4",

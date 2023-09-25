@@ -62,6 +62,11 @@ export class ModuleFieldDto {
     notRepeat?: boolean;
     
     /**
+     * 不能为空
+     */
+    notNull?: boolean;
+    
+    /**
      * 列表显示
      */
     listShow?: boolean;
