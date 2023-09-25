@@ -40,14 +40,20 @@ export class DevTools {
         }
     }
     createDto(moduleConf: ModuleConf, fieldList: ModuleField[]) {
+        this.render(
+            TPL_CONF.DTO,
+            { moduleConf, fieldList },
+            `${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`
+        )
+    }
+    render(tplPath: string, data: any, filePath: string) {
         try {
-            const res = ejs.render(readFileSync(TPL_CONF.DTO).toString(), { ...this, moduleConf, fieldList });
-            this.createFile(`${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`, res);
+            const res = ejs.render(readFileSync(tplPath).toString(), { ...this, ...data });
+            this.createFile(filePath, res);
             return res;
         } catch (error) {
             console.error(error)
         }
-
     }
     /**
      * 创建前后端代码目录
