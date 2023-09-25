@@ -78,6 +78,11 @@
     <addAdvertisement ref="AddAdvertisementRef" @refresh="RefreshList" />
   </div>
 </template>
+<script lang="ts">
+export default {
+  name: "advertisement",
+};
+</script>
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
 import { btnShow } from "../../utils/buttonShow";

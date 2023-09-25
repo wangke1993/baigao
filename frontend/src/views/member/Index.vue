@@ -175,6 +175,11 @@ export default defineComponent({
   },
 });
 </script>
+<script lang="ts">
+export default {
+  name: "member",
+};
+</script>
 <style lang="scss">
 .list-box {
   padding: 20px;

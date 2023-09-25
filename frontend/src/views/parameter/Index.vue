@@ -285,6 +285,12 @@ onMounted(async () => {
  * 保存编辑页面配置
  */
 </script>
+
+<script lang="ts">
+export default {
+  name: "parameter",
+};
+</script>
 <style lang="scss">
 .list-box {
   padding: 20px;

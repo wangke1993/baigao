@@ -67,6 +67,11 @@
     <EditDictionary ref="EditDictionaryRef" />
   </div>
 </template>
+<script lang="ts">
+export default {
+  name: "dictionary",
+};
+</script>
 <script lang="ts" setup>
 import { ref, reactive, toRefs, defineComponent } from "vue";
 import { btnShow } from "../../utils/buttonShow";

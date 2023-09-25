@@ -102,6 +102,11 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+export default {
+  name: "dev",
+};
+</script>
 <script lang="ts" setup>
 import { Delete } from "@element-plus/icons-vue";
 import ModuleField from "@/views/dev/components/ModuleField.vue";
