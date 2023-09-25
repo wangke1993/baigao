@@ -70,7 +70,7 @@ export class SystemDevController {
         return rsp;
     }
     @Post('DevUpdateModuleField/:UUID')
-    @ApiOperation({ description: 'DevUpdateModuleField:更新模型字段' })
+    @ApiOperation({ description: '更新模型字段' })
     @UseGuards(JwtAuthGuard)
     async DevUpdateModuleField(@Body() form: ModuleField, @Param("UUID") UUID: string, @Req() req: any): Promise<ResponseInfoDto<ModuleField>> {
         const rsp = new ResponseInfoDto<ModuleField>();
@@ -81,13 +81,13 @@ export class SystemDevController {
         }
         return rsp;
     }
-    @Post('DevUpdateModuleSearch/:UUID')
-    @ApiOperation({ description: '新增模型搜索配置' })
+    @Post('DevUpdateModuleSearch/:id')
+    @ApiOperation({ description: '更新模型搜索配置' })
     @UseGuards(JwtAuthGuard)
-    async DevUpdateModuleSearch(@Body() form: ModuleSearch, @Param("UUID") UUID: string, @Req() req: any): Promise<ResponseInfoDto<ModuleSearch>> {
+    async DevUpdateModuleSearch(@Body() form: ModuleSearch, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<ModuleSearch>> {
         const rsp = new ResponseInfoDto<ModuleSearch>();
         try {
-            rsp.success('保存成功', await this.systemDev.updateSearch(form, UUID, req));
+            rsp.success('保存成功', await this.systemDev.updateSearch(form, id, req));
         } catch (e) {
             rsp.warring(e.toString());
         }
@@ -142,25 +142,25 @@ export class SystemDevController {
         }
         return rsp;
     }
-    @Get('getModuleFieldList')
-    @ApiOperation({ description: '获取模型列表' })
+    @Get('getModuleFieldList/:moduleUUID')
+    @ApiOperation({ description: '获取模型字段列表' })
     @UseGuards(JwtAuthGuard)
-    async getModuleFieldList(@Query('keyWord') keyWord: String): Promise<ResponseInfoDto<ModuleConf[]>> {
+    async getModuleFieldList(@Query('keyWord') keyWord: String, @Param("moduleUUID") moduleUUID: String): Promise<ResponseInfoDto<ModuleConf[]>> {
         const rsp = new ResponseInfoDto<any>();
         try {
-            rsp.success('获取成功', await this.systemDev.getModuleFieldList(keyWord));
+            rsp.success('获取成功', await this.systemDev.getModuleFieldList(moduleUUID, keyWord));
         } catch (e) {
             rsp.warring(e.toString());
         }
         return rsp;
     }
-    @Get('getModuleSearchList')
-    @ApiOperation({ description: '获取模型列表' })
+    @Get('getModuleSearchList/:moduleUUID')
+    @ApiOperation({ description: '获取模型搜索列表' })
     @UseGuards(JwtAuthGuard)
-    async getModuleSearchList(): Promise<ResponseInfoDto<ModuleConf[]>> {
+    async getModuleSearchList(@Param("moduleUUID") moduleUUID: String): Promise<ResponseInfoDto<ModuleConf[]>> {
         const rsp = new ResponseInfoDto<any>();
         try {
-            rsp.success('获取成功', await this.systemDev.getModuleSearchList());
+            rsp.success('获取成功', await this.systemDev.getModuleSearchList(moduleUUID));
         } catch (e) {
             rsp.warring(e.toString());
         }

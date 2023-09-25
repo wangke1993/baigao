@@ -1,5 +1,6 @@
 export class LoginFromDto {
 
+    _id?: string;
     /**
      * 用户名
      */

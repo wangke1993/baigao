@@ -1,5 +1,6 @@
 export class WeChatRegisterDto {
 
+    _id?: string;
     /**
      * openid
      */

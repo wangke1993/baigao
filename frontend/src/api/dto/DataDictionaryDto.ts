@@ -1,5 +1,6 @@
 export class DataDictionaryDto {
 
+    _id?: string;
     /**
      * 名称
      */

@@ -23,5 +23,6 @@ module.exports = {
     "eslint-disable-next-line": "off",
     "eol-last": 0,
     "arrow-parens": 0,
+    "prettier/prettier": "off"
   },
 };

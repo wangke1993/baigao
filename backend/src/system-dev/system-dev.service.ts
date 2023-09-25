@@ -120,12 +120,12 @@ export class SystemDevService {
         });
         return await update();
     }
-    async updateSearch(dto: ModuleSearch, UUID: string, req: any): Promise<any> {
+    async updateSearch(dto: ModuleSearch, id: string, req: any): Promise<any> {
         dto.updateUser = req?.user?.userName;
         dto.updateDate = new Date();
         delete dto.fieldEnName;
         delete dto.fieldUUID;
-        return await this.moduleSearch.updateOne({ UUID }, { $set: { ...dto } });
+        return await this.moduleSearch.findByIdAndUpdate(id, { $set: { ...dto } });
     }
     async getModuleList(keyWord: String): Promise<ModuleConf[]> {
         if (keyWord) {
@@ -140,19 +140,20 @@ export class SystemDevService {
             return await this.moduleConf.find();
         }
     }
-    async getModuleFieldList(keyWord: String): Promise<ModuleField[]> {
+    async getModuleFieldList(moduleUUID: String, keyWord: String): Promise<ModuleField[]> {
         if (keyWord) {
             return await this.moduleField.find({
                 $or: [
                     { name: { $regex: keyWord } },
                     { nameEn: { $regex: keyWord } }
-                ]
+                ],
+                moduleUUID
             });
         } else {
-            return await this.moduleField.find();
+            return await this.moduleField.find({ moduleUUID });
         }
     }
-    async getModuleSearchList(): Promise<ModuleField[]> {
-        return await this.moduleField.find();
+    async getModuleSearchList(moduleUUID: String): Promise<ModuleField[]> {
+        return await this.moduleSearch.find({ moduleUUID });
     }
 }

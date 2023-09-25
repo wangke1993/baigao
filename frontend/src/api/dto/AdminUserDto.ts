@@ -1,5 +1,6 @@
 export class AdminUserDto {
 
+    _id?: string;
     /**
      * 用户名
      */

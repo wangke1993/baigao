@@ -41,7 +41,7 @@ export const SystemDevControllerDevUpdateModule = (UUID: string,data: ModuleConf
    return axios.post(`/api/systemDev/DevUpdateModule/${UUID}`, data, config);
 }
 /**
-* DevUpdateModuleField:更新模型字段
+* 更新模型字段
 * UUID：UUID;
 * @returns 
 */
@@ -49,12 +49,12 @@ export const SystemDevControllerDevUpdateModuleField = (UUID: string,data: Modul
    return axios.post(`/api/systemDev/DevUpdateModuleField/${UUID}`, data, config);
 }
 /**
-* 新增模型搜索配置
-* UUID：UUID;
+* 更新模型搜索配置
+* id：id;
 * @returns 
 */
-export const SystemDevControllerDevUpdateModuleSearch = (UUID: string,data: ModuleSearchDto, config?: any) => {
-   return axios.post(`/api/systemDev/DevUpdateModuleSearch/${UUID}`, data, config);
+export const SystemDevControllerDevUpdateModuleSearch = (id: string,data: ModuleSearchDto, config?: any) => {
+   return axios.post(`/api/systemDev/DevUpdateModuleSearch/${id}`, data, config);
 }
 /**
 * 删除模型
@@ -92,20 +92,20 @@ export const SystemDevControllerGetModuleList = (query: { keyWord: string }, con
    return axios.get(`/api/systemDev/getModuleList`, { params: query,...config });
 }
 /**
-* 获取模型列表
-* keyWord：undefined;
+* 获取模型字段列表
+* keyWord：undefined;moduleUUID：moduleUUID;
 * @returns 
 */
-export const SystemDevControllerGetModuleFieldList = (query: { keyWord: string }, config?: any) => {
-   return axios.get(`/api/systemDev/getModuleFieldList`, { params: query,...config });
+export const SystemDevControllerGetModuleFieldList = (moduleUUID: string,query: { keyWord: string }, config?: any) => {
+   return axios.get(`/api/systemDev/getModuleFieldList/${moduleUUID}`, { params: query,...config });
 }
 /**
-* 获取模型列表
-* 
+* 获取模型搜索列表
+* moduleUUID：moduleUUID;
 * @returns 
 */
-export const SystemDevControllerGetModuleSearchList = ( config?: any) => {
-   return axios.get(`/api/systemDev/getModuleSearchList`, { ...config });
+export const SystemDevControllerGetModuleSearchList = (moduleUUID: string, config?: any) => {
+   return axios.get(`/api/systemDev/getModuleSearchList/${moduleUUID}`, { ...config });
 }
 /**
 * 生成代码

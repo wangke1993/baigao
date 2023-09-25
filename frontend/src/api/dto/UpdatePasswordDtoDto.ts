@@ -1,5 +1,6 @@
 export class UpdatePasswordDtoDto {
 
+    _id?: string;
     /**
      * 原密码
      */

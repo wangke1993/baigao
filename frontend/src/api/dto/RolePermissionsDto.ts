@@ -1,5 +1,6 @@
 export class RolePermissionsDto {
 
+    _id?: string;
     /**
      * 角色名称
      */

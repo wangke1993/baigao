@@ -1,5 +1,6 @@
 export class AddrMangerDto {
 
+    _id?: string;
     /**
      * 最后更新用户
      */

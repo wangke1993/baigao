@@ -16,6 +16,7 @@ function getFiled (name, typeObj, required) {
 }
 function getClass (name, filedText) {
     return `export class ${name}Dto {
+
 ${filedText}
 }`
 }
@@ -159,7 +160,7 @@ function start () {
         const dtoObj = res.data.components.schemas;
         for (let i in dtoObj) {
             const dto = dtoObj[i];
-            let filedText = '';
+            let filedText = '    _id?: string;';
             for (let j in dto.properties) {
                 filedText += getFiled(j, dto.properties[j], dto.required?.includes(j));
             }

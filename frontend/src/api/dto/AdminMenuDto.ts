@@ -1,5 +1,6 @@
 export class AdminMenuDto {
 
+    _id?: string;
     /**
      * 名称
      */

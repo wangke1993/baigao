@@ -1,5 +1,6 @@
 export class ResponseInfoDtoDto {
 
+    _id?: string;
     /**
      * 状态：-1错误，0警告，1成功
      */
