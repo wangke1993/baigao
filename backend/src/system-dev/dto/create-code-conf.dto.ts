@@ -30,6 +30,14 @@ export class CreateCodeConfDto {
      * 生成配置
      */
     config: CreateConf;
+    backendFile: BackendFile;
+}
+export class BackendFile{
+    dto: boolean;
+    pageDto: boolean;
+    controller: boolean;
+    service: boolean;
+    module: boolean;
 }
 export class CreateConf {
     add: boolean;

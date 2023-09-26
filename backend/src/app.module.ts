@@ -24,7 +24,6 @@ import { CreateDelayTaskModule } from './delay-task/create-delay-task.module';
 import { TreeClassificationModule } from './tree-classification/tree-classification.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { SystemDevModule } from './system-dev/system-dev.module';
-import { StudentMangerModule } from './temp/student-manger/student-manger.module';
 const configService = new ConfigService();
 @Module({
   imports: [

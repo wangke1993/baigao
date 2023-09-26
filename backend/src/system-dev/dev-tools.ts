@@ -47,34 +47,47 @@ export class DevTools {
         this.small = {};
     }
     createDto(moduleConf: ModuleConf, fieldList: ModuleField[], searchOldList: ModuleSearch[]) {
-        // 生成数据模型
-        this.render(
-            TPL_CONF.DTO,
-            { moduleConf, fieldList },
-            `${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`
-        )
-        // 生成分页模型，排除模糊搜索项目
-        const searchList = searchOldList.filter(item => item.method != 'like');
-        if (searchList.length > 0) {
+        if (this.conf.backendFile.dto) {
+            // 生成数据模型
             this.render(
-                TPL_CONF.PAGE,
-                { moduleConf, searchList },
-                `${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`
-            )
+                TPL_CONF.DTO,
+                { moduleConf, fieldList },
+                `${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`
+            );
         } else {
-            deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`)
+            deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`);
         }
+        if (this.conf.backendFile.pageDto) {
+            // 生成分页模型，排除模糊搜索项目
+            const searchList = searchOldList.filter(item => item.method != 'like');
+            if (searchList.length > 0) {
+                this.render(
+                    TPL_CONF.PAGE,
+                    { moduleConf, searchList },
+                    `${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`
+                );
+            } else {
+                deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`);
+            }
+        } else {
+            deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`);
+        }
+
     }
     createService(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
-        this.render(
-            TPL_CONF.SERVICE,
-            {
-                moduleConf,
-                searchListForLike: searchList.filter(item => item.method == 'like'),
-                searchListForOther: searchList.filter(item => item.method != 'like')
-            },
-            `${this.savePath.backend}/${moduleConf.nameEn}.service.ts`
-        )
+        if (this.conf.backendFile.service) {
+            this.render(
+                TPL_CONF.SERVICE,
+                {
+                    moduleConf,
+                    searchListForLike: searchList.filter(item => item.method == 'like'),
+                    searchListForOther: searchList.filter(item => item.method != 'like')
+                },
+                `${this.savePath.backend}/${moduleConf.nameEn}.service.ts`
+            );
+        } else {
+            deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.service.ts`);
+        }
     }
     getMethodString = (item: ModuleSearch) => {
         // 统一前缀page.
@@ -96,21 +109,29 @@ export class DevTools {
         }
     }
     createController(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
-        this.render(
-            TPL_CONF.CONTROLLER,
-            {
-                moduleConf,
-                usePageDto: searchList.filter(item => item.method != 'like').length
-            },
-            `${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`
-        )
+        if (this.conf.backendFile.controller) {
+            this.render(
+                TPL_CONF.CONTROLLER,
+                {
+                    moduleConf,
+                    usePageDto: searchList.filter(item => item.method != 'like').length
+                },
+                `${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`);
+        }
     }
     createModule(moduleConf: ModuleConf) {
-        this.render(
-            TPL_CONF.MODULE,
-            { moduleConf },
-            `${this.savePath.backend}/${moduleConf.nameEn}.module.ts`
-        )
+        if (this.conf.backendFile.module) {
+            this.render(
+                TPL_CONF.MODULE,
+                { moduleConf },
+                `${this.savePath.backend}/${moduleConf.nameEn}.module.ts`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.module.ts`);
+        }
     }
     render(tplPath: string, data: any, filePath: string) {
         try {

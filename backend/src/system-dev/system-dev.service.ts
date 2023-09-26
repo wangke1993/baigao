@@ -7,7 +7,7 @@ import { ModuleField } from './dto/module-field.schema';
 import { ModuleSearch } from './dto/module-search.schema';
 import { TransactionHelper } from 'src/transaction/transaction.helper';
 import { UUID } from 'src/utils/random-tools';
-import { CreateCodeConfDto, CreateConf } from './dto/create-code-conf.dto';
+import { BackendFile, CreateCodeConfDto, CreateConf } from './dto/create-code-conf.dto';
 import { DevTools } from './dev-tools';
 
 @Injectable()
@@ -172,19 +172,26 @@ export class SystemDevService {
         createCodeConfDto.config.query = true;
         createCodeConfDto.config.update = true;
         createCodeConfDto.config.UUID = true;
+        createCodeConfDto.backendFile = new BackendFile();
+        createCodeConfDto.backendFile.controller = false;
+        createCodeConfDto.backendFile.dto = true;
+        createCodeConfDto.backendFile.module = false;
+        createCodeConfDto.backendFile.pageDto = false;
+        createCodeConfDto.backendFile.service = false;
         const devTools = new DevTools(createCodeConfDto);
         const moduleConf = await this.moduleConf.findOne({ UUID });
         const fieldList = await this.getModuleFieldList(UUID, "");
         const searchList = await this.getModuleSearchList(UUID);
-        try {
-            devTools.createModuleDir(moduleConf.nameEn);
+        devTools.createModuleDir(moduleConf.nameEn);
+        if (devTools.conf.backend) {
             devTools.createDto(moduleConf, fieldList, searchList);
             devTools.createService(moduleConf, searchList);
             devTools.createController(moduleConf, searchList);
             devTools.createModule(moduleConf);
-            // TODO:生成前端代码
-        } catch (error) {
-            throw error;
+        }
+        if (devTools.conf.frontend) {
+            // TODO:生成前端
+
         }
 
     }
