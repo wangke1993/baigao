@@ -263,6 +263,7 @@ const createCode = async () => {
 .dev-box {
   padding: 18px;
   width: 100%;
+  box-sizing: border-box;
   .top-box {
     padding: 8px 0;
     display: flex;
@@ -275,7 +276,9 @@ const createCode = async () => {
   .bottom-box {
     display: flex;
     .module-list {
-      width: 200px;
+      width: 288px;
+      box-sizing: border-box;
+      margin-right: 28px;
       .list-box {
         .item {
           display: flex;
@@ -283,6 +286,7 @@ const createCode = async () => {
           .left {
             width: 80%;
             p {
+              margin-top: 8px;
               color: #666;
             }
           }
@@ -290,17 +294,25 @@ const createCode = async () => {
             background-color: #eee;
             cursor: pointer;
             border-radius: 8px;
+            color: #222;
+            p {
+              color: #666 !important;
+            }
           }
         }
         .active {
-          background-color: #ccc;
+          background-color: #eee;
+          cursor: pointer;
           border-radius: 8px;
+          color: #222;
+          p {
+            color: #666 !important;
+          }
         }
       }
     }
     .dev-content {
-      width: calc(100% - 200px);
-      padding: 0 8px;
+      width: calc(100% - 288px);
       .content-top {
         display: flex;
         .btn {
