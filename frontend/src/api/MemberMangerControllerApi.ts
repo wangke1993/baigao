@@ -11,7 +11,7 @@ import type { AddrMangerDto } from './dto/AddrMangerDto';
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;memberRank：会员等级;
 * @returns 
 */
-export const MemberMangerControllerGetMemberPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,memberRank: string }, config?: any) => {
+export const MemberMangerControllerGetMemberPage = (query: { pageSize: string,pageIndex: string,keyWord: string,memberRank: string }, config?: any) => {
    return axios.get(`/api/member/getMemberPage`, { params: query,...config });
 }
 /**

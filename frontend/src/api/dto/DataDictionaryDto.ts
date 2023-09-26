@@ -9,7 +9,7 @@ export class DataDictionaryDto {
     /**
      * 分类：1字典分类，2字典值
      */
-    dicType!: sring;
+    dicType!: string;
     
     /**
      * 所属分类Code,仅字典值有

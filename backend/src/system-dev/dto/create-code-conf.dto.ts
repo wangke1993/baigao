@@ -31,6 +31,7 @@ export class CreateCodeConfDto {
      */
     config: CreateConf;
     backendFile: BackendFile;
+    frontendFile: FrontEndFile;
 }
 export class BackendFile{
     dto: boolean;
@@ -38,6 +39,13 @@ export class BackendFile{
     controller: boolean;
     service: boolean;
     module: boolean;
+}
+export class FrontEndFile{
+    list: boolean;
+    form: boolean;
+    search: boolean;
+    dto: boolean;
+    api: boolean;
 }
 export class CreateConf {
     add: boolean;

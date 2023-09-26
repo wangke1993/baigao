@@ -35,7 +35,7 @@ export const AdminMenuControllerGetTree = ( config?: any) => {
 * menuType：menuType;
 * @returns 
 */
-export const AdminMenuControllerGetTreeByMenuType = (menuType: sring, config?: any) => {
+export const AdminMenuControllerGetTreeByMenuType = (menuType: string, config?: any) => {
    return axios.get(`/api/admin/menu/getMenu/${menuType}`, { ...config });
 }
 /**

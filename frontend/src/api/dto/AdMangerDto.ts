@@ -69,6 +69,6 @@ export class AdMangerDto {
     /**
      * 排序,升序,越小越靠前
      */
-    sort?: sring;
+    sort?: string;
     
 }

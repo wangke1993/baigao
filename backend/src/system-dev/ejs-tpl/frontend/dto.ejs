@@ -1,4 +1,4 @@
-export class TreeClassificationDto {
+export class <%=getBigModuleTitle(moduleConf.nameEn) %>Dto {
 
     _id?: string;
     /**
@@ -26,39 +26,16 @@ export class TreeClassificationDto {
      */
     fileIds?: string[];
     
+    <% if(conf.config.UUID){%>
     /**
-     * UUID
-     */
+    * UUID
+    */
     UUID!: string;
-    
+    <% } %>
+    <% for (let i = 0; i < fieldList.length; i++) { %>
     /**
-     * 名称
+     * <%=fieldList[i].name %>
      */
-    name!: string;
-    
-    /**
-     * 上级,为0时则为1级
-     */
-    parent!: string;
-    
-    /**
-     * 排序
-     */
-    sort!: string;
-    
-    /**
-     * 兄弟节点数量
-     */
-    breathCount!: string;
-    
-    /**
-     * 备注
-     */
-    remarks!: string;
-    
-    /**
-     * 数据分类：存储数据字典值
-     */
-    dataClass!: string;
-    
+     <%=fieldList[i].nameEn %><%=fieldList[i].notNull?"!":"?" %>: <%=fieldList[i].type %>;
+    <% } %>
 }

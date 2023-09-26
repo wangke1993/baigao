@@ -3,7 +3,12 @@
     <div class="top-box">
       <el-button type="primary" @click="create()">新增模型</el-button>
       <div class="right" v-if="moduleForm.UUID">
-        <el-button type="primary" v-loading="createCodeLoading" @click="createCode()" >生成</el-button>
+        <el-button
+          type="primary"
+          v-loading="createCodeLoading"
+          @click="createCode()"
+          >生成</el-button
+        >
         <el-button type="primary">挂载目录</el-button>
       </div>
     </div>
@@ -164,7 +169,7 @@ const menuTreeProps = {
 const getMenuTree = async () => {
   const {
     data: { status, data, message },
-  } = await AdminMenuControllerGetTreeByMenuType(1);
+  } = await AdminMenuControllerGetTreeByMenuType("1");
   if (status === 1) {
     menuTree.value = data;
     menuTree.value.unshift({ _id: "0", menuName: "根目录" });

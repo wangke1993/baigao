@@ -23,7 +23,7 @@ ${filedText}
 function getType (type) {
     const typeConfig = {
         'string': 'string',
-        'number': 'sring'
+        'number': 'string'
     }
     if (typeConfig[type]) {
         return typeConfig[type];

@@ -53,6 +53,6 @@ export const AdminUserControllerDelete = (id: string, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
 * @returns 
 */
-export const AdminUserControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string }, config?: any) => {
+export const AdminUserControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string }, config?: any) => {
    return axios.get(`/api/adminUser/getPage`, { params: query,...config });
 }

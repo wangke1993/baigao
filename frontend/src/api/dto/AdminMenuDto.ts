@@ -44,6 +44,6 @@ export class AdminMenuDto {
     /**
      * 排序,升序，数值越小越靠前
      */
-    sort?: sring;
+    sort?: string;
     
 }

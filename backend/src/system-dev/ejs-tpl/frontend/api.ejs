@@ -1,0 +1,42 @@
+
+/**
+* <%=moduleConf.name %>
+*/
+import axios from 'axios';
+import type { <%=getBigModuleTitle(moduleConf.nameEn) %>Dto } from './dto/<%=getBigModuleTitle(moduleConf.nameEn) %>Dto';
+
+
+/**
+* create<%=getBigModuleTitle(moduleConf.nameEn) %>:创建<%=moduleConf.name %>
+*/
+export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerCreate = (data: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto, config?: any) => {
+   return axios.post(`/api/<%=getSmallModuleTitle(moduleConf.nameEn) %>/create`, data, config);
+}
+
+/**
+* update<%=getBigModuleTitle(moduleConf.nameEn) %>:编辑<%=moduleConf.name %>
+*/
+export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerUpdate = (id: string,data: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto, config?: any) => {
+   return axios.post(`/api/<%=getSmallModuleTitle(moduleConf.nameEn) %>/update/${id}`, data, config);
+}
+
+/**
+* getDetailBy<%=getBigModuleTitle(moduleConf.nameEn) %>Id:根据id获取<%=moduleConf.name %>详情，以发布和未发布的均可获取
+*/
+export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetDetailById = (id: string, config?: any) => {
+   return axios.get(`/api/<%=getSmallModuleTitle(moduleConf.nameEn) %>/getDetail/${id}`, { ...config });
+}
+
+/**
+* delete<%=getBigModuleTitle(moduleConf.nameEn) %>:删除<%=moduleConf.name %>
+*/
+export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerDelete = (id: string, config?: any) => {
+   return axios.delete(`/api/<%=getSmallModuleTitle(moduleConf.nameEn) %>/delete/${id}`, config);
+}
+             
+/**
+* get<%=getBigModuleTitle(moduleConf.nameEn) %>Page:获取<%=moduleConf.name %>分页
+*/
+export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string, <% for (let i = 0; i < searchNoLike.length; i++) {%> <%=searchNoLike[i].fieldEnName %>:<%=searchNoLike[i].fieldType %>, <% } %>}, config?: any) => {
+   return axios.get(`/api/<%=getSmallModuleTitle(moduleConf.nameEn) %>/getPage`, { params: query,...config });
+}

@@ -44,7 +44,7 @@ export const TreeClassificationControllerGetTree = (dataClass: string,query: { k
 * direction：direction;
 * @returns 
 */
-export const TreeClassificationControllerMove = (direction: sring,data: TreeClassificationDto, config?: any) => {
+export const TreeClassificationControllerMove = (direction: string,data: TreeClassificationDto, config?: any) => {
    return axios.post(`/api/treeClassification/move/${direction}`, data, config);
 }
 /**

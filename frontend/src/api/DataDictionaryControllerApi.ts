@@ -44,7 +44,7 @@ export const DataDictionaryControllerDelete = (dicCode: string, config?: any) =>
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;dicClass：所属数据字典(dicCode)，为空时查询字典类型分页，有值时，查询字典分类下的字典值;
 * @returns 
 */
-export const DataDictionaryControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,dicClass: string }, config?: any) => {
+export const DataDictionaryControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string,dicClass: string }, config?: any) => {
    return axios.get(`/api/admin/dic/getPage`, { params: query,...config });
 }
 /**

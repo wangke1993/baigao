@@ -74,7 +74,7 @@ export const WeChatApiControllerOrderRefunds = (id: string,query: { refundsCause
 * money：money;
 * @returns 
 */
-export const WeChatApiControllerWithdrawal = (money: sring, config?: any) => {
+export const WeChatApiControllerWithdrawal = (money: string, config?: any) => {
    return axios.get(`/api/wechat/withdrawal/${money}`, { ...config });
 }
 /**

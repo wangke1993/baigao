@@ -71,6 +71,6 @@ export const FileUploadControllerDelete = (id: string, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
 * @returns 
 */
-export const FileUploadControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string }, config?: any) => {
+export const FileUploadControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string }, config?: any) => {
    return axios.get(`/api/file/getPage`, { params: query,...config });
 }

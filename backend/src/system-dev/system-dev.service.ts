@@ -7,7 +7,7 @@ import { ModuleField } from './dto/module-field.schema';
 import { ModuleSearch } from './dto/module-search.schema';
 import { TransactionHelper } from 'src/transaction/transaction.helper';
 import { UUID } from 'src/utils/random-tools';
-import { BackendFile, CreateCodeConfDto, CreateConf } from './dto/create-code-conf.dto';
+import { BackendFile, CreateCodeConfDto, CreateConf, FrontEndFile } from './dto/create-code-conf.dto';
 import { DevTools } from './dev-tools';
 
 @Injectable()
@@ -165,7 +165,7 @@ export class SystemDevService {
          */
         createCodeConfDto.isTemp = true;
         createCodeConfDto.backend = true;
-        createCodeConfDto.frontend = false;
+        createCodeConfDto.frontend = true;
         createCodeConfDto.config = new CreateConf();
         createCodeConfDto.config.add = true;
         createCodeConfDto.config.del = true;
@@ -173,11 +173,17 @@ export class SystemDevService {
         createCodeConfDto.config.update = true;
         createCodeConfDto.config.UUID = true;
         createCodeConfDto.backendFile = new BackendFile();
-        createCodeConfDto.backendFile.controller = false;
+        createCodeConfDto.backendFile.controller = true;
         createCodeConfDto.backendFile.dto = true;
-        createCodeConfDto.backendFile.module = false;
-        createCodeConfDto.backendFile.pageDto = false;
-        createCodeConfDto.backendFile.service = false;
+        createCodeConfDto.backendFile.module = true;
+        createCodeConfDto.backendFile.pageDto = true;
+        createCodeConfDto.backendFile.service = true;
+        createCodeConfDto.frontendFile = new FrontEndFile();
+        createCodeConfDto.frontendFile.api = false;
+        createCodeConfDto.frontendFile.dto = false;
+        createCodeConfDto.frontendFile.form = true;
+        createCodeConfDto.frontendFile.list = true;
+        createCodeConfDto.frontendFile.search = true;
         const devTools = new DevTools(createCodeConfDto);
         const moduleConf = await this.moduleConf.findOne({ UUID });
         const fieldList = await this.getModuleFieldList(UUID, "");
@@ -190,9 +196,13 @@ export class SystemDevService {
             devTools.createModule(moduleConf);
         }
         if (devTools.conf.frontend) {
-            // TODO:生成前端
-
+            // 生成dto
+            devTools.createFrontendDto(moduleConf, fieldList);
+            // 生成api
+            devTools.createFrontendApi(moduleConf, searchList);
+            // 生成列表页
+            // 生成搜索组件
+            // 生成表单组件
         }
-
     }
 }

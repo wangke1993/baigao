@@ -52,6 +52,6 @@ export const ArticleMangerControllerDelete = (id: string, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;articleClass：所属分类，取字典管理中：DC0001的值;isRelease：发布状态，0全部，1已发布，2未发布;
 * @returns 
 */
-export const ArticleMangerControllerGetPage = (query: { pageSize: sring,pageIndex: sring,keyWord: string,articleClass: string,isRelease: sring }, config?: any) => {
+export const ArticleMangerControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string,articleClass: string,isRelease: string }, config?: any) => {
    return axios.get(`/api/article/getPage`, { params: query,...config });
 }

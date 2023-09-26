@@ -15,12 +15,19 @@ const TEMP_PATH_CONF = {
     frontend: PATH_CONF.frontend.replace('src\\views', 'src\\temp'),
 }
 const EJS_PATH = `${PATH_CONF.backend}/system-dev/ejs-tpl`
-const TPL_CONF = {
-    "DTO": `${EJS_PATH}/dto.ejs`,
-    "PAGE": `${EJS_PATH}/page.ejs`,
-    "MODULE": `${EJS_PATH}/module.ejs`,
-    "SERVICE": `${EJS_PATH}/service.ejs`,
-    "CONTROLLER": `${EJS_PATH}/controller.ejs`,
+const BACKEND_TPL = {
+    "DTO": `${EJS_PATH}/backend/dto.ejs`,
+    "PAGE": `${EJS_PATH}/backend/page.ejs`,
+    "MODULE": `${EJS_PATH}/backend/module.ejs`,
+    "SERVICE": `${EJS_PATH}/backend/service.ejs`,
+    "CONTROLLER": `${EJS_PATH}/backend/controller.ejs`,
+}
+const FRONTEND_TPL = {
+    "DTO": `${EJS_PATH}/frontend/dto.ejs`,
+    "API": `${EJS_PATH}/frontend/api.ejs`,
+    "LIST": `${EJS_PATH}/frontend/list.ejs`,
+    "SEARCH": `${EJS_PATH}/frontend/search.ejs`,
+    "FORM": `${EJS_PATH}/frontend/form.ejs`,
 }
 export class DevTools {
     conf: CreateCodeConfDto;
@@ -28,6 +35,7 @@ export class DevTools {
         backend: string,
         backendDto: string;
         frontend: string,
+        frontendComponents: string,
         frontendApi: string,
         frontendDto: string,
     }
@@ -42,6 +50,7 @@ export class DevTools {
             frontend: "",
             frontendApi: "",
             frontendDto: "",
+            frontendComponents: "",
         }
         this.big = {};
         this.small = {};
@@ -50,7 +59,7 @@ export class DevTools {
         if (this.conf.backendFile.dto) {
             // 生成数据模型
             this.render(
-                TPL_CONF.DTO,
+                BACKEND_TPL.DTO,
                 { moduleConf, fieldList },
                 `${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`
             );
@@ -62,7 +71,7 @@ export class DevTools {
             const searchList = searchOldList.filter(item => item.method != 'like');
             if (searchList.length > 0) {
                 this.render(
-                    TPL_CONF.PAGE,
+                    BACKEND_TPL.PAGE,
                     { moduleConf, searchList },
                     `${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`
                 );
@@ -77,7 +86,7 @@ export class DevTools {
     createService(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
         if (this.conf.backendFile.service) {
             this.render(
-                TPL_CONF.SERVICE,
+                BACKEND_TPL.SERVICE,
                 {
                     moduleConf,
                     searchListForLike: searchList.filter(item => item.method == 'like'),
@@ -111,7 +120,7 @@ export class DevTools {
     createController(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
         if (this.conf.backendFile.controller) {
             this.render(
-                TPL_CONF.CONTROLLER,
+                BACKEND_TPL.CONTROLLER,
                 {
                     moduleConf,
                     usePageDto: searchList.filter(item => item.method != 'like').length
@@ -125,12 +134,34 @@ export class DevTools {
     createModule(moduleConf: ModuleConf) {
         if (this.conf.backendFile.module) {
             this.render(
-                TPL_CONF.MODULE,
+                BACKEND_TPL.MODULE,
                 { moduleConf },
                 `${this.savePath.backend}/${moduleConf.nameEn}.module.ts`
             )
         } else {
             deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.module.ts`);
+        }
+    }
+    createFrontendDto(moduleConf: ModuleConf, fieldList: ModuleField[],) {
+        if (this.conf.frontendFile.dto) {
+            this.render(
+                FRONTEND_TPL.DTO,
+                { moduleConf, fieldList },
+                `${this.savePath.frontendDto}/${this.getBigModuleTitle(moduleConf.nameEn)}Dto.ts`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.frontendDto}/${this.getBigModuleTitle(moduleConf.nameEn)}Dto.ts`);
+        }
+    }
+    createFrontendApi(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
+        if (this.conf.frontendFile.dto) {
+            this.render(
+                FRONTEND_TPL.API,
+                { moduleConf, searchNoLike: searchList.filter(item => item.method != 'like') },
+                `${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`);
         }
     }
     render(tplPath: string, data: any, filePath: string) {
@@ -163,16 +194,17 @@ export class DevTools {
         if (this.conf.frontend) {
             // 小驼峰命名
             this.savePath.frontend = `${path.frontend}/${this.getSmallModuleTitle(moduleName)}`
-            this.savePath.frontendApi = `${PATH_CONF.frontend}/api`;
-            this.savePath.frontendDto = `${PATH_CONF.frontend}/api/dto`;
+            this.savePath.frontendComponents = `${path.frontend}/${this.getSmallModuleTitle(moduleName)}/components`
+            this.savePath.frontendApi = `${PATH_CONF.frontend.replace("views","")}api`;
+            this.savePath.frontendDto = `${PATH_CONF.frontend.replace("views","")}api/dto`;
             if (!existsSync(path.frontend)) {
                 mkdirSync(path.frontend);
             }
             if (!existsSync(this.savePath.frontend)) {
                 mkdirSync(this.savePath.frontend);
-            } else {
-                this.savePath.frontend += new Date().getTime();
-                mkdirSync(this.savePath.frontend);
+            }
+            if (!existsSync(this.savePath.frontendComponents)) {
+                mkdirSync(this.savePath.frontendComponents);
             }
         }
     }
