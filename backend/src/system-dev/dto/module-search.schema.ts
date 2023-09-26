@@ -43,6 +43,15 @@ export class ModuleSearch extends BaseSchema {
         type: String
     })
     fieldEnName: string;
+    @ApiProperty({
+        description: '英文名称,单词用“-”隔开',
+        required: false
+    })
+    @Prop({
+        required: [true, "字段类型"],
+        type: String
+    })
+    fieldType: string;
 
     @ApiProperty({
         description: '绑定dom',
@@ -113,10 +122,13 @@ export class ModuleSearch extends BaseSchema {
 }
 export enum METHOD_TYPE {
     '模糊匹配' = "like",  // 仅String类型可以进行该匹配
-    '包含' = "includes",
+    '包含' = "in",
     '等于' = "=",
+    '不等于' = "!=",
     '大于' = ">",
+    '大于等于' = ">=",
     '小于' = "<",
+    '小于等于' = "<=",
 }
 
 export type ModuleSearchDocument = ModuleSearch & Document;

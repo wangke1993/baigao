@@ -1,0 +1,12 @@
+import { ApiProperty } from "@nestjs/swagger";
+import { PageRequestDto } from "src/common-dto/page-request.dto";
+
+export class <%=getBigModuleTitle(moduleConf.nameEn)%>PageDto extends PageRequestDto {
+    <% for (let i = 0; i < searchList.length; i++) { %>
+    @ApiProperty({
+        description: '<%= searchList[i].fieldName %>',
+        type: <%= getBigModuleTitle(searchList[i].fieldType) %>,
+    })
+    <%= searchList[i].fieldEnName %>: <%= getBigModuleTitle(searchList[i].fieldType) %>;
+    <% } %>
+}

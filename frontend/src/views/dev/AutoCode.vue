@@ -2,9 +2,8 @@
   <div class="dev-box">
     <div class="top-box">
       <el-button type="primary" @click="create()">新增模型</el-button>
-      <div>UUID:{{ moduleForm.UUID }}</div>
       <div class="right" v-if="moduleForm.UUID">
-        <el-button type="primary">生成</el-button>
+        <el-button type="primary" v-loading="createCodeLoading" @click="createCode()" >生成</el-button>
         <el-button type="primary">挂载目录</el-button>
       </div>
     </div>
@@ -126,6 +125,7 @@ import {
   SystemDevControllerDeleteModule,
   SystemDevControllerDevUpdateModule,
   SystemDevControllerGetModuleList,
+  SystemDevControllerCreateCode,
 } from "@/api/SystemDevControllerApi";
 import { ModuleConfDto } from "@/api/dto/ModuleConfDto";
 import { alertSuccess, alertWarning } from "@/utils/message";
@@ -229,6 +229,22 @@ const moduleDetail = (item: ModuleConfDto) => {
     moduleFieldListRef.value.getList();
     moduleSearchListRef.value.getList();
   });
+};
+const createCodeLoading = ref(false);
+const createCode = async () => {
+  if (!moduleForm.value.UUID) {
+    throw new Error("UUID不能为空");
+  }
+  createCodeLoading.value = true;
+  const {
+    data: { status, message },
+  } = await SystemDevControllerCreateCode(moduleForm.value.UUID, {});
+  createCodeLoading.value = false;
+  if (status === 1) {
+    alertSuccess("生成成功");
+  } else {
+    alertWarning(message);
+  }
 };
 //#endregion
 </script>

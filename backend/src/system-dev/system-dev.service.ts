@@ -112,8 +112,8 @@ export class SystemDevService {
             session.withTransaction(async () => {
                 try {
                     // 同步更新搜索字段
-                    const { UUID: fieldUUID, name: fieldName, nameEn: fieldEnName, dom, domDataUrl, dataValueField, dataLabelField, dataChildField } = dto;
-                    await this.moduleSearch.updateOne({ fieldUUID }, { $set: { fieldName, fieldEnName, dom, domDataUrl, dataValueField, dataLabelField, dataChildField } })
+                    const { UUID: fieldUUID, name: fieldName, nameEn: fieldEnName, dom, domDataUrl, dataValueField, dataLabelField, dataChildField, type: fieldType } = dto;
+                    await this.moduleSearch.updateOne({ fieldUUID }, { $set: { fieldName, fieldEnName, dom, domDataUrl, dataValueField, dataLabelField, dataChildField, fieldType } })
                     res(await this.moduleField.updateOne({ UUID }, { $set: { ...dto } }));
                 } catch (error) {
                     rej(error);
@@ -155,7 +155,7 @@ export class SystemDevService {
             return await this.moduleField.find({ moduleUUID });
         }
     }
-    async getModuleSearchList(moduleUUID: String): Promise<ModuleField[]> {
+    async getModuleSearchList(moduleUUID: String): Promise<ModuleSearch[]> {
         return await this.moduleSearch.find({ moduleUUID });
     }
     async createCode(UUID: String, createCodeConfDto: CreateCodeConfDto): Promise<any> {
@@ -171,14 +171,21 @@ export class SystemDevService {
         createCodeConfDto.config.del = true;
         createCodeConfDto.config.query = true;
         createCodeConfDto.config.update = true;
+        createCodeConfDto.config.UUID = true;
         const devTools = new DevTools(createCodeConfDto);
         const moduleConf = await this.moduleConf.findOne({ UUID });
         const fieldList = await this.getModuleFieldList(UUID, "");
-        devTools.createModuleDir(moduleConf.nameEn);
-        devTools.createDto(moduleConf, fieldList);
-        /**
-         * 生成前端代码
-         * 
-         */
+        const searchList = await this.getModuleSearchList(UUID);
+        try {
+            devTools.createModuleDir(moduleConf.nameEn);
+            devTools.createDto(moduleConf, fieldList, searchList);
+            devTools.createService(moduleConf, searchList);
+            devTools.createController(moduleConf, searchList);
+            devTools.createModule(moduleConf);
+            // TODO:生成前端代码
+        } catch (error) {
+            throw error;
+        }
+
     }
 }

@@ -113,6 +113,6 @@ export const SystemDevControllerGetModuleSearchList = (moduleUUID: string, confi
 * UUID：UUID;
 * @returns 
 */
-export const SystemDevControllerGetPath = (UUID: string,data: CreateCodeConfDtoDto, config?: any) => {
+export const SystemDevControllerCreateCode = (UUID: string,data: CreateCodeConfDtoDto, config?: any) => {
    return axios.post(`/api/systemDev/createCode/${UUID}`, data, config);
 }

@@ -36,6 +36,7 @@ export class CreateConf {
     del: boolean;
     update: boolean;
     query: boolean;
+    UUID: boolean;
     uni?: {
         listType: UNI_LIST_TYPE;
         tabDataUrl?: String;

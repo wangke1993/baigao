@@ -1,0 +1,21 @@
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TransactionModule } from 'src/transaction/transaction.module';
+import { FileUploadModule } from 'src/file-upload/file-upload.module';
+import { SystemLogModule } from 'src/system-log/system-log.module';
+import { <%=getBigModuleTitle(moduleConf.nameEn)%>Controller } from './<%= moduleConf.nameEn %>.controller';
+import { <%=getBigModuleTitle(moduleConf.nameEn)%>Service } from './<%= moduleConf.nameEn %>.service';
+import { <%=getBigModuleTitle(moduleConf.nameEn)%>, <%=getBigModuleTitle(moduleConf.nameEn)%>Schema } from './dto/<%= moduleConf.nameEn %>.schema';
+
+@Module({
+    imports: [
+        MongooseModule.forFeature([{ name: <%=getBigModuleTitle(moduleConf.nameEn)%>.name, schema: <%=getBigModuleTitle(moduleConf.nameEn)%>Schema }]),
+        TransactionModule,
+        SystemLogModule,
+        FileUploadModule
+    ],
+    providers: [<%=getBigModuleTitle(moduleConf.nameEn)%>Service],
+    exports: [<%=getBigModuleTitle(moduleConf.nameEn)%>Service],
+    controllers: [<%=getBigModuleTitle(moduleConf.nameEn)%>Controller]
+})
+export class <%=getBigModuleTitle(moduleConf.nameEn)%>Module { }

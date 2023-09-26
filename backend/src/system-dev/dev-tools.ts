@@ -4,6 +4,7 @@ import { deleteFolderRecursive } from "src/file-upload/utils/file-tools";
 import * as ejs from 'ejs';
 import { ModuleConf } from "./dto/module-conf.schema";
 import { ModuleField } from "./dto/module-field.schema";
+import { ModuleSearch } from "./dto/module-search.schema";
 
 const PATH_CONF = {
     backend: __dirname.replace('dist\\system-dev', 'src'),
@@ -15,7 +16,11 @@ const TEMP_PATH_CONF = {
 }
 const EJS_PATH = `${PATH_CONF.backend}/system-dev/ejs-tpl`
 const TPL_CONF = {
-    "DTO": `${EJS_PATH}/dto.ejs`
+    "DTO": `${EJS_PATH}/dto.ejs`,
+    "PAGE": `${EJS_PATH}/page.ejs`,
+    "MODULE": `${EJS_PATH}/module.ejs`,
+    "SERVICE": `${EJS_PATH}/service.ejs`,
+    "CONTROLLER": `${EJS_PATH}/controller.ejs`,
 }
 export class DevTools {
     conf: CreateCodeConfDto;
@@ -38,21 +43,81 @@ export class DevTools {
             frontendApi: "",
             frontendDto: "",
         }
+        this.big = {};
+        this.small = {};
     }
-    createDto(moduleConf: ModuleConf, fieldList: ModuleField[]) {
+    createDto(moduleConf: ModuleConf, fieldList: ModuleField[], searchOldList: ModuleSearch[]) {
+        // 生成数据模型
         this.render(
             TPL_CONF.DTO,
             { moduleConf, fieldList },
             `${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`
+        )
+        // 生成分页模型，排除模糊搜索项目
+        const searchList = searchOldList.filter(item => item.method != 'like');
+        if (searchList.length > 0) {
+            this.render(
+                TPL_CONF.PAGE,
+                { moduleConf, searchList },
+                `${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`)
+        }
+    }
+    createService(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
+        this.render(
+            TPL_CONF.SERVICE,
+            {
+                moduleConf,
+                searchListForLike: searchList.filter(item => item.method == 'like'),
+                searchListForOther: searchList.filter(item => item.method != 'like')
+            },
+            `${this.savePath.backend}/${moduleConf.nameEn}.service.ts`
+        )
+    }
+    getMethodString = (item: ModuleSearch) => {
+        // 统一前缀page.
+        switch (item.method) {
+            case "=":
+                return `{ $eq: page.${item.fieldEnName} }`;
+            case "in":
+                return `{ $in: page.${item.fieldEnName} }`;
+            case ">":
+                return `{ $gt: page.${item.fieldEnName} }`;
+            case "<":
+                return `{ $lt: page.${item.fieldEnName} }`;
+            case ">=":
+                return `{ $gte: page.${item.fieldEnName} }`;
+            case "<=":
+                return `{ $lte: page.${item.fieldEnName} }`;
+            case "!=":
+                return `{ $ne: page.${item.fieldEnName} }`;
+        }
+    }
+    createController(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
+        this.render(
+            TPL_CONF.CONTROLLER,
+            {
+                moduleConf,
+                usePageDto: searchList.filter(item => item.method != 'like').length
+            },
+            `${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`
+        )
+    }
+    createModule(moduleConf: ModuleConf) {
+        this.render(
+            TPL_CONF.MODULE,
+            { moduleConf },
+            `${this.savePath.backend}/${moduleConf.nameEn}.module.ts`
         )
     }
     render(tplPath: string, data: any, filePath: string) {
         try {
             const res = ejs.render(readFileSync(tplPath).toString(), { ...this, ...data });
             this.createFile(filePath, res);
-            return res;
         } catch (error) {
-            console.error(error)
+            throw error;
         }
     }
     /**
@@ -113,21 +178,29 @@ export class DevTools {
             mkdirSync(TEMP_PATH_CONF.frontend);
         }
     }
+    small: any;
     /**
     * 获取小驼峰命名
     * @param moduleName 模型名称，多单词使用“-”隔开
     */
     getSmallModuleTitle = (moduleName: String) => {
-        const big = this.getBigModuleTitle(moduleName);
-        return `${big.slice(0, 1).toLowerCase()}${big.slice(1)}`;
+        if (!this.small[`${moduleName}`]) {
+            const bigName = this.getBigModuleTitle(moduleName);
+            this.small[`${moduleName}`] = `${bigName.slice(0, 1).toLowerCase()}${bigName.slice(1)}`;
+        }
+        return this.small[`${moduleName}`];
     }
+    big: any;
     /**
     * 获取大驼峰命名
     * @param moduleName 模型名称，多单词使用“-”隔开
     */
     getBigModuleTitle = (moduleName: String) => {
-        const arr = moduleName.split("-");
-        return arr.map(word => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`).join("");
+        if (!this.big[`${moduleName}`]) {
+            const arr = moduleName.split("-");
+            this.big[`${moduleName}`] = arr.map(word => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`).join("");
+        }
+        return this.big[`${moduleName}`]
     }
 }
 

@@ -47,6 +47,11 @@ export class ModuleSearchDto {
     fieldEnName?: string;
     
     /**
+     * 英文名称,单词用“-”隔开
+     */
+    fieldType?: string;
+    
+    /**
      * 绑定dom
      */
     dom?: string;

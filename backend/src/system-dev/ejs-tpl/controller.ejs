@@ -1,0 +1,94 @@
+import { Body, Controller, Delete, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
+import { PowerGuard } from 'src/auth/guard/power.guard';
+import { PageResponseDto } from 'src/common-dto/page-response.dto';
+import { ResponseInfoDto } from 'src/common-dto/response-info.dto';
+import { AuthTag } from 'src/decorator/auth-tag.decorator';
+import { SystemLogService } from 'src/system-log/system-log.service';
+import { <%=getBigModuleTitle(moduleConf.nameEn) %>Service } from './<%= moduleConf.nameEn %>.service';
+import { <%=getBigModuleTitle(moduleConf.nameEn) %> } from './dto/<%= moduleConf.nameEn %>.schema';
+<% if(usePageDto) {%>import { <%=getBigModuleTitle(moduleConf.nameEn) %>PageDto } from './dto/<%= moduleConf.nameEn %>-page.dto';
+<% } else {%>import { PageRequestDto } from 'src/common-dto/page-request.dto'; <% } %>
+
+@ApiTags('<%=moduleConf.name %>')
+@Controller('<%=getSmallModuleTitle(moduleConf.nameEn) %>')
+export class <%=getBigModuleTitle(moduleConf.nameEn) %>Controller {
+    constructor(
+        private <%=getSmallModuleTitle(moduleConf.nameEn) %>Service: <%=getBigModuleTitle(moduleConf.nameEn) %>Service,
+        private systemLogService: SystemLogService
+    ) { };
+<% if(conf.config.add){ %>
+    @Post('create')
+    @AuthTag('create<%=getBigModuleTitle(moduleConf.nameEn) %>')
+    @ApiOperation({ description: 'create<%=getBigModuleTitle(moduleConf.nameEn) %>:创建<%=moduleConf.name %>' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async create(@Body() form: <%=getBigModuleTitle(moduleConf.nameEn) %>, @Req() req: any): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
+        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
+        try {
+            rsp.success('保存成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.create(form, req));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        this.systemLogService.create('<%=moduleConf.name %>', `创建<%=moduleConf.name %>,${rsp.message},${JSON.stringify(form)}`, req);
+        return rsp;
+    }<% } %>
+<% if(conf.config.update) {%>
+    @Post('update/:id')
+    @AuthTag('update<%=getBigModuleTitle(moduleConf.nameEn) %>')
+    @ApiOperation({ description: 'update<%=getBigModuleTitle(moduleConf.nameEn) %>:编辑<%=moduleConf.name %>' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async update(@Body() form: <%=getBigModuleTitle(moduleConf.nameEn) %>, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
+        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
+        try {
+            rsp.success('更新成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.update(form, id, req));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        this.systemLogService.create('<%=moduleConf.name %>', `编辑<%=moduleConf.name %>,${rsp.message},${JSON.stringify(form)},id:${id}`, req);
+        return rsp;
+    }<% } %>
+<% if(conf.config.del) {%>
+    @Delete('delete/:id')
+    @AuthTag('delete<%=getBigModuleTitle(moduleConf.nameEn) %>ById')
+    @ApiOperation({ description: 'delete<%=getBigModuleTitle(moduleConf.nameEn) %>:删除<%=moduleConf.name %>' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const rsp = new ResponseInfoDto<any>();
+        try {
+            rsp.success('删除成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.deleteById(id));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        this.systemLogService.create('<%=moduleConf.name %>', `删除<%=moduleConf.name %>,${rsp.message},${id}`, req);
+        return rsp;
+    }<% } %>
+<% if(conf.config.query) {%>
+    @Get('getDetail/:id')
+    @AuthTag('get<%=getBigModuleTitle(moduleConf.nameEn) %>ById')
+    @ApiOperation({ description: 'get<%=getBigModuleTitle(moduleConf.nameEn) %>ById:根据id获取<%=moduleConf.name %>详情' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async getDetailById(@Param("id") id: string): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
+        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
+        try {
+            rsp.success('获取成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.getDetailById(id));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        return rsp;
+    }
+    
+    @Get("getPage")
+    @AuthTag('get<%=getBigModuleTitle(moduleConf.nameEn) %>Page')
+    @ApiOperation({ description: 'get<%=getBigModuleTitle(moduleConf.nameEn) %>Page:获取<%=moduleConf.name %>分页' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async getPage(@Query() page: <%=!usePageDto?`PageRequestDto`:`${getBigModuleTitle(moduleConf.nameEn)}PageDto` %>, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>>> {
+        const info = new ResponseInfoDto<PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>>();
+        try {
+            info.success(`成功`, await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.getPage(page));
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }<% } %>
+}

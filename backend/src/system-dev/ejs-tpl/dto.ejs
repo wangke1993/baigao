@@ -5,7 +5,16 @@ import { BaseSchema } from "src/common-dto/base.schema";
 
 @Schema()
 export class <%= getBigModuleTitle(moduleConf.nameEn) %> extends BaseSchema {
-    
+    <% if(conf.config.UUID) {%>
+    @ApiProperty({
+       description: 'UUID',
+        required: false
+    })
+    @Prop({
+        required: true,
+        type: String
+    })
+    UUID: string;<% } %>
     <% for (let i = 0; i < fieldList.length; i++) { %>
     @ApiProperty({
         description: '<%=fieldList[i].name %>',
