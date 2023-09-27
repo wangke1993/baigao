@@ -169,7 +169,7 @@ const menuTreeProps = {
 const getMenuTree = async () => {
   const {
     data: { status, data, message },
-  } = await AdminMenuControllerGetTreeByMenuType("1");
+  } = await AdminMenuControllerGetTreeByMenuType(1);
   if (status === 1) {
     menuTree.value = data;
     menuTree.value.unshift({ _id: "0", menuName: "根目录" });

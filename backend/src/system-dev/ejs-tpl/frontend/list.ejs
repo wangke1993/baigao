@@ -1,25 +1,32 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="list-box">
     <div class="page-head">
-      <Search placeholder="关键字" @handleSearch="handleSearch">
+      <<%=getBigModuleTitle(moduleConf.nameEn) %>Search @search="search">
         <el-button
           type="primary"
-          v-if="btnShow('add-article')"
-          @click="addArticleFun(null)"
-          >添加文章</el-button
-        >
-      </Search>
+          v-if="btnShow('add-<%=getSmallModuleTitle(moduleConf.nameEn) %>')"
+          @click="add()">
+          新增
+        </el-button>
+      </<%=getBigModuleTitle(moduleConf.nameEn) %>Search>
     </div>
-    <el-table :data="state.userListData" row-key="_id">
-      <el-table-column type="index" width="80" align="center" label="序号" />
-      <el-table-column prop="articleName" label="文章名称" />
-      <el-table-column label="所属分类">
+    <el-table v-loading="listLoading" :data="list" row-key="_id">
+      <el-table-column width="80" label="序号">
         <template #default="scope">
-          <span>{{ articleClass(scope.row.articleClass) }}</span>
+          {{ (params.pageIndex - 1) * params.pageSize + scope.$index + 1 }}
         </template>
-      </el-table-column>
-      <el-table-column prop="syn" label="文章概要" />
+      </el-table-column><% for(let i=0;i<fieldList.length;i++) {%><% if(fieldList[i].listShow) {%>
+      <el-table-column prop="<%=fieldList[i].nameEn %>" label="<%=fieldList[i].name %>">
+        <template #default="scope"><% if (fieldList[i].dom=="Swatch") {%>
+          <el-switch disabled v-model="scope.row.<%=fieldList[i].nameEn %>" />
+          <% }else if(["Select","MoreSelect","Radio","Checkbox","TreeSelect","MoreTreeSelect"].includes(fieldList[i].dom)) {%>
+          {{ scope.row.<%=fieldList[i].nameEn %>Text }}
+          <% }else if(fieldList[i].dom == "Rate") { %>
+          <el-rate disabled v-model="scope.row.<%=fieldList[i].nameEn %>" max="5"/>
+          <% } else { %>
+          {{ scope.row.<%=fieldList[i].nameEn %> }}<% } %>
+        </template>
+      </el-table-column><% } %><% } %>
       <el-table-column prop="addDate" label="添加时间">
         <template #default="scope">
           {{
@@ -29,36 +36,31 @@
           }}
         </template>
       </el-table-column>
-      <el-table-column prop="remarks" label="是否发布">
-        <template #default="scope">
-          <el-switch disabled v-model="scope.row.release" />
-        </template>
-      </el-table-column>
       <el-table-column label="操作" width="310">
         <template #default="scope">
           <el-button-group class="ml-4">
             <el-button
-              d
-              v-if="btnShow('article-edit')"
+              v-if="btnShow('edit-<%=getSmallModuleTitle(moduleConf.nameEn) %>')"
               type="primary"
               :icon="Edit"
-              @click="addArticleFun(scope.row)"
+              @click="edit(scope.row)"
               >编辑
             </el-button>
             <el-popconfirm
               confirm-button-text="确定"
               cancel-button-text="取消"
               confirm-button-type="danger"
-              title="确定删除该文章？"
-              @confirm="deleteDictionary(scope.row)"
+              title="确定删除？"
+              @confirm="del(scope.row,scope.$index)"
             >
               <template #reference>
                 <el-button
-                  v-if="btnShow('article-delete')"
+                  v-loading="delLoading==scope.$index"
+                  v-if="btnShow('delete-<%=getSmallModuleTitle(moduleConf.nameEn) %>')"
                   type="danger"
-                  :icon="Delete"
-                  >删除</el-button
-                >
+                  :icon="Delete">
+                  删除
+                </el-button>
               </template>
             </el-popconfirm>
           </el-button-group>
@@ -67,127 +69,116 @@
     </el-table>
     <div class="pagination-box">
       <el-pagination
-        v-model:currentPage="state.params.pageIndex"
-        v-model:page-size="state.params.pageSize"
+        v-model:currentPage="params.pageIndex"
+        v-model:page-size="params.pageSize"
         :page-sizes="[10, 20, 30, 40, 50]"
         background
         layout="total, sizes, prev, pager, next, jumper"
-        :total="state.total"
+        :total="total"
         :hide-on-single-page="true"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
+        @size-change="sizeChange"
+        @current-change="currentChange"
       />
     </div>
-    <AddArticle ref="AddArticleRef" @Refresh="RefreshList" />
+    <<%=getBigModuleTitle(moduleConf.nameEn) %>Form ref="<%=getSmallModuleTitle(moduleConf.nameEn) %>FormRef" @Refresh="getPage" />
   </div>
 </template>
 <script lang="ts">
+// 路由地址 默认全部挂载到 business
+// 名称：<%=moduleConf.name %>
+// 路由地址：/business/<%=getSmallModuleTitle(moduleConf.nameEn) %>
+// {
+//   path: '<%=getSmallModuleTitle(moduleConf.nameEn) %>',
+//   component: () => import('@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/Index.vue'),
+//   name: '<%=getSmallModuleTitle(moduleConf.nameEn) %>',
+//   meta: { title: '<%=moduleConf.name %>' }
+// },
+
+// 组件名称
 export default {
-  name: "article",
+  name: "<%=getSmallModuleTitle(moduleConf.nameEn) %>",
 };
 </script>
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
-import { btnShow } from "../../utils/buttonShow";
+import { ref } from "vue";
 import { Delete, Edit } from "@element-plus/icons-vue";
-import AddArticle from "@/views/article/components/AddArticle.vue";
-import Search from "@/views/article/components/Search.vue";
+import { btnShow } from "@/utils/buttonShow";
+import <%=getBigModuleTitle(moduleConf.nameEn) %>Form from "@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/components/<%=getBigModuleTitle(moduleConf.nameEn) %>Form.vue";
+import <%=getBigModuleTitle(moduleConf.nameEn) %>Search from "@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/components/Search.vue";
 import {
-  ArticleMangerControllerGetPage,
-  ArticleMangerControllerDelete,
-} from "@/api/ArticleMangerControllerApi";
-import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
+  <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetPage,
+  <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerDelete,
+} from "@/api/<%=getBigModuleTitle(moduleConf.nameEn) %>ControllerApi";
+import type { <%=getBigModuleTitle(moduleConf.nameEn) %>Dto } from "@/api/dto/<%=getBigModuleTitle(moduleConf.nameEn) %>Dto";
 import { DateTime } from "luxon";
-import { alertSuccess } from "@/utils/message";
-const AddArticleRef = ref();
-const state = reactive({
-  load: false,
-  userListData: [],
-  params: {
+import { alertSuccess,alertWarning } from "@/utils/message";
+const <%=getSmallModuleTitle(moduleConf.nameEn) %>FormRef = ref();
+const listLoading = ref(false);
+const list = ref(new Array<<%=getBigModuleTitle(moduleConf.nameEn) %>Dto>());
+const total = ref(0);
+const params = ref(
+  {
     pageIndex: 1,
     pageSize: 10,
-    keyWord: "", //搜索关键字
-    articleClass: "", //所属分类
-    isRelease: "", //发布状态 0全部，1已发布，2未发布;
-  },
-  total: 0,
-  dictionaryData: [],
-});
-// open 发布文章
-const addArticleFun = (items: any) => {
-  AddArticleRef.value.open(items);
-};
-const handleSearch = async (searchInfo: any) => {
-  state.params.keyWord = searchInfo.keyWord;
-  state.params.articleClass = searchInfo.articleClass;
-  getList(state.params);
-};
-
-// 获取文章分类字典
-const getArticleDictionary = async (dicCode: string) => {
-  try {
-    let result = await DataDictionaryControllerGetListByDicClass(dicCode);
-    let data = result.data;
-    if (data.status === 1) state.dictionaryData = data.data;
-  } catch (err) {
-    return;
+    keyWord: "",
+    <% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>:<% if(searchNoLike[i].fieldType.indexOf('[')!=-1){ %>[] as <%=searchNoLike[i].fieldType%><%} else {%> ""<%}} %>
   }
+)
+const edit = (item: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto) => {
+  <%=getSmallModuleTitle(moduleConf.nameEn) %>FormRef.value.open(item);
 };
-getArticleDictionary("DC0001");
-
-// 根据字典值返回分类名称
-const articleClass = (articleClass: string) => {
-  let title;
-  state.dictionaryData.forEach((item: any) => {
-    if (item.dicCode === articleClass) title = item.dicName;
-  });
-  return title;
+const add = () => {
+  <%=getSmallModuleTitle(moduleConf.nameEn) %>FormRef.value.open();
+}
+type SearchDto = {
+  keyWord: string,
+  <% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>: <%=searchNoLike[i].fieldType %><%} %>
+}
+const search = async (searchDto: SearchDto) => {
+  params.value.keyWord = searchDto.keyWord;
+  <% for (let i = 0; i < searchNoLike.length; i++) {%>params.value.<%=searchNoLike[i].fieldEnName %> = searchDto.<%=searchNoLike[i].fieldEnName %>;<%} %>
+  getPage();
 };
 
-// 删除文章
-const deleteDictionary = async (row: any) => {
-  try {
-    let result = await ArticleMangerControllerDelete(row._id);
-    let data = result.data;
-    if (data.status === 1) {
-      console.log(data.data);
+const delLoading = ref(-1)
+const del = async (item: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto,index: number) => {
+  if (!item._id) {
+    throw new Error("id不能为空");
+  }
+  delLoading.value = index;
+  const {
+      data: { status, message },
+  } = await <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerDelete(item._id);
+  delLoading.value = -1;
+  if (status === 1) {
       alertSuccess("操作成功!");
-      getList(state.params);
-    }
-  } catch (err) {
-    return;
+      getPage();
+  } else {
+      alertWarning(message);
   }
 };
 
-// 获取文章列表
-const getList = async (params: any) => {
-  try {
-    let result = await ArticleMangerControllerGetPage(params);
-    let data = result.data;
-    if (data.status === 1) {
-      // console.log("获取文章列表", data);
-      state.userListData = data.data.list;
-      state.total = data.data.total;
-    }
-  } catch (err) {
-    return;
+const getPage = async () => {
+  listLoading.value = true;
+  const {
+      data: { status, data, message },
+  } = await <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetPage(params.value);
+  listLoading.value = false;
+  if (status === 1) {
+    list.value = data.list;
+    total.value =data.total;
+  }else{
+    alertWarning(message);
   }
 };
-getList(state.params);
-
-// 发布文章刷文章列表
-const RefreshList = () => {
-  getList(state.params);
+getPage();
+const sizeChange = (val: number) => {
+  params.value.pageSize = val;
+  getPage();
 };
-
-// 分页控制
-const handleSizeChange = (val: number) => {
-  state.params.pageSize = val;
-  getList(state.params);
-};
-const handleCurrentChange = (val: number) => {
-  state.params.pageIndex = val;
-  getList(state.params);
+const currentChange = (val: number) => {
+  params.value.pageIndex = val;
+  getPage();
 };
 </script>
 <style lang="scss">

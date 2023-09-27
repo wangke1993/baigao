@@ -28,6 +28,8 @@ const FRONTEND_TPL = {
     "LIST": `${EJS_PATH}/frontend/list.ejs`,
     "SEARCH": `${EJS_PATH}/frontend/search.ejs`,
     "FORM": `${EJS_PATH}/frontend/form.ejs`,
+    "DOM": `${EJS_PATH}/frontend/dom.ejs`,
+    "DOM_EVENT": `${EJS_PATH}/frontend/dom-event.ejs`,
 }
 export class DevTools {
     conf: CreateCodeConfDto;
@@ -157,19 +159,118 @@ export class DevTools {
         if (this.conf.frontendFile.dto) {
             this.render(
                 FRONTEND_TPL.API,
-                { moduleConf, searchNoLike: searchList.filter(item => item.method != 'like') },
+                {
+                    moduleConf,
+                    searchNoLike: searchList.filter(item => item.method != 'like')
+                },
                 `${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`
             )
         } else {
             deleteFolderRecursive(`${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`);
         }
     }
-    render(tplPath: string, data: any, filePath: string) {
-        try {
-            const res = ejs.render(readFileSync(tplPath).toString(), { ...this, ...data });
+    createListPage(moduleConf: ModuleConf, fieldList: ModuleField[], searchList: ModuleSearch[]) {
+        if (this.conf.frontendFile.list) {
+            this.render(
+                FRONTEND_TPL.LIST,
+                {
+                    moduleConf,
+                    fieldList,
+                    searchNoLike: searchList.filter(item => item.method != 'like')
+                },
+                `${this.savePath.frontend}/Index.vue`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
+        }
+    }
+    createSearchPage(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
+        if (this.conf.frontendFile.search) {
+            this.render(
+                FRONTEND_TPL.SEARCH,
+                {
+                    searchLike: searchList.filter(item => item.method == 'like'),
+                    searchNoLike: searchList.filter(item => item.method != 'like'),
+                    searchNoLikeAuto: searchList.filter(item => item.method != 'like' && item.isAuto),
+                    DomConf: (moduleSearch: ModuleSearch) => {
+                        return {
+                            tpl: FRONTEND_TPL.DOM,
+                            data: moduleSearch,
+                            dom: moduleSearch.dom,
+                            fieldEnName: moduleSearch.fieldEnName,
+                            fieldName: moduleSearch.fieldName,
+                            fieldType: moduleSearch.fieldType,
+                            search: true,
+                            VModule: `searchForm.${moduleSearch.fieldEnName}`
+                        }
+                    },
+                    DomEventConf: (moduleSearch: ModuleSearch) => {
+                        return {
+                            tpl: FRONTEND_TPL.DOM_EVENT,
+                            data: moduleSearch,
+                            dom: moduleSearch.dom,
+                            fieldEnName: moduleSearch.fieldEnName,
+                            fieldName: moduleSearch.fieldName,
+                            fieldType: moduleSearch.fieldType,
+                            search: true,
+                            VModule: `searchForm.value.${moduleSearch.fieldEnName}`
+                        }
+                    },
+                },
+                `${this.savePath.frontendComponents}/${this.getBigModuleTitle(moduleConf.nameEn)}Search.vue`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
+        }
+    }
+    createFormPage(moduleConf: ModuleConf, fieldList: ModuleField[],) {
+        if (this.conf.frontendFile.form) {
+            this.render(
+                FRONTEND_TPL.FORM,
+                {
+                    fieldList,
+                    moduleConf,
+                    DomConf: (moduleField: ModuleField) => {
+                        return {
+                            tpl: FRONTEND_TPL.DOM,
+                            data: moduleField,
+                            dom: moduleField.dom,
+                            fieldEnName: moduleField.nameEn,
+                            fieldName: moduleField.name,
+                            fieldType: moduleField.type,
+                            search: false,
+                            VModule: `form.${moduleField.nameEn}`
+                        }
+                    },
+                    DomEventConf: (moduleField: ModuleField) => {
+                        return {
+                            tpl: FRONTEND_TPL.DOM_EVENT,
+                            data: moduleField,
+                            dom: moduleField.dom,
+                            fieldEnName: moduleField.nameEn,
+                            fieldName: moduleField.name,
+                            fieldType: moduleField.type,
+                            search: false,
+                            VModule: `form.value.${moduleField.nameEn}`
+                        }
+                    },
+                },
+                `${this.savePath.frontendComponents}/${this.getBigModuleTitle(moduleConf.nameEn)}Form.vue`
+            )
+        } else {
+            deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
+        }
+    }
+    render(tplPath: string, data: any, filePath?: string) {
+        const res = ejs.render(readFileSync(tplPath).toString(), { ...this, ...data });
+        if (filePath) {
             this.createFile(filePath, res);
-        } catch (error) {
-            throw error;
+        } else {
+            if (res.trim()) {
+                return res;
+            } else {
+                return "";
+            }
         }
     }
     /**
@@ -195,8 +296,8 @@ export class DevTools {
             // 小驼峰命名
             this.savePath.frontend = `${path.frontend}/${this.getSmallModuleTitle(moduleName)}`
             this.savePath.frontendComponents = `${path.frontend}/${this.getSmallModuleTitle(moduleName)}/components`
-            this.savePath.frontendApi = `${PATH_CONF.frontend.replace("views","")}api`;
-            this.savePath.frontendDto = `${PATH_CONF.frontend.replace("views","")}api/dto`;
+            this.savePath.frontendApi = `${PATH_CONF.frontend.replace("views", "")}api`;
+            this.savePath.frontendDto = `${PATH_CONF.frontend.replace("views", "")}api/dto`;
             if (!existsSync(path.frontend)) {
                 mkdirSync(path.frontend);
             }

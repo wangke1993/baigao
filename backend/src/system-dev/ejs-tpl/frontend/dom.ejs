@@ -1,0 +1,147 @@
+<% if(dom=="Input") {%><el-input v-model="<%=VModule %>" placeholder="<%=fieldName %>" clearable></el-input><% }  if(dom=="Password") {%>
+<el-input v-model="<%=VModule %>" placeholder="请输入<%=fieldName %>" show-password clearable></el-input><% }  if(dom=="TextArea") {%>
+<el-input
+    type="textarea"
+    clearable
+    :rows="2"
+    placeholder="请输入<%=fieldName %>"
+    v-model="<%=VModule %>">
+</el-input><% }  if(dom=="Swatch") {%>
+<el-switch v-model="<%=VModule %>"></el-switch><% }  if(dom=="Select") {%>
+<el-select v-model="<%=VModule %>" clearable placeholder="请选择<%=fieldName %>">
+    <el-option
+      v-for="item in <%=fieldEnName %>Select"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+</el-select><% }  if(dom=="MoreSelect") {%>
+<el-select v-model="<%=fieldEnName %>SelectValue" @change="<%=fieldEnName %>SelectChange" multiple clearable placeholder="请选择<%=fieldName %>">
+    <el-option
+      v-for="item in <%=fieldEnName %>Select"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+</el-select><% }  if(dom=="Radio") {%>
+<el-radio-group v-model="<%=VModule %>">
+    <el-radio 
+        v-for="item in <%=fieldEnName %>Select"
+        :key="item.value"
+        :label="item.value"
+    >
+        {{ item.label }}
+    </el-radio>
+</el-radio-group><% }  if(dom=="Checkbox") {%>
+<el-checkbox-group v-model="<%=fieldEnName %>CheckboxValue" @change="<%=fieldEnName %>CheckboxChange">
+    <el-checkbox 
+        v-for="item in <%=fieldEnName %>Select"
+        :key="item.value"
+        :label="item.value"
+    >
+        {{ item.label }}
+    </el-checkbox>
+</el-checkbox-group><% }  if(dom=="TimeSelect") {%>
+<el-time-select
+  v-model="<%=VModule %>"
+  :picker-options="{
+    start: '00:00',
+    step: '00:01',
+    end: '23:59'
+  }"
+  placeholder="请选择<%=fieldName %>">
+</el-time-select><% }  if(dom=="DatePicker") {%>
+<el-date-picker
+    v-model="<%=VModule %>"
+    type="date"
+    placeholder="请选择<%=fieldName %>">
+</el-date-picker><% }  if(dom=="DateTimePicker") {%>
+<el-date-picker
+    v-model="<%=VModule %>"
+    type="datetime"
+    placeholder="请选择<%=fieldName %>">
+</el-date-picker><% }  if(dom=="TreeSelect") {%>
+<el-cascader
+    clearable
+    v-model="<%=VModule %>"
+    :props="<%=fieldEnName %>TreeProps"
+    :options="<%=fieldEnName %>TreeOptions"
+    ref="<%=fieldEnName %>TreeRef"
+    @change="<%=fieldEnName %>TreeChange">
+</el-cascader><% }  if(dom=="MoreTreeSelect") {%>
+<el-cascader
+    clearable
+    collapse-tags
+    v-model="<%=fieldEnName %>TreeValue"
+    :props="<%=fieldEnName %>TreeProps"
+    :options="<%=fieldEnName %>TreeOptions"
+    ref="<%=fieldEnName %>TreeRef"
+    @change="<%=fieldEnName %>TreeChange">
+</el-cascader><% }  if(dom=="MoreText") {%>
+<div style="border: 1px solid #ccc">
+    <Toolbar
+        style="border-bottom: 1px solid #ccc"
+        :editor="<%=fieldEnName %>EditorRef"
+        mode="default"
+    />
+    <Editor
+        style="height: 500px; overflow-y: hidden"
+        v-model="<%=fieldEnName %>Html"
+        :defaultConfig="<%=fieldEnName %>EditorConfig"
+        mode="default"
+        @onCreated="<%=fieldEnName %>EditorCreated"
+        @onChange="(editor: IDomEditor) => {<%=VModule %>=editor.getHtml();}"
+    />
+</div><% }  if(dom=="File") {%>
+<el-upload style="width: 100%" 
+    action="/api/file/uploadPrivate" 
+    multiple 
+    :on-success="<%=fieldEnName %>UploadSuccess"
+    :on-preview="<%=fieldEnName %>Preview" 
+    :on-remove="<%=fieldEnName %>Remove" 
+    :before-remove="<%=fieldEnName %>BeforeRemove"
+    :limit="3"
+    :on-exceed="<%=fieldEnName %>Exceed" 
+    :file-list="<%=fieldEnName %>FileList"
+    :headers="{ Authorization: `Bearer ${getToken()}` }">
+    <el-button size="small" type="primary">点击上传</el-button>
+</el-upload><% }  if(dom=="Image") {%>
+<div>
+    <el-upload
+        v-model:file-list="<%=fieldEnName %>FileList"
+        list-type="picture-card"
+        action="/api/file/upload"
+        name="file"
+        :auto-upload="true"
+        :limit="1"
+        :on-success="<%=fieldEnName %>OnSuccess"
+        >
+        <el-icon>
+            <Plus />
+        </el-icon>
+        <template #file="{ file }">
+            <div>
+                <img
+                    class="el-upload-list__item-thumbnail"
+                    :src="file.url"
+                    alt=""
+                />
+                <span class="el-upload-list__item-actions">
+                    <span
+                        v-if="!disabled"
+                        class="el-upload-list__item-delete"
+                        @click="<%=fieldEnName %>Remove(file)"
+                    >
+                    <el-icon>
+                        <Delete />
+                    </el-icon>
+                </span>
+                </span>
+            </div>
+        </template>
+    </el-upload>
+    <el-dialog v-model="<%=fieldEnName %>DialogImage">
+        <img w-full :src="<%=fieldEnName %>DialogImageUrl" alt="查看图片" />
+    </el-dialog>
+</div><% }  if(dom=="Rate") {%>
+<el-rate disabled v-model="<%=VModule %>" max="5"/><% } %>

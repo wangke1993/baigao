@@ -1,64 +1,46 @@
 <template>
-	<el-form :inline="true" :model="searchForm" ref="searchFormRef" class="demo-form-inline">
+	<el-form :inline="true" :model="searchForm" class="demo-form-inline">
 		<el-form-item>
 			<slot></slot>
 		</el-form-item>
-		<el-form-item label="关键字：">
-			<el-input v-model="searchForm.keyWord" :placeholder="placeholder" />
-		</el-form-item>
-		<el-form-item label="文章分类：">
-			<el-select v-model="searchForm.articleClass" class="m-2" placeholder="请选择文章分类">
-				<el-option v-for="(item,index) in articleClass" :key="index" :label="item.dicName" :value="item.dicCode" />
-			</el-select>
-		</el-form-item>
+		<el-form-item label="模糊搜索：">
+			<el-input v-model="searchForm.keyWord" placeholder="<% for(let i=0;i<searchLike.length;i++) {%><%=searchLike[i].fieldName %><%if(i<searchLike.length-1) {%>/<% }%><% }%>" />
+		</el-form-item><% for(let i=0;i<searchNoLike.length;i++) {%>
+		<el-form-item label="<%=searchNoLike[i].fieldName %>:">
+			<%- include(DomConf(searchNoLike[i]).tpl, DomConf(searchNoLike[i])) %>
+		</el-form-item><%} %>
 		<el-form-item>
-			<el-button type="primary" @click="onSubmit">搜索</el-button>
-			<el-button @click="onResetForm">重置</el-button>
+			<el-button type="primary" @click="onSearch">搜索</el-button>
+			<el-button @click="onReset">重置</el-button>
 		</el-form-item>
 	</el-form>
 </template>
 <script lang="ts" setup>
-//依赖
-import type { FormInstance, FormRules } from 'element-plus';
-import { reactive, ref } from 'vue';
-import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
-const searchFormRef = ref<FormInstance>()
-const searchForm = ref({
-	keyWord: '',
-	articleClass: ''
-});
-
-const emit = defineEmits(['handleSearch']);
-const props = defineProps(['placeholder']);
-console.log(props);
-const placeholder = props.placeholder;
-
-const articleClass = ref<any[]>([{
-	dicName: '全部', dicCode: ''
-}]);
-
-// 获取文章分类字典
-const getArticleDictionary = async (dicCode: string) => {
-	try {
-		let result = await DataDictionaryControllerGetListByDicClass(dicCode);
-		let data = result.data;
-		if (data.status === 1) articleClass.value = [...articleClass.value, ...data.data];
-	} catch (err) {
-		return;
-	}
-};
-getArticleDictionary("DC0001");
-
-const onSubmit = () => {
-	emit('handleSearch', searchForm.value);
+import { ref, defineEmits, watch } from 'vue';
+<%if(searchNoLike.filter(item=>["MoreSelect","Select","Radio","Checkbox"].includes(item.dom)).length) {%>
+import { SelectDto } from '@/common/CommonDto';
+<%}%>
+class SearchDto {
+	keyWord?: string;
+  	<% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>?: <%=searchNoLike[i].fieldType %><%} %>;
 }
+const searchForm = ref(new SearchDto());
+const emit = defineEmits(['search']);
 
-const onResetForm = () => {
-	searchForm.value = {
-		keyWord: '',
-		articleClass: ''
-	}
-	emit('handleSearch', searchForm.value);
+const onSearch = () => {
+	emit('search', searchForm.value);
 }
-
+const onReset = () => {
+	searchForm.value = new SearchDto();
+	emit('search', searchForm.value);
+}
+<% if(searchLike.filter(item => item.isAuto).length){ %>
+watch(() => searchForm.value.keyWord,() => {
+	emit('search', searchForm.value);
+});<%}%>
+<% for(let i=0;i<searchNoLikeAuto.length;i++){ %>
+watch(() => searchForm.value.<%=searchNoLikeAuto[i].fieldEnName%>,() => {
+	emit('search', searchForm.value);
+});<%}%>
+<% for(let i=0;i<searchNoLike.length;i++) {%><%- include(DomEventConf(searchNoLike[i]).tpl, DomEventConf(searchNoLike[i])) %><%} %>
 </script>

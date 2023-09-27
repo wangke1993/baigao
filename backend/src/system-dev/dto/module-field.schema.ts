@@ -159,17 +159,21 @@ export class ModuleField extends BaseSchema {
 export enum METHOD_TYPE {
     '单行文本' = 'Input',
     '密码' = 'Password',
-    '多行' = 'Area',
+    '多行' = 'TextArea',
     '开关' = 'Swatch',
     '单选下拉' = 'Select',
     '多选下拉' = 'MoreSelect',
+    '单选框' = 'Radio',
+    '多选框' = 'Checkbox',
+    '时间选择' = 'TimeSelect',
+    '日期选择器' = 'DatePicker',
+    '日期时间选择器' = 'DateTimePicker',
     '级联单选下拉' = 'TreeSelect',
     '级联多选下拉' = 'MoreTreeSelect',
     '富文本' = 'MoreText',
     '附件' = 'File',
     '图片' = 'Image',
-    '视频' = 'Vide',
-    '音频' = 'Audio',
+    '星级评分' = 'Rate',
 }
 
 export type ModuleFieldDocument = ModuleField & Document;

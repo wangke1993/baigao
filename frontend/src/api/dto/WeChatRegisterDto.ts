@@ -19,7 +19,7 @@ export class WeChatRegisterDto {
     /**
      * 用户性别
      */
-    sex!: string;
+    sex!: number;
     
     /**
      * 上级openId

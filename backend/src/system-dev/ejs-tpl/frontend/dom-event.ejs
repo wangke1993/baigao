@@ -1,0 +1,117 @@
+<% if(["MoreSelect","Select","Radio","Checkbox"].includes(dom)) {%>
+// 获取select数据
+const <%=fieldEnName %>Select = ref(new Array<SelectDto>());
+const get<%=getBigModuleTitle(fieldEnName) %>Select = async () => {
+    const {
+        data:{ status, data, message }
+    } = await axios.get('<%=data.domDataUrl %>');
+    if( status === 1 ){
+        data.map( item => {
+            <%=fieldEnName %>Select.push(new SelectDto(item['<%=data.dataLabelField %>'],item['<%=data.dataValueField %>']))
+        })
+    }else{
+        alertWaring(message);
+    }
+}
+get<%=getBigModuleTitle(fieldEnName) %>Select();<% }  if(dom=="MoreSelect") {%>
+const <%=fieldEnName %>SelectValue = ref(new Array<any>());
+const <%=fieldEnName %>SelectChange = ( value:any ) => {
+    <%=VModule %> = value.join();
+}<% }  if(dom=="Checkbox") {%>
+const <%=fieldEnName %>CheckboxValue = ref(new Array<any>());
+const <%=fieldEnName %>CheckboxChange = ( value:any ) => {
+    <%=VModule %> = value.join();
+}<% }  if(["TreeSelect","MoreTreeSelect"].includes(dom)) { if(dom=="MoreSelect") {%>
+const <%=fieldEnName %>TreeValue = ref(new Array<any>());<%} %>
+const <%=fieldEnName %>TreeRef = ref();
+const <%=fieldEnName %>TreeOptions = ref(new Array<any>());
+const <%=fieldEnName %>TreeProps = {
+    emitPath: false,
+<% if(dom=="MoreTreeSelect") {%>
+    multiple: true
+<% } %>
+    checkStrictly: true,
+    value: "<%=data.dataValueField %>",
+    label: "<%=data.dataLabelField %>",
+    children: "<%=data.dataChildField %>"
+};
+const get<%=fieldEnName %>Tree = async () => {
+  const {
+    data: { status, data, message },
+  } = await axios.get('<%=data.domDataUrl %>');;
+  if (status === 1) {
+    <%=fieldEnName %>TreeOptions.value = data;
+  } else {
+    alertWarning(message);
+  }
+};
+get<%=fieldEnName %>Tree();
+const <%=fieldEnName %>TreeChange = ( value:any ) => {
+    console.log(value);
+    <% if(dom=="MoreTreeSelect") {%>
+    <%=VModule %> = value.join();
+    <% } %>
+}<% }  if(dom=="MoreText") {%>
+const <%=fieldEnName %>EditorRef = shallowRef();
+const <%=fieldEnName %>Html = ref("");
+const <%=fieldEnName %>EditorConfig: any = {
+    placeholder: "请输入内容...",
+    MENU_CONF,
+};
+const <%=fieldEnName %>EditorCreated = (editor: any) => {
+    <%=fieldEnName %>EditorRef.value = editor;
+}
+onBeforeUnmount(() => {
+    if (<%=fieldEnName %>EditorRef.value){
+        <%=fieldEnName %>EditorRef.value.destroy();
+    }
+});<% }  if(dom=="File") {%>
+const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
+const <%=fieldEnName %>UploadSuccess = (
+    response: any,
+    uploadFile: UploadFile,
+    uploadFiles: UploadFiles
+) => {
+    const { data, status, message } = response;
+    if (status == 1) {
+        const { UUID, fileName: name, url } = data;
+        // form.value.fileIds?.push(UUID);
+        <%=fieldEnName %>FileList.value.push({ name, url });
+        <%=VModule %> = <%=fieldEnName %>FileList.value.map(item => `${item.name},${item.url}`).join(';');
+    } else {
+        alertWarning(message);
+    }
+};
+const <%=fieldEnName %>Remove = (file: any, fileList: any) => {
+    console.log("handleRemove", fileList);
+};
+const <%=fieldEnName %>Preview = (file: any) => {
+    console.log("handlePreview",file);
+};
+const <%=fieldEnName %>Exceed = (files: any, fileList: any): any => {
+    console.log("handleExceed", fileList);
+};
+const <%=fieldEnName %>BeforeRemove = (file: any, fileList: any) => {
+    return alertConfirm(`确定移除 ${file.name}？`);
+};<% }  if(dom=="Image") {%>
+const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
+const <%=fieldEnName %>DialogImageUrl = ref("");
+const <%=fieldEnName %>DialogImage = ref(false);
+const <%=fieldEnName %>OnSuccess = (
+    response: any,
+    uploadFile: UploadFile,
+    uploadFiles: UploadFiles
+) => {
+    const { data, status, message } = response;
+    if (status == 1) {
+        const { UUID, fileName: name, url } = data;
+        // form.value.fileIds?.push(UUID);
+        <%=fieldEnName %>FileList.value.push({ name, url });
+        <%=VModule %> = <%=fieldEnName %>FileList.value.map(item => `${item.name},${item.url}`).join(';');
+    } else {
+        alertWarning(message);
+    }
+};
+const <%=fieldEnName %>Remove = (file: UploadFile) => {
+    console.log('<%=fieldEnName %>Remove');
+};<% } %>

@@ -27,8 +27,18 @@ export const domType = [
         needData: false,
     },
     {
+        name: "密码",
+        value: "Password",
+        needData: false,
+    },
+    {
         name: "多行输入",
         value: "TextArea",
+        needData: false,
+    },
+    {
+        name: "开关",
+        value: "Switch",
         needData: false,
     },
     {
@@ -40,11 +50,6 @@ export const domType = [
         name: "多选下拉框",
         value: "MoreSelect",
         needData: true,
-    },
-    {
-        name: "开关",
-        value: "Switch",
-        needData: false,
     },
     {
         name: "单选框",
@@ -83,7 +88,7 @@ export const domType = [
     },
     {
         name: "图片上传",
-        value: "MoreImage",
+        value: "Image",
         needData: false,
     },
     {

@@ -1,4 +1,4 @@
-export class TreeClassificationDto {
+export class StudentMangerDto {
 
     _id?: string;
     /**
@@ -26,39 +26,21 @@ export class TreeClassificationDto {
      */
     fileIds?: string[];
     
+    
     /**
-     * UUID
-     */
+    * UUID
+    */
     UUID!: string;
     
-    /**
-     * 名称
-     */
-    name!: string;
     
     /**
-     * 上级,为0时则为1级
+     * 名字
      */
-    parent!: string;
+     name!: string;
     
     /**
-     * 排序
+     * 年龄
      */
-    sort!: number;
-    
-    /**
-     * 兄弟节点数量
-     */
-    breathCount!: number;
-    
-    /**
-     * 备注
-     */
-    remarks!: string;
-    
-    /**
-     * 数据分类：存储数据字典值
-     */
-    dataClass!: string;
+     age?: string;
     
 }

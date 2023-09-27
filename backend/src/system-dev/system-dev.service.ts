@@ -179,8 +179,8 @@ export class SystemDevService {
         createCodeConfDto.backendFile.pageDto = true;
         createCodeConfDto.backendFile.service = true;
         createCodeConfDto.frontendFile = new FrontEndFile();
-        createCodeConfDto.frontendFile.api = false;
-        createCodeConfDto.frontendFile.dto = false;
+        createCodeConfDto.frontendFile.api = true;
+        createCodeConfDto.frontendFile.dto = true;
         createCodeConfDto.frontendFile.form = true;
         createCodeConfDto.frontendFile.list = true;
         createCodeConfDto.frontendFile.search = true;
@@ -201,8 +201,11 @@ export class SystemDevService {
             // 生成api
             devTools.createFrontendApi(moduleConf, searchList);
             // 生成列表页
+            devTools.createListPage(moduleConf, fieldList, searchList);
             // 生成搜索组件
+            devTools.createSearchPage(moduleConf, searchList);
             // 生成表单组件
+            devTools.createFormPage(moduleConf, fieldList);
         }
     }
 }

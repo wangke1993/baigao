@@ -4,7 +4,7 @@ export class ResponseInfoDtoDto {
     /**
      * 状态：-1错误，0警告，1成功
      */
-    status!: string;
+    status!: number;
     
     /**
      * 响应数据

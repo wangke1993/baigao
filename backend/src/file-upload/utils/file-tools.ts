@@ -111,6 +111,9 @@ export const getFileType = (fileName: string) => {
  * @param folderPath 
  */
 export const deleteFolderRecursive = (folderPath: string) => {
+    if (!existsSync(folderPath)) {
+        return;
+    }
     if (!statSync(folderPath).isDirectory()) {
         unlinkSync(folderPath);
     }

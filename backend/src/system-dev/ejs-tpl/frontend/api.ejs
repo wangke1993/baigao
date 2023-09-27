@@ -37,6 +37,6 @@ export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerDelete = (id: s
 /**
 * get<%=getBigModuleTitle(moduleConf.nameEn) %>Page:获取<%=moduleConf.name %>分页
 */
-export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string, <% for (let i = 0; i < searchNoLike.length; i++) {%> <%=searchNoLike[i].fieldEnName %>:<%=searchNoLike[i].fieldType %>, <% } %>}, config?: any) => {
+export const <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetPage = (query: { pageSize: number,pageIndex: number,keyWord: string, <% for (let i = 0; i < searchNoLike.length; i++) {%> <%=searchNoLike[i].fieldEnName %>:<%=searchNoLike[i].fieldType %>, <% } %>}, config?: any) => {
    return axios.get(`/api/<%=getSmallModuleTitle(moduleConf.nameEn) %>/getPage`, { params: query,...config });
 }

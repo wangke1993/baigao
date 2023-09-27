@@ -36,7 +36,7 @@ export const AdMangerControllerDelete = (id: string, config?: any) => {
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;position：广告位置，取字典管理中：DC0002的值;isRelease：发布状态，0全部，1已发布，2未发布;
 * @returns 
 */
-export const AdMangerControllerGetPage = (query: { pageSize: string,pageIndex: string,keyWord: string,position: string,isRelease: string }, config?: any) => {
+export const AdMangerControllerGetPage = (query: { pageSize: number,pageIndex: number,keyWord: string,position: string,isRelease: number }, config?: any) => {
    return axios.get(`/api/rotation/getPage`, { params: query,...config });
 }
 /**

@@ -43,7 +43,7 @@
 
 <script lang="ts" setup>
 import { usePermissionStore } from "@/stores/permission";
-import { ref, watch } from 'vue';
+import { ref, watch ,defineProps} from 'vue';
 
 const props = defineProps({
   collapse: {
