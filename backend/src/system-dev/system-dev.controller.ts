@@ -170,13 +170,13 @@ export class SystemDevController {
 
     @Post('createCode/:UUID')
     @ApiOperation({ description: '生成代码' })
-    // @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard)
     async createCode(@Param('UUID') UUID: String, @Body() conf: CreateCodeConfDto): Promise<ResponseInfoDto<any>> {
         const info = new ResponseInfoDto<any>();
         try {
-            info.success("成功", this.systemDev.createCode(UUID, conf));
+            info.success("成功",await this.systemDev.createCode(UUID, conf));
         } catch (e) {
-            info.warring(e.toString());
+            info.error(e.toString());
         }
         return info;
     }

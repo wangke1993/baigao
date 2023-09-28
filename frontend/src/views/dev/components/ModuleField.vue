@@ -77,16 +77,6 @@
             ></el-input>
           </template>
         </el-table-column>
-        <el-table-column label="备注" prop="description">
-          <template #default="scope">
-            <el-input
-              v-model="scope.row.description"
-              type="textarea"
-              placeholder="备注"
-            ></el-input>
-          </template>
-        </el-table-column>
-        
         <el-table-column label="操作" width="200px">
           <template #default="scope">
             <div>

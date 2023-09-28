@@ -38,6 +38,9 @@ const fieldData:Ref<ModuleFieldDto | ModuleSearchDto>  = ref(new ModuleFieldDto(
 const open = (item: ModuleFieldDto | ModuleSearchDto) => {
   openState.value = true;
   fieldData.value = item;
+  if (!fieldData.value.dataChildField) {
+    fieldData.value.dataChildField = 'children';
+  }
 };
 const close = () => {
   openState.value = false;

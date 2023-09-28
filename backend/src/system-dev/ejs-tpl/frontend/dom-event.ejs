@@ -1,16 +1,16 @@
 <% if(["MoreSelect","Select","Radio","Checkbox"].includes(dom)) {%>
 // 获取select数据
-const <%=fieldEnName %>Select = ref(new Array<SelectDto>());
+const <%=fieldEnName %>Select = ref(new Array<SelectDto<any>>());
 const get<%=getBigModuleTitle(fieldEnName) %>Select = async () => {
     const {
         data:{ status, data, message }
     } = await axios.get('<%=data.domDataUrl %>');
     if( status === 1 ){
-        data.map( item => {
-            <%=fieldEnName %>Select.push(new SelectDto(item['<%=data.dataLabelField %>'],item['<%=data.dataValueField %>']))
+        data.map( (item: any) => {
+            <%=fieldEnName %>Select.value.push(new SelectDto<any>(item['<%=data.dataLabelField %>'],item['<%=data.dataValueField %>']))
         })
     }else{
-        alertWaring(message);
+        alertWarning(message);
     }
 }
 get<%=getBigModuleTitle(fieldEnName) %>Select();<% }  if(dom=="MoreSelect") {%>

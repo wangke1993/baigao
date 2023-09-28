@@ -33,6 +33,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, reactive, <%if(fieldList.filter(item => item.dom == 'MoreText').length) {%> onBeforeUnmount, shallowRef <%}%>} from "vue";
+import axios from "axios";
 import { btnShow } from "@/utils/buttonShow";
 import { getToken } from "@/utils/authTokenUtil";
 import { alertSuccess,alertWarning } from "@/utils/message";

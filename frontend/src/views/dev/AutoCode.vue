@@ -5,7 +5,6 @@
       <div class="right" v-if="moduleForm.UUID">
         <el-button
           type="primary"
-          v-loading="createCodeLoading"
           @click="createCode()"
           >生成</el-button
         >
@@ -113,6 +112,10 @@
         </div>
       </div>
     </div>
+    <CreateConf
+            ref="createConfRef"
+            :moduleForm="moduleForm"
+          />
   </div>
 </template>
 <script lang="ts">
@@ -124,6 +127,7 @@ export default {
 import { Delete } from "@element-plus/icons-vue";
 import ModuleField from "@/views/dev/components/ModuleField.vue";
 import ModuleSearch from "@/views/dev/components/ModuleSearch.vue";
+import CreateConf from "@/views/dev/components/CreateConf.vue";
 import { AdminMenuControllerGetTreeByMenuType } from "@/api/AdminMenuControllerApi";
 import {
   SystemDevControllerCreateModule,
@@ -235,21 +239,9 @@ const moduleDetail = (item: ModuleConfDto) => {
     moduleSearchListRef.value.getList();
   });
 };
-const createCodeLoading = ref(false);
+const createConfRef = ref();
 const createCode = async () => {
-  if (!moduleForm.value.UUID) {
-    throw new Error("UUID不能为空");
-  }
-  createCodeLoading.value = true;
-  const {
-    data: { status, message },
-  } = await SystemDevControllerCreateCode(moduleForm.value.UUID, {});
-  createCodeLoading.value = false;
-  if (status === 1) {
-    alertSuccess("生成成功");
-  } else {
-    alertWarning(message);
-  }
+  createConfRef.value.open();
 };
 //#endregion
 </script>

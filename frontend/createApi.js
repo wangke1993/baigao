@@ -21,14 +21,10 @@ ${filedText}
 }`
 }
 function getType (type) {
-    const typeConfig = {
-        'string': 'string',
-        'number': 'number'
-    }
-    if (typeConfig[type]) {
-        return typeConfig[type];
-    } else {
+    if (type) {
         return type;
+    } else {
+        return 'any';
     }
 }
 function clearPath () {

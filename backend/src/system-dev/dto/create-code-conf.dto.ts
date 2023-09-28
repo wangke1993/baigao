@@ -1,16 +1,97 @@
+import { ApiProperty } from "@nestjs/swagger";
+
+export class BackendFile {
+    @ApiProperty({
+        description: 'dto',
+        required: false
+    })
+    dto: boolean;
+    @ApiProperty({
+        description: 'pageDto',
+        required: false
+    })
+    pageDto: boolean;
+    @ApiProperty({
+        description: 'controller',
+        required: false
+    })
+    controller: boolean;
+    @ApiProperty({
+        description: 'service',
+        required: false
+    })
+    service: boolean;
+    @ApiProperty({
+        description: 'module',
+        required: false
+    })
+    module: boolean;
+}
+export class FrontEndFile {
+    @ApiProperty({
+        description: 'list',
+        required: false
+    })
+    list: boolean;
+    @ApiProperty({
+        description: 'form',
+        required: false
+    })
+    form: boolean;
+    @ApiProperty({
+        description: 'search',
+        required: false
+    })
+    search: boolean;
+    @ApiProperty({
+        description: 'dto',
+        required: false
+    })
+    dto: boolean;
+    @ApiProperty({
+        description: 'api',
+        required: false
+    })
+    api: boolean;
+}
+export class CreateConf {
+    @ApiProperty({
+        description: 'add',
+        required: false
+    })
+    add: boolean;
+    @ApiProperty({
+        description: 'del',
+        required: false
+    })
+    del: boolean;
+    @ApiProperty({
+        description: 'update',
+        required: false
+    })
+    update: boolean;
+    @ApiProperty({
+        description: 'query',
+        required: false
+    })
+    query: boolean;
+    @ApiProperty({
+        description: 'UUID',
+        required: false
+    })
+    UUID: boolean;
+}
 // 生成代码配置
 export class CreateCodeConfDto {
-    /**
-     * 是否生成前端
-     */
+    @ApiProperty({
+        description: '是否生成前端',
+        required: false
+    })
     frontend: boolean;
-    /**
-     * 是否生成uin-app端
-     */
-    uniApp?: boolean;
-    /**
-     * 是否生成后端
-     */
+    @ApiProperty({
+        description: '是否生成后端',
+        required: false
+    })
     backend: boolean;
 
     /**
@@ -24,43 +105,26 @@ export class CreateCodeConfDto {
      *  uni：src/views
      *  后端：src/
      */
+    @ApiProperty({
+        description: '是否生成到临时路径',
+        required: false
+    })
     isTemp: boolean;
-
-    /**
-     * 生成配置
-     */
+    @ApiProperty({
+        description: '生成配置',
+        required: false
+    })
     config: CreateConf;
+    @ApiProperty({
+        description: '后端文件配置',
+        required: false
+    })
     backendFile: BackendFile;
+    @ApiProperty({
+        description: '前端文件配置',
+        required: false
+    })
     frontendFile: FrontEndFile;
-}
-export class BackendFile{
-    dto: boolean;
-    pageDto: boolean;
-    controller: boolean;
-    service: boolean;
-    module: boolean;
-}
-export class FrontEndFile{
-    list: boolean;
-    form: boolean;
-    search: boolean;
-    dto: boolean;
-    api: boolean;
-}
-export class CreateConf {
-    add: boolean;
-    del: boolean;
-    update: boolean;
-    query: boolean;
-    UUID: boolean;
-    uni?: {
-        listType: UNI_LIST_TYPE;
-        tabDataUrl?: String;
-        tabValueField?: String;
-        tabLabelField?: String;
-        // tab匹配的数据库字段名称
-        dataCheckField?: String;
-    }
 }
 export enum UNI_LIST_TYPE {
     "正常" = 1,

@@ -27,6 +27,18 @@ export class <%= getBigModuleTitle(moduleConf.nameEn) %> extends BaseSchema {
         type: <%=getBigModuleTitle(fieldList[i].type)%>
     })
     <%=fieldList[i].nameEn %>: <%=fieldList[i].type %>;
+    <% if(["Select","MoreSelect","Radio","Checkbox","TreeSelect","MoreTreeSelect"].includes(fieldList[i].dom)){ %>
+    @ApiProperty({
+        description: '<%=fieldList[i].name %>名称',
+        required: <%=fieldList[i].notNull %>
+    })
+    @Prop({<% if (fieldList[i].notNull) { %>
+        required: [true,"<%=fieldList[i].name %>名称(<%=fieldList[i].nameEn %>Text)不能为空"],<% } else { %>
+        required: false,<% } %>
+        type: <%=getBigModuleTitle(fieldList[i].type)%>
+    })
+    <%=fieldList[i].nameEn %>Text: string;
+    <% } %>
     <% } %>
 }
 

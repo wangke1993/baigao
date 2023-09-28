@@ -158,32 +158,7 @@ export class SystemDevService {
     async getModuleSearchList(moduleUUID: String): Promise<ModuleSearch[]> {
         return await this.moduleSearch.find({ moduleUUID });
     }
-    async createCode(UUID: String, createCodeConfDto: CreateCodeConfDto): Promise<any> {
-        /**
-         * 生成后端代码
-         *  增删改查
-         */
-        createCodeConfDto.isTemp = true;
-        createCodeConfDto.backend = true;
-        createCodeConfDto.frontend = true;
-        createCodeConfDto.config = new CreateConf();
-        createCodeConfDto.config.add = true;
-        createCodeConfDto.config.del = true;
-        createCodeConfDto.config.query = true;
-        createCodeConfDto.config.update = true;
-        createCodeConfDto.config.UUID = true;
-        createCodeConfDto.backendFile = new BackendFile();
-        createCodeConfDto.backendFile.controller = true;
-        createCodeConfDto.backendFile.dto = true;
-        createCodeConfDto.backendFile.module = true;
-        createCodeConfDto.backendFile.pageDto = true;
-        createCodeConfDto.backendFile.service = true;
-        createCodeConfDto.frontendFile = new FrontEndFile();
-        createCodeConfDto.frontendFile.api = true;
-        createCodeConfDto.frontendFile.dto = true;
-        createCodeConfDto.frontendFile.form = true;
-        createCodeConfDto.frontendFile.list = true;
-        createCodeConfDto.frontendFile.search = true;
+    async createCode(UUID: String, createCodeConfDto: CreateCodeConfDto) {
         const devTools = new DevTools(createCodeConfDto);
         const moduleConf = await this.moduleConf.findOne({ UUID });
         const fieldList = await this.getModuleFieldList(UUID, "");
