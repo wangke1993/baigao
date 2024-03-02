@@ -89,7 +89,7 @@
         />
       </el-form-item>
       <el-form-item label="内容" prop="content">
-        <div style="border: 1px solid #ccc">
+        <div style="border: 1px solid #ccc" v-if="state.dialogFormVisible">
           <Toolbar
             style="border-bottom: 1px solid #ccc"
             :editor="editorRef"
