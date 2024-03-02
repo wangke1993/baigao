@@ -8,7 +8,7 @@ import { FileUpload, FileUploadDocument, FileUploadModels } from './dto/file-upl
 import { v4 as uuidV4 } from 'uuid';
 import { createReadStream, ReadStream, existsSync } from 'fs';
 import { SystemLog } from 'src/system-log/dto/system-log.schema';
-import { deleteFile, getFileType, getFileUrl, saveFile, saveFileByBuffer } from './utils/file-tools';
+import { deleteFile, getFileType, getFileUrl, saveFile, saveFileByBuffer, chargeFileNameCode } from './utils/file-tools';
 
 @Injectable()
 export class FileUploadService {
@@ -20,14 +20,15 @@ export class FileUploadService {
             throw new Error("文件不能为空");
         }
         const path: any = await saveFile(file, UUID, isPrivate);
+        const filename = chargeFileNameCode(file.originalname)
         let fileUpload = new FileUploadModels();
         fileUpload.size = file.size;
-        fileUpload.fileName = file.originalname;
+        fileUpload.fileName = filename;
         fileUpload.path = path;
         fileUpload.UUID = UUID;
         fileUpload.addDate = new Date();
-        fileUpload.fileType = getFileType(file.originalname);
-        fileUpload.url = getFileUrl(file.originalname, UUID, fileUpload.fileType, isPrivate);
+        fileUpload.fileType = getFileType(filename);
+        fileUpload.url = getFileUrl(filename, UUID, fileUpload.fileType, isPrivate);
         fileUpload.contentType = file.mimetype
         const create = new this.FileUploadModel(fileUpload);
         return create.save();
@@ -38,15 +39,16 @@ export class FileUploadService {
             throw new Error("文件不能为空");
         }
         const buffer = Buffer.from(arrayBuffer)
-        const path: any = await saveFileByBuffer(fileName, buffer, UUID, isPrivate);
+        const filename = chargeFileNameCode(fileName)
+        const path: any = await saveFileByBuffer(filename, buffer, UUID, isPrivate);
         let fileUpload = new FileUploadModels();
         fileUpload.size = buffer.byteLength / 1024;
-        fileUpload.fileName = fileName;
+        fileUpload.fileName = filename;
         fileUpload.path = path;
         fileUpload.UUID = UUID;
         fileUpload.addDate = new Date();
-        fileUpload.fileType = getFileType(fileName);
-        fileUpload.url = getFileUrl(fileName, UUID, fileUpload.fileType, isPrivate);
+        fileUpload.fileType = getFileType(filename);
+        fileUpload.url = getFileUrl(filename, UUID, fileUpload.fileType, isPrivate);
         const create = new this.FileUploadModel(fileUpload);
         return create.save();
     }
