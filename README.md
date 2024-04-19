@@ -257,7 +257,7 @@ chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
    小程序：自定义tab栏 \
 关键词：nestJs、vue3、ts、mongoDB、uni-app、element-plus、微信生态、大前端、云原生、nestJs代码生成、nestJs低代码
 
-## 技术交流，进群请加微信
+## 技术交流，进群请加微信，有问题直接群里面问吧，暂时没空写文档
 手机号（微信同号）：17612702450 \
 加微请备注：柏高
 
