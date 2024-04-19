@@ -1,7 +1,7 @@
 ![logo](./logo.png)
 # 柏高（BaiGao）
 ## 介绍
-基于nestJs+mongoDB+vue3+element-plus+uni-app技术栈的大前端后台管理系统；可基于当前系统快速构建toG、toB、toC常见业务系统；经过商业项目验证，可放心食用；
+基于nestJs+mongoDB+vue3+element-plus+uni-app技术栈的大前端后台管理系统；可基于当前系统快速构建toG、toB、toC常见业务系统；经过商业项目验证，可放心食用，如果喜欢，你也可以用你发财的小手点个star，以资鼓励；
 ## 亮点介绍
 ### 1.代码生成（高效开发）
    全量生成(后端curd,前端curd),独立控制生成模块
@@ -261,7 +261,7 @@ chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
 手机号（微信同号）：17612702450 \
 加微请备注：柏高
 
-## 接项目合作开发及系统定制开发
+## 接【项目合作】、【系统定制开发】
 手机号（微信同号）：17612702450 \
 加微请备注：开发
 
