@@ -12,8 +12,8 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
 import { PageRequestDto } from 'src/common-dto/page-request.dto';
 import { RedisCacheService } from 'src/redis-cache/redis-cache.service';
-import { v4 as uuidV4 } from 'uuid';
 import { isImage, isOffice } from './dto/file-type.dto';
+import { UUID } from 'src/utils/random-tools';
 
 @ApiTags('文件管理')
 @Controller('file')
@@ -27,8 +27,8 @@ export class FileUploadController {
     @Post('upload')
     @ApiOperation({ summary: 'uploadFile', description: '文件上传公开文件，无需登录' })
     @UseInterceptors(FileInterceptor('file'))
-    async upload(@UploadedFile() file, @Req() req: any): Promise<any> {
-        const rsp = new ResponseInfoDto<any>();
+    async upload(@UploadedFile() file: any, @Req() req: any): Promise<any> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             const fileInfo: FileUpload = await this.fileUploadService.create(file);
             rsp.success('上传成功', fileInfo);
@@ -47,7 +47,7 @@ export class FileUploadController {
     @UseInterceptors(FileInterceptor('file'))
     @HttpCode(200)
     async uploadPrivate(@UploadedFile() file, @Req() req: any): Promise<any> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             const fileInfo = await this.fileUploadService.create(file, true);
             rsp.success('上传成功', fileInfo);
@@ -76,7 +76,7 @@ export class FileUploadController {
 
     @Get('privateTemp/:viewUUID')
     @ApiOperation({ description: '获取临时开放私有文件' })
-    async getPrivateFileTemp(@Param('viewUUID') viewUUID: string, @Res() res: Response): Promise<any> {
+    async getPrivateFileTemp(@Param('viewUUID') viewUUID: string, @Res() res: Response, @Req() req: any): Promise<any> {
         const fileUUID = await this.redisCacheService.get(viewUUID);
         if (fileUUID) {
             const { readStream, file } = await this.fileUploadService.getFileByUUID(fileUUID);
@@ -91,7 +91,7 @@ export class FileUploadController {
             }
             readStream.pipe(res);
         } else {
-            res.json(new ResponseInfoDto().error('链接已过期'));
+            res.json(new ResponseInfoDto(req).error('链接已过期'));
             res.send();
         }
     }
@@ -99,13 +99,13 @@ export class FileUploadController {
     @AuthTag('downPrivateTemp')
     @ApiOperation({ description: 'downPrivateTemp:下载私有文件,office类型的数据生成临时开放数据,30分钟过期' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async downPrivateTemp(@Param("fileUUID") fileUUID: string, @Res() res: Response): Promise<any> {
-        const viewUUID = uuidV4();
+    async downPrivateTemp(@Param("fileUUID") fileUUID: string, @Res() res: Response, @Req() req: any): Promise<any> {
+        const viewUUID = UUID();
         const { readStream, file } = await this.fileUploadService.getFileByUUID(fileUUID);
         const fileType = file.path.split('.').pop();
         if (isOffice(fileType) || isImage(fileType)) {
             await this.redisCacheService.set(viewUUID, file.UUID, 30 * 60);
-            res.json(new ResponseInfoDto().success('成功', { viewUUID, fileType, file }));
+            res.json(new ResponseInfoDto(req).success('成功', { viewUUID, fileType, file }));
             res.send();
         } else {
             res.contentType(
@@ -141,7 +141,7 @@ export class FileUploadController {
     @ApiOperation({ description: 'deleteFile:删除文件' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.fileUploadService.delete(id));
         } catch (e) {
@@ -151,11 +151,11 @@ export class FileUploadController {
         return rsp;
     }
     @Get("getPage")
-    @AuthTag('getFileMangerPage')
-    @ApiOperation({ description: 'getFileMangerPage:获取文件管理分页' })
+    @AuthTag('getFileManagementPage')
+    @ApiOperation({ description: 'getFileManagementPage:获取文件管理分页' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getPage(@Query() pageForm: PageRequestDto): Promise<ResponseInfoDto<PageResponseDto<FileUpload>>> {
-        const info = new ResponseInfoDto<PageResponseDto<FileUpload>>();
+    async getPage(@Query() pageForm: PageRequestDto, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<FileUpload>>> {
+        const info = new ResponseInfoDto<PageResponseDto<FileUpload>>(req);
         try {
             info.success(`成功`, await this.fileUploadService.getPage(pageForm));
         } catch (e) {

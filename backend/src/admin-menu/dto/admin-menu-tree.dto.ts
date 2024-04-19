@@ -12,6 +12,7 @@ export class AdminMenuTreeDto {
         this.menuIcon = adminMenu.menuIcon;
         this.isShow = adminMenu.isShow;
         this.sort = adminMenu.sort;
+        this.parentId = adminMenu.parentId;
     }
 
     @ApiProperty({
@@ -79,4 +80,9 @@ export class AdminMenuTreeDto {
         description: '排序，升序，序号越小越靠前',
     })
     sort: number;
+    @ApiProperty({
+        required: true,
+        description: '是否禁用',
+    })
+    disabled = false;
 }

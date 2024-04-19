@@ -1,4 +1,4 @@
-<% if(dom=="Input") {%><el-input v-model="<%=VModule %>" placeholder="<%=fieldName %>" clearable></el-input><% }  if(dom=="Password") {%>
+<% if(dom=="Input") {%><el-input<%if(fieldType=='number'){%>-number<%}%> v-model="<%=VModule %>" placeholder="<%=fieldName %>" clearable></el-input<%if(fieldType=='number'){%>-number<%}%>><% }  if(dom=="Password") {%>
 <el-input v-model="<%=VModule %>" placeholder="请输入<%=fieldName %>" show-password clearable></el-input><% }  if(dom=="TextArea") {%>
 <el-input
     type="textarea"
@@ -6,9 +6,13 @@
     :rows="2"
     placeholder="请输入<%=fieldName %>"
     v-model="<%=VModule %>">
-</el-input><% }  if(dom=="Swatch") {%>
+</el-input><% }  if(dom=="Switch") {%>
 <el-switch v-model="<%=VModule %>"></el-switch><% }  if(dom=="Select") {%>
-<el-select v-model="<%=VModule %>" clearable placeholder="请选择<%=fieldName %>">
+<el-select style="width: 100%;" v-model="<%=VModule %>"  clearable placeholder="请选择<%=fieldName %>"
+    <% if(!search) {%>
+     @change="<%=fieldEnName %>SelectChange" 
+    <%}%>
+     >
     <el-option
       v-for="item in <%=fieldEnName %>Select"
       :key="item.value"
@@ -16,7 +20,7 @@
       :value="item.value">
     </el-option>
 </el-select><% }  if(dom=="MoreSelect") {%>
-<el-select v-model="<%=fieldEnName %>SelectValue" @change="<%=fieldEnName %>SelectChange" multiple clearable placeholder="请选择<%=fieldName %>">
+<el-select style="width: 100%;" v-model="<%=fieldEnName %>SelectValue" @change="<%=fieldEnName %>SelectChange" multiple clearable placeholder="请选择<%=fieldName %>">
     <el-option
       v-for="item in <%=fieldEnName %>Select"
       :key="item.value"
@@ -24,7 +28,7 @@
       :value="item.value">
     </el-option>
 </el-select><% }  if(dom=="Radio") {%>
-<el-radio-group v-model="<%=VModule %>">
+<el-radio-group v-model="<%=VModule %>" @change="<%=fieldEnName %>SelectChange">
     <el-radio 
         v-for="item in <%=fieldEnName %>Select"
         :key="item.value"
@@ -52,6 +56,7 @@
   placeholder="请选择<%=fieldName %>">
 </el-time-select><% }  if(dom=="DatePicker") {%>
 <el-date-picker
+    style="width: 100%;"
     v-model="<%=VModule %>"
     type="date"
     placeholder="请选择<%=fieldName %>">
@@ -60,16 +65,18 @@
     v-model="<%=VModule %>"
     type="datetime"
     placeholder="请选择<%=fieldName %>">
-</el-date-picker><% }  if(dom=="TreeSelect") {%>
+</el-date-picker><% }  if("TreeSelect"==dom) {%>
 <el-cascader
     clearable
+    style="width: 100%;"
     v-model="<%=VModule %>"
     :props="<%=fieldEnName %>TreeProps"
     :options="<%=fieldEnName %>TreeOptions"
     ref="<%=fieldEnName %>TreeRef"
     @change="<%=fieldEnName %>TreeChange">
-</el-cascader><% }  if(dom=="MoreTreeSelect") {%>
+</el-cascader><% }  if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
 <el-cascader
+    style="width: 100%;"
     clearable
     collapse-tags
     v-model="<%=fieldEnName %>TreeValue"
@@ -128,20 +135,24 @@
                 />
                 <span class="el-upload-list__item-actions">
                     <span
-                        v-if="!disabled"
                         class="el-upload-list__item-delete"
                         @click="<%=fieldEnName %>Remove(file)"
                     >
-                    <el-icon>
-                        <Delete />
-                    </el-icon>
+                        <el-icon>
+                            <Delete />
+                        </el-icon>
+                    </span>
+                    <el-image
+                    :src="viewIcon"
+                    preview-teleported
+                    style="width: 32px; margin-left: 10px"
+                    :preview-src-list="[file.url]"
+                  >
+                  </el-image>
                 </span>
                 </span>
             </div>
         </template>
     </el-upload>
-    <el-dialog v-model="<%=fieldEnName %>DialogImage">
-        <img w-full :src="<%=fieldEnName %>DialogImageUrl" alt="查看图片" />
-    </el-dialog>
 </div><% }  if(dom=="Rate") {%>
-<el-rate disabled v-model="<%=VModule %>" max="5"/><% } %>
+<el-rate v-model="<%=VModule %>" size="large" :max="5"/><% } %>

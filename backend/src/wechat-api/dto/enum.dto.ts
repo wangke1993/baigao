@@ -18,3 +18,7 @@ export enum LOGIN_QR_STATUS {
     '已授权' = 'AUTHORIZE',
     '已过期' = 'EXPIRE'
 }
+export enum TRANSFER_SCENE_ID {
+    '分销返佣' = 1001,
+    '佣金报酬' = 1005
+}

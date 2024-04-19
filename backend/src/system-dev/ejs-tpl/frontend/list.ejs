@@ -17,12 +17,25 @@
         </template>
       </el-table-column><% for(let i=0;i<fieldList.length;i++) {%><% if(fieldList[i].listShow) {%>
       <el-table-column prop="<%=fieldList[i].nameEn %>" label="<%=fieldList[i].name %>">
-        <template #default="scope"><% if (fieldList[i].dom=="Swatch") {%>
+        <template #default="scope"><% if (fieldList[i].dom=="Switch") {%>
           <el-switch disabled v-model="scope.row.<%=fieldList[i].nameEn %>" />
-          <% }else if(["Select","MoreSelect","Radio","Checkbox","TreeSelect","MoreTreeSelect"].includes(fieldList[i].dom)) {%>
+          <% }else if(["Select","Radio","TreeSelect","AdministrativeDivision"].includes(fieldList[i].dom)) {%>
           {{ scope.row.<%=fieldList[i].nameEn %>Text }}
+          <% }else if(["MoreSelect","Checkbox","MoreTreeSelect"].includes(fieldList[i].dom)) {%>
+            <div v-html="scope.row.<%=fieldList[i].nameEn %>Text.split(',').join('<br>')"></div>
           <% }else if(fieldList[i].dom == "Rate") { %>
-          <el-rate disabled v-model="scope.row.<%=fieldList[i].nameEn %>" max="5"/>
+          <el-rate disabled v-model="scope.row.<%=fieldList[i].nameEn %>" :max="5"/>
+          <% } else if(fieldList[i].dom == "Image") { %>
+          <el-image
+            style="width: 100px; height: 100px"
+            preview-teleported="true"
+            v-if="scope.row.<%=fieldList[i].nameEn %>"
+            :src="`/api${scope.row.<%=fieldList[i].nameEn %>.split(';')[0].split(',')[1]}`"
+            :zoom-rate="0.8"
+            :preview-src-list="scope.row.<%=fieldList[i].nameEn %>.split(';').map((item: string) => item.split(',')[1] ? `/api${item.split(',')[1]}` : '').filter((item: any) => Boolean(item))"
+            fit="cover"
+            loading="lazy"
+          />
           <% } else { %>
           {{ scope.row.<%=fieldList[i].nameEn %> }}<% } %>
         </template>
@@ -85,15 +98,25 @@
 </template>
 <script lang="ts">
 // 路由地址 默认全部挂载到 business
-// 名称：<%=moduleConf.name %>
-// 路由地址：/business/<%=getSmallModuleTitle(moduleConf.nameEn) %>
+// 名称:<%=moduleConf.name %>
+// 路由地址:/business/<%=getSmallModuleTitle(moduleConf.nameEn) %>
 // {
 //   path: '<%=getSmallModuleTitle(moduleConf.nameEn) %>',
 //   component: () => import('@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/Index.vue'),
 //   name: '<%=getSmallModuleTitle(moduleConf.nameEn) %>',
 //   meta: { title: '<%=moduleConf.name %>' }
 // },
-
+// 接口权限：
+// 创建<%=moduleConf.name %>:create<%=getBigModuleTitle(moduleConf.nameEn) %>
+// 编辑<%=moduleConf.name %>:update<%=getBigModuleTitle(moduleConf.nameEn) %>
+// 删除<%=moduleConf.name %>:delete<%=getBigModuleTitle(moduleConf.nameEn) %>ById
+// 根据id获取<%=moduleConf.name %>详情:get<%=getBigModuleTitle(moduleConf.nameEn) %>ById
+// 获取<%=moduleConf.name %>分页:get<%=getBigModuleTitle(moduleConf.nameEn) %>Page
+// 按钮权限
+// 添加<%=moduleConf.name %>:add-<%=getSmallModuleTitle(moduleConf.nameEn) %>
+// 编辑<%=moduleConf.name %>:edit-<%=getSmallModuleTitle(moduleConf.nameEn) %>
+// 删除<%=moduleConf.name %>:delete-<%=getSmallModuleTitle(moduleConf.nameEn) %>
+// 保存或更新<%=moduleConf.name %>:save-<%=getSmallModuleTitle(moduleConf.nameEn) %>
 // 组件名称
 export default {
   name: "<%=getSmallModuleTitle(moduleConf.nameEn) %>",
@@ -101,10 +124,11 @@ export default {
 </script>
 <script lang="ts" setup>
 import { ref } from "vue";
+import axios from "axios";
 import { Delete, Edit } from "@element-plus/icons-vue";
 import { btnShow } from "@/utils/buttonShow";
 import <%=getBigModuleTitle(moduleConf.nameEn) %>Form from "@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/components/<%=getBigModuleTitle(moduleConf.nameEn) %>Form.vue";
-import <%=getBigModuleTitle(moduleConf.nameEn) %>Search from "@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/components/Search.vue";
+import <%=getBigModuleTitle(moduleConf.nameEn) %>Search from "@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/components/<%=getBigModuleTitle(moduleConf.nameEn) %>Search.vue";
 import {
   <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetPage,
   <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerDelete,
@@ -121,7 +145,8 @@ const params = ref(
     pageIndex: 1,
     pageSize: 10,
     keyWord: "",
-    <% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>:<% if(searchNoLike[i].fieldType.indexOf('[')!=-1){ %>[] as <%=searchNoLike[i].fieldType%><%} else {%> ""<%}} %>
+    <% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>:<% if(searchNoLike[i].fieldType.indexOf('[')!=-1){ %>[] as <%=searchNoLike[i].fieldType%><%} else {%> ""<%}%>,
+    <%} %>
   }
 )
 const edit = (item: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto) => {
@@ -132,7 +157,8 @@ const add = () => {
 }
 type SearchDto = {
   keyWord: string,
-  <% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>: <%=searchNoLike[i].fieldType %><%} %>
+  <% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>:<% if(searchNoLike[i].fieldType.indexOf('[')!=-1){ %>[] as <%=searchNoLike[i].fieldType%><%} else {%> ""<%}%>,
+    <%} %>
 }
 const search = async (searchDto: SearchDto) => {
   params.value.keyWord = searchDto.keyWord;

@@ -1,14 +1,20 @@
 <template>
   <div class="dev-box">
     <div class="top-box">
+      <el-input
+        v-model="moduleKeyWords"
+        placeholder="输入模型名称检索"
+        style="width: 188px; margin-right: 18px"
+      >
+      </el-input>
       <el-button type="primary" @click="create()">新增模型</el-button>
       <div class="right" v-if="moduleForm.UUID">
         <el-button
-          type="primary"
+          :type="moduleForm.createCount ? 'warning' : 'primary'"
           @click="createCode()"
-          >生成</el-button
+          >生成：{{ moduleForm.createCount }}</el-button
         >
-        <el-button type="primary">挂载目录</el-button>
+        <el-button type="primary" @click="createMenu()">挂载目录</el-button>
       </div>
     </div>
     <div class="bottom-box">
@@ -43,6 +49,11 @@
         <div v-else class="empty-box">暂无数据</div>
       </div>
       <div class="dev-content" v-if="showConf.content">
+        <div style="margin-bottom: 8px; color: #666">
+          <p>第一步：创建模型、字段、搜索后，生成代码</p>
+          <p>第二步：前端注册路由，后端注册模块</p>
+          <p>第三步：挂载菜单，重新登录</p>
+        </div>
         <div class="content-top">
           <h3 style="margin-bottom: 20px">模型信息</h3>
           <el-button
@@ -60,6 +71,7 @@
               <el-form-item label="中文名称">
                 <el-input
                   v-model="moduleForm.name"
+                  @blur="translateZhToEn(moduleForm.name)"
                   placeholder="中文名称"
                 ></el-input>
               </el-form-item>
@@ -113,14 +125,15 @@
       </div>
     </div>
     <CreateConf
-            ref="createConfRef"
-            :moduleForm="moduleForm"
-          />
+      ref="createConfRef"
+      @getModelList="getModelList"
+      :moduleForm="moduleForm"
+    />
   </div>
 </template>
 <script lang="ts">
 export default {
-  name: "dev",
+  name: "autoCode",
 };
 </script>
 <script lang="ts" setup>
@@ -135,11 +148,14 @@ import {
   SystemDevControllerDevUpdateModule,
   SystemDevControllerGetModuleList,
   SystemDevControllerCreateCode,
+  SystemDevControllerCreateMenu,
+  SystemDevControllerTranslateZhToEn,
 } from "@/api/SystemDevControllerApi";
 import { ModuleConfDto } from "@/api/dto/ModuleConfDto";
 import { alertSuccess, alertWarning } from "@/utils/message";
-import { nextTick, ref } from "vue";
+import { nextTick, ref, watch } from "vue";
 import type { ModuleFieldDto } from "@/api/dto/ModuleFieldDto";
+import { initialLowercase } from "@/utils/tools";
 
 //#region 模型管理
 const moduleKeyWords = ref("");
@@ -156,14 +172,44 @@ const getModelList = async () => {
   loading.value.moduleList = false;
   if (status == 1) {
     moduleList.value = data;
+    if (moduleForm.value.UUID) {
+      moduleForm.value =
+        moduleList.value
+          .filter((item) => item.UUID == moduleForm.value.UUID)
+          .pop() ?? moduleForm.value;
+    }
   } else {
     alertWarning(message);
   }
 };
 getModelList();
+watch(
+  () => moduleKeyWords.value,
+  () => {
+    getModelList();
+  }
+);
 const moduleForm = ref(new ModuleConfDto());
 const menuTree = ref(new Array<any>());
 const visible = ref(true);
+const translateZhToEn = async (keyWord?: string) => {
+  if (!keyWord || moduleForm.value.nameEn) {
+    return;
+  }
+  const {
+    data: { status, data, message },
+  } = await SystemDevControllerTranslateZhToEn({ keyWord });
+  if (status === 1) {
+    if (!moduleForm.value.nameEn) {
+      moduleForm.value.nameEn = data
+        .split(" ")
+        .map((item: string) => initialLowercase(item))
+        .join("-");
+    }
+  } else {
+    alertWarning(message);
+  }
+};
 const menuTreeProps = {
   emitPath: false,
   checkStrictly: true,
@@ -243,6 +289,19 @@ const createConfRef = ref();
 const createCode = async () => {
   createConfRef.value.open();
 };
+const createMenu = async () => {
+  if (!moduleForm.value.UUID) {
+    throw new Error("UUID不能为空");
+  }
+  const {
+    data: { status, message },
+  } = await SystemDevControllerCreateMenu(moduleForm.value.UUID);
+  if (status === 1) {
+    alertSuccess("挂载成功");
+  } else {
+    alertWarning(message);
+  }
+};
 //#endregion
 </script>
 <style lang="scss" scoped>
@@ -256,10 +315,14 @@ const createCode = async () => {
   padding: 18px;
   width: 100%;
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
   .top-box {
     padding: 8px 0;
     display: flex;
     position: relative;
+    height: 48px;
+    box-sizing: border-box;
     .right {
       position: absolute;
       right: 5%;
@@ -267,14 +330,21 @@ const createCode = async () => {
   }
   .bottom-box {
     display: flex;
+    height: calc(100% - 35px);
+    box-sizing: border-box;
+    overflow: hidden;
     .module-list {
       width: 288px;
       box-sizing: border-box;
-      margin-right: 28px;
+      height: 100%;
+      overflow-y: auto;
+      padding-bottom: 18px;
       .list-box {
+        padding: 0 6px;
         .item {
           display: flex;
-          padding: 8px;
+          padding: 6px;
+          margin: 6px 0;
           .left {
             width: 80%;
             p {
@@ -305,6 +375,9 @@ const createCode = async () => {
     }
     .dev-content {
       width: calc(100% - 288px);
+      overflow-y: auto;
+      padding: 10px;
+      padding-bottom: 300px;
       .content-top {
         display: flex;
         .btn {

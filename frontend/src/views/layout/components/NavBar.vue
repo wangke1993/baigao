@@ -12,6 +12,9 @@
       >
     </el-breadcrumb>
     <div class="nav-right">
+      <div class="company-name">
+        {{ userInfo.companyName }}
+      </div>
       <el-autocomplete
         v-model="searchKey"
         @select="handleSelect"
@@ -27,9 +30,8 @@
         </template>
       </el-autocomplete>
       <div class="user-avatar">
-        <el-avatar
-          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-        />
+        <el-avatar src="/user-avatar.png" />
+        {{ userInfo.userName }}
         <el-icon class="user-menu-down">
           <CaretBottom />
         </el-icon>
@@ -47,11 +49,13 @@
 <script lang="ts" setup>
 import { useTabsStore } from "@/stores/tabs";
 import { usePermissionStore } from "@/stores/permission";
-import { deleteToken } from "@/utils/authTokenUtil";
+import { deleteToken, getUserInfoByToken } from "@/utils/authTokenUtil";
 import { useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
 const router = useRouter();
 const route = useRoute();
+const userInfo = getUserInfoByToken();
+console.log("用户信息", userInfo);
 const emit = defineEmits(["openOffMenu"]);
 const openOffMenu = () => {
   emit("openOffMenu");
@@ -112,6 +116,11 @@ const handleSelect = (item: any) => {
     display: flex;
     justify-content: center;
     align-items: center;
+    .company-name {
+      margin-right: 18px;
+      font-size: 18px;
+      font-weight: 700;
+    }
   }
 
   .user-avatar {

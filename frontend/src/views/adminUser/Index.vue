@@ -114,9 +114,10 @@ const add = async (row?: any) => {
 
 const userList = async () => {
   const { data: res } = await AdminUserControllerGetPage({
-    pageSize: currentPageSize.value.toString(),
-    pageIndex: currentPage.value.toString(),
+    pageSize: currentPageSize.value,
+    pageIndex: currentPage.value,
     keyWord: param.value.keyWord || "",
+    companyUUID: "",
   });
   if (res.status === 1) {
     userListData.value = res.data.list;

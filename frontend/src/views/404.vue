@@ -182,7 +182,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .error-page_page__6HKvE {
   height: calc(100vh - 96px);
   display: flex;

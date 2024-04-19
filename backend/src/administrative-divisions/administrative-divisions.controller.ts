@@ -12,8 +12,8 @@ export class AdministrativeDivisionsController {
 
     @Get('getAdministrativeDivisions/:parentCode')
     @ApiOperation({ description: '根据区域类型【parentCode】:行政区划的CODE,获取省时传0即可,获取省市区,无需权限校验' })
-    async getListByDicClass(@Param("parentCode") parentCode: string): Promise<ResponseInfoDto<any[]>> {
-        const rsp = new ResponseInfoDto<any[]>();
+    async getListByDicClass(@Param("parentCode") parentCode: string, @Req() req: any): Promise<ResponseInfoDto<any[]>> {
+        const rsp = new ResponseInfoDto<any[]>(req);
         try {
             let areaType: number;
             if (parentCode == '0') {

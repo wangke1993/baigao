@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+    app:
+       image: 'baigao:frontend'
+       restart: unless-stopped
+       networks:
+         mynetwork:
+            ipv4_address: 172.18.0.25
+networks:
+  mynetwork:
+    external:
+      name: FACAI

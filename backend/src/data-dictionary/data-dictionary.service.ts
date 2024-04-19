@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from "mongodb";
 import { Model } from 'mongoose';
@@ -6,6 +6,7 @@ import { PageRequestDto } from 'src/common-dto/page-request.dto';
 import { PageResponseDto } from 'src/common-dto/page-response.dto';
 import { DataDictionary, DataDictionaryDocument, DIC_TYPE } from './dto/data-dictionary.schema';
 import { DicTree } from './dto/dic-tree.dto';
+import { DevTools } from 'src/system-dev/dev-tools';
 
 @Injectable()
 export class DataDictionaryService {
@@ -65,7 +66,7 @@ export class DataDictionaryService {
         if (dataDictionary.dicType == DIC_TYPE.class || dataDictionary.dicType == DIC_TYPE.value) {
             delete dataDictionary.dicCode;
             delete dataDictionary.dicType;
-            delete dataDictionary.isSystem;
+            // delete dataDictionary.isSystem;
             return await this.DataDictionaryModel.updateOne({ _id: new ObjectId(id) }, { $set: { ...dataDictionary } });
         } else {
             throw new Error("请填写正确的dicType");
@@ -75,22 +76,35 @@ export class DataDictionaryService {
         const keyWord = pageForm?.keyWord ? pageForm?.keyWord : '';
         let map: any = {
             $or: [
-                { dicName: { $regex: keyWord } }
+                { dicName: { $regex: keyWord } },
+                { dicCode: { $regex: keyWord } },
+                { remarks: { $regex: keyWord } }
             ],
             dicType: dicType
         };
         if (dicClass) {
             map = {
                 $or: [
-                    { dicName: { $regex: keyWord } }
+                    { dicName: { $regex: keyWord } },
+                    { remarks: { $regex: keyWord } }
                 ],
                 dicType: dicType,
                 dicClass: dicClass
             };
         }
-        const pageData = new PageResponseDto<DataDictionary>();
+        const pageData = new PageResponseDto<any>();
         pageData.total = await this.DataDictionaryModel.countDocuments(map);
-        pageData.list = await this.DataDictionaryModel.find(map).limit(pageForm.pageSize).skip((pageForm.pageIndex - 1) * pageForm.pageSize);
+        const list = await this.DataDictionaryModel.find(map).limit(pageForm.pageSize).skip((pageForm.pageIndex - 1) * pageForm.pageSize);
+        if (dicType == DIC_TYPE.class) {
+            for (const key in list) {
+                pageData.list.push({
+                    ...list[key]['_doc'],
+                    items: await this.DataDictionaryModel.find({ dicClass: list[key].dicCode })
+                })
+            }
+        } else {
+            pageData.list = list;
+        }
         return pageData;
     }
     async getListByDicClass(dicClass: string): Promise<DataDictionary[]> {
@@ -98,6 +112,14 @@ export class DataDictionaryService {
             dicClass: dicClass
         };
         return await this.DataDictionaryModel.find(map).sort({ addDate: 1 });
+    }
+    async getValue(dicCode: string): Promise<string> {
+        const dic = await this.DataDictionaryModel.findOne({ dicCode });
+        if (dic) {
+            return dic.value;
+        } else {
+            return "";
+        }
     }
     async getTree(): Promise<DicTree[]> {
         const List = await this.DataDictionaryModel.find().sort({ dicCode: 1 });
@@ -110,5 +132,9 @@ export class DataDictionaryService {
             })
         })
         return dicTree
+    }
+    async createDic(): Promise<any>{
+        const tree = await this.getTree();
+        return new DevTools().createDic(tree);
     }
 }

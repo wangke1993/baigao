@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 //依赖
 import type { FormInstance, FormRules } from "element-plus";
-import { reactive, ref, defineProps, defineEmits } from "vue";
+import { reactive, ref } from "vue";
 const searchFormRef = ref<FormInstance>();
 const searchForm = ref({
   keyWord: "",

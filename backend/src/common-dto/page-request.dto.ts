@@ -14,5 +14,4 @@ export class PageRequestDto{
         required: false
     })
     keyWord: string;
-    
 }

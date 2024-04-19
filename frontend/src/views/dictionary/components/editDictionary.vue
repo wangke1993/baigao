@@ -140,7 +140,7 @@ const open = (item: any) => {
   }
   state.dialogFormVisible = true;
 };
-
+const emit = defineEmits(["refreshList"]);
 // 关闭弹窗
 const closeForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
@@ -153,6 +153,7 @@ const closeForm = (formEl: FormInstance | undefined) => {
     dicClass: "",
     value: "",
   };
+  emit("refreshList");
 };
 
 // 根据字典分类(分类dicCode)获取字典值
@@ -202,8 +203,8 @@ const postDataDictionaryControllerCreate = async (params: any) => {
 const addDictionaryFun = (index: number, items: any, type: string) => {
   if (type == "edit") items.disabled = true;
   else if (type == "submit") {
-    const { dicName, dicType, remarks, _id } = items;
-    let params = { dicName, dicType, remarks };
+    const { dicName, dicType, remarks, _id, value } = items;
+    let params = { dicName, dicType, remarks, value };
     postDataDictionaryControllerUpdate(_id, params, items);
   } else {
     items.disabled = false;
@@ -243,11 +244,11 @@ const deleteDictionary = async (params: any) => {
     return;
   }
 };
-defineEmits(["refreshList"]);
+
 defineExpose({ open });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .el-dialog__body {
   padding: 0 20px;
 }

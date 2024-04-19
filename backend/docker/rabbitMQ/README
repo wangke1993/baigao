@@ -1,0 +1,17 @@
+# 安装使用rabbitMQ
+## 1.安装并启动(以集成延时消息插件：rabbitmq_delayed_message_exchange)
+    1.更改start.sh中的用户名密码
+    2.运行start.sh
+## 2.访问管理界面（延时消息：x-delayed-message）
+    ip:15672
+## 3.连接到mq
+    amqp://baigao:123456@localhost:5672
+## 4.使用
+    1.创建交换机和队列（不用手动创建）
+        RabbitMQModule模块初始化时创建交换机
+            在task-manger中导入rabbit模块时就会创建对应的交换机
+        @RabbitSubscribe实现队列创建及绑定
+            在task-run中配置runTaskService时就会自动创建对应的队列及队列、路由key、交换机绑定关系:
+## PS
+    基本路径：生产者 ---》 交换机  ----》 队列 ----》 消费者
+    基本概念学习: https://www.bilibili.com/video/BV1Am4y1z7Tu?p=6&vd_source=4dd5cc6de965bbad7784bc910fce8bef

@@ -29,6 +29,7 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Service {
 <% if(conf.config.del){ %>
     async deleteById(id: string): Promise<any> {
         const data = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.findOne({ _id: new ObjectId(id) });
+        this.logger.warn("删除数据",data);
         if (data) {
             // 删除文件
             data.fileIds.forEach(k => {
@@ -83,7 +84,8 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Service {
             $or: [
                 <% for (let index = 0; index < searchListForLike.length; index++) { %>{ <%=searchListForLike[index].fieldEnName %>: { $regex: keyWord } },<% } %>
             ]
-        };<% } else {%>let map: any = {}<% } %><% for (let index = 0; index < searchListForOther.length; index++) { %><% if(searchListForOther[index].fieldType=="string") {%>
+        };<% } else {%>let map: any = {};<% } %>
+        <% for (let index = 0; index < searchListForOther.length; index++) { %><% if(searchListForOther[index].fieldType=="string") {%>
         if (page.<%=searchListForOther[index].fieldEnName %>) {
             map.<%=searchListForOther[index].fieldEnName %> = <%=getMethodString(searchListForOther[index]) %>;
         }<% } else { %>map.<%=searchListForOther[index].fieldEnName %> = <%=getMethodString(searchListForOther[index]) %>;
@@ -132,9 +134,9 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Service {
         return await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.find(map);
     }
    <% if(conf.config.UUID){ %>
-    async getDetailByUUIDs(UUIDs: string[]): Promise<<%=getBigModuleTitle(moduleConf.nameEn) %>> {
+    async getByUUIDs(UUIDs: string[]): Promise<<%=getBigModuleTitle(moduleConf.nameEn) %>[]> {
         let map: any = { UUID:{ $in: UUIDs } }
-        return await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.findOne(map);
+        return await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.find(map);
     }
     <% } %>
     async getList(count?: number): Promise<<%=getBigModuleTitle(moduleConf.nameEn) %>[]> {

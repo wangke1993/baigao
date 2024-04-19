@@ -1,6 +1,19 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class BaseDTO {
+    constructor(req?: any) {
+        if (req) {
+            this.updateUser = req?.user?.userName;
+            this.updateDate = new Date();
+            this.addUser = req?.user?.userName;
+            this.addDate = new Date();
+        }
+    }
+    update() {
+        delete this.addUser;
+        delete this.updateDate;
+        return this;
+    }
     @ApiProperty({
         required: false,
         description: '最后更新用户',

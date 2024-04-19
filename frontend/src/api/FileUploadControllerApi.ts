@@ -67,7 +67,7 @@ export const FileUploadControllerDelete = (id: string, config?: any) => {
 }
              
 /**
-* getFileMangerPage:获取文件管理分页
+* getFileManagementPage:获取文件管理分页
 * pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
 * @returns 
 */

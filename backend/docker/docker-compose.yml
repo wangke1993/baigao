@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+    app:
+       image: 'baigao:backend'
+       restart: unless-stopped
+       ports:
+          - '3001:3001'
+       volumes:
+          - /var/lib/docker/workspace/baigao-node/backend/file/private:/dist/private
+          - /var/lib/docker/workspace/baigao-node/backend/file/public:/dist/public
+       networks:
+         mynetwork:
+            ipv4_address: 172.18.0.26
+networks:
+  mynetwork:
+    external:
+      name: FACAI

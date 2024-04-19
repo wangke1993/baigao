@@ -51,7 +51,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, defineComponent } from "vue";
-import { ArticleMangerControllerGetPage } from "@/api/ArticleMangerControllerApi";
+import { ArticleManagementControllerGetPage } from "@/api/ArticleManagementControllerApi";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import { Edit } from "@element-plus/icons-vue";
 import Search from "@/views/article/components/Search.vue";
@@ -85,7 +85,7 @@ export default defineComponent({
     // 获取文章列表
     const getList = async (params: any) => {
       try {
-        let result = await ArticleMangerControllerGetPage(params);
+        let result = await ArticleManagementControllerGetPage(params);
         let data = result.data;
         if (data.status === 1) {
           // console.log("获取文章列表", data);

@@ -22,7 +22,7 @@ export class ModuleSearchDto {
     updateDate?: string;
     
     /**
-     * 文件id数组，只要文章上传文件，保留原有数据且把上传的文件id都push到该数组中。
+     * 文件UUID数组，只要文章上传文件，保留原有数据且把上传的文件UUID都push到该数组中。
      */
     fileIds?: string[];
     

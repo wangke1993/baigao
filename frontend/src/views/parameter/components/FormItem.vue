@@ -7,18 +7,21 @@
       v-model="modelValue"
       v-if="props.configGroupItem.dom == 'Input'"
       :placeholder="props.configGroupItem.description"
+      clearable
     ></el-input>
     <el-input
       v-model="modelValue"
       type="password"
       v-if="props.configGroupItem.dom == 'Password'"
       :placeholder="props.configGroupItem.description"
+      clearable
     ></el-input>
     <el-input
       v-model="modelValue"
       type="textarea"
       v-if="props.configGroupItem.dom == 'Area'"
       :placeholder="props.configGroupItem.description"
+      clearable
     ></el-input>
     <el-switch
       v-model="modelValue"
@@ -29,6 +32,8 @@
       :placeholder="props.configGroupItem.description"
       v-if="props.configGroupItem.dom == 'Select'"
       style="width: 100%"
+      clearable
+      filterable
     >
       <el-option
         v-for="item in selectValue"
@@ -43,6 +48,7 @@
       v-if="props.configGroupItem.dom == 'MoreSelect'"
       multiple
       clearable
+      filterable
       style="width: 100%"
     >
       <el-option
@@ -82,7 +88,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits, watchEffect, ref, onMounted } from "vue";
+import { watchEffect, ref } from "vue";
 import { ConfigGroupItem } from "../SystemConfigPage";
 import { getToken } from "@/utils/authTokenUtil";
 import type { UploadInstance, UploadUserFile } from "element-plus";

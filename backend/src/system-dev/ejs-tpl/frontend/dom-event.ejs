@@ -13,7 +13,10 @@ const get<%=getBigModuleTitle(fieldEnName) %>Select = async () => {
         alertWarning(message);
     }
 }
-get<%=getBigModuleTitle(fieldEnName) %>Select();<% }  if(dom=="MoreSelect") {%>
+get<%=getBigModuleTitle(fieldEnName) %>Select();<% } if(["Select","Radio"].includes(dom)&&!search){%> 
+const <%=fieldEnName %>SelectChange = (value: string) => {
+    form.value.<%=fieldEnName %>Text = <%=fieldEnName %>Select.value.filter(item => item.value == value)[0].label;
+};<%}  if(dom=="MoreSelect") {%>
 const <%=fieldEnName %>SelectValue = ref(new Array<any>());
 const <%=fieldEnName %>SelectChange = ( value:any ) => {
     <%=VModule %> = value.join();
@@ -21,36 +24,74 @@ const <%=fieldEnName %>SelectChange = ( value:any ) => {
 const <%=fieldEnName %>CheckboxValue = ref(new Array<any>());
 const <%=fieldEnName %>CheckboxChange = ( value:any ) => {
     <%=VModule %> = value.join();
-}<% }  if(["TreeSelect","MoreTreeSelect"].includes(dom)) { if(dom=="MoreSelect") {%>
+    if (<%=VModule %>) {
+        const tempName: string[] = [];
+        <%=fieldEnName %>Select.value.map((item: any) => {
+          if (value.includes(item.value)) {
+            tempName.push(item.label);
+          }
+        });
+        <%=VModule %>Text = tempName.join();
+    }
+}<% }  if(["TreeSelect","MoreTreeSelect","AdministrativeDivision"].includes(dom)) { if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
 const <%=fieldEnName %>TreeValue = ref(new Array<any>());<%} %>
 const <%=fieldEnName %>TreeRef = ref();
 const <%=fieldEnName %>TreeOptions = ref(new Array<any>());
+<%if("AdministrativeDivision"==dom){%>
+const <%=fieldEnName %>TreeProps: CascaderProps = {
+  expandTrigger: ExpandTrigger.HOVER,
+  value: "code",
+  label: "name",
+  lazy: true,
+  checkStrictly: true,
+  lazyLoad: async (node: any, resolve) => {
+    const code = node.value || "0";
+    const { data: res } =
+      await AdministrativeDivisionsControllerGetListByDicClass(code);
+    if (res.status == 1) {
+      resolve(
+        res.data.map((item: any) => {
+          <%=fieldEnName %>SelectName[item.code] = item.name;
+          item.leaf = node.level >= 2;
+          return item;
+        })
+      );
+    } else {
+      resolve();
+    }
+  },
+};
+<%} else {%>
 const <%=fieldEnName %>TreeProps = {
     emitPath: false,
 <% if(dom=="MoreTreeSelect") {%>
-    multiple: true
+    multiple: true,
 <% } %>
     checkStrictly: true,
     value: "<%=data.dataValueField %>",
     label: "<%=data.dataLabelField %>",
     children: "<%=data.dataChildField %>"
 };
-const get<%=fieldEnName %>Tree = async () => {
-  const {
-    data: { status, data, message },
-  } = await axios.get('<%=data.domDataUrl %>');;
-  if (status === 1) {
-    <%=fieldEnName %>TreeOptions.value = data;
-  } else {
-    alertWarning(message);
-  }
-};
-get<%=fieldEnName %>Tree();
+const get<%=getBigModuleTitle(fieldEnName) %>Tree = async () => {
+    const {
+      data: { status, data, message },
+    } = await axios.get('<%=data.domDataUrl %>');;
+    if (status === 1) {
+      <%=fieldEnName %>TreeOptions.value = data;
+    } else {
+      alertWarning(message);
+    }
+  };
+get<%=getBigModuleTitle(fieldEnName) %>Tree();<%}%>
+
 const <%=fieldEnName %>TreeChange = ( value:any ) => {
     console.log(value);
-    <% if(dom=="MoreTreeSelect") {%>
+    <% if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
     <%=VModule %> = value.join();
-    <% } %>
+    <%if(!search){%><%=VModule %>Text = <%=fieldEnName %>TreeRef.value.getCheckedNodes(true).map((node: any) => node.text).join();<%}%>
+    <% } else if(!search){%>
+        <%=VModule %>Text = <%=fieldEnName %>SelectName[value]
+    <%} %>
 }<% }  if(dom=="MoreText") {%>
 const <%=fieldEnName %>EditorRef = shallowRef();
 const <%=fieldEnName %>Html = ref("");
@@ -68,22 +109,33 @@ onBeforeUnmount(() => {
 });<% }  if(dom=="File") {%>
 const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
 const <%=fieldEnName %>UploadSuccess = (
-    response: any,
-    uploadFile: UploadFile,
-    uploadFiles: UploadFiles
+    response: any
 ) => {
     const { data, status, message } = response;
     if (status == 1) {
         const { UUID, fileName: name, url } = data;
-        // form.value.fileIds?.push(UUID);
-        <%=fieldEnName %>FileList.value.push({ name, url });
-        <%=VModule %> = <%=fieldEnName %>FileList.value.map(item => `${item.name},${item.url}`).join(';');
+        form.value.fileIds?.push(UUID);
+        <%=VModule %> += `${name},${url};`;
     } else {
         alertWarning(message);
     }
 };
-const <%=fieldEnName %>Remove = (file: any, fileList: any) => {
-    console.log("handleRemove", fileList);
+const <%=fieldEnName %>Remove = (file: any) => {
+    console.log("handleRemove", file);
+    <%=fieldEnName %>FileList.value = <%=fieldEnName %>FileList.value.filter(
+        (item: any) => item.uid != file.uid
+    );
+    if (<%=VModule %>) {
+        let temp = "";
+        <%=VModule %>.split(";").map((item, i) => {
+            if (item) {
+                if (item.indexOf(file.name) == -1) {
+                temp += `${item};`;
+                }
+            }
+        });
+        <%=VModule %> = temp;
+    }
 };
 const <%=fieldEnName %>Preview = (file: any) => {
     console.log("handlePreview",file);
@@ -95,23 +147,32 @@ const <%=fieldEnName %>BeforeRemove = (file: any, fileList: any) => {
     return alertConfirm(`确定移除 ${file.name}？`);
 };<% }  if(dom=="Image") {%>
 const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
-const <%=fieldEnName %>DialogImageUrl = ref("");
-const <%=fieldEnName %>DialogImage = ref(false);
 const <%=fieldEnName %>OnSuccess = (
     response: any,
-    uploadFile: UploadFile,
-    uploadFiles: UploadFiles
 ) => {
     const { data, status, message } = response;
     if (status == 1) {
         const { UUID, fileName: name, url } = data;
-        // form.value.fileIds?.push(UUID);
-        <%=fieldEnName %>FileList.value.push({ name, url });
-        <%=VModule %> = <%=fieldEnName %>FileList.value.map(item => `${item.name},${item.url}`).join(';');
+        form.value.fileIds?.push(UUID);
+        <%=VModule %> += `${name},${url};`;
     } else {
         alertWarning(message);
     }
 };
 const <%=fieldEnName %>Remove = (file: UploadFile) => {
-    console.log('<%=fieldEnName %>Remove');
+    console.log("handleRemove", file);
+    <%=fieldEnName %>FileList.value = <%=fieldEnName %>FileList.value.filter(
+        (item: any) => item.uid != file.uid
+    );
+    if (<%=VModule %>) {
+        let temp = "";
+        <%=VModule %>.split(";").map((item, i) => {
+            if (item) {
+                if (item.indexOf(file.name) == -1) {
+                temp += `${item};`;
+                }
+            }
+        });
+        <%=VModule %> = temp;
+    }
 };<% } %>

@@ -8,16 +8,20 @@ export const dataType = [
         value: "number",
     },
     {
+        name: "日期时间",
+        value: "Date",
+    },
+    {
         name: "字符串数组",
-        value: "string[]",
+        value: "Array<String>",
     },
     {
         name: "数字数组",
-        value: "number[]",
+        value: "Array<Number>",
     },
     {
         name: "布尔值",
-        value: "boolean",
+        value: "Boolean",
     },
 ];
 export const domType = [
@@ -32,7 +36,7 @@ export const domType = [
         needData: false,
     },
     {
-        name: "多行输入",
+        name: "多行文本",
         value: "TextArea",
         needData: false,
     },
@@ -50,6 +54,21 @@ export const domType = [
         name: "多选下拉框",
         value: "MoreSelect",
         needData: true,
+    },
+    {
+        name: "单选级联下拉框",
+        value: "TreeSelect",
+        needData: true,
+    },
+    {
+        name: "多选级联下拉框",
+        value: "MoreTreeSelect",
+        needData: true,
+    },
+    {
+        name: "行政区划",
+        value: "AdministrativeDivision",
+        needData: false,
     },
     {
         name: "单选框",
@@ -75,16 +94,6 @@ export const domType = [
         name: "日期时间选择器",
         value: "DateTimePicker",
         needData: false,
-    },
-    {
-        name: "单选级联下拉框",
-        value: "TreeSelect",
-        needData: true,
-    },
-    {
-        name: "多选级联下拉框",
-        value: "MoreTreeSelect",
-        needData: true,
     },
     {
         name: "图片上传",

@@ -6,6 +6,7 @@ import { SystemDevService } from './system-dev.service';
 import { ModuleConf, ModuleConfSchema } from './dto/module-conf.schema';
 import { ModuleField, ModuleFieldSchema } from './dto/module-field.schema';
 import { ModuleSearch, ModuleSearchSchema } from './dto/module-search.schema';
+import { AdminMenuModule } from 'src/admin-menu/admin-menu.module';
 
 @Module({
     imports: [
@@ -13,6 +14,7 @@ import { ModuleSearch, ModuleSearchSchema } from './dto/module-search.schema';
         MongooseModule.forFeature([{ name: ModuleConf.name, schema: ModuleConfSchema }]),
         MongooseModule.forFeature([{ name: ModuleField.name, schema: ModuleFieldSchema }]),
         MongooseModule.forFeature([{ name: ModuleSearch.name, schema: ModuleSearchSchema }]),
+        AdminMenuModule
     ],
     providers: [SystemDevService],
     exports: [SystemDevService],

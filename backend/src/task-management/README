@@ -1,0 +1,19 @@
+任务管理模块分为
+    消息任务
+        创建模块
+            create-task
+        运行模块
+            task-run
+
+    周期任务
+        cron-task
+            项目启动就运行一次
+            每月1号0点运行一次
+
+运行消息队列任务
+    1.本模块仅负责任务通知
+    2.业务模块内部完成任务服务创建实现task-service接口中的run方法
+    3.在本模块中的cron-task和task-run中引入你的task-service模块
+    4.执行task-service的run方法并传参即可
+    
+    

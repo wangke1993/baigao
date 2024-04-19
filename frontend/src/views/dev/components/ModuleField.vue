@@ -12,15 +12,16 @@
           <template #default="scope">
             <el-input
               v-model="scope.row.name"
+              @blur="translateZhToEn(scope.row)"
               placeholder="中文名称"
             ></el-input>
           </template>
         </el-table-column>
-        <el-table-column label="英文名称" prop="nameEn" width="188px" >
+        <el-table-column label="英文名称" prop="nameEn" width="188px">
           <template #default="scope">
             <el-input
               v-model="scope.row.nameEn"
-              placeholder="中文名称"
+              placeholder="英文名称"
             ></el-input>
           </template>
         </el-table-column>
@@ -77,6 +78,11 @@
             ></el-input>
           </template>
         </el-table-column>
+        <el-table-column label="排序" prop="sort" width="80px">
+          <template #default="scope">
+            <el-input v-model="scope.row.sort" placeholder="排序"></el-input>
+          </template>
+        </el-table-column>
         <el-table-column label="操作" width="200px">
           <template #default="scope">
             <div>
@@ -130,12 +136,14 @@ import {
   SystemDevControllerDeleteModuleField,
   SystemDevControllerDevUpdateModuleField,
   SystemDevControllerGetModuleFieldList,
+  SystemDevControllerTranslateZhToEn,
 } from "@/api/SystemDevControllerApi";
 import { ModuleConfDto } from "@/api/dto/ModuleConfDto";
 import { ModuleFieldDto } from "@/api/dto/ModuleFieldDto";
-import { ref, defineProps, defineExpose } from "vue";
+import { ref } from "vue";
 import { dataType, domType } from "../confData";
 import { alertSuccess, alertWarning } from "@/utils/message";
+import { initialLocaleUpper, initialLowercase } from "@/utils/tools";
 
 const emit = defineEmits(["listChange"]);
 const props = defineProps({
@@ -157,6 +165,26 @@ const addField = () => {
   dto.dom = "Input";
   dto.notNull = false;
   moduleFieldList.value.unshift(dto);
+};
+const translateZhToEn = async (row: ModuleFieldDto) => {
+  if (!row.name || row.nameEn) {
+    return;
+  }
+  const {
+    data: { status, data, message },
+  } = await SystemDevControllerTranslateZhToEn({ keyWord: row.name });
+  if (status === 1) {
+    if (!row.nameEn) {
+      row.nameEn = initialLowercase(
+        data
+          .split(" ")
+          .map((item: string) => initialLocaleUpper(item))
+          .join("")
+      );
+    }
+  } else {
+    alertWarning(message);
+  }
 };
 const cancelAddField = () => {
   moduleFieldList.value.shift();

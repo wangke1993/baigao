@@ -13,6 +13,7 @@ export class TreeClassification extends BaseSchema {
         required: true
     })
     UUID: string;
+    
     @ApiProperty({
         description: '名称',
     })
@@ -56,6 +57,24 @@ export class TreeClassification extends BaseSchema {
         required: true
     })
     dataClass: String;
+    @ApiProperty({
+        description: '是否启用',
+    })
+    @Prop({
+        default: false
+    })
+    isOpen: Boolean;
+    @ApiProperty({
+        description: '行政区划',
+    })
+    @Prop()
+    administrativeDivision: String;
+    @ApiProperty({
+        description: '行政区划名称',
+    })
+    @Prop()
+    administrativeDivisionName: String;
+
 }
 export type TreeClassificationDocument = TreeClassification & Document;
 

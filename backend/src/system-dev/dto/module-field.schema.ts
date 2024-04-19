@@ -153,8 +153,15 @@ export class ModuleField extends BaseSchema {
         type: String
     })
     dataChildField: string;
-
-
+    @ApiProperty({
+        description: '排序',
+        required: false
+    })
+    @Prop({
+        required: false,
+        type: Number
+    })
+    sort: number;
 }
 export enum METHOD_TYPE {
     '单行文本' = 'Input',
@@ -164,7 +171,7 @@ export enum METHOD_TYPE {
     '单选下拉' = 'Select',
     '多选下拉' = 'MoreSelect',
     '单选框' = 'Radio',
-    '多选框' = 'Checkbox',
+    '复选框' = 'Checkbox',
     '时间选择' = 'TimeSelect',
     '日期选择器' = 'DatePicker',
     '日期时间选择器' = 'DateTimePicker',

@@ -13,7 +13,6 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
 const app = createApp(App);
-//注册所有图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
@@ -21,4 +20,3 @@ app.use(createPinia().use(piniaPersist))
 app.use(ElementPlus, { locale });
 app.use(router)
 app.mount('#app')
-

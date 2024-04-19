@@ -2,33 +2,60 @@
   <div class="content-box">
     <div class="top">
       <h4>数据类型</h4>
-      <el-select @change="dataTypeChange" v-model="dataClass" placeholder="请选择类型">
-        <el-option v-for="item in dataClassArr" :label="item.dicName" :value="item.dicCode"></el-option>
+      <el-select
+        @change="dataTypeChange"
+        v-model="dataClass"
+        placeholder="请选择类型"
+      >
+        <el-option
+          v-for="item in dataClassArr"
+          :key="item._id"
+          :label="item.dicName"
+          :value="item.dicCode"
+        ></el-option>
       </el-select>
     </div>
     <div class="bottom-btn">
-      <el-button @click="create({ UUID: '0' })" type="primary">添加一级分类</el-button>
+      <el-button @click="create({ UUID: '0' })" type="primary"
+        >添加一级分类</el-button
+      >
     </div>
     <div class="bottom">
       <div class="left">
-        <el-input v-model="treeSearchKey" style="margin-bottom: 12px;" placeholder="请输入名称进行搜索"></el-input>
-        <el-tree v-loading="loading" :props="{ label: 'name' }" :data="treeData" node-key="UUID" default-expand-all
-          :expand-on-click-node="false">
+        <el-input
+          v-model="treeSearchKey"
+          style="margin-bottom: 12px"
+          placeholder="请输入名称进行搜索"
+        ></el-input>
+        <el-tree
+          v-loading="loading"
+          :props="{ label: 'name' }"
+          :data="treeData"
+          node-key="UUID"
+          default-expand-all
+          :expand-on-click-node="false"
+        >
           <template #default="{ node, data }">
             <div class="custom-tree-node">
-              <div @click="update(data)" class="tree-label">{{ node.label }}</div>
+              <div @click="update(data)" class="tree-label">
+                {{ node.label }}
+              </div>
               <div class="tree-btn">
-                <el-icon>
-                  <Plus @click="create(data)" />
+                <el-icon
+                  v-if="
+                    !dicClass?.value || node.level < Number(dicClass?.value)
+                  "
+                >
+                  <Plus @click="create(data, node)" />
                 </el-icon>
                 <el-icon>
                   <Delete color="red" @click="del(data._id)" />
                 </el-icon>
                 <el-icon v-if="data.sort != 1">
-                  <ArrowUp @click="move(data, '1')" />
+                  <ArrowUp @click="move(data, 1)" />
                 </el-icon>
                 <el-icon v-if="data.sort < data.breathCount">
-                  <ArrowDown @click="move(data, '-1')" />
+                  <ArrowDown @click="move(data, -1)" />
                 </el-icon>
               </div>
             </div>
@@ -36,7 +63,11 @@
         </el-tree>
       </div>
       <div class="right">
-        <Detail ref="DetailFormRef" @getTree="getTree"></Detail>
+        <Detail
+          ref="DetailFormRef"
+          :dicClass="dicClass"
+          @getTree="getTree"
+        ></Detail>
       </div>
     </div>
   </div>
@@ -48,11 +79,15 @@ export default {
 </script>
 <script lang="ts" setup>
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
-import type { DataDictionaryDto } from "@/api/dto/DataDictionaryDto";
-import { TreeClassificationControllerDelete, TreeClassificationControllerGetTree, TreeClassificationControllerMove } from "@/api/TreeClassificationControllerApi";
+import {
+  TreeClassificationControllerDelete,
+  TreeClassificationControllerGetTree,
+  TreeClassificationControllerMove,
+} from "@/api/TreeClassificationControllerApi";
 import { alertWarning } from "@/utils/message";
 import { ref } from "vue";
-import Detail from './components/Detail.vue'
+import Detail from "./components/Detail.vue";
+import type { DataDictionaryDto } from "@/api/dto/DataDictionaryDto";
 // 数据定义
 const treeData = ref(new Array<any>());
 const dataClass = ref("DC00070001");
@@ -63,27 +98,42 @@ const loading = ref(false);
 
 // 方法
 const getDataClassArr = async () => {
-  const { data: res } = await DataDictionaryControllerGetListByDicClass("DC0007");
+  const { data: res } = await DataDictionaryControllerGetListByDicClass(
+    "DC0007"
+  );
   if (res.status == 1) {
     dataClassArr.value = res.data;
+    getSelectItem();
   }
-}
+};
 getDataClassArr();
+const getSelectItem = () => {
+  dicClass.value = dataClassArr.value.find(
+    (item) => item.dicCode == dataClass.value
+  );
+};
 const getTree = async () => {
   loading.value = true;
-  const { data: res } = await TreeClassificationControllerGetTree(dataClass.value, { keyWord: treeSearchKey.value });
+  const { data: res } = await TreeClassificationControllerGetTree(
+    dataClass.value,
+    { keyWord: treeSearchKey.value }
+  );
   if (res.status == 1) {
     treeData.value = res.data;
   }
   loading.value = false;
-}
+};
 getTree();
+// 当前选中节点
+const dicClass = ref<DataDictionaryDto>();
 const dataTypeChange = (value: string) => {
   dataClass.value = value;
   DetailFormRef.value.close();
+  getSelectItem();
   getTree();
-}
-const create = (item?: any) => {
+};
+const create = (item?: any, node?: any) => {
+  console.log({ node });
   let breathCount = 0;
   if (item.UUID == "0") {
     breathCount = treeData.value.length;
@@ -93,27 +143,27 @@ const create = (item?: any) => {
   }
   DetailFormRef.value.open(true, item, breathCount + 1);
 };
-const move = async (item: any, moveTag: String) => {
+const move = async (item: any, moveTag: number) => {
   const { data: res } = await TreeClassificationControllerMove(moveTag, item);
   if (res.status == 1) {
     await getTree();
   } else {
     alertWarning(res.message);
   }
-}
+};
 const update = (item: any) => {
-  DetailFormRef.value.open(false, item)
-}
-const del = async (id: String) => {
+  DetailFormRef.value.open(false, item);
+};
+const del = async (id: string) => {
   const { data: res } = await TreeClassificationControllerDelete(id);
   if (res.status == 1) {
     await getTree();
   } else {
     alertWarning(res.message);
   }
-}
+};
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .content-box {
   .top {
     margin: 0 25px;
@@ -154,7 +204,7 @@ const del = async (id: String) => {
           margin: 0 5px;
         }
       }
-      .tree-label{
+      .tree-label {
         width: 100%;
       }
     }

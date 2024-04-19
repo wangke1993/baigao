@@ -9,19 +9,20 @@ import { v4 as uuidV4 } from 'uuid';
 import { createReadStream, ReadStream, existsSync } from 'fs';
 import { SystemLog } from 'src/system-log/dto/system-log.schema';
 import { deleteFile, getFileType, getFileUrl, saveFile, saveFileByBuffer, chargeFileNameCode } from './utils/file-tools';
+import { UUID as simpleUUID } from 'src/utils/random-tools';
 
 @Injectable()
 export class FileUploadService {
     private readonly logger = new Logger(FileUploadService.name);
     constructor(@InjectModel(FileUpload.name) private FileUploadModel: Model<FileUploadDocument>) { };
     async create(file: any, isPrivate: boolean = false): Promise<FileUpload> {
-        const UUID = uuidV4();
+        const UUID = simpleUUID();
         if (!file) {
             throw new Error("文件不能为空");
         }
         const path: any = await saveFile(file, UUID, isPrivate);
-        const filename = chargeFileNameCode(file.originalname)
         let fileUpload = new FileUploadModels();
+        const filename = chargeFileNameCode(file.originalname)
         fileUpload.size = file.size;
         fileUpload.fileName = filename;
         fileUpload.path = path;
@@ -34,7 +35,7 @@ export class FileUploadService {
         return create.save();
     }
     async createByBlob(fileName: any, arrayBuffer: ArrayBuffer, isPrivate: boolean = false): Promise<FileUpload> {
-        const UUID = uuidV4();
+        const UUID = simpleUUID();
         if (!arrayBuffer) {
             throw new Error("文件不能为空");
         }
@@ -65,10 +66,13 @@ export class FileUploadService {
         }
 
     }
-    async getFileByUUID(UUID: string): Promise<{ readStream: ReadStream, file: FileUpload }> {
+    async getFileByUUID(UUID: string, onlyFile = false): Promise<{ readStream: ReadStream, file: FileUpload }> {
         const file = await this.FileUploadModel.findOne({
             UUID: UUID
         });
+        if (onlyFile) {
+            return { readStream: null, file };
+        }
         if (file && existsSync(file.path)) {
             return { readStream: createReadStream(file.path), file };
         } else {

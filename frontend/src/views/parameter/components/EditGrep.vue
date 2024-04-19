@@ -105,7 +105,7 @@ const deleteLink = (index: number) => {
 };
 defineExpose({ open });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .add-btn {
   margin-left: 10px;
 }

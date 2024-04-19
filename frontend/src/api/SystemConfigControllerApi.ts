@@ -48,6 +48,14 @@ export const SystemConfigControllerGetOpenAll = ( config?: any) => {
    return axios.get(`/api/systemConfig/getOpenAll`, { ...config });
 }
 /**
+* getSystemConfigDetail: 根据字典code获取系统配置详情,多个code用逗号隔开
+* code：code;
+* @returns 
+*/
+export const SystemConfigControllerGetSystemConfigDetail = (code: string, config?: any) => {
+   return axios.get(`/api/systemConfig/getSystemConfigDetail/${code}`, { ...config });
+}
+/**
 * getSystemPageConfig:获取【参数配置】页面配置信息
 * 
 * @returns 

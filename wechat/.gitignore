@@ -1,39 +1,23 @@
-# compiled output
-/dist
-/node_modules
+.DS_Store
+node_modules/
+unpackage/
+dist/
 
-# Logs
-logs
-*.log
+# local env files
+.env.local
+.env.*.local
+
+# Log files
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
 
-# OS
-.DS_Store
-
-# Tests
-/coverage
-/.nyc_output
-
-# IDEs and editors
-/.idea
+# Editor directories and files
 .project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-.hbuilderx
-
-unpackage
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*

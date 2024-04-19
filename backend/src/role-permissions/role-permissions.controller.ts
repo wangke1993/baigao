@@ -19,7 +19,7 @@ export class RolePermissionsController {
     @ApiOperation({ description: 'createRole:创建角色权限' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async create(@Body() form: RolePermissions, @Req() req: any): Promise<ResponseInfoDto<RolePermissions>> {
-        const info = new ResponseInfoDto<RolePermissions>();
+        const info = new ResponseInfoDto<RolePermissions>(req);
         try {
             info.success(`成功`, await this.rolePermissionsService.create(form));
             this.systemLogService.create('角色权限', `新增角色${JSON.stringify(form)}`, req);
@@ -34,7 +34,7 @@ export class RolePermissionsController {
     @ApiOperation({ description: 'updateRole:修改角色权限' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async update(@Body() form: RolePermissions, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<RolePermissions>> {
-        const info = new ResponseInfoDto<RolePermissions>();
+        const info = new ResponseInfoDto<RolePermissions>(req);
         try {
             info.success(`成功`, await this.rolePermissionsService.update(form, id));
             this.systemLogService.create('角色权限', `修改角色${JSON.stringify(form)};id:${id}`, req);
@@ -49,7 +49,7 @@ export class RolePermissionsController {
     @ApiOperation({ description: 'deleteRole:删除角色权限' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<string>> {
-        const info = new ResponseInfoDto<string>();
+        const info = new ResponseInfoDto<string>(req);
         try {
             await this.rolePermissionsService.deleteById(id)
             info.success(`成功`);
@@ -65,7 +65,7 @@ export class RolePermissionsController {
     @ApiOperation({ description: 'getRolePage:获取角色权限分页' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async getPage(@Query() pageForm: PageRequestDto, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<RolePermissions>>> {
-        const info = new ResponseInfoDto<PageResponseDto<RolePermissions>>();
+        const info = new ResponseInfoDto<PageResponseDto<RolePermissions>>(req);
         try {
             info.success(`成功`, await this.rolePermissionsService.getPage(pageForm));
         } catch (e) {
@@ -77,8 +77,8 @@ export class RolePermissionsController {
     @AuthTag('getRoleList')
     @ApiOperation({ description: 'getRoleList:获取角色权限列表' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getList(): Promise<ResponseInfoDto<RolePermissions[]>> {
-        const info = new ResponseInfoDto<RolePermissions[]>();
+    async getList(@Req() req: any): Promise<ResponseInfoDto<RolePermissions[]>> {
+        const info = new ResponseInfoDto<RolePermissions[]>(req);
         try {
             info.success(`成功`, await this.rolePermissionsService.getList());
         } catch (e) {

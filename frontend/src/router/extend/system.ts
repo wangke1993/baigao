@@ -18,9 +18,9 @@ const rotes = [
         },
         children: [
             {
-                path: 'menuManage',
+                path: 'menuManagement',
                 component: () => import('@/views/menu/Index.vue'),
-                name: 'menuManage',
+                name: 'menuManagement',
                 meta: { title: '菜单管理' }
             },
             {

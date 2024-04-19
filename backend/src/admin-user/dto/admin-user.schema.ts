@@ -8,43 +8,63 @@ export class AdminUser extends Document {
      * 后台用户管理
      */
     @ApiProperty({
-        description:"用户名"
+        description: "用户名"
     })
     @Prop({
         required: true
     })
     userName: string;
     @ApiProperty({
-        description:"密码"
+        description: "密码"
     })
     @Prop({
         required: true
     })
     password: string;
     @ApiProperty({
-        description:"角色ID数组"
+        description: "角色ID数组"
     })
     @Prop({
         required: true
     })
     role: string[];
     @ApiProperty({
-        description:"角色名称数组"
+        description: "角色名称数组"
     })
     @Prop({
         required: true
     })
     roleName: string[];
     @ApiProperty({
-        description:"备注"
+        description: "备注"
     })
     @Prop()
     remarks: string;
     @ApiProperty({
-        description:"用户首页，优先级高于角色首页"
+        description: "用户首页，优先级高于角色首页"
     })
     @Prop()
     indexPath: string;
+
+    @ApiProperty({
+        description: "禁用"
+    })
+    @Prop({
+        default: false
+    })
+    disable: boolean;
+
+    @ApiProperty({
+        description: "所属公司"
+    })
+    @Prop()
+    companyUUID: String;
+    
+    @ApiProperty({
+        description: "所属公司名称"
+    })
+    @Prop()
+    companyName: String;
 }
 export type AdminUserDocument = AdminUser & Document;
 

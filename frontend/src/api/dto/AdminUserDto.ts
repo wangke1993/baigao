@@ -31,4 +31,19 @@ export class AdminUserDto {
      */
     indexPath!: string;
     
+    /**
+     * 禁用
+     */
+    disable!: boolean;
+    
+    /**
+     * 所属公司
+     */
+    companyUUID!: string;
+    
+    /**
+     * 所属公司名称
+     */
+    companyName!: string;
+    
 }

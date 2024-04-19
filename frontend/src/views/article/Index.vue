@@ -93,9 +93,9 @@ import { Delete, Edit } from "@element-plus/icons-vue";
 import AddArticle from "@/views/article/components/AddArticle.vue";
 import Search from "@/views/article/components/Search.vue";
 import {
-  ArticleMangerControllerGetPage,
-  ArticleMangerControllerDelete,
-} from "@/api/ArticleMangerControllerApi";
+  ArticleManagementControllerGetPage,
+  ArticleManagementControllerDelete,
+} from "@/api/ArticleManagementControllerApi";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import { DateTime } from "luxon";
 import { alertSuccess } from "@/utils/message";
@@ -147,7 +147,7 @@ const articleClass = (articleClass: string) => {
 // 删除文章
 const deleteDictionary = async (row: any) => {
   try {
-    let result = await ArticleMangerControllerDelete(row._id);
+    let result = await ArticleManagementControllerDelete(row._id);
     let data = result.data;
     if (data.status === 1) {
       console.log(data.data);
@@ -162,7 +162,7 @@ const deleteDictionary = async (row: any) => {
 // 获取文章列表
 const getList = async (params: any) => {
   try {
-    let result = await ArticleMangerControllerGetPage(params);
+    let result = await ArticleManagementControllerGetPage(params);
     let data = result.data;
     if (data.status === 1) {
       // console.log("获取文章列表", data);
@@ -190,7 +190,7 @@ const handleCurrentChange = (val: number) => {
   getList(state.params);
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .list-box {
   padding: 20px;
 }

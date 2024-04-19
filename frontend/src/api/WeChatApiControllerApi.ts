@@ -6,6 +6,22 @@ import axios from 'axios';
 
 
 /**
+* 发送消息
+* socketId：socketId;
+* @returns 
+*/
+export const WeChatApiControllerToMessage = (socketId: string, config?: any) => {
+   return axios.get(`/api/wechat/toMessage/${socketId}`, { ...config });
+}
+/**
+* 获取微信公众号用户
+* 
+* @returns 
+*/
+export const WeChatApiControllerGetAllMpUserInfo = ( config?: any) => {
+   return axios.get(`/api/wechat/getAllMpUserInfo`, { ...config });
+}
+/**
 * createQRUrl:创建用户二维码,startPage:启动页
 * startPage：undefined;
 * @returns 
@@ -84,4 +100,20 @@ export const WeChatApiControllerWithdrawal = (money: number, config?: any) => {
 */
 export const WeChatApiControllerRefundsNotifyUrl = ( config?: any) => {
    return axios.post(`/api/wechat/refundsNotifyUrl`, {}, config);
+}
+/**
+* queryPayOrder:查询订单结果
+* payOrderNum：payOrderNum;
+* @returns 
+*/
+export const WeChatApiControllerQueryPayOrder = (payOrderNum: string, config?: any) => {
+   return axios.get(`/api/wechat/queryPayOrder/${payOrderNum}`, { ...config });
+}
+/**
+* 验证用户是否关注公众号
+* 
+* @returns 
+*/
+export const WeChatApiControllerVerifyWeChatBinding = ( config?: any) => {
+   return axios.get(`/api/wechat/verifyWeChatBinding`, { ...config });
 }

@@ -1,0 +1,2 @@
+docker build  -t rabbitmq .
+docker run -d --name rabbitmq_baigao -e RABBITMQ_DEFAULT_USER=baigao -e RABBITMQ_DEFAULT_PASS=123456 -p 5672:5672 -p 15672:15672 -v /home/wk/docker/rabbitMQ/data:/var/lib/rabbitmq --restart=always rabbitmq

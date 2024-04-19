@@ -4,7 +4,7 @@
 */
 import axios from 'axios';
 import type { AdminUserDto } from './dto/AdminUserDto';
-import type { UpdatePasswordDtoDto } from './dto/UpdatePasswordDtoDto';
+import type { UpdatePasswordDto } from './dto/UpdatePasswordDto';
 
 
 /**
@@ -28,7 +28,7 @@ export const AdminUserControllerUpdate = (id: string,data: AdminUserDto, config?
 * id：id;
 * @returns 
 */
-export const AdminUserControllerUpdatePassword = (id: string,data: UpdatePasswordDtoDto, config?: any) => {
+export const AdminUserControllerUpdatePassword = (id: string,data: UpdatePasswordDto, config?: any) => {
    return axios.post(`/api/adminUser/updatePassword/${id}`, data, config);
 }
 /**
@@ -50,9 +50,17 @@ export const AdminUserControllerDelete = (id: string, config?: any) => {
              
 /**
 * getAdminUserPage:获取后台用户分页
-* pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;
+* pageSize：单页显示条数;pageIndex：当前页码;keyWord：搜索关键字;companyUUID：所属公司;
 * @returns 
 */
-export const AdminUserControllerGetPage = (query: { pageSize: number,pageIndex: number,keyWord: string }, config?: any) => {
+export const AdminUserControllerGetPage = (query: { pageSize: number,pageIndex: number,keyWord: string,companyUUID: string }, config?: any) => {
    return axios.get(`/api/adminUser/getPage`, { params: query,...config });
+}
+/**
+* getAdminUserList:获取后台用户分页
+* 
+* @returns 
+*/
+export const AdminUserControllerGetList = ( config?: any) => {
+   return axios.get(`/api/adminUser/getList`, { ...config });
 }

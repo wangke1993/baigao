@@ -1,29 +1,30 @@
-import { existsSync, lstatSync, mkdirSync, readdirSync, rm, rmdirSync, statSync, unlinkSync, writeFile } from "fs";
+import { existsSync, lstatSync, mkdirSync, readdirSync, rm, rmdirSync, statSync, unlinkSync, writeFile, writeFileSync } from "fs";
 import { FILE_TYPE } from "../dto/file-upload.schema";
 import { Logger } from "@nestjs/common";
 import { join } from 'path';
+import * as sharp from 'sharp';
 const logger = new Logger('fileTools');
 enum ROOT_DIR {
     'public' = 'public',
     'private' = 'private',
 }
-export const saveFile = (file: any, UUID: string, isPrivate: boolean = false) => {
-    return new Promise(function (resolve, reject) {
-        const rootPath = getFileSavePath(getFileType(chargeFileNameCode(file.originalname)), isPrivate);
-        const path = `${rootPath}/${UUID}_${chargeFileNameCode(file.originalname)}`;
-        writeFile(path, file.buffer, (err) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(path);
-            }
-        });
-    });
+export const saveFile = async (file: any, UUID: string, isPrivate: boolean = false) => {
+    const rootPath = getFileSavePath(getFileType(chargeFileNameCode(file.originalname)), isPrivate);
+    const path = `${rootPath}/${UUID}_${chargeFileNameCode(file.originalname)}`;
+    let fileBuff = file.buffer;
+    if (isJpg(file.originalname)) {
+        // 所有jpg图片都进行压缩
+        fileBuff = await sharp(file.buffer)
+            .jpeg({ quality: 50 }) // 指定 JPEG 压缩质量
+            .toBuffer();
+    }
+    writeFileSync(path, fileBuff);
+    return path;
 }
 export const saveFileByBuffer = (fileName: any, buffer: string | NodeJS.ArrayBufferView, UUID: string, isPrivate: boolean = false) => {
     return new Promise(function (resolve, reject) {
         const rootPath = getFileSavePath(getFileType(fileName), isPrivate);
-        const path = `${rootPath}/${UUID}_${fileName}`;
+        const path = `${rootPath}/${UUID}`;
         writeFile(path, buffer, (err) => {
             if (err) {
                 reject(err);
@@ -33,7 +34,6 @@ export const saveFileByBuffer = (fileName: any, buffer: string | NodeJS.ArrayBuf
         });
     });
 }
-// 解决中文文件名乱码问题
 export const chargeFileNameCode = (fileName: string) => {
     return Buffer.from(fileName, 'latin1').toString('utf-8');
 }
@@ -109,6 +109,12 @@ export const getFileType = (fileName: string) => {
         return FILE_TYPE.GZIP;
     }
     return FILE_TYPE.other;
+}
+export const isJpg = (fileName: string) => {
+    const tempArr = fileName?.split('.')
+    const suffix = tempArr[tempArr.length - 1]?.toLocaleLowerCase();
+    const img = ['jpg', 'jpeg'];
+    return img.includes(suffix)
 }
 /**
  * 递归删除文件夹

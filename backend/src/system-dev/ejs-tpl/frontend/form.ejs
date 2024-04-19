@@ -36,28 +36,29 @@ import { ref, reactive, <%if(fieldList.filter(item => item.dom == 'MoreText').le
 import axios from "axios";
 import { btnShow } from "@/utils/buttonShow";
 import { getToken } from "@/utils/authTokenUtil";
-import { alertSuccess,alertWarning } from "@/utils/message";
-<%if(fieldList.filter(item => item.dom == 'MoreText').length) {%>
+import { viewIcon } from "@/utils/enum/iconBase64";
+import { alertSuccess,alertWarning } from "@/utils/message";<%if(fieldList.filter(item => item.dom == 'MoreText').length) {%>
 import "@wangeditor/editor/dist/css/style.css";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
 import type { IDomEditor } from "@wangeditor/editor";
-<%}%>
-<%if(fieldList.filter(item=>["MoreSelect","Select","Radio","Checkbox"].includes(item.dom)).length) {%>
-import { SelectDto } from '@/common/CommonDto';
-<%}%>
+import { MENU_CONF } from "@/common/EditorConfig";
+<%}%><%if(fieldList.filter(item=>["MoreSelect","Select","Radio","Checkbox","AdministrativeDivision"].includes(item.dom)).length) {%>
+import { AdministrativeDivisionsControllerGetListByDicClass } from "@/api/AdministrativeDivisionsControllerApi";
+import { SelectDto } from '@/common/CommonDto';<%}%>
 import {
   <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerCreate,
   <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerGetDetailById,
   <%=getBigModuleTitle(moduleConf.nameEn) %>ControllerUpdate,
 } from "@/api/<%=getBigModuleTitle(moduleConf.nameEn) %>ControllerApi";
 import type {
-  FormInstance,
-  FormRules,
-  <%if(fieldList.filter(item=>["Image","File"].includes(item.dom)).length) {%>
-  UploadFile,
-  UploadUserFile,
-  <%}%>
+  
+   FormInstance,
+   CascaderProps,
+   FormRules,<%if(fieldList.filter(item=>["Image","File"].includes(item.dom)).length) {%>
+   UploadFile,
+   UploadUserFile,<%}%>
 } from "element-plus";
+import { ExpandTrigger } from "element-plus";
 import { <%=getBigModuleTitle(moduleConf.nameEn) %>Dto } from "@/api/dto/<%=getBigModuleTitle(moduleConf.nameEn) %>Dto";
 const emit = defineEmits(["Refresh"]);
 const show = ref(false);
@@ -68,22 +69,20 @@ const rules = reactive<FormRules>({
   <% for(let i=0;i<fieldList.length;i++) { if(fieldList[i].notNull) {%>
   <%=fieldList[i].nameEn %>: [
     { required: true, message: "<%=fieldList[i].name %>不能为空", trigger: "blur" },
-  ],<%} else {%>
-    <%=fieldList[i].nameEn %>:[]<%}}%>
-});
+  ],<%} else {%><%=fieldList[i].nameEn %>: [],
+  <%}}%>});
 const open = (item: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto)=>{
   show.value = true;
   if( item?._id ) {
     title.value = "编辑<%=moduleConf.name%>";
     getDetail(item._id);
   } else {
-    title.value = "添加<%=moduleConf.name%>";
+    title.value = "添加<%=moduleConf.name%>";<% for(let i=0;i<fieldList.length;i++) { if(fieldList[i].defaultValue){%>
+    form.value.<%=fieldList[i].nameEn %> = <%if(fieldList[i].type=='string'){%>"<%}%><%=fieldList[i].defaultValue%><%if(fieldList[i].type=='string'){%>"<%}%>
+    <%if(["Select","Radio"].includes(fieldList[i].dom)){%><%=fieldList[i].nameEn %>SelectChange(<%if(fieldList[i].type=='string'){%>"<%}%><%=fieldList[i].defaultValue%><%if(fieldList[i].type=='string'){%>"<%}%>)<%}}}%>
   }
 }
-
 <% for(let i=0;i<fieldList.length;i++) {%><%- include(DomEventConf(fieldList[i]).tpl, DomEventConf(fieldList[i])) %><%} %>
-
-// 获取文章详情
 const getDetail = async (id: string) => {
   const {
     data: { status, data, message}
@@ -98,39 +97,46 @@ const getDetail = async (id: string) => {
 const initOtherValue = (data: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto) => {
   console.log(data);
   <% for(let i=0;i<fieldList.length;i++) {%>
-    <%if(fieldList[i].dom=='MoreTreeSelect'){%>
-    if(data.<%=fieldEnName %>) {
-      <%=fieldEnName %>TreeValue.value = data.<%=fieldEnName %>.split(",");
+    <%if(["MoreTreeSelect","AdministrativeDivision"].includes(fieldList[i].dom)){%>
+    if(data.<%=fieldList[i].nameEn %>) {
+      <%=fieldList[i].nameEn %>TreeValue.value = data.<%=fieldList[i].nameEn %>.split(",");
     } else {
-      <%=fieldEnName %>TreeValue.value = []
+      <%=fieldList[i].nameEn %>TreeValue.value = []
     }
     <%}%>
     <%if(fieldList[i].dom=='Checkbox'){%>
-    if(data.<%=fieldEnName %>) {
-      <%=fieldEnName %>CheckboxValue.value = data.<%=fieldEnName %>.split(",");
+    if(data.<%=fieldList[i].nameEn %>) {
+      <%=fieldList[i].nameEn %>CheckboxValue.value = data.<%=fieldList[i].nameEn %>.split(",");
     } else {
-      <%=fieldEnName %>CheckboxValue.value = []
+      <%=fieldList[i].nameEn %>CheckboxValue.value = []
     }
     <%}%>
     <%if(fieldList[i].dom=='MoreSelect'){%>
-    if(data.<%=fieldEnName %>) {
-      <%=fieldEnName %>SelectValue.value = data.<%=fieldEnName %>.split(",");
+    if(data.<%=fieldList[i].nameEn %>) {
+      <%=fieldList[i].nameEn %>SelectValue.value = data.<%=fieldList[i].nameEn %>.split(",");
     } else {
-      <%=fieldEnName %>SelectValue.value = []
+      <%=fieldList[i].nameEn %>SelectValue.value = []
     }
     <%}%>
     <%if(fieldList[i].dom=='MoreText'){%>
-    <%=fieldEnName %>Html.value = data.<%=fieldEnName %>;
+      if (data.<%=fieldList[i].nameEn %>) {
+    <%=fieldList[i].nameEn %>Html.value = data.<%=fieldList[i].nameEn %>;
+      }else{
+        <%=fieldList[i].nameEn %>Html.value = "";
+      }
     <%}%>
     <%if(['File','Image'].includes(fieldList[i].dom)){%>
-    if(data.<%=fieldEnName %>) {
-      const <%=fieldEnName %>FileArr = data.<%=fieldEnName %>.split(";");
-      <%=fieldEnName %>FileArr.map(item => {
-        const [name,url] = item.split(",");
-        <%=fieldEnName %>FileList.push({ name, url });
+    if(data.<%=fieldList[i].nameEn %>) {
+      const <%=fieldList[i].nameEn %>FileArr = data.<%=fieldList[i].nameEn %>.split(";");
+      <%=fieldList[i].nameEn %>FileArr.map(item => {
+        if (item) {
+          let [name,url] = item.split(",");
+          url = "/api" + url;
+          <%=fieldList[i].nameEn %>FileList.value.push({ name, url });
+        }
       })
     } else {
-      <%=fieldEnName %>FileList = [];
+      <%=fieldList[i].nameEn %>FileList.value = [];
     }<%}%><%}%>
 }
 const saveLoading = ref(false);
@@ -147,6 +153,9 @@ const save = async (formEl: FormInstance | undefined) => {
       saveLoading.value = false;
       if (status === 1) {
         alertSuccess("成功");
+        if (!form.value?._id) {
+          show.value = false;
+        }
         emit("Refresh");
       } else {
         alertWarning(message);

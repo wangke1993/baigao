@@ -115,7 +115,7 @@ export default {
 	name: "role",
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .list-box {
 	padding: 20px;
 }

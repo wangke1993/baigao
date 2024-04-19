@@ -72,7 +72,7 @@
   </el-dialog>
 </template>
 <script lang="ts" setup>
-import { ref, defineExpose, defineProps } from "vue";
+import { ref } from "vue";
 import { CreateCodeConfDto } from "./create-code-conf.dto";
 import { ModuleConfDto } from "@/api/dto/ModuleConfDto";
 import { SystemDevControllerCreateCode } from "@/api/SystemDevControllerApi";
@@ -80,6 +80,7 @@ import { alertSuccess, alertWarning } from "@/utils/message";
 const openState = ref(false);
 const title = ref("生成配置");
 const form = ref(new CreateCodeConfDto());
+const emit = defineEmits(['getModelList'])
 const props = defineProps({
   moduleForm: {
     type: ModuleConfDto,
@@ -105,6 +106,7 @@ const save = async () => {
   createCodeLoading.value = false;
   if (status === 1) {
     alertSuccess("生成成功");
+    emit('getModelList');
   } else {
     alertWarning(message);
   }

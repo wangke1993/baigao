@@ -47,3 +47,11 @@ export const AdminMenuControllerDelete = (id: string, config?: any) => {
    return axios.delete(`/api/admin/menu/delete/${id}`, config);
 }
              
+/**
+* changeMenuParent:移动菜单
+* id：id;pId：pId;
+* @returns 
+*/
+export const AdminMenuControllerChangeParent = (id: string,pId: string, config?: any) => {
+   return axios.post(`/api/admin/menu/changeParent/${id}/${pId}`, {}, config);
+}

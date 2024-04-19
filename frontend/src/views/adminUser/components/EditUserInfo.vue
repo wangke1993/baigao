@@ -11,12 +11,8 @@
       ref="ruleFormRef"
       @keyup.enter="submitForm(ruleFormRef)"
     >
-      <el-form-item label="用户名" prop="userName">
-        <el-input
-          v-model="form.userName"
-          onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"
-          placeholder="请输入用户名"
-        />
+      <el-form-item label="禁用" prop="disable">
+        <el-switch v-model="form.disable"></el-switch>
       </el-form-item>
       <el-form-item v-if="addUser" label="密码" prop="password">
         <el-input
@@ -82,12 +78,11 @@ import {
   AdminUserControllerUpdate,
   AdminUserControllerCreate,
 } from "@/api/AdminUserControllerApi";
-import type { AdminUserDto } from "@/api/dto/AdminUserDto";
 import { RolePermissionsControllerGetList } from "@/api/RolePermissionsControllerApi";
+import type { AdminUserDto } from "@/api/dto/AdminUserDto";
 import { alertError, alertSuccess, alertWarning } from "@/utils/message";
 import type { FormInstance, FormRules } from "element-plus";
 import { reactive, ref } from "vue";
-
 //参数
 const dialogFormVisible = ref(false);
 const formBase = {
@@ -98,6 +93,9 @@ const formBase = {
   roleName: new Array<string>(),
   remarks: "",
   indexPath: "",
+  disable: true,
+  companyUUID: "",
+  companyName: "",
 };
 const form = ref({ ...formBase });
 const ruleFormRef = ref<FormInstance>();
@@ -170,12 +168,18 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           alertError("您两次输入的密码不一样，请重新输入...");
           return;
         }
-        const { data: res } = await AdminUserControllerCreate(form.value);
+        const params: AdminUserDto = {
+          ...form.value,
+        };
+        const { data: res } = await AdminUserControllerCreate(params);
         data = res;
       } else {
+        const params: AdminUserDto = {
+          ...form.value,
+        };
         const { data: res } = await AdminUserControllerUpdate(
           updateId.value,
-          form.value
+          params
         );
         data = res;
       }

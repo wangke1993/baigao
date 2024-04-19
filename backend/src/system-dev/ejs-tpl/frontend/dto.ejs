@@ -37,5 +37,8 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Dto {
      * <%=fieldList[i].name %>
      */
      <%=fieldList[i].nameEn %><%=fieldList[i].notNull?"!":"?" %>: <%=fieldList[i].type %>;
+     <% if(["Select","MoreSelect","Radio","Checkbox","TreeSelect","MoreTreeSelect","AdministrativeDivision"].includes(fieldList[i].dom)){ %>
+     <%=fieldList[i].nameEn %>Text: string;
+    <% } %>
     <% } %>
 }

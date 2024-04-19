@@ -25,12 +25,14 @@ export class SystemLogService {
         if (req?.user) {
             systemLogDto.operationUserInfo = JSON.stringify(req?.user);
         }
-        systemLogDto.operationIp = req.ip;
-        systemLogDto.clientInfo = req.headers['user-agent'];
+        systemLogDto.operationIp = req?.ip;
+        if (req?.headers) {
+            systemLogDto.systemInfo = req?.headers['sec-ch-ua-platform'];
+            systemLogDto.clientInfo = req?.headers['user-agent'];
+        }
         systemLogDto.requestUrl = req.url;
         systemLogDto.modelName = modelName;
-        systemLogDto.systemInfo = req.headers['sec-ch-ua-platform'];
-        systemLogDto.comeFrom = req.headers.referer;
+        systemLogDto.comeFrom = req?.headers?.referer;
         systemLogDto.operationTime = new Date();
         const create = new this.systemLogModel(systemLogDto);
         return create.save();

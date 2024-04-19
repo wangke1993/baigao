@@ -1,0 +1,151 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		{
+			"path": "pages/Home",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "default",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#ebedf3",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/QrSecne",
+			"style": {
+				"navigationBarTitleText": "扫码进入页面",
+				"navigationStyle": "default",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#ebedf3",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/custom-tab-bar/index"
+		},
+		{
+			"path": "pages/Order",
+			"style": {
+				"navigationBarTitleText": "订单管理",
+				"navigationStyle": "default",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFF",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/Profile",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/auth/login",
+			"style": {
+				"navigationBarTitleText": "登录授权",
+				"navigationStyle": "default",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/auth/userAgreement",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"navigationStyle": "default",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/auth/privacyAgreement",
+			"style": {
+				"navigationBarTitleText": "隐私政策",
+				"navigationStyle": "default",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "subCommonPages",
+			"pages": [
+				{
+					"path": "article/article",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "wallet/RechargeWallet",
+					"style": {
+						"navigationBarTitleText": "钱包充值",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "wallet/WalletDetails",
+					"style": {
+						"navigationBarTitleText": "钱包明细",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "wallet/WalletWithdrawal",
+					"style": {
+						"navigationBarTitleText": "提现",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "wallet/WithdrawalApplication",
+					"style": {
+						"navigationBarTitleText": "提现记录",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		}
+	],
+	"tabBar": {
+		"color": "#7983A7",
+		"selectedColor": "#0D5AD3",
+		"custom": true,
+		"list": [
+			{
+				"pagePath": "pages/Home"
+			},
+			{
+				"pagePath": "pages/Order"
+			},
+			{
+				"pagePath": "pages/Profile"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "柏高",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"condition": {
+		"current": 0,
+		"list": [
+			{
+				"name": "",
+				"path": "",
+				"query": ""
+			}
+		]
+	},
+	"lazyCodeLoading": "requiredComponents"
+}

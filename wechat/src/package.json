@@ -1,0 +1,13 @@
+{
+    "id": "baigao",
+    "displayName": "柏高",
+    "version": "3.0.0",
+    "description": "",
+    "keywords": [],
+    "dcloudext": {},
+    "dependencies": {
+        "@hyoga/uni-socket.io": "^1.0.1",
+        "axios": "^0.27.2",
+        "utf8": "^3.0.0"
+    }
+}

@@ -13,20 +13,25 @@ import { AdminUserModule } from './admin-user/admin-user.module';
 import { DataDictionaryModule } from './data-dictionary/data-dictionary.module';
 import { AdministrativeDivisionsModule } from './administrative-divisions/administrative-divisions.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
-import { ArticleMangerModule } from './article-manger/article-manger.module';
-import { AdMangerModule } from './ad-manger/ad-manger.module';
+import { ArticleManagementModule } from './article-management/article-management.module';
+import { AdManagementModule } from './ad-management/ad-management.module';
 import { SystemConfigModule } from './system-config/system-config.module';
-import { MemberMangerModule } from './member-manger/member-manger.module';
+import { MemberManagementModule } from './member-management/member-management.module';
 import { WeChatApiModule } from './wechat-api/wechat-api.module';
 import { SmsApiModule } from './sms-api/sms-api.module';
-import { DelayTaskModule } from './delay-task/delay-task.module';
-import { CreateDelayTaskModule } from './delay-task/create-delay-task.module';
 import { TreeClassificationModule } from './tree-classification/tree-classification.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { SystemDevModule } from './system-dev/system-dev.module';
-const configService = new ConfigService();
+import { EnvConfig } from './utils/env-config';
+import { TaskManagementModule } from './task-management/task-management.module';
+import { TaskRunModule } from './task-management/task-run.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { WSModule } from './web-socket/ws.module';
+import { WithdrawalManagementModule } from './withdrawal-management/withdrawal-management.module';
+const envConfig = new EnvConfig();
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     MulterModule.register({
       limits: {
         fileSize: 100 * 1024 * 1024, // 100 MB 允许上传最大文件大小
@@ -36,16 +41,17 @@ const configService = new ConfigService();
       isGlobal: true
     }),
     JwtModule.register({
-      secret: configService.get<string>('JWT_SECRET'),
-      signOptions: { expiresIn: configService.get<string>('JWT_EXPIRES_IN') },  //s,m,h,d
+      secret: envConfig.JWT_SECRET,
+      signOptions: { expiresIn: envConfig.JWT_EXPIRES_IN },
     }),
-    MongooseModule.forRoot(configService.get<string>('MONGO_DB'), {
+    MongooseModule.forRoot(envConfig.MONGO_DB, {
       keepAlive: true,
       connectTimeoutMS: 30000,
       socketTimeoutMS: 0,
       useNewUrlParser: true,
     }),
     RedisCacheModule,
+    WSModule,
     AuthModule,
     SystemLogModule,
     AdminMenuModule,
@@ -54,22 +60,24 @@ const configService = new ConfigService();
     DataDictionaryModule,
     AdministrativeDivisionsModule,
     FileUploadModule,
-    ArticleMangerModule,
-    AdMangerModule,
+    ArticleManagementModule,
+    AdManagementModule,
     SystemConfigModule,
-    MemberMangerModule,
+    MemberManagementModule,
     WeChatApiModule,
     SmsApiModule,
-    // DelayTaskModule,
-    // CreateDelayTaskModule,
     TreeClassificationModule,
-    SystemDevModule
+    SystemDevModule,
+    TaskManagementModule,
+    TaskRunModule,
+    WithdrawalManagementModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
   constructor() {
+
   }
 }
 

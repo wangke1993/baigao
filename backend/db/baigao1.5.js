@@ -1,0 +1,26511 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : wsl2-mongodb
+ Source Server Type    : MongoDB
+ Source Server Version : 60005 (6.0.5)
+ Source Host           : localhost:27017
+ Source Schema         : baigao
+
+ Target Server Type    : MongoDB
+ Target Server Version : 60005 (6.0.5)
+ File Encoding         : 65001
+
+ Date: 19/04/2024 16:54:36
+*/
+
+
+// ----------------------------
+// Collection structure for addrmanagements
+// ----------------------------
+db.getCollection("addrmanagements").drop();
+db.createCollection("addrmanagements");
+
+// ----------------------------
+// Documents of addrmanagements
+// ----------------------------
+
+// ----------------------------
+// Collection structure for admanagements
+// ----------------------------
+db.getCollection("admanagements").drop();
+db.createCollection("admanagements");
+
+// ----------------------------
+// Documents of admanagements
+// ----------------------------
+
+// ----------------------------
+// Collection structure for adminmenus
+// ----------------------------
+db.getCollection("adminmenus").drop();
+db.createCollection("adminmenus");
+
+// ----------------------------
+// Documents of adminmenus
+// ----------------------------
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f312b145f5f3965a53ebc9"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "Setting",
+    menuName: "系统设置",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [ ],
+    parentId: "",
+    sort: NumberInt("100")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f315fa45f5f3965a53ebed"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/system/menuManagement",
+    menuIcon: "",
+    menuName: "菜单管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9"
+    ],
+    parentId: "62f312b145f5f3965a53ebc9",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3161545f5f3965a53ebf2"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "添加一级菜单",
+    menuPowerTag: "menu_add_top",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3162645f5f3965a53ebf7"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "编辑",
+    menuPowerTag: "menu_edit",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3163645f5f3965a53ebfc"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "添加子级",
+    menuPowerTag: "menu_add_child",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3165645f5f3965a53ec05"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "删除",
+    menuPowerTag: "menu_del",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3167245f5f3965a53ec0a"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/system/adminUser",
+    menuIcon: "",
+    menuName: "用户管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9"
+    ],
+    parentId: "62f312b145f5f3965a53ebc9",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3173845f5f3965a53ec18"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "新增用户",
+    menuPowerTag: "user_add",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3174a45f5f3965a53ec1d"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "编辑",
+    menuPowerTag: "user_edit",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3175945f5f3965a53ec22"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "修改密码",
+    menuPowerTag: "user_update_password",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f3176d45f5f3965a53ec27"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "重置密码",
+    menuPowerTag: "user_reset_password",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f31a4845f5f3965a53ec68"),
+    __v: NumberInt("0"),
+    isShow: null,
+    menuActive: "",
+    menuIcon: null,
+    menuName: "删除",
+    menuPowerTag: "user_del",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62f31a5645f5f3965a53ec6d"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/system/role",
+    menuIcon: "",
+    menuName: "角色管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9"
+    ],
+    parentId: "62f312b145f5f3965a53ebc9",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc696e662b59e7cc670d40"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增用户角色",
+    menuPowerTag: "role_add",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc6986662b59e7cc670d45"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑",
+    menuPowerTag: "role_edit",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc69a5662b59e7cc670d50"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除",
+    menuPowerTag: "role_del",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc6ae6662b59e7cc670d94"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/system/log",
+    menuIcon: "",
+    menuName: "系统日志",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9"
+    ],
+    parentId: "62f312b145f5f3965a53ebc9",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc6b4e662b59e7cc670da9"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "查看详情",
+    menuPowerTag: "log_detail",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62fc6ae6662b59e7cc670d94"
+    ],
+    parentId: "62fc6ae6662b59e7cc670d94",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc7b618b8bacd4f1e96d5a"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除菜单",
+    menuPowerTag: "deleteMenu",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc7b768b8bacd4f1e96d5f"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "根据菜单资源属性获取菜单树",
+    menuPowerTag: "getTreeByMenuType",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc7bf88b8bacd4f1e96d76"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑菜单",
+    menuPowerTag: "updateMenu",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc7c0f8b8bacd4f1e96d7b"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取菜单树",
+    menuPowerTag: "getMenu",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc7c2e8b8bacd4f1e96d80"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增菜单",
+    menuPowerTag: "createMenu",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    parentId: "62f315fa45f5f3965a53ebed",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc86489ee87c0d4b6ea2a4"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "创建后台用户",
+    menuPowerTag: "createAdminUser",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc869671fe0408cfb7bf43"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "更新后台用户信息",
+    menuPowerTag: "updateAdminUser",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc86a971fe0408cfb7bf4c"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "后台用户密码修改",
+    menuPowerTag: "updateAdminUserPassword",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc86d171fe0408cfb7bf55"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "后台用户密码重置",
+    menuPowerTag: "resetAdminUserPassword",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc870571fe0408cfb7bf5e"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除后台用户",
+    menuPowerTag: "deleteAdminUser",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc871d71fe0408cfb7bf67"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取后台用户分页",
+    menuPowerTag: "getAdminUserPage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc87d3be3cb8872f8b59b7"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "创建角色权限",
+    menuPowerTag: "createRole",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc87e5be3cb8872f8b59c0"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "修改角色权限",
+    menuPowerTag: "updateRole",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc87f5be3cb8872f8b59c9"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除角色权限",
+    menuPowerTag: "deleteRole",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc8812be3cb8872f8b59d2"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取角色权限分页",
+    menuPowerTag: "getRolePage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f31a5645f5f3965a53ec6d"
+    ],
+    parentId: "62f31a5645f5f3965a53ec6d",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fc884f08eab56c6b8830f9"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取系统日志分页",
+    menuPowerTag: "getSystemLogPage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62fc6ae6662b59e7cc670d94"
+    ],
+    parentId: "62fc6ae6662b59e7cc670d94",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fdb22601ea3ca48e8887bd"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/system/dictionary",
+    menuIcon: "",
+    menuName: "数据字典",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010")
+    ],
+    parentId: "654d88c3739c7c646dba6010",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fdb53501ea3ca48e8887d6"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取数据字典分页",
+    menuPowerTag: "getDicPage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fdf1b9c4af61b5e42ac6cc"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增字典",
+    menuPowerTag: "createDic",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fdf1cec4af61b5e42ac6d5"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑数据字典",
+    menuPowerTag: "updateDic",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fdf1e2c4af61b5e42ac6de"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除字典",
+    menuPowerTag: "deleteDic",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62fdf1ffc4af61b5e42ac6e7"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增字典",
+    menuPowerTag: "add-dictionary",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62ff866f14fe9715965ac8a2"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "字典列表编辑",
+    menuPowerTag: "list-edit",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62ff86dc14fe9715965ac8d0"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "字典列表删除",
+    menuPowerTag: "list-delete",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("62ff870514fe9715965ac8d9"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "字典列表管理",
+    menuPowerTag: "list-admin",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: 0
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301c55086006053c2862ed2"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "Notebook",
+    menuName: "业务管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [ ],
+    parentId: "0",
+    sort: NumberInt("1")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301c5a386006053c2862edb"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/content/article",
+    menuIcon: "",
+    menuName: "文章管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b")
+    ],
+    parentId: "65728ee37ff9137594054d2b",
+    sort: NumberInt("10")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301cbba1b08a8f7a4c3e8d0"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "创建文章",
+    menuPowerTag: "createArticle",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: null
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301cbc81b08a8f7a4c3e8d9"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑文章",
+    menuPowerTag: "updateArticle",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: null
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301cbd41b08a8f7a4c3e8e2"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "根据id获取文章详情",
+    menuPowerTag: "getDetailByArticleId",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: null
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301cbee1b08a8f7a4c3e8eb"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除文章",
+    menuPowerTag: "deleteArticle",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: null
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301cc131b08a8f7a4c3e8fc"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取文章分页",
+    menuPowerTag: "getArticlePage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: null
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301ce3110de1c646e6a7482"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "创建文章按钮",
+    menuPowerTag: "add-article",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6301dac26d02872a9187bb80"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/content/advertisement",
+    menuIcon: "",
+    menuName: "广告管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b")
+    ],
+    parentId: "65728ee37ff9137594054d2b",
+    sort: NumberInt("11")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63048e762e078725edb12ba8"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "创建广告",
+    menuPowerTag: "createAd",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63048f8b2e078725edb12bb1"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑广告",
+    menuPowerTag: "updateAd",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63048f972e078725edb12bba"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除广告",
+    menuPowerTag: "deleteAd",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63048fa72e078725edb12bc3"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取广告分页",
+    menuPowerTag: "getAdPage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63048fe82e078725edb12bcc"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "添加广告",
+    menuPowerTag: "add-Advertisement",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63060a322c63058e9af25715"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/system/parameter",
+    menuIcon: "",
+    menuName: "参数设置",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9"
+    ],
+    parentId: "62f312b145f5f3965a53ebc9",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6306ee23fb8c84673ca573cc"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取角色列表接口",
+    menuPowerTag: "getRoleList",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f3167245f5f3965a53ec0a"
+    ],
+    parentId: "62f3167245f5f3965a53ec0a",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63071a55a6071ba70261ff27"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑业务参数配置绑定",
+    menuPowerTag: "updateSystemConfig",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    parentId: "63060a322c63058e9af25715",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63071b21a6071ba70261ff62"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取所有配置信息",
+    menuPowerTag: "getAllSystemConfig",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    parentId: "63060a322c63058e9af25715",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("630dac3cdaec529ccce38b14"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/business/member",
+    menuIcon: "",
+    menuName: "会员管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        ObjectId("654d9a29739c7c646dba6066")
+    ],
+    parentId: "654d9a29739c7c646dba6066",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6311a60b1df058152135dd67"),
+    __v: NumberInt("0"),
+    isShow: "0",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "小程序接口权限",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [ ],
+    parentId: "0",
+    sort: NumberInt("100")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6315e2f86660406757913efd"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "生成会员二维码",
+    menuPowerTag: "createQRUrl",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6317135348fe1594bcd7cbb9"),
+    __v: NumberInt("0"),
+    isShow: "0",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "通用接口",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [ ],
+    parentId: "0",
+    sort: NumberInt("101")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6317136648fe1594bcd7cbc2"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "上传私有文件",
+    menuPowerTag: "uploadPrivate",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6317135348fe1594bcd7cbb9"
+    ],
+    parentId: "6317135348fe1594bcd7cbb9",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6319e43dafad973879082666"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "微信获取用户手机号",
+    menuPowerTag: "phoneNumber",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("631c894eb13610fd22b96d3b"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增会员地址",
+    menuPowerTag: "createAddr",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("631c8ce35e0ca65855718f6c"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取会员地址列表",
+    menuPowerTag: "getAddrList",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("631c955ddbd583657410d9e3"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增地址",
+    menuPowerTag: "updateAddr",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("631c9c096ed3ac3bb54e8291"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除会员地址",
+    menuPowerTag: "deleteAddr",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("637f2efc15192e40dca4aff2"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑",
+    menuPowerTag: "article-edit",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("637f2f0d15192e40dca4aff8"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除",
+    menuPowerTag: "article-delete",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    parentId: "6301c5a386006053c2862edb",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("637f2f4f15192e40dca4affe"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑",
+    menuPowerTag: "ad-edit",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("637f2f6115192e40dca4b004"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除",
+    menuPowerTag: "ad-delete",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301dac26d02872a9187bb80")
+    ],
+    parentId: "6301dac26d02872a9187bb80",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63f1f00a9403e78a8346950c"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "查看会员",
+    menuPowerTag: "show-member",
+    menuType: NumberInt("2"),
+    parentDeep: [
+        ObjectId("654d9a29739c7c646dba6066"),
+        ObjectId("630dac3cdaec529ccce38b14")
+    ],
+    parentId: "630dac3cdaec529ccce38b14",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63f1f0429403e78a83469515"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取会员分页",
+    menuPowerTag: "getMemberPage",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d9a29739c7c646dba6066"),
+        ObjectId("630dac3cdaec529ccce38b14")
+    ],
+    parentId: "630dac3cdaec529ccce38b14",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("63f1f0a89403e78a8346951e"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取会员详情",
+    menuPowerTag: "getMemberDetail",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d9a29739c7c646dba6066"),
+        ObjectId("630dac3cdaec529ccce38b14")
+    ],
+    parentId: "630dac3cdaec529ccce38b14",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6405f28c71608258d10d7273"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "/content/treeClassManagement",
+    menuIcon: "",
+    menuName: "树形分类管理",
+    menuPowerTag: "",
+    menuType: NumberInt("1"),
+    parentDeep: [
+        "654d88c3739c7c646dba6010"
+    ],
+    parentId: "654d88c3739c7c646dba6010",
+    sort: NumberInt("3")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("64061a7271608258d10d72f6"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取树形分类管理树",
+    menuPowerTag: "getTreeClassificationTree",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("6405f28c71608258d10d7273")
+    ],
+    parentId: "6405f28c71608258d10d7273",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("64061a8571608258d10d72ff"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "移动",
+    menuPowerTag: "moveTreeClassification",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("6405f28c71608258d10d7273")
+    ],
+    parentId: "6405f28c71608258d10d7273",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("64061a9571608258d10d7308"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除树形分类",
+    menuPowerTag: "deleteTreeClassification",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("6405f28c71608258d10d7273")
+    ],
+    parentId: "6405f28c71608258d10d7273",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("64061aad71608258d10d7311"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "编辑树形分类管理",
+    menuPowerTag: "updateTreeClassification",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("6405f28c71608258d10d7273")
+    ],
+    parentId: "6405f28c71608258d10d7273",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("64061abd71608258d10d731a"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "新增树形分类",
+    menuPowerTag: "createTreeClassification",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("6405f28c71608258d10d7273")
+    ],
+    parentId: "6405f28c71608258d10d7273",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6416881979ab6351c8acbd8e"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取私有文件",
+    menuPowerTag: "getPrivateFile",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("642450844be865c8aaa48c58"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "生成小程序码",
+    menuPowerTag: "createWeChatQR",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("64365dc11a0db2e27c75e1a1"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "授权登录",
+    menuPowerTag: "QRAuthorize",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "6311a60b1df058152135dd67"
+    ],
+    parentId: "6311a60b1df058152135dd67",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("650032f2c862ace5e9f55e71"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取字典树",
+    menuPowerTag: "getDicTree",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        ObjectId("654d88c3739c7c646dba6010"),
+        ObjectId("62fdb22601ea3ca48e8887bd")
+    ],
+    parentId: "62fdb22601ea3ca48e8887bd",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("650171dde26c92b5cd1aac21"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "获取【参数配置】页面配置信息",
+    menuPowerTag: "getSystemPageConfig",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    parentId: "63060a322c63058e9af25715",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("650171efe26c92b5cd1aac2a"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "更新【参数配置】页面配置信息",
+    menuPowerTag: "updateSystemPageConfig",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    parentId: "63060a322c63058e9af25715",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6501721ce26c92b5cd1aac33"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "删除业务参数配置绑定",
+    menuPowerTag: "deleteSystemConfig",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    parentId: "63060a322c63058e9af25715",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65017231e26c92b5cd1aac3c"),
+    __v: NumberInt("0"),
+    isShow: "1",
+    menuActive: "",
+    menuIcon: "",
+    menuName: "创建业务参数配置绑定",
+    menuPowerTag: "createBindSystemConfig",
+    menuType: NumberInt("3"),
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    parentId: "63060a322c63058e9af25715",
+    sort: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b67"),
+    menuName: "提现管理",
+    menuType: NumberInt("1"),
+    menuActive: "/business/withdrawalManagement",
+    menuPowerTag: "",
+    isShow: "1",
+    parentId: "654d99bd739c7c646dba6021",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b69"),
+    menuName: "创建提现管理",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "createWithdrawalManagement",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b6a"),
+    menuName: "编辑提现管理",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "updateWithdrawalManagement",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b6b"),
+    menuName: "删除提现管理",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "deleteWithdrawalManagementById",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b6c"),
+    menuName: "根据id获取提现管理详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWithdrawalManagementById",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b6d"),
+    menuName: "获取提现管理分页",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWithdrawalManagementPage",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b6f"),
+    menuName: "编辑提现管理",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "edit-withdrawalManagement",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b70"),
+    menuName: "删除提现管理",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "delete-withdrawalManagement",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b6e"),
+    menuName: "添加提现管理",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "add-withdrawalManagement",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6529212b0584240b7b432b71"),
+    menuName: "保存或更新提现管理详情",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "save-withdrawalManagement",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        ObjectId("654d99bd739c7c646dba6021"),
+        ObjectId("6529212b0584240b7b432b67")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6537235b9482bdb901fa3541"),
+    menuName: "移动菜单",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "changeMenuParent",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "62f315fa45f5f3965a53ebed",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "62f315fa45f5f3965a53ebed"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("654d88c3739c7c646dba6010"),
+    menuName: "业务支撑",
+    menuType: NumberInt("1"),
+    menuActive: "",
+    menuPowerTag: "",
+    menuIcon: "Operation",
+    isShow: "1",
+    parentId: "0",
+    parentDeep: [ ],
+    sort: NumberInt("4"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("654d99bd739c7c646dba6021"),
+    menuName: "财务管理",
+    menuType: NumberInt("1"),
+    menuActive: "",
+    menuPowerTag: "",
+    menuIcon: "CreditCard",
+    isShow: "1",
+    parentId: "0",
+    parentDeep: [ ],
+    sort: NumberInt("3"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("654d9a29739c7c646dba6066"),
+    menuName: "人员管理",
+    menuType: NumberInt("1"),
+    menuActive: "",
+    menuPowerTag: "",
+    menuIcon: "User",
+    isShow: "1",
+    parentId: "0",
+    parentDeep: [ ],
+    sort: NumberInt("2"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519ba39cfa5ab240ce68a6"),
+    menuName: "创建会员",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "createMemberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519bb19cfa5ab240ce68af"),
+    menuName: "编辑会员",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "updateMemberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519bc29cfa5ab240ce68b8"),
+    menuName: "删除会员",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "deleteMemberManagementById",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519bd19cfa5ab240ce68c1"),
+    menuName: "根据id获取会员管理详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getMemberManagementById",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519bee9cfa5ab240ce68ca"),
+    menuName: "添加会员",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "add-memberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519bfd9cfa5ab240ce68d3"),
+    menuName: "编辑会员",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "edit-memberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519c0d9cfa5ab240ce68dc"),
+    menuName: "删除会员",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "delete-memberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65519c1c9cfa5ab240ce68e5"),
+    menuName: "保存或更新会员",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "save-memberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf77e938e9942ac3ec8f"),
+    menuName: "钱包管理",
+    menuType: NumberInt("1"),
+    menuActive: "/business/walletManagement",
+    menuPowerTag: "",
+    isShow: "1",
+    parentId: "6317135348fe1594bcd7cbb9",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf77e938e9942ac3ec92"),
+    menuName: "编辑钱包管理",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "updateWalletManagement",
+    isShow: "1",
+    parentId: "6551bf77e938e9942ac3ec8f",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9"),
+        ObjectId("6551bf77e938e9942ac3ec8f")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf77e938e9942ac3ec94"),
+    menuName: "根据id获取钱包管理详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWalletManagementById",
+    isShow: "1",
+    parentId: "6551bf77e938e9942ac3ec8f",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9"),
+        ObjectId("6551bf77e938e9942ac3ec8f")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf77e938e9942ac3ec95"),
+    menuName: "获取钱包管理分页",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWalletManagementPage",
+    isShow: "1",
+    parentId: "6551bf77e938e9942ac3ec8f",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9"),
+        ObjectId("6551bf77e938e9942ac3ec8f")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf7ae938e9942ac3ecae"),
+    menuName: "钱包流水",
+    menuType: NumberInt("1"),
+    menuActive: "/business/walletLog",
+    menuPowerTag: "",
+    isShow: "1",
+    parentId: "6317135348fe1594bcd7cbb9",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf7ae938e9942ac3ecb3"),
+    menuName: "根据id获取钱包流水详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWalletLogById",
+    isShow: "1",
+    parentId: "6551bf7ae938e9942ac3ecae",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9"),
+        ObjectId("6551bf7ae938e9942ac3ecae")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf7ae938e9942ac3ecb2"),
+    menuName: "删除钱包流水",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "deleteWalletLogById",
+    isShow: "1",
+    parentId: "6551bf7ae938e9942ac3ecae",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9"),
+        ObjectId("6551bf7ae938e9942ac3ecae")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551bf7ae938e9942ac3ecb4"),
+    menuName: "获取钱包流水分页",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWalletLogPage",
+    isShow: "1",
+    parentId: "6551bf7ae938e9942ac3ecae",
+    parentDeep: [
+        ObjectId("6317135348fe1594bcd7cbb9"),
+        ObjectId("6551bf7ae938e9942ac3ecae")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551ddee9bc762085be7b56c"),
+    menuName: "保存更新会员",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "save-memberManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551eb0e08ff45e8e1a880e9"),
+    menuName: "钱包管理",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "edit-servicePersonnelWallet",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "654b52ce00bc1e5e72cb369d",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "654b52ce00bc1e5e72cb369d"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551fad9c254cd0e53cb4364"),
+    menuName: "根据BindUserUUID获取钱包管理详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getDetailByBindUserUUID",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6551bf77e938e9942ac3ec8f",
+    parentDeep: [
+        "6317135348fe1594bcd7cbb9",
+        "6551bf77e938e9942ac3ec8f"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6551ff3cc254cd0e53cb446d"),
+    menuName: "钱包管理",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "edit-memberWallet",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6552ec26820d7a03e60b9873"),
+    menuName: "钱包金额变动",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "changeInWalletAmount",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6551bf77e938e9942ac3ec8f",
+    parentDeep: [
+        "6317135348fe1594bcd7cbb9",
+        "6551bf77e938e9942ac3ec8f"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6552ec36820d7a03e60b987c"),
+    menuName: "冻结解冻钱包",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "freezeThawWallet",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6551bf77e938e9942ac3ec8f",
+    parentDeep: [
+        "6317135348fe1594bcd7cbb9",
+        "6551bf77e938e9942ac3ec8f"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6555d262574746513b0b12e2"),
+    menuName: "创建数据字典枚举文件",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "createDicEnum",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "62fdb22601ea3ca48e8887bd",
+    parentDeep: [
+        "654d88c3739c7c646dba6010",
+        "62fdb22601ea3ca48e8887bd"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6561d5d37d0b846bbe6c8abb"),
+    menuName: "获取文章列表",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getArticleList",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6301c5a386006053c2862edb",
+    parentDeep: [
+        ObjectId("65728ee37ff9137594054d2b"),
+        ObjectId("6301c5a386006053c2862edb")
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65728ee37ff9137594054d2b"),
+    menuName: "内容管理",
+    menuType: NumberInt("1"),
+    menuActive: "",
+    menuPowerTag: "",
+    menuIcon: "Compass",
+    isShow: "1",
+    parentId: "0",
+    parentDeep: [ ],
+    sort: NumberInt("1"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("658e315070d59e047e6b142c"),
+    menuName: "获取会员钱包明细",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getMemberWallet",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b0926d0dd756a9170e8ad8"),
+    menuName: "获取所有已发布文章列表",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getArticleAll",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6301c5a386006053c2862edb",
+    parentDeep: [
+        "65728ee37ff9137594054d2b",
+        "6301c5a386006053c2862edb"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b098fa0dd756a9170e8b6f"),
+    menuName: "根据字典code获取系统配置详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getSystemConfigDetail",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "63060a322c63058e9af25715",
+    parentDeep: [
+        "62f312b145f5f3965a53ebc9",
+        "63060a322c63058e9af25715"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b399e58548fa79f279d7ed"),
+    menuName: "钱包提现申请",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "walletWithdrawalApplication",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        "654d99bd739c7c646dba6021",
+        "6529212b0584240b7b432b67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b399fc8548fa79f279d7f6"),
+    menuName: "钱包提现申请通过",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "withdrawalApplicationApproved",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        "654d99bd739c7c646dba6021",
+        "6529212b0584240b7b432b67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b39a0a8548fa79f279d7ff"),
+    menuName: "拒绝钱包提现申请",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "walletWithdrawalApplicationRefuse",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        "654d99bd739c7c646dba6021",
+        "6529212b0584240b7b432b67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b71cc41a5009b4c93fecff"),
+    menuName: "通过",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "adopt-withdrawalManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        "654d99bd739c7c646dba6021",
+        "6529212b0584240b7b432b67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b71ce41a5009b4c93fed08"),
+    menuName: "拒绝",
+    menuType: NumberInt("2"),
+    menuActive: "",
+    menuPowerTag: "refuse-withdrawalManagement",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        "654d99bd739c7c646dba6021",
+        "6529212b0584240b7b432b67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("65b87059a42e806879751691"),
+    menuName: "微信小程序获取提现管理分页",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getWithdrawalManagementPageByWeChat",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6529212b0584240b7b432b67",
+    parentDeep: [
+        "654d99bd739c7c646dba6021",
+        "6529212b0584240b7b432b67"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6600e9de68996ec74b6de330"),
+    menuName: "根据UUID获取会员管理详情",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getMemberManagementByUUID",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "6553517c4ddf3e2eb2d7681e",
+    parentDeep: [
+        "6301c55086006053c2862ed2",
+        "6553517c4ddf3e2eb2d7681e"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("adminmenus").insert([ {
+    _id: ObjectId("6621f70e860c1f3f563f2e1e"),
+    menuName: "获取会员列表",
+    menuType: NumberInt("3"),
+    menuActive: "",
+    menuPowerTag: "getMemberList",
+    menuIcon: "",
+    isShow: "1",
+    parentId: "630dac3cdaec529ccce38b14",
+    parentDeep: [
+        "654d9a29739c7c646dba6066",
+        "630dac3cdaec529ccce38b14"
+    ],
+    sort: NumberInt("0"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for adminusers
+// ----------------------------
+db.getCollection("adminusers").drop();
+db.createCollection("adminusers");
+
+// ----------------------------
+// Documents of adminusers
+// ----------------------------
+db.getCollection("adminusers").insert([ {
+    _id: ObjectId("6296c2c86ea65507ef56ef66"),
+    userName: "baigao",
+    password: "d327bcefb20c00371aeee7b5558badab",
+    role: [
+        "6296bf0dffbc2d2b3cdf699f"
+    ],
+    roleName: [
+        "超级管理员"
+    ],
+    remarks: "测试",
+    indexPath: "",
+    __v: NumberInt("0"),
+    companyName: "",
+    companyUUID: "",
+    disable: false
+} ]);
+
+// ----------------------------
+// Collection structure for areas
+// ----------------------------
+db.getCollection("areas").drop();
+db.createCollection("areas");
+
+// ----------------------------
+// Documents of areas
+// ----------------------------
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e32"),
+    code: "110101",
+    name: "东城区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e33"),
+    code: "110102",
+    name: "西城区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e34"),
+    code: "110105",
+    name: "朝阳区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e35"),
+    code: "110106",
+    name: "丰台区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e36"),
+    code: "110107",
+    name: "石景山区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e37"),
+    code: "110108",
+    name: "海淀区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e38"),
+    code: "110109",
+    name: "门头沟区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e39"),
+    code: "110111",
+    name: "房山区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e3a"),
+    code: "110112",
+    name: "通州区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e3b"),
+    code: "110113",
+    name: "顺义区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e3c"),
+    code: "110114",
+    name: "昌平区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e3d"),
+    code: "110115",
+    name: "大兴区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e3e"),
+    code: "110116",
+    name: "怀柔区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e3f"),
+    code: "110117",
+    name: "平谷区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e40"),
+    code: "110118",
+    name: "密云区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e41"),
+    code: "110119",
+    name: "延庆区",
+    cityCode: "1101",
+    provinceCode: "11"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e42"),
+    code: "120101",
+    name: "和平区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e43"),
+    code: "120102",
+    name: "河东区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e44"),
+    code: "120103",
+    name: "河西区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e45"),
+    code: "120104",
+    name: "南开区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e46"),
+    code: "120105",
+    name: "河北区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e47"),
+    code: "120106",
+    name: "红桥区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e48"),
+    code: "120110",
+    name: "东丽区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e49"),
+    code: "120111",
+    name: "西青区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e4a"),
+    code: "120112",
+    name: "津南区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e4b"),
+    code: "120113",
+    name: "北辰区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e4c"),
+    code: "120114",
+    name: "武清区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e4d"),
+    code: "120115",
+    name: "宝坻区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e4e"),
+    code: "120116",
+    name: "滨海新区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e4f"),
+    code: "120117",
+    name: "宁河区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e50"),
+    code: "120118",
+    name: "静海区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e51"),
+    code: "120119",
+    name: "蓟州区",
+    cityCode: "1201",
+    provinceCode: "12"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e52"),
+    code: "130102",
+    name: "长安区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e53"),
+    code: "130104",
+    name: "桥西区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e54"),
+    code: "130105",
+    name: "新华区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e55"),
+    code: "130107",
+    name: "井陉矿区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e56"),
+    code: "130108",
+    name: "裕华区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e57"),
+    code: "130109",
+    name: "藁城区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e58"),
+    code: "130110",
+    name: "鹿泉区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e59"),
+    code: "130111",
+    name: "栾城区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e5a"),
+    code: "130121",
+    name: "井陉县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e5b"),
+    code: "130123",
+    name: "正定县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e5c"),
+    code: "130125",
+    name: "行唐县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e5d"),
+    code: "130126",
+    name: "灵寿县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e5e"),
+    code: "130127",
+    name: "高邑县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e5f"),
+    code: "130128",
+    name: "深泽县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e60"),
+    code: "130129",
+    name: "赞皇县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e61"),
+    code: "130130",
+    name: "无极县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e62"),
+    code: "130131",
+    name: "平山县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e63"),
+    code: "130132",
+    name: "元氏县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e64"),
+    code: "130133",
+    name: "赵县",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e65"),
+    code: "130171",
+    name: "石家庄高新技术产业开发区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e66"),
+    code: "130172",
+    name: "石家庄循环化工园区",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e67"),
+    code: "130181",
+    name: "辛集市",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e68"),
+    code: "130183",
+    name: "晋州市",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e69"),
+    code: "130184",
+    name: "新乐市",
+    cityCode: "1301",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e6a"),
+    code: "130202",
+    name: "路南区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e6b"),
+    code: "130203",
+    name: "路北区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e6c"),
+    code: "130204",
+    name: "古冶区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e6d"),
+    code: "130205",
+    name: "开平区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e6e"),
+    code: "130207",
+    name: "丰南区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e6f"),
+    code: "130208",
+    name: "丰润区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e70"),
+    code: "130209",
+    name: "曹妃甸区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e71"),
+    code: "130224",
+    name: "滦南县",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e72"),
+    code: "130225",
+    name: "乐亭县",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e73"),
+    code: "130227",
+    name: "迁西县",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e74"),
+    code: "130229",
+    name: "玉田县",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e75"),
+    code: "130271",
+    name: "河北唐山芦台经济开发区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e76"),
+    code: "130272",
+    name: "唐山市汉沽管理区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e77"),
+    code: "130273",
+    name: "唐山高新技术产业开发区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e78"),
+    code: "130274",
+    name: "河北唐山海港经济开发区",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e79"),
+    code: "130281",
+    name: "遵化市",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e7a"),
+    code: "130283",
+    name: "迁安市",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e7b"),
+    code: "130284",
+    name: "滦州市",
+    cityCode: "1302",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e7c"),
+    code: "130302",
+    name: "海港区",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e7d"),
+    code: "130303",
+    name: "山海关区",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e7e"),
+    code: "130304",
+    name: "北戴河区",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e7f"),
+    code: "130306",
+    name: "抚宁区",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e80"),
+    code: "130321",
+    name: "青龙满族自治县",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e81"),
+    code: "130322",
+    name: "昌黎县",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e82"),
+    code: "130324",
+    name: "卢龙县",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e83"),
+    code: "130371",
+    name: "秦皇岛市经济技术开发区",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e84"),
+    code: "130372",
+    name: "北戴河新区",
+    cityCode: "1303",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e85"),
+    code: "130402",
+    name: "邯山区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e86"),
+    code: "130403",
+    name: "丛台区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e87"),
+    code: "130404",
+    name: "复兴区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e88"),
+    code: "130406",
+    name: "峰峰矿区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e89"),
+    code: "130407",
+    name: "肥乡区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e8a"),
+    code: "130408",
+    name: "永年区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e8b"),
+    code: "130423",
+    name: "临漳县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e8c"),
+    code: "130424",
+    name: "成安县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e8d"),
+    code: "130425",
+    name: "大名县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e8e"),
+    code: "130426",
+    name: "涉县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e8f"),
+    code: "130427",
+    name: "磁县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e90"),
+    code: "130430",
+    name: "邱县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e91"),
+    code: "130431",
+    name: "鸡泽县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e92"),
+    code: "130432",
+    name: "广平县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e93"),
+    code: "130433",
+    name: "馆陶县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e94"),
+    code: "130434",
+    name: "魏县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e95"),
+    code: "130435",
+    name: "曲周县",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e96"),
+    code: "130471",
+    name: "邯郸经济技术开发区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e97"),
+    code: "130473",
+    name: "邯郸冀南新区",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e98"),
+    code: "130481",
+    name: "武安市",
+    cityCode: "1304",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e99"),
+    code: "130502",
+    name: "襄都区",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e9a"),
+    code: "130503",
+    name: "信都区",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e9b"),
+    code: "130505",
+    name: "任泽区",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e9c"),
+    code: "130506",
+    name: "南和区",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e9d"),
+    code: "130522",
+    name: "临城县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e9e"),
+    code: "130523",
+    name: "内丘县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007e9f"),
+    code: "130524",
+    name: "柏乡县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea0"),
+    code: "130525",
+    name: "隆尧县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea1"),
+    code: "130528",
+    name: "宁晋县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea2"),
+    code: "130529",
+    name: "巨鹿县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea3"),
+    code: "130530",
+    name: "新河县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea4"),
+    code: "130531",
+    name: "广宗县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea5"),
+    code: "130532",
+    name: "平乡县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea6"),
+    code: "130533",
+    name: "威县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea7"),
+    code: "130534",
+    name: "清河县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea8"),
+    code: "130535",
+    name: "临西县",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ea9"),
+    code: "130571",
+    name: "河北邢台经济开发区",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eaa"),
+    code: "130581",
+    name: "南宫市",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eab"),
+    code: "130582",
+    name: "沙河市",
+    cityCode: "1305",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eac"),
+    code: "130602",
+    name: "竞秀区",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ead"),
+    code: "130606",
+    name: "莲池区",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eae"),
+    code: "130607",
+    name: "满城区",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eaf"),
+    code: "130608",
+    name: "清苑区",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb0"),
+    code: "130609",
+    name: "徐水区",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb1"),
+    code: "130623",
+    name: "涞水县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb2"),
+    code: "130624",
+    name: "阜平县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb3"),
+    code: "130626",
+    name: "定兴县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb4"),
+    code: "130627",
+    name: "唐县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb5"),
+    code: "130628",
+    name: "高阳县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb6"),
+    code: "130629",
+    name: "容城县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb7"),
+    code: "130630",
+    name: "涞源县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb8"),
+    code: "130631",
+    name: "望都县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eb9"),
+    code: "130632",
+    name: "安新县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eba"),
+    code: "130633",
+    name: "易县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ebb"),
+    code: "130634",
+    name: "曲阳县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ebc"),
+    code: "130635",
+    name: "蠡县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ebd"),
+    code: "130636",
+    name: "顺平县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ebe"),
+    code: "130637",
+    name: "博野县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ebf"),
+    code: "130638",
+    name: "雄县",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec0"),
+    code: "130671",
+    name: "保定高新技术产业开发区",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec1"),
+    code: "130672",
+    name: "保定白沟新城",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec2"),
+    code: "130681",
+    name: "涿州市",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec3"),
+    code: "130682",
+    name: "定州市",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec4"),
+    code: "130683",
+    name: "安国市",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec5"),
+    code: "130684",
+    name: "高碑店市",
+    cityCode: "1306",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec6"),
+    code: "130702",
+    name: "桥东区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec7"),
+    code: "130703",
+    name: "桥西区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec8"),
+    code: "130705",
+    name: "宣化区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ec9"),
+    code: "130706",
+    name: "下花园区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eca"),
+    code: "130708",
+    name: "万全区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ecb"),
+    code: "130709",
+    name: "崇礼区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ecc"),
+    code: "130722",
+    name: "张北县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ecd"),
+    code: "130723",
+    name: "康保县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ece"),
+    code: "130724",
+    name: "沽源县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ecf"),
+    code: "130725",
+    name: "尚义县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed0"),
+    code: "130726",
+    name: "蔚县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed1"),
+    code: "130727",
+    name: "阳原县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed2"),
+    code: "130728",
+    name: "怀安县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed3"),
+    code: "130730",
+    name: "怀来县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed4"),
+    code: "130731",
+    name: "涿鹿县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed5"),
+    code: "130732",
+    name: "赤城县",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed6"),
+    code: "130771",
+    name: "张家口经济开发区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed7"),
+    code: "130772",
+    name: "张家口市察北管理区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed8"),
+    code: "130773",
+    name: "张家口市塞北管理区",
+    cityCode: "1307",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ed9"),
+    code: "130802",
+    name: "双桥区",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eda"),
+    code: "130803",
+    name: "双滦区",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007edb"),
+    code: "130804",
+    name: "鹰手营子矿区",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007edc"),
+    code: "130821",
+    name: "承德县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007edd"),
+    code: "130822",
+    name: "兴隆县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ede"),
+    code: "130824",
+    name: "滦平县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007edf"),
+    code: "130825",
+    name: "隆化县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee0"),
+    code: "130826",
+    name: "丰宁满族自治县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee1"),
+    code: "130827",
+    name: "宽城满族自治县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee2"),
+    code: "130828",
+    name: "围场满族蒙古族自治县",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee3"),
+    code: "130871",
+    name: "承德高新技术产业开发区",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee4"),
+    code: "130881",
+    name: "平泉市",
+    cityCode: "1308",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee5"),
+    code: "130902",
+    name: "新华区",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee6"),
+    code: "130903",
+    name: "运河区",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee7"),
+    code: "130921",
+    name: "沧县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee8"),
+    code: "130922",
+    name: "青县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ee9"),
+    code: "130923",
+    name: "东光县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eea"),
+    code: "130924",
+    name: "海兴县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eeb"),
+    code: "130925",
+    name: "盐山县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eec"),
+    code: "130926",
+    name: "肃宁县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eed"),
+    code: "130927",
+    name: "南皮县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eee"),
+    code: "130928",
+    name: "吴桥县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eef"),
+    code: "130929",
+    name: "献县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef0"),
+    code: "130930",
+    name: "孟村回族自治县",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef1"),
+    code: "130971",
+    name: "河北沧州经济开发区",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef2"),
+    code: "130972",
+    name: "沧州高新技术产业开发区",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef3"),
+    code: "130973",
+    name: "沧州渤海新区",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef4"),
+    code: "130981",
+    name: "泊头市",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef5"),
+    code: "130982",
+    name: "任丘市",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef6"),
+    code: "130983",
+    name: "黄骅市",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef7"),
+    code: "130984",
+    name: "河间市",
+    cityCode: "1309",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef8"),
+    code: "131002",
+    name: "安次区",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ef9"),
+    code: "131003",
+    name: "广阳区",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007efa"),
+    code: "131022",
+    name: "固安县",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007efb"),
+    code: "131023",
+    name: "永清县",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007efc"),
+    code: "131024",
+    name: "香河县",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007efd"),
+    code: "131025",
+    name: "大城县",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007efe"),
+    code: "131026",
+    name: "文安县",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007eff"),
+    code: "131028",
+    name: "大厂回族自治县",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f00"),
+    code: "131071",
+    name: "廊坊经济技术开发区",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f01"),
+    code: "131081",
+    name: "霸州市",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f02"),
+    code: "131082",
+    name: "三河市",
+    cityCode: "1310",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f03"),
+    code: "131102",
+    name: "桃城区",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f04"),
+    code: "131103",
+    name: "冀州区",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f05"),
+    code: "131121",
+    name: "枣强县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f06"),
+    code: "131122",
+    name: "武邑县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f07"),
+    code: "131123",
+    name: "武强县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f08"),
+    code: "131124",
+    name: "饶阳县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f09"),
+    code: "131125",
+    name: "安平县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f0a"),
+    code: "131126",
+    name: "故城县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f0b"),
+    code: "131127",
+    name: "景县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f0c"),
+    code: "131128",
+    name: "阜城县",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f0d"),
+    code: "131171",
+    name: "河北衡水高新技术产业开发区",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f0e"),
+    code: "131172",
+    name: "衡水滨湖新区",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f0f"),
+    code: "131182",
+    name: "深州市",
+    cityCode: "1311",
+    provinceCode: "13"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f10"),
+    code: "140105",
+    name: "小店区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f11"),
+    code: "140106",
+    name: "迎泽区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f12"),
+    code: "140107",
+    name: "杏花岭区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f13"),
+    code: "140108",
+    name: "尖草坪区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f14"),
+    code: "140109",
+    name: "万柏林区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f15"),
+    code: "140110",
+    name: "晋源区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f16"),
+    code: "140121",
+    name: "清徐县",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f17"),
+    code: "140122",
+    name: "阳曲县",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f18"),
+    code: "140123",
+    name: "娄烦县",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f19"),
+    code: "140171",
+    name: "山西转型综合改革示范区",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f1a"),
+    code: "140181",
+    name: "古交市",
+    cityCode: "1401",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f1b"),
+    code: "140212",
+    name: "新荣区",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f1c"),
+    code: "140213",
+    name: "平城区",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f1d"),
+    code: "140214",
+    name: "云冈区",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f1e"),
+    code: "140215",
+    name: "云州区",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f1f"),
+    code: "140221",
+    name: "阳高县",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f20"),
+    code: "140222",
+    name: "天镇县",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f21"),
+    code: "140223",
+    name: "广灵县",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f22"),
+    code: "140224",
+    name: "灵丘县",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f23"),
+    code: "140225",
+    name: "浑源县",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f24"),
+    code: "140226",
+    name: "左云县",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f25"),
+    code: "140271",
+    name: "山西大同经济开发区",
+    cityCode: "1402",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f26"),
+    code: "140302",
+    name: "城区",
+    cityCode: "1403",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f27"),
+    code: "140303",
+    name: "矿区",
+    cityCode: "1403",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f28"),
+    code: "140311",
+    name: "郊区",
+    cityCode: "1403",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f29"),
+    code: "140321",
+    name: "平定县",
+    cityCode: "1403",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f2a"),
+    code: "140322",
+    name: "盂县",
+    cityCode: "1403",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f2b"),
+    code: "140403",
+    name: "潞州区",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f2c"),
+    code: "140404",
+    name: "上党区",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f2d"),
+    code: "140405",
+    name: "屯留区",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f2e"),
+    code: "140406",
+    name: "潞城区",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f2f"),
+    code: "140423",
+    name: "襄垣县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f30"),
+    code: "140425",
+    name: "平顺县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f31"),
+    code: "140426",
+    name: "黎城县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f32"),
+    code: "140427",
+    name: "壶关县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f33"),
+    code: "140428",
+    name: "长子县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f34"),
+    code: "140429",
+    name: "武乡县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f35"),
+    code: "140430",
+    name: "沁县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f36"),
+    code: "140431",
+    name: "沁源县",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f37"),
+    code: "140471",
+    name: "山西长治高新技术产业园区",
+    cityCode: "1404",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f38"),
+    code: "140502",
+    name: "城区",
+    cityCode: "1405",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f39"),
+    code: "140521",
+    name: "沁水县",
+    cityCode: "1405",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f3a"),
+    code: "140522",
+    name: "阳城县",
+    cityCode: "1405",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f3b"),
+    code: "140524",
+    name: "陵川县",
+    cityCode: "1405",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f3c"),
+    code: "140525",
+    name: "泽州县",
+    cityCode: "1405",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f3d"),
+    code: "140581",
+    name: "高平市",
+    cityCode: "1405",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f3e"),
+    code: "140602",
+    name: "朔城区",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f3f"),
+    code: "140603",
+    name: "平鲁区",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f40"),
+    code: "140621",
+    name: "山阴县",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f41"),
+    code: "140622",
+    name: "应县",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f42"),
+    code: "140623",
+    name: "右玉县",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f43"),
+    code: "140671",
+    name: "山西朔州经济开发区",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f44"),
+    code: "140681",
+    name: "怀仁市",
+    cityCode: "1406",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f45"),
+    code: "140702",
+    name: "榆次区",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f46"),
+    code: "140703",
+    name: "太谷区",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f47"),
+    code: "140721",
+    name: "榆社县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f48"),
+    code: "140722",
+    name: "左权县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f49"),
+    code: "140723",
+    name: "和顺县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f4a"),
+    code: "140724",
+    name: "昔阳县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f4b"),
+    code: "140725",
+    name: "寿阳县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f4c"),
+    code: "140727",
+    name: "祁县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f4d"),
+    code: "140728",
+    name: "平遥县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f4e"),
+    code: "140729",
+    name: "灵石县",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f4f"),
+    code: "140781",
+    name: "介休市",
+    cityCode: "1407",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f50"),
+    code: "140802",
+    name: "盐湖区",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f51"),
+    code: "140821",
+    name: "临猗县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f52"),
+    code: "140822",
+    name: "万荣县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f53"),
+    code: "140823",
+    name: "闻喜县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f54"),
+    code: "140824",
+    name: "稷山县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f55"),
+    code: "140825",
+    name: "新绛县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f56"),
+    code: "140826",
+    name: "绛县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f57"),
+    code: "140827",
+    name: "垣曲县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f58"),
+    code: "140828",
+    name: "夏县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f59"),
+    code: "140829",
+    name: "平陆县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f5a"),
+    code: "140830",
+    name: "芮城县",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f5b"),
+    code: "140881",
+    name: "永济市",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f5c"),
+    code: "140882",
+    name: "河津市",
+    cityCode: "1408",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f5d"),
+    code: "140902",
+    name: "忻府区",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f5e"),
+    code: "140921",
+    name: "定襄县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f5f"),
+    code: "140922",
+    name: "五台县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f60"),
+    code: "140923",
+    name: "代县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f61"),
+    code: "140924",
+    name: "繁峙县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f62"),
+    code: "140925",
+    name: "宁武县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f63"),
+    code: "140926",
+    name: "静乐县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f64"),
+    code: "140927",
+    name: "神池县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f65"),
+    code: "140928",
+    name: "五寨县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f66"),
+    code: "140929",
+    name: "岢岚县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f67"),
+    code: "140930",
+    name: "河曲县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f68"),
+    code: "140931",
+    name: "保德县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f69"),
+    code: "140932",
+    name: "偏关县",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f6a"),
+    code: "140971",
+    name: "五台山风景名胜区",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f6b"),
+    code: "140981",
+    name: "原平市",
+    cityCode: "1409",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f6c"),
+    code: "141002",
+    name: "尧都区",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f6d"),
+    code: "141021",
+    name: "曲沃县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f6e"),
+    code: "141022",
+    name: "翼城县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f6f"),
+    code: "141023",
+    name: "襄汾县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f70"),
+    code: "141024",
+    name: "洪洞县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f71"),
+    code: "141025",
+    name: "古县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f72"),
+    code: "141026",
+    name: "安泽县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f73"),
+    code: "141027",
+    name: "浮山县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f74"),
+    code: "141028",
+    name: "吉县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f75"),
+    code: "141029",
+    name: "乡宁县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f76"),
+    code: "141030",
+    name: "大宁县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f77"),
+    code: "141031",
+    name: "隰县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f78"),
+    code: "141032",
+    name: "永和县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f79"),
+    code: "141033",
+    name: "蒲县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f7a"),
+    code: "141034",
+    name: "汾西县",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f7b"),
+    code: "141081",
+    name: "侯马市",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f7c"),
+    code: "141082",
+    name: "霍州市",
+    cityCode: "1410",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f7d"),
+    code: "141102",
+    name: "离石区",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f7e"),
+    code: "141121",
+    name: "文水县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f7f"),
+    code: "141122",
+    name: "交城县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f80"),
+    code: "141123",
+    name: "兴县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f81"),
+    code: "141124",
+    name: "临县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f82"),
+    code: "141125",
+    name: "柳林县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f83"),
+    code: "141126",
+    name: "石楼县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f84"),
+    code: "141127",
+    name: "岚县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f85"),
+    code: "141128",
+    name: "方山县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f86"),
+    code: "141129",
+    name: "中阳县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f87"),
+    code: "141130",
+    name: "交口县",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f88"),
+    code: "141181",
+    name: "孝义市",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f89"),
+    code: "141182",
+    name: "汾阳市",
+    cityCode: "1411",
+    provinceCode: "14"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f8a"),
+    code: "150102",
+    name: "新城区",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f8b"),
+    code: "150103",
+    name: "回民区",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f8c"),
+    code: "150104",
+    name: "玉泉区",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f8d"),
+    code: "150105",
+    name: "赛罕区",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f8e"),
+    code: "150121",
+    name: "土默特左旗",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f8f"),
+    code: "150122",
+    name: "托克托县",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f90"),
+    code: "150123",
+    name: "和林格尔县",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f91"),
+    code: "150124",
+    name: "清水河县",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f92"),
+    code: "150125",
+    name: "武川县",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f93"),
+    code: "150172",
+    name: "呼和浩特经济技术开发区",
+    cityCode: "1501",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f94"),
+    code: "150202",
+    name: "东河区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f95"),
+    code: "150203",
+    name: "昆都仑区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f96"),
+    code: "150204",
+    name: "青山区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f97"),
+    code: "150205",
+    name: "石拐区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f98"),
+    code: "150206",
+    name: "白云鄂博矿区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f99"),
+    code: "150207",
+    name: "九原区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f9a"),
+    code: "150221",
+    name: "土默特右旗",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f9b"),
+    code: "150222",
+    name: "固阳县",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f9c"),
+    code: "150223",
+    name: "达尔罕茂明安联合旗",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f9d"),
+    code: "150271",
+    name: "包头稀土高新技术产业开发区",
+    cityCode: "1502",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f9e"),
+    code: "150302",
+    name: "海勃湾区",
+    cityCode: "1503",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007f9f"),
+    code: "150303",
+    name: "海南区",
+    cityCode: "1503",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa0"),
+    code: "150304",
+    name: "乌达区",
+    cityCode: "1503",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa1"),
+    code: "150402",
+    name: "红山区",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa2"),
+    code: "150403",
+    name: "元宝山区",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa3"),
+    code: "150404",
+    name: "松山区",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa4"),
+    code: "150421",
+    name: "阿鲁科尔沁旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa5"),
+    code: "150422",
+    name: "巴林左旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa6"),
+    code: "150423",
+    name: "巴林右旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa7"),
+    code: "150424",
+    name: "林西县",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa8"),
+    code: "150425",
+    name: "克什克腾旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fa9"),
+    code: "150426",
+    name: "翁牛特旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007faa"),
+    code: "150428",
+    name: "喀喇沁旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fab"),
+    code: "150429",
+    name: "宁城县",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fac"),
+    code: "150430",
+    name: "敖汉旗",
+    cityCode: "1504",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fad"),
+    code: "150502",
+    name: "科尔沁区",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fae"),
+    code: "150521",
+    name: "科尔沁左翼中旗",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007faf"),
+    code: "150522",
+    name: "科尔沁左翼后旗",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb0"),
+    code: "150523",
+    name: "开鲁县",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb1"),
+    code: "150524",
+    name: "库伦旗",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb2"),
+    code: "150525",
+    name: "奈曼旗",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb3"),
+    code: "150526",
+    name: "扎鲁特旗",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb4"),
+    code: "150571",
+    name: "通辽经济技术开发区",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb5"),
+    code: "150581",
+    name: "霍林郭勒市",
+    cityCode: "1505",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb6"),
+    code: "150602",
+    name: "东胜区",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb7"),
+    code: "150603",
+    name: "康巴什区",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb8"),
+    code: "150621",
+    name: "达拉特旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fb9"),
+    code: "150622",
+    name: "准格尔旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fba"),
+    code: "150623",
+    name: "鄂托克前旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fbb"),
+    code: "150624",
+    name: "鄂托克旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fbc"),
+    code: "150625",
+    name: "杭锦旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fbd"),
+    code: "150626",
+    name: "乌审旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fbe"),
+    code: "150627",
+    name: "伊金霍洛旗",
+    cityCode: "1506",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fbf"),
+    code: "150702",
+    name: "海拉尔区",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc0"),
+    code: "150703",
+    name: "扎赉诺尔区",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc1"),
+    code: "150721",
+    name: "阿荣旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc2"),
+    code: "150722",
+    name: "莫力达瓦达斡尔族自治旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc3"),
+    code: "150723",
+    name: "鄂伦春自治旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc4"),
+    code: "150724",
+    name: "鄂温克族自治旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc5"),
+    code: "150725",
+    name: "陈巴尔虎旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc6"),
+    code: "150726",
+    name: "新巴尔虎左旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc7"),
+    code: "150727",
+    name: "新巴尔虎右旗",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc8"),
+    code: "150781",
+    name: "满洲里市",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fc9"),
+    code: "150782",
+    name: "牙克石市",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fca"),
+    code: "150783",
+    name: "扎兰屯市",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fcb"),
+    code: "150784",
+    name: "额尔古纳市",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fcc"),
+    code: "150785",
+    name: "根河市",
+    cityCode: "1507",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fcd"),
+    code: "150802",
+    name: "临河区",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fce"),
+    code: "150821",
+    name: "五原县",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fcf"),
+    code: "150822",
+    name: "磴口县",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd0"),
+    code: "150823",
+    name: "乌拉特前旗",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd1"),
+    code: "150824",
+    name: "乌拉特中旗",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd2"),
+    code: "150825",
+    name: "乌拉特后旗",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd3"),
+    code: "150826",
+    name: "杭锦后旗",
+    cityCode: "1508",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd4"),
+    code: "150902",
+    name: "集宁区",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd5"),
+    code: "150921",
+    name: "卓资县",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd6"),
+    code: "150922",
+    name: "化德县",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd7"),
+    code: "150923",
+    name: "商都县",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd8"),
+    code: "150924",
+    name: "兴和县",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fd9"),
+    code: "150925",
+    name: "凉城县",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fda"),
+    code: "150926",
+    name: "察哈尔右翼前旗",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fdb"),
+    code: "150927",
+    name: "察哈尔右翼中旗",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fdc"),
+    code: "150928",
+    name: "察哈尔右翼后旗",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fdd"),
+    code: "150929",
+    name: "四子王旗",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fde"),
+    code: "150981",
+    name: "丰镇市",
+    cityCode: "1509",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fdf"),
+    code: "152201",
+    name: "乌兰浩特市",
+    cityCode: "1522",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe0"),
+    code: "152202",
+    name: "阿尔山市",
+    cityCode: "1522",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe1"),
+    code: "152221",
+    name: "科尔沁右翼前旗",
+    cityCode: "1522",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe2"),
+    code: "152222",
+    name: "科尔沁右翼中旗",
+    cityCode: "1522",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe3"),
+    code: "152223",
+    name: "扎赉特旗",
+    cityCode: "1522",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe4"),
+    code: "152224",
+    name: "突泉县",
+    cityCode: "1522",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe5"),
+    code: "152501",
+    name: "二连浩特市",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe6"),
+    code: "152502",
+    name: "锡林浩特市",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe7"),
+    code: "152522",
+    name: "阿巴嘎旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe8"),
+    code: "152523",
+    name: "苏尼特左旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fe9"),
+    code: "152524",
+    name: "苏尼特右旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fea"),
+    code: "152525",
+    name: "东乌珠穆沁旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007feb"),
+    code: "152526",
+    name: "西乌珠穆沁旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fec"),
+    code: "152527",
+    name: "太仆寺旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fed"),
+    code: "152528",
+    name: "镶黄旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fee"),
+    code: "152529",
+    name: "正镶白旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fef"),
+    code: "152530",
+    name: "正蓝旗",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff0"),
+    code: "152531",
+    name: "多伦县",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff1"),
+    code: "152571",
+    name: "乌拉盖管委会",
+    cityCode: "1525",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff2"),
+    code: "152921",
+    name: "阿拉善左旗",
+    cityCode: "1529",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff3"),
+    code: "152922",
+    name: "阿拉善右旗",
+    cityCode: "1529",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff4"),
+    code: "152923",
+    name: "额济纳旗",
+    cityCode: "1529",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff5"),
+    code: "152971",
+    name: "内蒙古阿拉善高新技术产业开发区",
+    cityCode: "1529",
+    provinceCode: "15"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff6"),
+    code: "210102",
+    name: "和平区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff7"),
+    code: "210103",
+    name: "沈河区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff8"),
+    code: "210104",
+    name: "大东区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ff9"),
+    code: "210105",
+    name: "皇姑区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ffa"),
+    code: "210106",
+    name: "铁西区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ffb"),
+    code: "210111",
+    name: "苏家屯区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ffc"),
+    code: "210112",
+    name: "浑南区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ffd"),
+    code: "210113",
+    name: "沈北新区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007ffe"),
+    code: "210114",
+    name: "于洪区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3007fff"),
+    code: "210115",
+    name: "辽中区",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008000"),
+    code: "210123",
+    name: "康平县",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008001"),
+    code: "210124",
+    name: "法库县",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008002"),
+    code: "210181",
+    name: "新民市",
+    cityCode: "2101",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008003"),
+    code: "210202",
+    name: "中山区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008004"),
+    code: "210203",
+    name: "西岗区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008005"),
+    code: "210204",
+    name: "沙河口区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008006"),
+    code: "210211",
+    name: "甘井子区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008007"),
+    code: "210212",
+    name: "旅顺口区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008008"),
+    code: "210213",
+    name: "金州区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008009"),
+    code: "210214",
+    name: "普兰店区",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300800a"),
+    code: "210224",
+    name: "长海县",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300800b"),
+    code: "210281",
+    name: "瓦房店市",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300800c"),
+    code: "210283",
+    name: "庄河市",
+    cityCode: "2102",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300800d"),
+    code: "210302",
+    name: "铁东区",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300800e"),
+    code: "210303",
+    name: "铁西区",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300800f"),
+    code: "210304",
+    name: "立山区",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008010"),
+    code: "210311",
+    name: "千山区",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008011"),
+    code: "210321",
+    name: "台安县",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008012"),
+    code: "210323",
+    name: "岫岩满族自治县",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008013"),
+    code: "210381",
+    name: "海城市",
+    cityCode: "2103",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008014"),
+    code: "210402",
+    name: "新抚区",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008015"),
+    code: "210403",
+    name: "东洲区",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008016"),
+    code: "210404",
+    name: "望花区",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008017"),
+    code: "210411",
+    name: "顺城区",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008018"),
+    code: "210421",
+    name: "抚顺县",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008019"),
+    code: "210422",
+    name: "新宾满族自治县",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300801a"),
+    code: "210423",
+    name: "清原满族自治县",
+    cityCode: "2104",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300801b"),
+    code: "210502",
+    name: "平山区",
+    cityCode: "2105",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300801c"),
+    code: "210503",
+    name: "溪湖区",
+    cityCode: "2105",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300801d"),
+    code: "210504",
+    name: "明山区",
+    cityCode: "2105",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300801e"),
+    code: "210505",
+    name: "南芬区",
+    cityCode: "2105",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300801f"),
+    code: "210521",
+    name: "本溪满族自治县",
+    cityCode: "2105",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008020"),
+    code: "210522",
+    name: "桓仁满族自治县",
+    cityCode: "2105",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008021"),
+    code: "210602",
+    name: "元宝区",
+    cityCode: "2106",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008022"),
+    code: "210603",
+    name: "振兴区",
+    cityCode: "2106",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008023"),
+    code: "210604",
+    name: "振安区",
+    cityCode: "2106",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008024"),
+    code: "210624",
+    name: "宽甸满族自治县",
+    cityCode: "2106",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008025"),
+    code: "210681",
+    name: "东港市",
+    cityCode: "2106",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008026"),
+    code: "210682",
+    name: "凤城市",
+    cityCode: "2106",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008027"),
+    code: "210702",
+    name: "古塔区",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008028"),
+    code: "210703",
+    name: "凌河区",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008029"),
+    code: "210711",
+    name: "太和区",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300802a"),
+    code: "210726",
+    name: "黑山县",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300802b"),
+    code: "210727",
+    name: "义县",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300802c"),
+    code: "210781",
+    name: "凌海市",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300802d"),
+    code: "210782",
+    name: "北镇市",
+    cityCode: "2107",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300802e"),
+    code: "210802",
+    name: "站前区",
+    cityCode: "2108",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300802f"),
+    code: "210803",
+    name: "西市区",
+    cityCode: "2108",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008030"),
+    code: "210804",
+    name: "鲅鱼圈区",
+    cityCode: "2108",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008031"),
+    code: "210811",
+    name: "老边区",
+    cityCode: "2108",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008032"),
+    code: "210881",
+    name: "盖州市",
+    cityCode: "2108",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008033"),
+    code: "210882",
+    name: "大石桥市",
+    cityCode: "2108",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008034"),
+    code: "210902",
+    name: "海州区",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008035"),
+    code: "210903",
+    name: "新邱区",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008036"),
+    code: "210904",
+    name: "太平区",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008037"),
+    code: "210905",
+    name: "清河门区",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008038"),
+    code: "210911",
+    name: "细河区",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008039"),
+    code: "210921",
+    name: "阜新蒙古族自治县",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300803a"),
+    code: "210922",
+    name: "彰武县",
+    cityCode: "2109",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300803b"),
+    code: "211002",
+    name: "白塔区",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300803c"),
+    code: "211003",
+    name: "文圣区",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300803d"),
+    code: "211004",
+    name: "宏伟区",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300803e"),
+    code: "211005",
+    name: "弓长岭区",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300803f"),
+    code: "211011",
+    name: "太子河区",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008040"),
+    code: "211021",
+    name: "辽阳县",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008041"),
+    code: "211081",
+    name: "灯塔市",
+    cityCode: "2110",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008042"),
+    code: "211102",
+    name: "双台子区",
+    cityCode: "2111",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008043"),
+    code: "211103",
+    name: "兴隆台区",
+    cityCode: "2111",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008044"),
+    code: "211104",
+    name: "大洼区",
+    cityCode: "2111",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008045"),
+    code: "211122",
+    name: "盘山县",
+    cityCode: "2111",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008046"),
+    code: "211202",
+    name: "银州区",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008047"),
+    code: "211204",
+    name: "清河区",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008048"),
+    code: "211221",
+    name: "铁岭县",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008049"),
+    code: "211223",
+    name: "西丰县",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300804a"),
+    code: "211224",
+    name: "昌图县",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300804b"),
+    code: "211281",
+    name: "调兵山市",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300804c"),
+    code: "211282",
+    name: "开原市",
+    cityCode: "2112",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300804d"),
+    code: "211302",
+    name: "双塔区",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300804e"),
+    code: "211303",
+    name: "龙城区",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300804f"),
+    code: "211321",
+    name: "朝阳县",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008050"),
+    code: "211322",
+    name: "建平县",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008051"),
+    code: "211324",
+    name: "喀喇沁左翼蒙古族自治县",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008052"),
+    code: "211381",
+    name: "北票市",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008053"),
+    code: "211382",
+    name: "凌源市",
+    cityCode: "2113",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008054"),
+    code: "211402",
+    name: "连山区",
+    cityCode: "2114",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008055"),
+    code: "211403",
+    name: "龙港区",
+    cityCode: "2114",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008056"),
+    code: "211404",
+    name: "南票区",
+    cityCode: "2114",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008057"),
+    code: "211421",
+    name: "绥中县",
+    cityCode: "2114",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008058"),
+    code: "211422",
+    name: "建昌县",
+    cityCode: "2114",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008059"),
+    code: "211481",
+    name: "兴城市",
+    cityCode: "2114",
+    provinceCode: "21"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300805a"),
+    code: "220102",
+    name: "南关区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300805b"),
+    code: "220103",
+    name: "宽城区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300805c"),
+    code: "220104",
+    name: "朝阳区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300805d"),
+    code: "220105",
+    name: "二道区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300805e"),
+    code: "220106",
+    name: "绿园区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300805f"),
+    code: "220112",
+    name: "双阳区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008060"),
+    code: "220113",
+    name: "九台区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008061"),
+    code: "220122",
+    name: "农安县",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008062"),
+    code: "220171",
+    name: "长春经济技术开发区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008063"),
+    code: "220172",
+    name: "长春净月高新技术产业开发区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008064"),
+    code: "220173",
+    name: "长春高新技术产业开发区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008065"),
+    code: "220174",
+    name: "长春汽车经济技术开发区",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008066"),
+    code: "220182",
+    name: "榆树市",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008067"),
+    code: "220183",
+    name: "德惠市",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008068"),
+    code: "220184",
+    name: "公主岭市",
+    cityCode: "2201",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008069"),
+    code: "220202",
+    name: "昌邑区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300806a"),
+    code: "220203",
+    name: "龙潭区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300806b"),
+    code: "220204",
+    name: "船营区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300806c"),
+    code: "220211",
+    name: "丰满区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300806d"),
+    code: "220221",
+    name: "永吉县",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300806e"),
+    code: "220271",
+    name: "吉林经济开发区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300806f"),
+    code: "220272",
+    name: "吉林高新技术产业开发区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008070"),
+    code: "220273",
+    name: "吉林中国新加坡食品区",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008071"),
+    code: "220281",
+    name: "蛟河市",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008072"),
+    code: "220282",
+    name: "桦甸市",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008073"),
+    code: "220283",
+    name: "舒兰市",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008074"),
+    code: "220284",
+    name: "磐石市",
+    cityCode: "2202",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008075"),
+    code: "220302",
+    name: "铁西区",
+    cityCode: "2203",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008076"),
+    code: "220303",
+    name: "铁东区",
+    cityCode: "2203",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008077"),
+    code: "220322",
+    name: "梨树县",
+    cityCode: "2203",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008078"),
+    code: "220323",
+    name: "伊通满族自治县",
+    cityCode: "2203",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008079"),
+    code: "220382",
+    name: "双辽市",
+    cityCode: "2203",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300807a"),
+    code: "220402",
+    name: "龙山区",
+    cityCode: "2204",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300807b"),
+    code: "220403",
+    name: "西安区",
+    cityCode: "2204",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300807c"),
+    code: "220421",
+    name: "东丰县",
+    cityCode: "2204",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300807d"),
+    code: "220422",
+    name: "东辽县",
+    cityCode: "2204",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300807e"),
+    code: "220502",
+    name: "东昌区",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300807f"),
+    code: "220503",
+    name: "二道江区",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008080"),
+    code: "220521",
+    name: "通化县",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008081"),
+    code: "220523",
+    name: "辉南县",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008082"),
+    code: "220524",
+    name: "柳河县",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008083"),
+    code: "220581",
+    name: "梅河口市",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008084"),
+    code: "220582",
+    name: "集安市",
+    cityCode: "2205",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008085"),
+    code: "220602",
+    name: "浑江区",
+    cityCode: "2206",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008086"),
+    code: "220605",
+    name: "江源区",
+    cityCode: "2206",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008087"),
+    code: "220621",
+    name: "抚松县",
+    cityCode: "2206",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008088"),
+    code: "220622",
+    name: "靖宇县",
+    cityCode: "2206",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008089"),
+    code: "220623",
+    name: "长白朝鲜族自治县",
+    cityCode: "2206",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300808a"),
+    code: "220681",
+    name: "临江市",
+    cityCode: "2206",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300808b"),
+    code: "220702",
+    name: "宁江区",
+    cityCode: "2207",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300808c"),
+    code: "220721",
+    name: "前郭尔罗斯蒙古族自治县",
+    cityCode: "2207",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300808d"),
+    code: "220722",
+    name: "长岭县",
+    cityCode: "2207",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300808e"),
+    code: "220723",
+    name: "乾安县",
+    cityCode: "2207",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300808f"),
+    code: "220771",
+    name: "吉林松原经济开发区",
+    cityCode: "2207",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008090"),
+    code: "220781",
+    name: "扶余市",
+    cityCode: "2207",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008091"),
+    code: "220802",
+    name: "洮北区",
+    cityCode: "2208",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008092"),
+    code: "220821",
+    name: "镇赉县",
+    cityCode: "2208",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008093"),
+    code: "220822",
+    name: "通榆县",
+    cityCode: "2208",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008094"),
+    code: "220871",
+    name: "吉林白城经济开发区",
+    cityCode: "2208",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008095"),
+    code: "220881",
+    name: "洮南市",
+    cityCode: "2208",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008096"),
+    code: "220882",
+    name: "大安市",
+    cityCode: "2208",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008097"),
+    code: "222401",
+    name: "延吉市",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008098"),
+    code: "222402",
+    name: "图们市",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e3008099"),
+    code: "222403",
+    name: "敦化市",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300809a"),
+    code: "222404",
+    name: "珲春市",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300809b"),
+    code: "222405",
+    name: "龙井市",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300809c"),
+    code: "222406",
+    name: "和龙市",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300809d"),
+    code: "222424",
+    name: "汪清县",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300809e"),
+    code: "222426",
+    name: "安图县",
+    cityCode: "2224",
+    provinceCode: "22"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e300809f"),
+    code: "230102",
+    name: "道里区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a0"),
+    code: "230103",
+    name: "南岗区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a1"),
+    code: "230104",
+    name: "道外区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a2"),
+    code: "230108",
+    name: "平房区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a3"),
+    code: "230109",
+    name: "松北区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a4"),
+    code: "230110",
+    name: "香坊区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a5"),
+    code: "230111",
+    name: "呼兰区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a6"),
+    code: "230112",
+    name: "阿城区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a7"),
+    code: "230113",
+    name: "双城区",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a8"),
+    code: "230123",
+    name: "依兰县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080a9"),
+    code: "230124",
+    name: "方正县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080aa"),
+    code: "230125",
+    name: "宾县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ab"),
+    code: "230126",
+    name: "巴彦县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ac"),
+    code: "230127",
+    name: "木兰县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ad"),
+    code: "230128",
+    name: "通河县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ae"),
+    code: "230129",
+    name: "延寿县",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080af"),
+    code: "230183",
+    name: "尚志市",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b0"),
+    code: "230184",
+    name: "五常市",
+    cityCode: "2301",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b1"),
+    code: "230202",
+    name: "龙沙区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b2"),
+    code: "230203",
+    name: "建华区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b3"),
+    code: "230204",
+    name: "铁锋区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b4"),
+    code: "230205",
+    name: "昂昂溪区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b5"),
+    code: "230206",
+    name: "富拉尔基区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b6"),
+    code: "230207",
+    name: "碾子山区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b7"),
+    code: "230208",
+    name: "梅里斯达斡尔族区",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b8"),
+    code: "230221",
+    name: "龙江县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080b9"),
+    code: "230223",
+    name: "依安县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ba"),
+    code: "230224",
+    name: "泰来县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080bb"),
+    code: "230225",
+    name: "甘南县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080bc"),
+    code: "230227",
+    name: "富裕县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080bd"),
+    code: "230229",
+    name: "克山县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080be"),
+    code: "230230",
+    name: "克东县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54b77670000e30080bf"),
+    code: "230231",
+    name: "拜泉县",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008235"),
+    code: "230281",
+    name: "讷河市",
+    cityCode: "2302",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008236"),
+    code: "230302",
+    name: "鸡冠区",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008237"),
+    code: "230303",
+    name: "恒山区",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008238"),
+    code: "230304",
+    name: "滴道区",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008239"),
+    code: "230305",
+    name: "梨树区",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300823a"),
+    code: "230306",
+    name: "城子河区",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300823b"),
+    code: "230307",
+    name: "麻山区",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300823c"),
+    code: "230321",
+    name: "鸡东县",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300823d"),
+    code: "230381",
+    name: "虎林市",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300823e"),
+    code: "230382",
+    name: "密山市",
+    cityCode: "2303",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300823f"),
+    code: "230402",
+    name: "向阳区",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008240"),
+    code: "230403",
+    name: "工农区",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008241"),
+    code: "230404",
+    name: "南山区",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008242"),
+    code: "230405",
+    name: "兴安区",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008243"),
+    code: "230406",
+    name: "东山区",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008244"),
+    code: "230407",
+    name: "兴山区",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008245"),
+    code: "230421",
+    name: "萝北县",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008246"),
+    code: "230422",
+    name: "绥滨县",
+    cityCode: "2304",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008247"),
+    code: "230502",
+    name: "尖山区",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008248"),
+    code: "230503",
+    name: "岭东区",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008249"),
+    code: "230505",
+    name: "四方台区",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300824a"),
+    code: "230506",
+    name: "宝山区",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300824b"),
+    code: "230521",
+    name: "集贤县",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300824c"),
+    code: "230522",
+    name: "友谊县",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300824d"),
+    code: "230523",
+    name: "宝清县",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300824e"),
+    code: "230524",
+    name: "饶河县",
+    cityCode: "2305",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300824f"),
+    code: "230602",
+    name: "萨尔图区",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008250"),
+    code: "230603",
+    name: "龙凤区",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008251"),
+    code: "230604",
+    name: "让胡路区",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008252"),
+    code: "230605",
+    name: "红岗区",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008253"),
+    code: "230606",
+    name: "大同区",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008254"),
+    code: "230621",
+    name: "肇州县",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008255"),
+    code: "230622",
+    name: "肇源县",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008256"),
+    code: "230623",
+    name: "林甸县",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008257"),
+    code: "230624",
+    name: "杜尔伯特蒙古族自治县",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008258"),
+    code: "230671",
+    name: "大庆高新技术产业开发区",
+    cityCode: "2306",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008259"),
+    code: "230717",
+    name: "伊美区",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300825a"),
+    code: "230718",
+    name: "乌翠区",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300825b"),
+    code: "230719",
+    name: "友好区",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300825c"),
+    code: "230722",
+    name: "嘉荫县",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300825d"),
+    code: "230723",
+    name: "汤旺县",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300825e"),
+    code: "230724",
+    name: "丰林县",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300825f"),
+    code: "230725",
+    name: "大箐山县",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008260"),
+    code: "230726",
+    name: "南岔县",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008261"),
+    code: "230751",
+    name: "金林区",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008262"),
+    code: "230781",
+    name: "铁力市",
+    cityCode: "2307",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008263"),
+    code: "230803",
+    name: "向阳区",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008264"),
+    code: "230804",
+    name: "前进区",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008265"),
+    code: "230805",
+    name: "东风区",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008266"),
+    code: "230811",
+    name: "郊区",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008267"),
+    code: "230822",
+    name: "桦南县",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008268"),
+    code: "230826",
+    name: "桦川县",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008269"),
+    code: "230828",
+    name: "汤原县",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300826a"),
+    code: "230881",
+    name: "同江市",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300826b"),
+    code: "230882",
+    name: "富锦市",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300826c"),
+    code: "230883",
+    name: "抚远市",
+    cityCode: "2308",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300826d"),
+    code: "230902",
+    name: "新兴区",
+    cityCode: "2309",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300826e"),
+    code: "230903",
+    name: "桃山区",
+    cityCode: "2309",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300826f"),
+    code: "230904",
+    name: "茄子河区",
+    cityCode: "2309",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008270"),
+    code: "230921",
+    name: "勃利县",
+    cityCode: "2309",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008271"),
+    code: "231002",
+    name: "东安区",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008272"),
+    code: "231003",
+    name: "阳明区",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008273"),
+    code: "231004",
+    name: "爱民区",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008274"),
+    code: "231005",
+    name: "西安区",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008275"),
+    code: "231025",
+    name: "林口县",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008276"),
+    code: "231071",
+    name: "牡丹江经济技术开发区",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008277"),
+    code: "231081",
+    name: "绥芬河市",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008278"),
+    code: "231083",
+    name: "海林市",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008279"),
+    code: "231084",
+    name: "宁安市",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300827a"),
+    code: "231085",
+    name: "穆棱市",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300827b"),
+    code: "231086",
+    name: "东宁市",
+    cityCode: "2310",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300827c"),
+    code: "231102",
+    name: "爱辉区",
+    cityCode: "2311",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300827d"),
+    code: "231123",
+    name: "逊克县",
+    cityCode: "2311",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300827e"),
+    code: "231124",
+    name: "孙吴县",
+    cityCode: "2311",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300827f"),
+    code: "231181",
+    name: "北安市",
+    cityCode: "2311",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008280"),
+    code: "231182",
+    name: "五大连池市",
+    cityCode: "2311",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008281"),
+    code: "231183",
+    name: "嫩江市",
+    cityCode: "2311",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008282"),
+    code: "231202",
+    name: "北林区",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008283"),
+    code: "231221",
+    name: "望奎县",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008284"),
+    code: "231222",
+    name: "兰西县",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008285"),
+    code: "231223",
+    name: "青冈县",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008286"),
+    code: "231224",
+    name: "庆安县",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008287"),
+    code: "231225",
+    name: "明水县",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008288"),
+    code: "231226",
+    name: "绥棱县",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008289"),
+    code: "231281",
+    name: "安达市",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300828a"),
+    code: "231282",
+    name: "肇东市",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300828b"),
+    code: "231283",
+    name: "海伦市",
+    cityCode: "2312",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300828c"),
+    code: "232701",
+    name: "漠河市",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300828d"),
+    code: "232721",
+    name: "呼玛县",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300828e"),
+    code: "232722",
+    name: "塔河县",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300828f"),
+    code: "232761",
+    name: "加格达奇区",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008290"),
+    code: "232762",
+    name: "松岭区",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008291"),
+    code: "232763",
+    name: "新林区",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008292"),
+    code: "232764",
+    name: "呼中区",
+    cityCode: "2327",
+    provinceCode: "23"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008293"),
+    code: "310101",
+    name: "黄浦区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008294"),
+    code: "310104",
+    name: "徐汇区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008295"),
+    code: "310105",
+    name: "长宁区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008296"),
+    code: "310106",
+    name: "静安区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008297"),
+    code: "310107",
+    name: "普陀区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008298"),
+    code: "310109",
+    name: "虹口区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008299"),
+    code: "310110",
+    name: "杨浦区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300829a"),
+    code: "310112",
+    name: "闵行区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300829b"),
+    code: "310113",
+    name: "宝山区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300829c"),
+    code: "310114",
+    name: "嘉定区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300829d"),
+    code: "310115",
+    name: "浦东新区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300829e"),
+    code: "310116",
+    name: "金山区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300829f"),
+    code: "310117",
+    name: "松江区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a0"),
+    code: "310118",
+    name: "青浦区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a1"),
+    code: "310120",
+    name: "奉贤区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a2"),
+    code: "310151",
+    name: "崇明区",
+    cityCode: "3101",
+    provinceCode: "31"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a3"),
+    code: "320102",
+    name: "玄武区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a4"),
+    code: "320104",
+    name: "秦淮区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a5"),
+    code: "320105",
+    name: "建邺区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a6"),
+    code: "320106",
+    name: "鼓楼区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a7"),
+    code: "320111",
+    name: "浦口区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a8"),
+    code: "320113",
+    name: "栖霞区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082a9"),
+    code: "320114",
+    name: "雨花台区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082aa"),
+    code: "320115",
+    name: "江宁区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ab"),
+    code: "320116",
+    name: "六合区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ac"),
+    code: "320117",
+    name: "溧水区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ad"),
+    code: "320118",
+    name: "高淳区",
+    cityCode: "3201",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ae"),
+    code: "320205",
+    name: "锡山区",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082af"),
+    code: "320206",
+    name: "惠山区",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b0"),
+    code: "320211",
+    name: "滨湖区",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b1"),
+    code: "320213",
+    name: "梁溪区",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b2"),
+    code: "320214",
+    name: "新吴区",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b3"),
+    code: "320281",
+    name: "江阴市",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b4"),
+    code: "320282",
+    name: "宜兴市",
+    cityCode: "3202",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b5"),
+    code: "320302",
+    name: "鼓楼区",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b6"),
+    code: "320303",
+    name: "云龙区",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b7"),
+    code: "320305",
+    name: "贾汪区",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b8"),
+    code: "320311",
+    name: "泉山区",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082b9"),
+    code: "320312",
+    name: "铜山区",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ba"),
+    code: "320321",
+    name: "丰县",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082bb"),
+    code: "320322",
+    name: "沛县",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082bc"),
+    code: "320324",
+    name: "睢宁县",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082bd"),
+    code: "320371",
+    name: "徐州经济技术开发区",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082be"),
+    code: "320381",
+    name: "新沂市",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082bf"),
+    code: "320382",
+    name: "邳州市",
+    cityCode: "3203",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c0"),
+    code: "320402",
+    name: "天宁区",
+    cityCode: "3204",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c1"),
+    code: "320404",
+    name: "钟楼区",
+    cityCode: "3204",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c2"),
+    code: "320411",
+    name: "新北区",
+    cityCode: "3204",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c3"),
+    code: "320412",
+    name: "武进区",
+    cityCode: "3204",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c4"),
+    code: "320413",
+    name: "金坛区",
+    cityCode: "3204",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c5"),
+    code: "320481",
+    name: "溧阳市",
+    cityCode: "3204",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c6"),
+    code: "320505",
+    name: "虎丘区",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c7"),
+    code: "320506",
+    name: "吴中区",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c8"),
+    code: "320507",
+    name: "相城区",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082c9"),
+    code: "320508",
+    name: "姑苏区",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ca"),
+    code: "320509",
+    name: "吴江区",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082cb"),
+    code: "320571",
+    name: "苏州工业园区",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082cc"),
+    code: "320581",
+    name: "常熟市",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082cd"),
+    code: "320582",
+    name: "张家港市",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ce"),
+    code: "320583",
+    name: "昆山市",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082cf"),
+    code: "320585",
+    name: "太仓市",
+    cityCode: "3205",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d0"),
+    code: "320612",
+    name: "通州区",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d1"),
+    code: "320613",
+    name: "崇川区",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d2"),
+    code: "320614",
+    name: "海门区",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d3"),
+    code: "320623",
+    name: "如东县",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d4"),
+    code: "320671",
+    name: "南通经济技术开发区",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d5"),
+    code: "320681",
+    name: "启东市",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d6"),
+    code: "320682",
+    name: "如皋市",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d7"),
+    code: "320685",
+    name: "海安市",
+    cityCode: "3206",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d8"),
+    code: "320703",
+    name: "连云区",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082d9"),
+    code: "320706",
+    name: "海州区",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082da"),
+    code: "320707",
+    name: "赣榆区",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082db"),
+    code: "320722",
+    name: "东海县",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082dc"),
+    code: "320723",
+    name: "灌云县",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082dd"),
+    code: "320724",
+    name: "灌南县",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082de"),
+    code: "320771",
+    name: "连云港经济技术开发区",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082df"),
+    code: "320772",
+    name: "连云港高新技术产业开发区",
+    cityCode: "3207",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e0"),
+    code: "320803",
+    name: "淮安区",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e1"),
+    code: "320804",
+    name: "淮阴区",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e2"),
+    code: "320812",
+    name: "清江浦区",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e3"),
+    code: "320813",
+    name: "洪泽区",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e4"),
+    code: "320826",
+    name: "涟水县",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e5"),
+    code: "320830",
+    name: "盱眙县",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e6"),
+    code: "320831",
+    name: "金湖县",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e7"),
+    code: "320871",
+    name: "淮安经济技术开发区",
+    cityCode: "3208",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e8"),
+    code: "320902",
+    name: "亭湖区",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082e9"),
+    code: "320903",
+    name: "盐都区",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ea"),
+    code: "320904",
+    name: "大丰区",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082eb"),
+    code: "320921",
+    name: "响水县",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ec"),
+    code: "320922",
+    name: "滨海县",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ed"),
+    code: "320923",
+    name: "阜宁县",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ee"),
+    code: "320924",
+    name: "射阳县",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ef"),
+    code: "320925",
+    name: "建湖县",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f0"),
+    code: "320971",
+    name: "盐城经济技术开发区",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f1"),
+    code: "320981",
+    name: "东台市",
+    cityCode: "3209",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f2"),
+    code: "321002",
+    name: "广陵区",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f3"),
+    code: "321003",
+    name: "邗江区",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f4"),
+    code: "321012",
+    name: "江都区",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f5"),
+    code: "321023",
+    name: "宝应县",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f6"),
+    code: "321071",
+    name: "扬州经济技术开发区",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f7"),
+    code: "321081",
+    name: "仪征市",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f8"),
+    code: "321084",
+    name: "高邮市",
+    cityCode: "3210",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082f9"),
+    code: "321102",
+    name: "京口区",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082fa"),
+    code: "321111",
+    name: "润州区",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082fb"),
+    code: "321112",
+    name: "丹徒区",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082fc"),
+    code: "321171",
+    name: "镇江新区",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082fd"),
+    code: "321181",
+    name: "丹阳市",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082fe"),
+    code: "321182",
+    name: "扬中市",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30082ff"),
+    code: "321183",
+    name: "句容市",
+    cityCode: "3211",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008300"),
+    code: "321202",
+    name: "海陵区",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008301"),
+    code: "321203",
+    name: "高港区",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008302"),
+    code: "321204",
+    name: "姜堰区",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008303"),
+    code: "321271",
+    name: "泰州医药高新技术产业开发区",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008304"),
+    code: "321281",
+    name: "兴化市",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008305"),
+    code: "321282",
+    name: "靖江市",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008306"),
+    code: "321283",
+    name: "泰兴市",
+    cityCode: "3212",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008307"),
+    code: "321302",
+    name: "宿城区",
+    cityCode: "3213",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008308"),
+    code: "321311",
+    name: "宿豫区",
+    cityCode: "3213",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008309"),
+    code: "321322",
+    name: "沭阳县",
+    cityCode: "3213",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300830a"),
+    code: "321323",
+    name: "泗阳县",
+    cityCode: "3213",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300830b"),
+    code: "321324",
+    name: "泗洪县",
+    cityCode: "3213",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300830c"),
+    code: "321371",
+    name: "宿迁经济技术开发区",
+    cityCode: "3213",
+    provinceCode: "32"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300830d"),
+    code: "330102",
+    name: "上城区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300830e"),
+    code: "330105",
+    name: "拱墅区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300830f"),
+    code: "330106",
+    name: "西湖区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008310"),
+    code: "330108",
+    name: "滨江区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008311"),
+    code: "330109",
+    name: "萧山区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008312"),
+    code: "330110",
+    name: "余杭区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008313"),
+    code: "330111",
+    name: "富阳区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008314"),
+    code: "330112",
+    name: "临安区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008315"),
+    code: "330113",
+    name: "临平区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008316"),
+    code: "330114",
+    name: "钱塘区",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008317"),
+    code: "330122",
+    name: "桐庐县",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008318"),
+    code: "330127",
+    name: "淳安县",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008319"),
+    code: "330182",
+    name: "建德市",
+    cityCode: "3301",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300831a"),
+    code: "330203",
+    name: "海曙区",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300831b"),
+    code: "330205",
+    name: "江北区",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300831c"),
+    code: "330206",
+    name: "北仑区",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300831d"),
+    code: "330211",
+    name: "镇海区",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300831e"),
+    code: "330212",
+    name: "鄞州区",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300831f"),
+    code: "330213",
+    name: "奉化区",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008320"),
+    code: "330225",
+    name: "象山县",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008321"),
+    code: "330226",
+    name: "宁海县",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008322"),
+    code: "330281",
+    name: "余姚市",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008323"),
+    code: "330282",
+    name: "慈溪市",
+    cityCode: "3302",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008324"),
+    code: "330302",
+    name: "鹿城区",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008325"),
+    code: "330303",
+    name: "龙湾区",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008326"),
+    code: "330304",
+    name: "瓯海区",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008327"),
+    code: "330305",
+    name: "洞头区",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008328"),
+    code: "330324",
+    name: "永嘉县",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008329"),
+    code: "330326",
+    name: "平阳县",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300832a"),
+    code: "330327",
+    name: "苍南县",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300832b"),
+    code: "330328",
+    name: "文成县",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300832c"),
+    code: "330329",
+    name: "泰顺县",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300832d"),
+    code: "330371",
+    name: "温州经济技术开发区",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300832e"),
+    code: "330381",
+    name: "瑞安市",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300832f"),
+    code: "330382",
+    name: "乐清市",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008330"),
+    code: "330383",
+    name: "龙港市",
+    cityCode: "3303",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008331"),
+    code: "330402",
+    name: "南湖区",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008332"),
+    code: "330411",
+    name: "秀洲区",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008333"),
+    code: "330421",
+    name: "嘉善县",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008334"),
+    code: "330424",
+    name: "海盐县",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008335"),
+    code: "330481",
+    name: "海宁市",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008336"),
+    code: "330482",
+    name: "平湖市",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008337"),
+    code: "330483",
+    name: "桐乡市",
+    cityCode: "3304",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008338"),
+    code: "330502",
+    name: "吴兴区",
+    cityCode: "3305",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008339"),
+    code: "330503",
+    name: "南浔区",
+    cityCode: "3305",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300833a"),
+    code: "330521",
+    name: "德清县",
+    cityCode: "3305",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300833b"),
+    code: "330522",
+    name: "长兴县",
+    cityCode: "3305",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300833c"),
+    code: "330523",
+    name: "安吉县",
+    cityCode: "3305",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300833d"),
+    code: "330602",
+    name: "越城区",
+    cityCode: "3306",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300833e"),
+    code: "330603",
+    name: "柯桥区",
+    cityCode: "3306",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300833f"),
+    code: "330604",
+    name: "上虞区",
+    cityCode: "3306",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008340"),
+    code: "330624",
+    name: "新昌县",
+    cityCode: "3306",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008341"),
+    code: "330681",
+    name: "诸暨市",
+    cityCode: "3306",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008342"),
+    code: "330683",
+    name: "嵊州市",
+    cityCode: "3306",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008343"),
+    code: "330702",
+    name: "婺城区",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008344"),
+    code: "330703",
+    name: "金东区",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008345"),
+    code: "330723",
+    name: "武义县",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008346"),
+    code: "330726",
+    name: "浦江县",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008347"),
+    code: "330727",
+    name: "磐安县",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008348"),
+    code: "330781",
+    name: "兰溪市",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008349"),
+    code: "330782",
+    name: "义乌市",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300834a"),
+    code: "330783",
+    name: "东阳市",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300834b"),
+    code: "330784",
+    name: "永康市",
+    cityCode: "3307",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300834c"),
+    code: "330802",
+    name: "柯城区",
+    cityCode: "3308",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300834d"),
+    code: "330803",
+    name: "衢江区",
+    cityCode: "3308",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300834e"),
+    code: "330822",
+    name: "常山县",
+    cityCode: "3308",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300834f"),
+    code: "330824",
+    name: "开化县",
+    cityCode: "3308",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008350"),
+    code: "330825",
+    name: "龙游县",
+    cityCode: "3308",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008351"),
+    code: "330881",
+    name: "江山市",
+    cityCode: "3308",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008352"),
+    code: "330902",
+    name: "定海区",
+    cityCode: "3309",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008353"),
+    code: "330903",
+    name: "普陀区",
+    cityCode: "3309",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008354"),
+    code: "330921",
+    name: "岱山县",
+    cityCode: "3309",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008355"),
+    code: "330922",
+    name: "嵊泗县",
+    cityCode: "3309",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008356"),
+    code: "331002",
+    name: "椒江区",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008357"),
+    code: "331003",
+    name: "黄岩区",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008358"),
+    code: "331004",
+    name: "路桥区",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008359"),
+    code: "331022",
+    name: "三门县",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300835a"),
+    code: "331023",
+    name: "天台县",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300835b"),
+    code: "331024",
+    name: "仙居县",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300835c"),
+    code: "331081",
+    name: "温岭市",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300835d"),
+    code: "331082",
+    name: "临海市",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300835e"),
+    code: "331083",
+    name: "玉环市",
+    cityCode: "3310",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300835f"),
+    code: "331102",
+    name: "莲都区",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008360"),
+    code: "331121",
+    name: "青田县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008361"),
+    code: "331122",
+    name: "缙云县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008362"),
+    code: "331123",
+    name: "遂昌县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008363"),
+    code: "331124",
+    name: "松阳县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008364"),
+    code: "331125",
+    name: "云和县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008365"),
+    code: "331126",
+    name: "庆元县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008366"),
+    code: "331127",
+    name: "景宁畲族自治县",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008367"),
+    code: "331181",
+    name: "龙泉市",
+    cityCode: "3311",
+    provinceCode: "33"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008368"),
+    code: "340102",
+    name: "瑶海区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008369"),
+    code: "340103",
+    name: "庐阳区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300836a"),
+    code: "340104",
+    name: "蜀山区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300836b"),
+    code: "340111",
+    name: "包河区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300836c"),
+    code: "340121",
+    name: "长丰县",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300836d"),
+    code: "340122",
+    name: "肥东县",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300836e"),
+    code: "340123",
+    name: "肥西县",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300836f"),
+    code: "340124",
+    name: "庐江县",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008370"),
+    code: "340171",
+    name: "合肥高新技术产业开发区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008371"),
+    code: "340172",
+    name: "合肥经济技术开发区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008372"),
+    code: "340173",
+    name: "合肥新站高新技术产业开发区",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008373"),
+    code: "340181",
+    name: "巢湖市",
+    cityCode: "3401",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008374"),
+    code: "340202",
+    name: "镜湖区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008375"),
+    code: "340207",
+    name: "鸠江区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008376"),
+    code: "340209",
+    name: "弋江区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008377"),
+    code: "340210",
+    name: "湾沚区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008378"),
+    code: "340212",
+    name: "繁昌区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008379"),
+    code: "340223",
+    name: "南陵县",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300837a"),
+    code: "340271",
+    name: "芜湖经济技术开发区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300837b"),
+    code: "340272",
+    name: "安徽芜湖三山经济开发区",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300837c"),
+    code: "340281",
+    name: "无为市",
+    cityCode: "3402",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300837d"),
+    code: "340302",
+    name: "龙子湖区",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300837e"),
+    code: "340303",
+    name: "蚌山区",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300837f"),
+    code: "340304",
+    name: "禹会区",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008380"),
+    code: "340311",
+    name: "淮上区",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008381"),
+    code: "340321",
+    name: "怀远县",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008382"),
+    code: "340322",
+    name: "五河县",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008383"),
+    code: "340323",
+    name: "固镇县",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008384"),
+    code: "340371",
+    name: "蚌埠市高新技术开发区",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008385"),
+    code: "340372",
+    name: "蚌埠市经济开发区",
+    cityCode: "3403",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008386"),
+    code: "340402",
+    name: "大通区",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008387"),
+    code: "340403",
+    name: "田家庵区",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008388"),
+    code: "340404",
+    name: "谢家集区",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008389"),
+    code: "340405",
+    name: "八公山区",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300838a"),
+    code: "340406",
+    name: "潘集区",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300838b"),
+    code: "340421",
+    name: "凤台县",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300838c"),
+    code: "340422",
+    name: "寿县",
+    cityCode: "3404",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300838d"),
+    code: "340503",
+    name: "花山区",
+    cityCode: "3405",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300838e"),
+    code: "340504",
+    name: "雨山区",
+    cityCode: "3405",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300838f"),
+    code: "340506",
+    name: "博望区",
+    cityCode: "3405",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008390"),
+    code: "340521",
+    name: "当涂县",
+    cityCode: "3405",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008391"),
+    code: "340522",
+    name: "含山县",
+    cityCode: "3405",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008392"),
+    code: "340523",
+    name: "和县",
+    cityCode: "3405",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008393"),
+    code: "340602",
+    name: "杜集区",
+    cityCode: "3406",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008394"),
+    code: "340603",
+    name: "相山区",
+    cityCode: "3406",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008395"),
+    code: "340604",
+    name: "烈山区",
+    cityCode: "3406",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008396"),
+    code: "340621",
+    name: "濉溪县",
+    cityCode: "3406",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008397"),
+    code: "340705",
+    name: "铜官区",
+    cityCode: "3407",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008398"),
+    code: "340706",
+    name: "义安区",
+    cityCode: "3407",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008399"),
+    code: "340711",
+    name: "郊区",
+    cityCode: "3407",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300839a"),
+    code: "340722",
+    name: "枞阳县",
+    cityCode: "3407",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300839b"),
+    code: "340802",
+    name: "迎江区",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300839c"),
+    code: "340803",
+    name: "大观区",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300839d"),
+    code: "340811",
+    name: "宜秀区",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300839e"),
+    code: "340822",
+    name: "怀宁县",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300839f"),
+    code: "340825",
+    name: "太湖县",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a0"),
+    code: "340826",
+    name: "宿松县",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a1"),
+    code: "340827",
+    name: "望江县",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a2"),
+    code: "340828",
+    name: "岳西县",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a3"),
+    code: "340871",
+    name: "安徽安庆经济开发区",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a4"),
+    code: "340881",
+    name: "桐城市",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a5"),
+    code: "340882",
+    name: "潜山市",
+    cityCode: "3408",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a6"),
+    code: "341002",
+    name: "屯溪区",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a7"),
+    code: "341003",
+    name: "黄山区",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a8"),
+    code: "341004",
+    name: "徽州区",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083a9"),
+    code: "341021",
+    name: "歙县",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083aa"),
+    code: "341022",
+    name: "休宁县",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ab"),
+    code: "341023",
+    name: "黟县",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ac"),
+    code: "341024",
+    name: "祁门县",
+    cityCode: "3410",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ad"),
+    code: "341102",
+    name: "琅琊区",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ae"),
+    code: "341103",
+    name: "南谯区",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083af"),
+    code: "341122",
+    name: "来安县",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b0"),
+    code: "341124",
+    name: "全椒县",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b1"),
+    code: "341125",
+    name: "定远县",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b2"),
+    code: "341126",
+    name: "凤阳县",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b3"),
+    code: "341171",
+    name: "中新苏滁高新技术产业开发区",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b4"),
+    code: "341172",
+    name: "滁州经济技术开发区",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b5"),
+    code: "341181",
+    name: "天长市",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b6"),
+    code: "341182",
+    name: "明光市",
+    cityCode: "3411",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b7"),
+    code: "341202",
+    name: "颍州区",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b8"),
+    code: "341203",
+    name: "颍东区",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083b9"),
+    code: "341204",
+    name: "颍泉区",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ba"),
+    code: "341221",
+    name: "临泉县",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083bb"),
+    code: "341222",
+    name: "太和县",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083bc"),
+    code: "341225",
+    name: "阜南县",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083bd"),
+    code: "341226",
+    name: "颍上县",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083be"),
+    code: "341271",
+    name: "阜阳合肥现代产业园区",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083bf"),
+    code: "341272",
+    name: "阜阳经济技术开发区",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c0"),
+    code: "341282",
+    name: "界首市",
+    cityCode: "3412",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c1"),
+    code: "341302",
+    name: "埇桥区",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c2"),
+    code: "341321",
+    name: "砀山县",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c3"),
+    code: "341322",
+    name: "萧县",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c4"),
+    code: "341323",
+    name: "灵璧县",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c5"),
+    code: "341324",
+    name: "泗县",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c6"),
+    code: "341371",
+    name: "宿州马鞍山现代产业园区",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c7"),
+    code: "341372",
+    name: "宿州经济技术开发区",
+    cityCode: "3413",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c8"),
+    code: "341502",
+    name: "金安区",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083c9"),
+    code: "341503",
+    name: "裕安区",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ca"),
+    code: "341504",
+    name: "叶集区",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083cb"),
+    code: "341522",
+    name: "霍邱县",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083cc"),
+    code: "341523",
+    name: "舒城县",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083cd"),
+    code: "341524",
+    name: "金寨县",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ce"),
+    code: "341525",
+    name: "霍山县",
+    cityCode: "3415",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083cf"),
+    code: "341602",
+    name: "谯城区",
+    cityCode: "3416",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d0"),
+    code: "341621",
+    name: "涡阳县",
+    cityCode: "3416",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d1"),
+    code: "341622",
+    name: "蒙城县",
+    cityCode: "3416",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d2"),
+    code: "341623",
+    name: "利辛县",
+    cityCode: "3416",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d3"),
+    code: "341702",
+    name: "贵池区",
+    cityCode: "3417",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d4"),
+    code: "341721",
+    name: "东至县",
+    cityCode: "3417",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d5"),
+    code: "341722",
+    name: "石台县",
+    cityCode: "3417",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d6"),
+    code: "341723",
+    name: "青阳县",
+    cityCode: "3417",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d7"),
+    code: "341802",
+    name: "宣州区",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d8"),
+    code: "341821",
+    name: "郎溪县",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083d9"),
+    code: "341823",
+    name: "泾县",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083da"),
+    code: "341824",
+    name: "绩溪县",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083db"),
+    code: "341825",
+    name: "旌德县",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083dc"),
+    code: "341871",
+    name: "宣城市经济开发区",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083dd"),
+    code: "341881",
+    name: "宁国市",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083de"),
+    code: "341882",
+    name: "广德市",
+    cityCode: "3418",
+    provinceCode: "34"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083df"),
+    code: "350102",
+    name: "鼓楼区",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e0"),
+    code: "350103",
+    name: "台江区",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e1"),
+    code: "350104",
+    name: "仓山区",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e2"),
+    code: "350105",
+    name: "马尾区",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e3"),
+    code: "350111",
+    name: "晋安区",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e4"),
+    code: "350112",
+    name: "长乐区",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e5"),
+    code: "350121",
+    name: "闽侯县",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e6"),
+    code: "350122",
+    name: "连江县",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e7"),
+    code: "350123",
+    name: "罗源县",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e8"),
+    code: "350124",
+    name: "闽清县",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083e9"),
+    code: "350125",
+    name: "永泰县",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ea"),
+    code: "350128",
+    name: "平潭县",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083eb"),
+    code: "350181",
+    name: "福清市",
+    cityCode: "3501",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ec"),
+    code: "350203",
+    name: "思明区",
+    cityCode: "3502",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ed"),
+    code: "350205",
+    name: "海沧区",
+    cityCode: "3502",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ee"),
+    code: "350206",
+    name: "湖里区",
+    cityCode: "3502",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ef"),
+    code: "350211",
+    name: "集美区",
+    cityCode: "3502",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f0"),
+    code: "350212",
+    name: "同安区",
+    cityCode: "3502",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f1"),
+    code: "350213",
+    name: "翔安区",
+    cityCode: "3502",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f2"),
+    code: "350302",
+    name: "城厢区",
+    cityCode: "3503",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f3"),
+    code: "350303",
+    name: "涵江区",
+    cityCode: "3503",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f4"),
+    code: "350304",
+    name: "荔城区",
+    cityCode: "3503",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f5"),
+    code: "350305",
+    name: "秀屿区",
+    cityCode: "3503",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f6"),
+    code: "350322",
+    name: "仙游县",
+    cityCode: "3503",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f7"),
+    code: "350404",
+    name: "三元区",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f8"),
+    code: "350405",
+    name: "沙县区",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083f9"),
+    code: "350421",
+    name: "明溪县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083fa"),
+    code: "350423",
+    name: "清流县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083fb"),
+    code: "350424",
+    name: "宁化县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083fc"),
+    code: "350425",
+    name: "大田县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083fd"),
+    code: "350426",
+    name: "尤溪县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083fe"),
+    code: "350428",
+    name: "将乐县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30083ff"),
+    code: "350429",
+    name: "泰宁县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008400"),
+    code: "350430",
+    name: "建宁县",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008401"),
+    code: "350481",
+    name: "永安市",
+    cityCode: "3504",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008402"),
+    code: "350502",
+    name: "鲤城区",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008403"),
+    code: "350503",
+    name: "丰泽区",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008404"),
+    code: "350504",
+    name: "洛江区",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008405"),
+    code: "350505",
+    name: "泉港区",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008406"),
+    code: "350521",
+    name: "惠安县",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008407"),
+    code: "350524",
+    name: "安溪县",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008408"),
+    code: "350525",
+    name: "永春县",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008409"),
+    code: "350526",
+    name: "德化县",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300840a"),
+    code: "350581",
+    name: "石狮市",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300840b"),
+    code: "350582",
+    name: "晋江市",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300840c"),
+    code: "350583",
+    name: "南安市",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300840d"),
+    code: "350602",
+    name: "芗城区",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300840e"),
+    code: "350603",
+    name: "龙文区",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300840f"),
+    code: "350604",
+    name: "龙海区",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008410"),
+    code: "350605",
+    name: "长泰区",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008411"),
+    code: "350622",
+    name: "云霄县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008412"),
+    code: "350623",
+    name: "漳浦县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008413"),
+    code: "350624",
+    name: "诏安县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008414"),
+    code: "350626",
+    name: "东山县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008415"),
+    code: "350627",
+    name: "南靖县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008416"),
+    code: "350628",
+    name: "平和县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008417"),
+    code: "350629",
+    name: "华安县",
+    cityCode: "3506",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008418"),
+    code: "350702",
+    name: "延平区",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008419"),
+    code: "350703",
+    name: "建阳区",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300841a"),
+    code: "350721",
+    name: "顺昌县",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300841b"),
+    code: "350722",
+    name: "浦城县",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300841c"),
+    code: "350723",
+    name: "光泽县",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300841d"),
+    code: "350724",
+    name: "松溪县",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300841e"),
+    code: "350725",
+    name: "政和县",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300841f"),
+    code: "350781",
+    name: "邵武市",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008420"),
+    code: "350782",
+    name: "武夷山市",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008421"),
+    code: "350783",
+    name: "建瓯市",
+    cityCode: "3507",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008422"),
+    code: "350802",
+    name: "新罗区",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008423"),
+    code: "350803",
+    name: "永定区",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008424"),
+    code: "350821",
+    name: "长汀县",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008425"),
+    code: "350823",
+    name: "上杭县",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008426"),
+    code: "350824",
+    name: "武平县",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008427"),
+    code: "350825",
+    name: "连城县",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008428"),
+    code: "350881",
+    name: "漳平市",
+    cityCode: "3508",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008429"),
+    code: "350902",
+    name: "蕉城区",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300842a"),
+    code: "350921",
+    name: "霞浦县",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300842b"),
+    code: "350922",
+    name: "古田县",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300842c"),
+    code: "350923",
+    name: "屏南县",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300842d"),
+    code: "350924",
+    name: "寿宁县",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300842e"),
+    code: "350925",
+    name: "周宁县",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300842f"),
+    code: "350926",
+    name: "柘荣县",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008430"),
+    code: "350981",
+    name: "福安市",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008431"),
+    code: "350982",
+    name: "福鼎市",
+    cityCode: "3509",
+    provinceCode: "35"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008432"),
+    code: "360102",
+    name: "东湖区",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008433"),
+    code: "360103",
+    name: "西湖区",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008434"),
+    code: "360104",
+    name: "青云谱区",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008435"),
+    code: "360111",
+    name: "青山湖区",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008436"),
+    code: "360112",
+    name: "新建区",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008437"),
+    code: "360113",
+    name: "红谷滩区",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008438"),
+    code: "360121",
+    name: "南昌县",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008439"),
+    code: "360123",
+    name: "安义县",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300843a"),
+    code: "360124",
+    name: "进贤县",
+    cityCode: "3601",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300843b"),
+    code: "360202",
+    name: "昌江区",
+    cityCode: "3602",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300843c"),
+    code: "360203",
+    name: "珠山区",
+    cityCode: "3602",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300843d"),
+    code: "360222",
+    name: "浮梁县",
+    cityCode: "3602",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300843e"),
+    code: "360281",
+    name: "乐平市",
+    cityCode: "3602",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300843f"),
+    code: "360302",
+    name: "安源区",
+    cityCode: "3603",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008440"),
+    code: "360313",
+    name: "湘东区",
+    cityCode: "3603",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008441"),
+    code: "360321",
+    name: "莲花县",
+    cityCode: "3603",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008442"),
+    code: "360322",
+    name: "上栗县",
+    cityCode: "3603",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008443"),
+    code: "360323",
+    name: "芦溪县",
+    cityCode: "3603",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008444"),
+    code: "360402",
+    name: "濂溪区",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008445"),
+    code: "360403",
+    name: "浔阳区",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008446"),
+    code: "360404",
+    name: "柴桑区",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008447"),
+    code: "360423",
+    name: "武宁县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008448"),
+    code: "360424",
+    name: "修水县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008449"),
+    code: "360425",
+    name: "永修县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300844a"),
+    code: "360426",
+    name: "德安县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300844b"),
+    code: "360428",
+    name: "都昌县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300844c"),
+    code: "360429",
+    name: "湖口县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300844d"),
+    code: "360430",
+    name: "彭泽县",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300844e"),
+    code: "360481",
+    name: "瑞昌市",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300844f"),
+    code: "360482",
+    name: "共青城市",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008450"),
+    code: "360483",
+    name: "庐山市",
+    cityCode: "3604",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008451"),
+    code: "360502",
+    name: "渝水区",
+    cityCode: "3605",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008452"),
+    code: "360521",
+    name: "分宜县",
+    cityCode: "3605",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008453"),
+    code: "360602",
+    name: "月湖区",
+    cityCode: "3606",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008454"),
+    code: "360603",
+    name: "余江区",
+    cityCode: "3606",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008455"),
+    code: "360681",
+    name: "贵溪市",
+    cityCode: "3606",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008456"),
+    code: "360702",
+    name: "章贡区",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008457"),
+    code: "360703",
+    name: "南康区",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008458"),
+    code: "360704",
+    name: "赣县区",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008459"),
+    code: "360722",
+    name: "信丰县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300845a"),
+    code: "360723",
+    name: "大余县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300845b"),
+    code: "360724",
+    name: "上犹县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300845c"),
+    code: "360725",
+    name: "崇义县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300845d"),
+    code: "360726",
+    name: "安远县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300845e"),
+    code: "360728",
+    name: "定南县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300845f"),
+    code: "360729",
+    name: "全南县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008460"),
+    code: "360730",
+    name: "宁都县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008461"),
+    code: "360731",
+    name: "于都县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008462"),
+    code: "360732",
+    name: "兴国县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008463"),
+    code: "360733",
+    name: "会昌县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008464"),
+    code: "360734",
+    name: "寻乌县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008465"),
+    code: "360735",
+    name: "石城县",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008466"),
+    code: "360781",
+    name: "瑞金市",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008467"),
+    code: "360783",
+    name: "龙南市",
+    cityCode: "3607",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008468"),
+    code: "360802",
+    name: "吉州区",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008469"),
+    code: "360803",
+    name: "青原区",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300846a"),
+    code: "360821",
+    name: "吉安县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300846b"),
+    code: "360822",
+    name: "吉水县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300846c"),
+    code: "360823",
+    name: "峡江县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300846d"),
+    code: "360824",
+    name: "新干县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300846e"),
+    code: "360825",
+    name: "永丰县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300846f"),
+    code: "360826",
+    name: "泰和县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008470"),
+    code: "360827",
+    name: "遂川县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008471"),
+    code: "360828",
+    name: "万安县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008472"),
+    code: "360829",
+    name: "安福县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008473"),
+    code: "360830",
+    name: "永新县",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008474"),
+    code: "360881",
+    name: "井冈山市",
+    cityCode: "3608",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008475"),
+    code: "360902",
+    name: "袁州区",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008476"),
+    code: "360921",
+    name: "奉新县",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008477"),
+    code: "360922",
+    name: "万载县",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008478"),
+    code: "360923",
+    name: "上高县",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008479"),
+    code: "360924",
+    name: "宜丰县",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300847a"),
+    code: "360925",
+    name: "靖安县",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300847b"),
+    code: "360926",
+    name: "铜鼓县",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300847c"),
+    code: "360981",
+    name: "丰城市",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300847d"),
+    code: "360982",
+    name: "樟树市",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300847e"),
+    code: "360983",
+    name: "高安市",
+    cityCode: "3609",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300847f"),
+    code: "361002",
+    name: "临川区",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008480"),
+    code: "361003",
+    name: "东乡区",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008481"),
+    code: "361021",
+    name: "南城县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008482"),
+    code: "361022",
+    name: "黎川县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008483"),
+    code: "361023",
+    name: "南丰县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008484"),
+    code: "361024",
+    name: "崇仁县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008485"),
+    code: "361025",
+    name: "乐安县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008486"),
+    code: "361026",
+    name: "宜黄县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008487"),
+    code: "361027",
+    name: "金溪县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008488"),
+    code: "361028",
+    name: "资溪县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008489"),
+    code: "361030",
+    name: "广昌县",
+    cityCode: "3610",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300848a"),
+    code: "361102",
+    name: "信州区",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300848b"),
+    code: "361103",
+    name: "广丰区",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300848c"),
+    code: "361104",
+    name: "广信区",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300848d"),
+    code: "361123",
+    name: "玉山县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300848e"),
+    code: "361124",
+    name: "铅山县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300848f"),
+    code: "361125",
+    name: "横峰县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008490"),
+    code: "361126",
+    name: "弋阳县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008491"),
+    code: "361127",
+    name: "余干县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008492"),
+    code: "361128",
+    name: "鄱阳县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008493"),
+    code: "361129",
+    name: "万年县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008494"),
+    code: "361130",
+    name: "婺源县",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008495"),
+    code: "361181",
+    name: "德兴市",
+    cityCode: "3611",
+    provinceCode: "36"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008496"),
+    code: "370102",
+    name: "历下区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008497"),
+    code: "370103",
+    name: "市中区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008498"),
+    code: "370104",
+    name: "槐荫区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008499"),
+    code: "370105",
+    name: "天桥区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300849a"),
+    code: "370112",
+    name: "历城区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300849b"),
+    code: "370113",
+    name: "长清区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300849c"),
+    code: "370114",
+    name: "章丘区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300849d"),
+    code: "370115",
+    name: "济阳区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300849e"),
+    code: "370116",
+    name: "莱芜区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300849f"),
+    code: "370117",
+    name: "钢城区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a0"),
+    code: "370124",
+    name: "平阴县",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a1"),
+    code: "370126",
+    name: "商河县",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a2"),
+    code: "370171",
+    name: "济南高新技术产业开发区",
+    cityCode: "3701",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a3"),
+    code: "370202",
+    name: "市南区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a4"),
+    code: "370203",
+    name: "市北区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a5"),
+    code: "370211",
+    name: "黄岛区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a6"),
+    code: "370212",
+    name: "崂山区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a7"),
+    code: "370213",
+    name: "李沧区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a8"),
+    code: "370214",
+    name: "城阳区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084a9"),
+    code: "370215",
+    name: "即墨区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084aa"),
+    code: "370271",
+    name: "青岛高新技术产业开发区",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ab"),
+    code: "370281",
+    name: "胶州市",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ac"),
+    code: "370283",
+    name: "平度市",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ad"),
+    code: "370285",
+    name: "莱西市",
+    cityCode: "3702",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ae"),
+    code: "370302",
+    name: "淄川区",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084af"),
+    code: "370303",
+    name: "张店区",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b0"),
+    code: "370304",
+    name: "博山区",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b1"),
+    code: "370305",
+    name: "临淄区",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b2"),
+    code: "370306",
+    name: "周村区",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b3"),
+    code: "370321",
+    name: "桓台县",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b4"),
+    code: "370322",
+    name: "高青县",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b5"),
+    code: "370323",
+    name: "沂源县",
+    cityCode: "3703",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b6"),
+    code: "370402",
+    name: "市中区",
+    cityCode: "3704",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b7"),
+    code: "370403",
+    name: "薛城区",
+    cityCode: "3704",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b8"),
+    code: "370404",
+    name: "峄城区",
+    cityCode: "3704",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084b9"),
+    code: "370405",
+    name: "台儿庄区",
+    cityCode: "3704",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ba"),
+    code: "370406",
+    name: "山亭区",
+    cityCode: "3704",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084bb"),
+    code: "370481",
+    name: "滕州市",
+    cityCode: "3704",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084bc"),
+    code: "370502",
+    name: "东营区",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084bd"),
+    code: "370503",
+    name: "河口区",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084be"),
+    code: "370505",
+    name: "垦利区",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084bf"),
+    code: "370522",
+    name: "利津县",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c0"),
+    code: "370523",
+    name: "广饶县",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c1"),
+    code: "370571",
+    name: "东营经济技术开发区",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c2"),
+    code: "370572",
+    name: "东营港经济开发区",
+    cityCode: "3705",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c3"),
+    code: "370602",
+    name: "芝罘区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c4"),
+    code: "370611",
+    name: "福山区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c5"),
+    code: "370612",
+    name: "牟平区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c6"),
+    code: "370613",
+    name: "莱山区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c7"),
+    code: "370614",
+    name: "蓬莱区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c8"),
+    code: "370671",
+    name: "烟台高新技术产业开发区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084c9"),
+    code: "370672",
+    name: "烟台经济技术开发区",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ca"),
+    code: "370681",
+    name: "龙口市",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084cb"),
+    code: "370682",
+    name: "莱阳市",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084cc"),
+    code: "370683",
+    name: "莱州市",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084cd"),
+    code: "370685",
+    name: "招远市",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ce"),
+    code: "370686",
+    name: "栖霞市",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084cf"),
+    code: "370687",
+    name: "海阳市",
+    cityCode: "3706",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d0"),
+    code: "370702",
+    name: "潍城区",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d1"),
+    code: "370703",
+    name: "寒亭区",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d2"),
+    code: "370704",
+    name: "坊子区",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d3"),
+    code: "370705",
+    name: "奎文区",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d4"),
+    code: "370724",
+    name: "临朐县",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d5"),
+    code: "370725",
+    name: "昌乐县",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d6"),
+    code: "370772",
+    name: "潍坊滨海经济技术开发区",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d7"),
+    code: "370781",
+    name: "青州市",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d8"),
+    code: "370782",
+    name: "诸城市",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084d9"),
+    code: "370783",
+    name: "寿光市",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084da"),
+    code: "370784",
+    name: "安丘市",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084db"),
+    code: "370785",
+    name: "高密市",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084dc"),
+    code: "370786",
+    name: "昌邑市",
+    cityCode: "3707",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084dd"),
+    code: "370811",
+    name: "任城区",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084de"),
+    code: "370812",
+    name: "兖州区",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084df"),
+    code: "370826",
+    name: "微山县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e0"),
+    code: "370827",
+    name: "鱼台县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e1"),
+    code: "370828",
+    name: "金乡县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e2"),
+    code: "370829",
+    name: "嘉祥县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e3"),
+    code: "370830",
+    name: "汶上县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e4"),
+    code: "370831",
+    name: "泗水县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e5"),
+    code: "370832",
+    name: "梁山县",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e6"),
+    code: "370871",
+    name: "济宁高新技术产业开发区",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e7"),
+    code: "370881",
+    name: "曲阜市",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e8"),
+    code: "370883",
+    name: "邹城市",
+    cityCode: "3708",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084e9"),
+    code: "370902",
+    name: "泰山区",
+    cityCode: "3709",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ea"),
+    code: "370911",
+    name: "岱岳区",
+    cityCode: "3709",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084eb"),
+    code: "370921",
+    name: "宁阳县",
+    cityCode: "3709",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ec"),
+    code: "370923",
+    name: "东平县",
+    cityCode: "3709",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ed"),
+    code: "370982",
+    name: "新泰市",
+    cityCode: "3709",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ee"),
+    code: "370983",
+    name: "肥城市",
+    cityCode: "3709",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ef"),
+    code: "371002",
+    name: "环翠区",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f0"),
+    code: "371003",
+    name: "文登区",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f1"),
+    code: "371071",
+    name: "威海火炬高技术产业开发区",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f2"),
+    code: "371072",
+    name: "威海经济技术开发区",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f3"),
+    code: "371073",
+    name: "威海临港经济技术开发区",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f4"),
+    code: "371082",
+    name: "荣成市",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f5"),
+    code: "371083",
+    name: "乳山市",
+    cityCode: "3710",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f6"),
+    code: "371102",
+    name: "东港区",
+    cityCode: "3711",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f7"),
+    code: "371103",
+    name: "岚山区",
+    cityCode: "3711",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f8"),
+    code: "371121",
+    name: "五莲县",
+    cityCode: "3711",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084f9"),
+    code: "371122",
+    name: "莒县",
+    cityCode: "3711",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084fa"),
+    code: "371171",
+    name: "日照经济技术开发区",
+    cityCode: "3711",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084fb"),
+    code: "371302",
+    name: "兰山区",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084fc"),
+    code: "371311",
+    name: "罗庄区",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084fd"),
+    code: "371312",
+    name: "河东区",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084fe"),
+    code: "371321",
+    name: "沂南县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30084ff"),
+    code: "371322",
+    name: "郯城县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008500"),
+    code: "371323",
+    name: "沂水县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008501"),
+    code: "371324",
+    name: "兰陵县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008502"),
+    code: "371325",
+    name: "费县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008503"),
+    code: "371326",
+    name: "平邑县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008504"),
+    code: "371327",
+    name: "莒南县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008505"),
+    code: "371328",
+    name: "蒙阴县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008506"),
+    code: "371329",
+    name: "临沭县",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008507"),
+    code: "371371",
+    name: "临沂高新技术产业开发区",
+    cityCode: "3713",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008508"),
+    code: "371402",
+    name: "德城区",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008509"),
+    code: "371403",
+    name: "陵城区",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300850a"),
+    code: "371422",
+    name: "宁津县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300850b"),
+    code: "371423",
+    name: "庆云县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300850c"),
+    code: "371424",
+    name: "临邑县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300850d"),
+    code: "371425",
+    name: "齐河县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300850e"),
+    code: "371426",
+    name: "平原县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300850f"),
+    code: "371427",
+    name: "夏津县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008510"),
+    code: "371428",
+    name: "武城县",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008511"),
+    code: "371471",
+    name: "德州经济技术开发区",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008512"),
+    code: "371472",
+    name: "德州运河经济开发区",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008513"),
+    code: "371481",
+    name: "乐陵市",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008514"),
+    code: "371482",
+    name: "禹城市",
+    cityCode: "3714",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008515"),
+    code: "371502",
+    name: "东昌府区",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008516"),
+    code: "371503",
+    name: "茌平区",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008517"),
+    code: "371521",
+    name: "阳谷县",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008518"),
+    code: "371522",
+    name: "莘县",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008519"),
+    code: "371524",
+    name: "东阿县",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300851a"),
+    code: "371525",
+    name: "冠县",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300851b"),
+    code: "371526",
+    name: "高唐县",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300851c"),
+    code: "371581",
+    name: "临清市",
+    cityCode: "3715",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300851d"),
+    code: "371602",
+    name: "滨城区",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300851e"),
+    code: "371603",
+    name: "沾化区",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300851f"),
+    code: "371621",
+    name: "惠民县",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008520"),
+    code: "371622",
+    name: "阳信县",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008521"),
+    code: "371623",
+    name: "无棣县",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008522"),
+    code: "371625",
+    name: "博兴县",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008523"),
+    code: "371681",
+    name: "邹平市",
+    cityCode: "3716",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008524"),
+    code: "371702",
+    name: "牡丹区",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008525"),
+    code: "371703",
+    name: "定陶区",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008526"),
+    code: "371721",
+    name: "曹县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008527"),
+    code: "371722",
+    name: "单县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008528"),
+    code: "371723",
+    name: "成武县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008529"),
+    code: "371724",
+    name: "巨野县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300852a"),
+    code: "371725",
+    name: "郓城县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300852b"),
+    code: "371726",
+    name: "鄄城县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300852c"),
+    code: "371728",
+    name: "东明县",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300852d"),
+    code: "371771",
+    name: "菏泽经济技术开发区",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300852e"),
+    code: "371772",
+    name: "菏泽高新技术开发区",
+    cityCode: "3717",
+    provinceCode: "37"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300852f"),
+    code: "410102",
+    name: "中原区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008530"),
+    code: "410103",
+    name: "二七区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008531"),
+    code: "410104",
+    name: "管城回族区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008532"),
+    code: "410105",
+    name: "金水区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008533"),
+    code: "410106",
+    name: "上街区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008534"),
+    code: "410108",
+    name: "惠济区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008535"),
+    code: "410122",
+    name: "中牟县",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008536"),
+    code: "410171",
+    name: "郑州经济技术开发区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008537"),
+    code: "410172",
+    name: "郑州高新技术产业开发区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008538"),
+    code: "410173",
+    name: "郑州航空港经济综合实验区",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008539"),
+    code: "410181",
+    name: "巩义市",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300853a"),
+    code: "410182",
+    name: "荥阳市",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300853b"),
+    code: "410183",
+    name: "新密市",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300853c"),
+    code: "410184",
+    name: "新郑市",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300853d"),
+    code: "410185",
+    name: "登封市",
+    cityCode: "4101",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300853e"),
+    code: "410202",
+    name: "龙亭区",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300853f"),
+    code: "410203",
+    name: "顺河回族区",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008540"),
+    code: "410204",
+    name: "鼓楼区",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008541"),
+    code: "410205",
+    name: "禹王台区",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008542"),
+    code: "410212",
+    name: "祥符区",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008543"),
+    code: "410221",
+    name: "杞县",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008544"),
+    code: "410222",
+    name: "通许县",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008545"),
+    code: "410223",
+    name: "尉氏县",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008546"),
+    code: "410225",
+    name: "兰考县",
+    cityCode: "4102",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008547"),
+    code: "410302",
+    name: "老城区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008548"),
+    code: "410303",
+    name: "西工区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008549"),
+    code: "410304",
+    name: "瀍河回族区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300854a"),
+    code: "410305",
+    name: "涧西区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300854b"),
+    code: "410307",
+    name: "偃师区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300854c"),
+    code: "410308",
+    name: "孟津区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300854d"),
+    code: "410311",
+    name: "洛龙区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300854e"),
+    code: "410323",
+    name: "新安县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300854f"),
+    code: "410324",
+    name: "栾川县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008550"),
+    code: "410325",
+    name: "嵩县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008551"),
+    code: "410326",
+    name: "汝阳县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008552"),
+    code: "410327",
+    name: "宜阳县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008553"),
+    code: "410328",
+    name: "洛宁县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008554"),
+    code: "410329",
+    name: "伊川县",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008555"),
+    code: "410371",
+    name: "洛阳高新技术产业开发区",
+    cityCode: "4103",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008556"),
+    code: "410402",
+    name: "新华区",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008557"),
+    code: "410403",
+    name: "卫东区",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008558"),
+    code: "410404",
+    name: "石龙区",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008559"),
+    code: "410411",
+    name: "湛河区",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300855a"),
+    code: "410421",
+    name: "宝丰县",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300855b"),
+    code: "410422",
+    name: "叶县",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300855c"),
+    code: "410423",
+    name: "鲁山县",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300855d"),
+    code: "410425",
+    name: "郏县",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300855e"),
+    code: "410471",
+    name: "平顶山高新技术产业开发区",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300855f"),
+    code: "410472",
+    name: "平顶山市城乡一体化示范区",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008560"),
+    code: "410481",
+    name: "舞钢市",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008561"),
+    code: "410482",
+    name: "汝州市",
+    cityCode: "4104",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008562"),
+    code: "410502",
+    name: "文峰区",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008563"),
+    code: "410503",
+    name: "北关区",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008564"),
+    code: "410505",
+    name: "殷都区",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008565"),
+    code: "410506",
+    name: "龙安区",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008566"),
+    code: "410522",
+    name: "安阳县",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008567"),
+    code: "410523",
+    name: "汤阴县",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008568"),
+    code: "410526",
+    name: "滑县",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008569"),
+    code: "410527",
+    name: "内黄县",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300856a"),
+    code: "410571",
+    name: "安阳高新技术产业开发区",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300856b"),
+    code: "410581",
+    name: "林州市",
+    cityCode: "4105",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300856c"),
+    code: "410602",
+    name: "鹤山区",
+    cityCode: "4106",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300856d"),
+    code: "410603",
+    name: "山城区",
+    cityCode: "4106",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300856e"),
+    code: "410611",
+    name: "淇滨区",
+    cityCode: "4106",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300856f"),
+    code: "410621",
+    name: "浚县",
+    cityCode: "4106",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008570"),
+    code: "410622",
+    name: "淇县",
+    cityCode: "4106",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008571"),
+    code: "410671",
+    name: "鹤壁经济技术开发区",
+    cityCode: "4106",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008572"),
+    code: "410702",
+    name: "红旗区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008573"),
+    code: "410703",
+    name: "卫滨区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008574"),
+    code: "410704",
+    name: "凤泉区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008575"),
+    code: "410711",
+    name: "牧野区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008576"),
+    code: "410721",
+    name: "新乡县",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008577"),
+    code: "410724",
+    name: "获嘉县",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008578"),
+    code: "410725",
+    name: "原阳县",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008579"),
+    code: "410726",
+    name: "延津县",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300857a"),
+    code: "410727",
+    name: "封丘县",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300857b"),
+    code: "410771",
+    name: "新乡高新技术产业开发区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300857c"),
+    code: "410772",
+    name: "新乡经济技术开发区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300857d"),
+    code: "410773",
+    name: "新乡市平原城乡一体化示范区",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300857e"),
+    code: "410781",
+    name: "卫辉市",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300857f"),
+    code: "410782",
+    name: "辉县市",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008580"),
+    code: "410783",
+    name: "长垣市",
+    cityCode: "4107",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008581"),
+    code: "410802",
+    name: "解放区",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008582"),
+    code: "410803",
+    name: "中站区",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008583"),
+    code: "410804",
+    name: "马村区",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008584"),
+    code: "410811",
+    name: "山阳区",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008585"),
+    code: "410821",
+    name: "修武县",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008586"),
+    code: "410822",
+    name: "博爱县",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008587"),
+    code: "410823",
+    name: "武陟县",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008588"),
+    code: "410825",
+    name: "温县",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008589"),
+    code: "410871",
+    name: "焦作城乡一体化示范区",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300858a"),
+    code: "410882",
+    name: "沁阳市",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300858b"),
+    code: "410883",
+    name: "孟州市",
+    cityCode: "4108",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300858c"),
+    code: "410902",
+    name: "华龙区",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300858d"),
+    code: "410922",
+    name: "清丰县",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300858e"),
+    code: "410923",
+    name: "南乐县",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300858f"),
+    code: "410926",
+    name: "范县",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008590"),
+    code: "410927",
+    name: "台前县",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008591"),
+    code: "410928",
+    name: "濮阳县",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008592"),
+    code: "410971",
+    name: "河南濮阳工业园区",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008593"),
+    code: "410972",
+    name: "濮阳经济技术开发区",
+    cityCode: "4109",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008594"),
+    code: "411002",
+    name: "魏都区",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008595"),
+    code: "411003",
+    name: "建安区",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008596"),
+    code: "411024",
+    name: "鄢陵县",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008597"),
+    code: "411025",
+    name: "襄城县",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008598"),
+    code: "411071",
+    name: "许昌经济技术开发区",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008599"),
+    code: "411081",
+    name: "禹州市",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300859a"),
+    code: "411082",
+    name: "长葛市",
+    cityCode: "4110",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300859b"),
+    code: "411102",
+    name: "源汇区",
+    cityCode: "4111",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300859c"),
+    code: "411103",
+    name: "郾城区",
+    cityCode: "4111",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300859d"),
+    code: "411104",
+    name: "召陵区",
+    cityCode: "4111",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300859e"),
+    code: "411121",
+    name: "舞阳县",
+    cityCode: "4111",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300859f"),
+    code: "411122",
+    name: "临颍县",
+    cityCode: "4111",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a0"),
+    code: "411171",
+    name: "漯河经济技术开发区",
+    cityCode: "4111",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a1"),
+    code: "411202",
+    name: "湖滨区",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a2"),
+    code: "411203",
+    name: "陕州区",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a3"),
+    code: "411221",
+    name: "渑池县",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a4"),
+    code: "411224",
+    name: "卢氏县",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a5"),
+    code: "411271",
+    name: "河南三门峡经济开发区",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a6"),
+    code: "411281",
+    name: "义马市",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a7"),
+    code: "411282",
+    name: "灵宝市",
+    cityCode: "4112",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a8"),
+    code: "411302",
+    name: "宛城区",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085a9"),
+    code: "411303",
+    name: "卧龙区",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085aa"),
+    code: "411321",
+    name: "南召县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ab"),
+    code: "411322",
+    name: "方城县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ac"),
+    code: "411323",
+    name: "西峡县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ad"),
+    code: "411324",
+    name: "镇平县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ae"),
+    code: "411325",
+    name: "内乡县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085af"),
+    code: "411326",
+    name: "淅川县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b0"),
+    code: "411327",
+    name: "社旗县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b1"),
+    code: "411328",
+    name: "唐河县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b2"),
+    code: "411329",
+    name: "新野县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b3"),
+    code: "411330",
+    name: "桐柏县",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b4"),
+    code: "411371",
+    name: "南阳高新技术产业开发区",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b5"),
+    code: "411372",
+    name: "南阳市城乡一体化示范区",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b6"),
+    code: "411381",
+    name: "邓州市",
+    cityCode: "4113",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b7"),
+    code: "411402",
+    name: "梁园区",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b8"),
+    code: "411403",
+    name: "睢阳区",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085b9"),
+    code: "411421",
+    name: "民权县",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ba"),
+    code: "411422",
+    name: "睢县",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085bb"),
+    code: "411423",
+    name: "宁陵县",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085bc"),
+    code: "411424",
+    name: "柘城县",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085bd"),
+    code: "411425",
+    name: "虞城县",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085be"),
+    code: "411426",
+    name: "夏邑县",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085bf"),
+    code: "411471",
+    name: "豫东综合物流产业聚集区",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c0"),
+    code: "411472",
+    name: "河南商丘经济开发区",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c1"),
+    code: "411481",
+    name: "永城市",
+    cityCode: "4114",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c2"),
+    code: "411502",
+    name: "浉河区",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c3"),
+    code: "411503",
+    name: "平桥区",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c4"),
+    code: "411521",
+    name: "罗山县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c5"),
+    code: "411522",
+    name: "光山县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c6"),
+    code: "411523",
+    name: "新县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c7"),
+    code: "411524",
+    name: "商城县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c8"),
+    code: "411525",
+    name: "固始县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085c9"),
+    code: "411526",
+    name: "潢川县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ca"),
+    code: "411527",
+    name: "淮滨县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085cb"),
+    code: "411528",
+    name: "息县",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085cc"),
+    code: "411571",
+    name: "信阳高新技术产业开发区",
+    cityCode: "4115",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085cd"),
+    code: "411602",
+    name: "川汇区",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ce"),
+    code: "411603",
+    name: "淮阳区",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085cf"),
+    code: "411621",
+    name: "扶沟县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d0"),
+    code: "411622",
+    name: "西华县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d1"),
+    code: "411623",
+    name: "商水县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d2"),
+    code: "411624",
+    name: "沈丘县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d3"),
+    code: "411625",
+    name: "郸城县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d4"),
+    code: "411627",
+    name: "太康县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d5"),
+    code: "411628",
+    name: "鹿邑县",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d6"),
+    code: "411671",
+    name: "河南周口经济开发区",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d7"),
+    code: "411681",
+    name: "项城市",
+    cityCode: "4116",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d8"),
+    code: "411702",
+    name: "驿城区",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085d9"),
+    code: "411721",
+    name: "西平县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085da"),
+    code: "411722",
+    name: "上蔡县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085db"),
+    code: "411723",
+    name: "平舆县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085dc"),
+    code: "411724",
+    name: "正阳县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085dd"),
+    code: "411725",
+    name: "确山县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085de"),
+    code: "411726",
+    name: "泌阳县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085df"),
+    code: "411727",
+    name: "汝南县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e0"),
+    code: "411728",
+    name: "遂平县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e1"),
+    code: "411729",
+    name: "新蔡县",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e2"),
+    code: "411771",
+    name: "河南驻马店经济开发区",
+    cityCode: "4117",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e3"),
+    code: "419001",
+    name: "济源市",
+    cityCode: "4190",
+    provinceCode: "41"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e4"),
+    code: "420102",
+    name: "江岸区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e5"),
+    code: "420103",
+    name: "江汉区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e6"),
+    code: "420104",
+    name: "硚口区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e7"),
+    code: "420105",
+    name: "汉阳区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e8"),
+    code: "420106",
+    name: "武昌区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085e9"),
+    code: "420107",
+    name: "青山区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ea"),
+    code: "420111",
+    name: "洪山区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085eb"),
+    code: "420112",
+    name: "东西湖区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ec"),
+    code: "420113",
+    name: "汉南区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ed"),
+    code: "420114",
+    name: "蔡甸区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ee"),
+    code: "420115",
+    name: "江夏区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ef"),
+    code: "420116",
+    name: "黄陂区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f0"),
+    code: "420117",
+    name: "新洲区",
+    cityCode: "4201",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f1"),
+    code: "420202",
+    name: "黄石港区",
+    cityCode: "4202",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f2"),
+    code: "420203",
+    name: "西塞山区",
+    cityCode: "4202",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f3"),
+    code: "420204",
+    name: "下陆区",
+    cityCode: "4202",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f4"),
+    code: "420205",
+    name: "铁山区",
+    cityCode: "4202",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f5"),
+    code: "420222",
+    name: "阳新县",
+    cityCode: "4202",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f6"),
+    code: "420281",
+    name: "大冶市",
+    cityCode: "4202",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f7"),
+    code: "420302",
+    name: "茅箭区",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f8"),
+    code: "420303",
+    name: "张湾区",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085f9"),
+    code: "420304",
+    name: "郧阳区",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085fa"),
+    code: "420322",
+    name: "郧西县",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085fb"),
+    code: "420323",
+    name: "竹山县",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085fc"),
+    code: "420324",
+    name: "竹溪县",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085fd"),
+    code: "420325",
+    name: "房县",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085fe"),
+    code: "420381",
+    name: "丹江口市",
+    cityCode: "4203",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30085ff"),
+    code: "420502",
+    name: "西陵区",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008600"),
+    code: "420503",
+    name: "伍家岗区",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008601"),
+    code: "420504",
+    name: "点军区",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008602"),
+    code: "420505",
+    name: "猇亭区",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008603"),
+    code: "420506",
+    name: "夷陵区",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008604"),
+    code: "420525",
+    name: "远安县",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008605"),
+    code: "420526",
+    name: "兴山县",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008606"),
+    code: "420527",
+    name: "秭归县",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008607"),
+    code: "420528",
+    name: "长阳土家族自治县",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008608"),
+    code: "420529",
+    name: "五峰土家族自治县",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008609"),
+    code: "420581",
+    name: "宜都市",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300860a"),
+    code: "420582",
+    name: "当阳市",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300860b"),
+    code: "420583",
+    name: "枝江市",
+    cityCode: "4205",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300860c"),
+    code: "420602",
+    name: "襄城区",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300860d"),
+    code: "420606",
+    name: "樊城区",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300860e"),
+    code: "420607",
+    name: "襄州区",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300860f"),
+    code: "420624",
+    name: "南漳县",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008610"),
+    code: "420625",
+    name: "谷城县",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008611"),
+    code: "420626",
+    name: "保康县",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008612"),
+    code: "420682",
+    name: "老河口市",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008613"),
+    code: "420683",
+    name: "枣阳市",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008614"),
+    code: "420684",
+    name: "宜城市",
+    cityCode: "4206",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008615"),
+    code: "420702",
+    name: "梁子湖区",
+    cityCode: "4207",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008616"),
+    code: "420703",
+    name: "华容区",
+    cityCode: "4207",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008617"),
+    code: "420704",
+    name: "鄂城区",
+    cityCode: "4207",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008618"),
+    code: "420802",
+    name: "东宝区",
+    cityCode: "4208",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008619"),
+    code: "420804",
+    name: "掇刀区",
+    cityCode: "4208",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300861a"),
+    code: "420822",
+    name: "沙洋县",
+    cityCode: "4208",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300861b"),
+    code: "420881",
+    name: "钟祥市",
+    cityCode: "4208",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300861c"),
+    code: "420882",
+    name: "京山市",
+    cityCode: "4208",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300861d"),
+    code: "420902",
+    name: "孝南区",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300861e"),
+    code: "420921",
+    name: "孝昌县",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300861f"),
+    code: "420922",
+    name: "大悟县",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008620"),
+    code: "420923",
+    name: "云梦县",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008621"),
+    code: "420981",
+    name: "应城市",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008622"),
+    code: "420982",
+    name: "安陆市",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008623"),
+    code: "420984",
+    name: "汉川市",
+    cityCode: "4209",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008624"),
+    code: "421002",
+    name: "沙市区",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008625"),
+    code: "421003",
+    name: "荆州区",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008626"),
+    code: "421022",
+    name: "公安县",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008627"),
+    code: "421024",
+    name: "江陵县",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008628"),
+    code: "421071",
+    name: "荆州经济技术开发区",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008629"),
+    code: "421081",
+    name: "石首市",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300862a"),
+    code: "421083",
+    name: "洪湖市",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300862b"),
+    code: "421087",
+    name: "松滋市",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300862c"),
+    code: "421088",
+    name: "监利市",
+    cityCode: "4210",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300862d"),
+    code: "421102",
+    name: "黄州区",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300862e"),
+    code: "421121",
+    name: "团风县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300862f"),
+    code: "421122",
+    name: "红安县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008630"),
+    code: "421123",
+    name: "罗田县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008631"),
+    code: "421124",
+    name: "英山县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008632"),
+    code: "421125",
+    name: "浠水县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008633"),
+    code: "421126",
+    name: "蕲春县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008634"),
+    code: "421127",
+    name: "黄梅县",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008635"),
+    code: "421171",
+    name: "龙感湖管理区",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008636"),
+    code: "421181",
+    name: "麻城市",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008637"),
+    code: "421182",
+    name: "武穴市",
+    cityCode: "4211",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008638"),
+    code: "421202",
+    name: "咸安区",
+    cityCode: "4212",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008639"),
+    code: "421221",
+    name: "嘉鱼县",
+    cityCode: "4212",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300863a"),
+    code: "421222",
+    name: "通城县",
+    cityCode: "4212",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300863b"),
+    code: "421223",
+    name: "崇阳县",
+    cityCode: "4212",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300863c"),
+    code: "421224",
+    name: "通山县",
+    cityCode: "4212",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300863d"),
+    code: "421281",
+    name: "赤壁市",
+    cityCode: "4212",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300863e"),
+    code: "421303",
+    name: "曾都区",
+    cityCode: "4213",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300863f"),
+    code: "421321",
+    name: "随县",
+    cityCode: "4213",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008640"),
+    code: "421381",
+    name: "广水市",
+    cityCode: "4213",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008641"),
+    code: "422801",
+    name: "恩施市",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008642"),
+    code: "422802",
+    name: "利川市",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008643"),
+    code: "422822",
+    name: "建始县",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008644"),
+    code: "422823",
+    name: "巴东县",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008645"),
+    code: "422825",
+    name: "宣恩县",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008646"),
+    code: "422826",
+    name: "咸丰县",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008647"),
+    code: "422827",
+    name: "来凤县",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008648"),
+    code: "422828",
+    name: "鹤峰县",
+    cityCode: "4228",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008649"),
+    code: "429004",
+    name: "仙桃市",
+    cityCode: "4290",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300864a"),
+    code: "429005",
+    name: "潜江市",
+    cityCode: "4290",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300864b"),
+    code: "429006",
+    name: "天门市",
+    cityCode: "4290",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300864c"),
+    code: "429021",
+    name: "神农架林区",
+    cityCode: "4290",
+    provinceCode: "42"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300864d"),
+    code: "430102",
+    name: "芙蓉区",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300864e"),
+    code: "430103",
+    name: "天心区",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300864f"),
+    code: "430104",
+    name: "岳麓区",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008650"),
+    code: "430105",
+    name: "开福区",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008651"),
+    code: "430111",
+    name: "雨花区",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008652"),
+    code: "430112",
+    name: "望城区",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008653"),
+    code: "430121",
+    name: "长沙县",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008654"),
+    code: "430181",
+    name: "浏阳市",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008655"),
+    code: "430182",
+    name: "宁乡市",
+    cityCode: "4301",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008656"),
+    code: "430202",
+    name: "荷塘区",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008657"),
+    code: "430203",
+    name: "芦淞区",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008658"),
+    code: "430204",
+    name: "石峰区",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008659"),
+    code: "430211",
+    name: "天元区",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300865a"),
+    code: "430212",
+    name: "渌口区",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300865b"),
+    code: "430223",
+    name: "攸县",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300865c"),
+    code: "430224",
+    name: "茶陵县",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300865d"),
+    code: "430225",
+    name: "炎陵县",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300865e"),
+    code: "430271",
+    name: "云龙示范区",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300865f"),
+    code: "430281",
+    name: "醴陵市",
+    cityCode: "4302",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008660"),
+    code: "430302",
+    name: "雨湖区",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008661"),
+    code: "430304",
+    name: "岳塘区",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008662"),
+    code: "430321",
+    name: "湘潭县",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008663"),
+    code: "430371",
+    name: "湖南湘潭高新技术产业园区",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008664"),
+    code: "430372",
+    name: "湘潭昭山示范区",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008665"),
+    code: "430373",
+    name: "湘潭九华示范区",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008666"),
+    code: "430381",
+    name: "湘乡市",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008667"),
+    code: "430382",
+    name: "韶山市",
+    cityCode: "4303",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008668"),
+    code: "430405",
+    name: "珠晖区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008669"),
+    code: "430406",
+    name: "雁峰区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300866a"),
+    code: "430407",
+    name: "石鼓区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300866b"),
+    code: "430408",
+    name: "蒸湘区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300866c"),
+    code: "430412",
+    name: "南岳区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300866d"),
+    code: "430421",
+    name: "衡阳县",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300866e"),
+    code: "430422",
+    name: "衡南县",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300866f"),
+    code: "430423",
+    name: "衡山县",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008670"),
+    code: "430424",
+    name: "衡东县",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008671"),
+    code: "430426",
+    name: "祁东县",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008672"),
+    code: "430471",
+    name: "衡阳综合保税区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008673"),
+    code: "430472",
+    name: "湖南衡阳高新技术产业园区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008674"),
+    code: "430473",
+    name: "湖南衡阳松木经济开发区",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008675"),
+    code: "430481",
+    name: "耒阳市",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008676"),
+    code: "430482",
+    name: "常宁市",
+    cityCode: "4304",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008677"),
+    code: "430502",
+    name: "双清区",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008678"),
+    code: "430503",
+    name: "大祥区",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008679"),
+    code: "430511",
+    name: "北塔区",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300867a"),
+    code: "430522",
+    name: "新邵县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300867b"),
+    code: "430523",
+    name: "邵阳县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300867c"),
+    code: "430524",
+    name: "隆回县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300867d"),
+    code: "430525",
+    name: "洞口县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300867e"),
+    code: "430527",
+    name: "绥宁县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300867f"),
+    code: "430528",
+    name: "新宁县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008680"),
+    code: "430529",
+    name: "城步苗族自治县",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008681"),
+    code: "430581",
+    name: "武冈市",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008682"),
+    code: "430582",
+    name: "邵东市",
+    cityCode: "4305",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008683"),
+    code: "430602",
+    name: "岳阳楼区",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008684"),
+    code: "430603",
+    name: "云溪区",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008685"),
+    code: "430611",
+    name: "君山区",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008686"),
+    code: "430621",
+    name: "岳阳县",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008687"),
+    code: "430623",
+    name: "华容县",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008688"),
+    code: "430624",
+    name: "湘阴县",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008689"),
+    code: "430626",
+    name: "平江县",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300868a"),
+    code: "430671",
+    name: "岳阳市屈原管理区",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300868b"),
+    code: "430681",
+    name: "汨罗市",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300868c"),
+    code: "430682",
+    name: "临湘市",
+    cityCode: "4306",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300868d"),
+    code: "430702",
+    name: "武陵区",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300868e"),
+    code: "430703",
+    name: "鼎城区",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300868f"),
+    code: "430721",
+    name: "安乡县",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008690"),
+    code: "430722",
+    name: "汉寿县",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008691"),
+    code: "430723",
+    name: "澧县",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008692"),
+    code: "430724",
+    name: "临澧县",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008693"),
+    code: "430725",
+    name: "桃源县",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008694"),
+    code: "430726",
+    name: "石门县",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008695"),
+    code: "430771",
+    name: "常德市西洞庭管理区",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008696"),
+    code: "430781",
+    name: "津市市",
+    cityCode: "4307",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008697"),
+    code: "430802",
+    name: "永定区",
+    cityCode: "4308",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008698"),
+    code: "430811",
+    name: "武陵源区",
+    cityCode: "4308",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008699"),
+    code: "430821",
+    name: "慈利县",
+    cityCode: "4308",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300869a"),
+    code: "430822",
+    name: "桑植县",
+    cityCode: "4308",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300869b"),
+    code: "430902",
+    name: "资阳区",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300869c"),
+    code: "430903",
+    name: "赫山区",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300869d"),
+    code: "430921",
+    name: "南县",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300869e"),
+    code: "430922",
+    name: "桃江县",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300869f"),
+    code: "430923",
+    name: "安化县",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a0"),
+    code: "430971",
+    name: "益阳市大通湖管理区",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a1"),
+    code: "430972",
+    name: "湖南益阳高新技术产业园区",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a2"),
+    code: "430981",
+    name: "沅江市",
+    cityCode: "4309",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a3"),
+    code: "431002",
+    name: "北湖区",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a4"),
+    code: "431003",
+    name: "苏仙区",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a5"),
+    code: "431021",
+    name: "桂阳县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a6"),
+    code: "431022",
+    name: "宜章县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a7"),
+    code: "431023",
+    name: "永兴县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a8"),
+    code: "431024",
+    name: "嘉禾县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086a9"),
+    code: "431025",
+    name: "临武县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086aa"),
+    code: "431026",
+    name: "汝城县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ab"),
+    code: "431027",
+    name: "桂东县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ac"),
+    code: "431028",
+    name: "安仁县",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ad"),
+    code: "431081",
+    name: "资兴市",
+    cityCode: "4310",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ae"),
+    code: "431102",
+    name: "零陵区",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086af"),
+    code: "431103",
+    name: "冷水滩区",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b0"),
+    code: "431122",
+    name: "东安县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b1"),
+    code: "431123",
+    name: "双牌县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b2"),
+    code: "431124",
+    name: "道县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b3"),
+    code: "431125",
+    name: "江永县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b4"),
+    code: "431126",
+    name: "宁远县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b5"),
+    code: "431127",
+    name: "蓝山县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b6"),
+    code: "431128",
+    name: "新田县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b7"),
+    code: "431129",
+    name: "江华瑶族自治县",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b8"),
+    code: "431171",
+    name: "永州经济技术开发区",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086b9"),
+    code: "431173",
+    name: "永州市回龙圩管理区",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ba"),
+    code: "431181",
+    name: "祁阳市",
+    cityCode: "4311",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086bb"),
+    code: "431202",
+    name: "鹤城区",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086bc"),
+    code: "431221",
+    name: "中方县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086bd"),
+    code: "431222",
+    name: "沅陵县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086be"),
+    code: "431223",
+    name: "辰溪县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086bf"),
+    code: "431224",
+    name: "溆浦县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c0"),
+    code: "431225",
+    name: "会同县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c1"),
+    code: "431226",
+    name: "麻阳苗族自治县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c2"),
+    code: "431227",
+    name: "新晃侗族自治县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c3"),
+    code: "431228",
+    name: "芷江侗族自治县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c4"),
+    code: "431229",
+    name: "靖州苗族侗族自治县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c5"),
+    code: "431230",
+    name: "通道侗族自治县",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c6"),
+    code: "431271",
+    name: "怀化市洪江管理区",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c7"),
+    code: "431281",
+    name: "洪江市",
+    cityCode: "4312",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c8"),
+    code: "431302",
+    name: "娄星区",
+    cityCode: "4313",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086c9"),
+    code: "431321",
+    name: "双峰县",
+    cityCode: "4313",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ca"),
+    code: "431322",
+    name: "新化县",
+    cityCode: "4313",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086cb"),
+    code: "431381",
+    name: "冷水江市",
+    cityCode: "4313",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086cc"),
+    code: "431382",
+    name: "涟源市",
+    cityCode: "4313",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086cd"),
+    code: "433101",
+    name: "吉首市",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ce"),
+    code: "433122",
+    name: "泸溪县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086cf"),
+    code: "433123",
+    name: "凤凰县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d0"),
+    code: "433124",
+    name: "花垣县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d1"),
+    code: "433125",
+    name: "保靖县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d2"),
+    code: "433126",
+    name: "古丈县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d3"),
+    code: "433127",
+    name: "永顺县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d4"),
+    code: "433130",
+    name: "龙山县",
+    cityCode: "4331",
+    provinceCode: "43"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d5"),
+    code: "440103",
+    name: "荔湾区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d6"),
+    code: "440104",
+    name: "越秀区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d7"),
+    code: "440105",
+    name: "海珠区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d8"),
+    code: "440106",
+    name: "天河区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086d9"),
+    code: "440111",
+    name: "白云区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086da"),
+    code: "440112",
+    name: "黄埔区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086db"),
+    code: "440113",
+    name: "番禺区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086dc"),
+    code: "440114",
+    name: "花都区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086dd"),
+    code: "440115",
+    name: "南沙区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086de"),
+    code: "440117",
+    name: "从化区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086df"),
+    code: "440118",
+    name: "增城区",
+    cityCode: "4401",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e0"),
+    code: "440203",
+    name: "武江区",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e1"),
+    code: "440204",
+    name: "浈江区",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e2"),
+    code: "440205",
+    name: "曲江区",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e3"),
+    code: "440222",
+    name: "始兴县",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e4"),
+    code: "440224",
+    name: "仁化县",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e5"),
+    code: "440229",
+    name: "翁源县",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e6"),
+    code: "440232",
+    name: "乳源瑶族自治县",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e7"),
+    code: "440233",
+    name: "新丰县",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e8"),
+    code: "440281",
+    name: "乐昌市",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086e9"),
+    code: "440282",
+    name: "南雄市",
+    cityCode: "4402",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ea"),
+    code: "440303",
+    name: "罗湖区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086eb"),
+    code: "440304",
+    name: "福田区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ec"),
+    code: "440305",
+    name: "南山区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ed"),
+    code: "440306",
+    name: "宝安区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ee"),
+    code: "440307",
+    name: "龙岗区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ef"),
+    code: "440308",
+    name: "盐田区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f0"),
+    code: "440309",
+    name: "龙华区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f1"),
+    code: "440310",
+    name: "坪山区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f2"),
+    code: "440311",
+    name: "光明区",
+    cityCode: "4403",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f3"),
+    code: "440402",
+    name: "香洲区",
+    cityCode: "4404",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f4"),
+    code: "440403",
+    name: "斗门区",
+    cityCode: "4404",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f5"),
+    code: "440404",
+    name: "金湾区",
+    cityCode: "4404",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f6"),
+    code: "440507",
+    name: "龙湖区",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f7"),
+    code: "440511",
+    name: "金平区",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f8"),
+    code: "440512",
+    name: "濠江区",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086f9"),
+    code: "440513",
+    name: "潮阳区",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086fa"),
+    code: "440514",
+    name: "潮南区",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086fb"),
+    code: "440515",
+    name: "澄海区",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086fc"),
+    code: "440523",
+    name: "南澳县",
+    cityCode: "4405",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086fd"),
+    code: "440604",
+    name: "禅城区",
+    cityCode: "4406",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086fe"),
+    code: "440605",
+    name: "南海区",
+    cityCode: "4406",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30086ff"),
+    code: "440606",
+    name: "顺德区",
+    cityCode: "4406",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008700"),
+    code: "440607",
+    name: "三水区",
+    cityCode: "4406",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008701"),
+    code: "440608",
+    name: "高明区",
+    cityCode: "4406",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008702"),
+    code: "440703",
+    name: "蓬江区",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008703"),
+    code: "440704",
+    name: "江海区",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008704"),
+    code: "440705",
+    name: "新会区",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008705"),
+    code: "440781",
+    name: "台山市",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008706"),
+    code: "440783",
+    name: "开平市",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008707"),
+    code: "440784",
+    name: "鹤山市",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008708"),
+    code: "440785",
+    name: "恩平市",
+    cityCode: "4407",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008709"),
+    code: "440802",
+    name: "赤坎区",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300870a"),
+    code: "440803",
+    name: "霞山区",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300870b"),
+    code: "440804",
+    name: "坡头区",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300870c"),
+    code: "440811",
+    name: "麻章区",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300870d"),
+    code: "440823",
+    name: "遂溪县",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300870e"),
+    code: "440825",
+    name: "徐闻县",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300870f"),
+    code: "440881",
+    name: "廉江市",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008710"),
+    code: "440882",
+    name: "雷州市",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008711"),
+    code: "440883",
+    name: "吴川市",
+    cityCode: "4408",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008712"),
+    code: "440902",
+    name: "茂南区",
+    cityCode: "4409",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008713"),
+    code: "440904",
+    name: "电白区",
+    cityCode: "4409",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008714"),
+    code: "440981",
+    name: "高州市",
+    cityCode: "4409",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008715"),
+    code: "440982",
+    name: "化州市",
+    cityCode: "4409",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008716"),
+    code: "440983",
+    name: "信宜市",
+    cityCode: "4409",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008717"),
+    code: "441202",
+    name: "端州区",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008718"),
+    code: "441203",
+    name: "鼎湖区",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008719"),
+    code: "441204",
+    name: "高要区",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300871a"),
+    code: "441223",
+    name: "广宁县",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300871b"),
+    code: "441224",
+    name: "怀集县",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300871c"),
+    code: "441225",
+    name: "封开县",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300871d"),
+    code: "441226",
+    name: "德庆县",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300871e"),
+    code: "441284",
+    name: "四会市",
+    cityCode: "4412",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300871f"),
+    code: "441302",
+    name: "惠城区",
+    cityCode: "4413",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008720"),
+    code: "441303",
+    name: "惠阳区",
+    cityCode: "4413",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008721"),
+    code: "441322",
+    name: "博罗县",
+    cityCode: "4413",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008722"),
+    code: "441323",
+    name: "惠东县",
+    cityCode: "4413",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008723"),
+    code: "441324",
+    name: "龙门县",
+    cityCode: "4413",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008724"),
+    code: "441402",
+    name: "梅江区",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008725"),
+    code: "441403",
+    name: "梅县区",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008726"),
+    code: "441422",
+    name: "大埔县",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008727"),
+    code: "441423",
+    name: "丰顺县",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008728"),
+    code: "441424",
+    name: "五华县",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008729"),
+    code: "441426",
+    name: "平远县",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300872a"),
+    code: "441427",
+    name: "蕉岭县",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300872b"),
+    code: "441481",
+    name: "兴宁市",
+    cityCode: "4414",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300872c"),
+    code: "441502",
+    name: "城区",
+    cityCode: "4415",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300872d"),
+    code: "441521",
+    name: "海丰县",
+    cityCode: "4415",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300872e"),
+    code: "441523",
+    name: "陆河县",
+    cityCode: "4415",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300872f"),
+    code: "441581",
+    name: "陆丰市",
+    cityCode: "4415",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008730"),
+    code: "441602",
+    name: "源城区",
+    cityCode: "4416",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008731"),
+    code: "441621",
+    name: "紫金县",
+    cityCode: "4416",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008732"),
+    code: "441622",
+    name: "龙川县",
+    cityCode: "4416",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008733"),
+    code: "441623",
+    name: "连平县",
+    cityCode: "4416",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008734"),
+    code: "441624",
+    name: "和平县",
+    cityCode: "4416",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008735"),
+    code: "441625",
+    name: "东源县",
+    cityCode: "4416",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008736"),
+    code: "441702",
+    name: "江城区",
+    cityCode: "4417",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008737"),
+    code: "441704",
+    name: "阳东区",
+    cityCode: "4417",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008738"),
+    code: "441721",
+    name: "阳西县",
+    cityCode: "4417",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008739"),
+    code: "441781",
+    name: "阳春市",
+    cityCode: "4417",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300873a"),
+    code: "441802",
+    name: "清城区",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300873b"),
+    code: "441803",
+    name: "清新区",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300873c"),
+    code: "441821",
+    name: "佛冈县",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300873d"),
+    code: "441823",
+    name: "阳山县",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300873e"),
+    code: "441825",
+    name: "连山壮族瑶族自治县",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300873f"),
+    code: "441826",
+    name: "连南瑶族自治县",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008740"),
+    code: "441881",
+    name: "英德市",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008741"),
+    code: "441882",
+    name: "连州市",
+    cityCode: "4418",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008742"),
+    code: "445102",
+    name: "湘桥区",
+    cityCode: "4451",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008743"),
+    code: "445103",
+    name: "潮安区",
+    cityCode: "4451",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008744"),
+    code: "445122",
+    name: "饶平县",
+    cityCode: "4451",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008745"),
+    code: "445202",
+    name: "榕城区",
+    cityCode: "4452",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008746"),
+    code: "445203",
+    name: "揭东区",
+    cityCode: "4452",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008747"),
+    code: "445222",
+    name: "揭西县",
+    cityCode: "4452",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008748"),
+    code: "445224",
+    name: "惠来县",
+    cityCode: "4452",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008749"),
+    code: "445281",
+    name: "普宁市",
+    cityCode: "4452",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300874a"),
+    code: "445302",
+    name: "云城区",
+    cityCode: "4453",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300874b"),
+    code: "445303",
+    name: "云安区",
+    cityCode: "4453",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300874c"),
+    code: "445321",
+    name: "新兴县",
+    cityCode: "4453",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300874d"),
+    code: "445322",
+    name: "郁南县",
+    cityCode: "4453",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300874e"),
+    code: "445381",
+    name: "罗定市",
+    cityCode: "4453",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300874f"),
+    code: "450102",
+    name: "兴宁区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008750"),
+    code: "450103",
+    name: "青秀区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008751"),
+    code: "450105",
+    name: "江南区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008752"),
+    code: "450107",
+    name: "西乡塘区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008753"),
+    code: "450108",
+    name: "良庆区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008754"),
+    code: "450109",
+    name: "邕宁区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008755"),
+    code: "450110",
+    name: "武鸣区",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008756"),
+    code: "450123",
+    name: "隆安县",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008757"),
+    code: "450124",
+    name: "马山县",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008758"),
+    code: "450125",
+    name: "上林县",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008759"),
+    code: "450126",
+    name: "宾阳县",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300875a"),
+    code: "450181",
+    name: "横州市",
+    cityCode: "4501",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300875b"),
+    code: "450202",
+    name: "城中区",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300875c"),
+    code: "450203",
+    name: "鱼峰区",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300875d"),
+    code: "450204",
+    name: "柳南区",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300875e"),
+    code: "450205",
+    name: "柳北区",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300875f"),
+    code: "450206",
+    name: "柳江区",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008760"),
+    code: "450222",
+    name: "柳城县",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008761"),
+    code: "450223",
+    name: "鹿寨县",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008762"),
+    code: "450224",
+    name: "融安县",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008763"),
+    code: "450225",
+    name: "融水苗族自治县",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008764"),
+    code: "450226",
+    name: "三江侗族自治县",
+    cityCode: "4502",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008765"),
+    code: "450302",
+    name: "秀峰区",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008766"),
+    code: "450303",
+    name: "叠彩区",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008767"),
+    code: "450304",
+    name: "象山区",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008768"),
+    code: "450305",
+    name: "七星区",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008769"),
+    code: "450311",
+    name: "雁山区",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300876a"),
+    code: "450312",
+    name: "临桂区",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300876b"),
+    code: "450321",
+    name: "阳朔县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300876c"),
+    code: "450323",
+    name: "灵川县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300876d"),
+    code: "450324",
+    name: "全州县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300876e"),
+    code: "450325",
+    name: "兴安县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300876f"),
+    code: "450326",
+    name: "永福县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008770"),
+    code: "450327",
+    name: "灌阳县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008771"),
+    code: "450328",
+    name: "龙胜各族自治县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008772"),
+    code: "450329",
+    name: "资源县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008773"),
+    code: "450330",
+    name: "平乐县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008774"),
+    code: "450332",
+    name: "恭城瑶族自治县",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008775"),
+    code: "450381",
+    name: "荔浦市",
+    cityCode: "4503",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008776"),
+    code: "450403",
+    name: "万秀区",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008777"),
+    code: "450405",
+    name: "长洲区",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008778"),
+    code: "450406",
+    name: "龙圩区",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008779"),
+    code: "450421",
+    name: "苍梧县",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300877a"),
+    code: "450422",
+    name: "藤县",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300877b"),
+    code: "450423",
+    name: "蒙山县",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300877c"),
+    code: "450481",
+    name: "岑溪市",
+    cityCode: "4504",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300877d"),
+    code: "450502",
+    name: "海城区",
+    cityCode: "4505",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300877e"),
+    code: "450503",
+    name: "银海区",
+    cityCode: "4505",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300877f"),
+    code: "450512",
+    name: "铁山港区",
+    cityCode: "4505",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008780"),
+    code: "450521",
+    name: "合浦县",
+    cityCode: "4505",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008781"),
+    code: "450602",
+    name: "港口区",
+    cityCode: "4506",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008782"),
+    code: "450603",
+    name: "防城区",
+    cityCode: "4506",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008783"),
+    code: "450621",
+    name: "上思县",
+    cityCode: "4506",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008784"),
+    code: "450681",
+    name: "东兴市",
+    cityCode: "4506",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008785"),
+    code: "450702",
+    name: "钦南区",
+    cityCode: "4507",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008786"),
+    code: "450703",
+    name: "钦北区",
+    cityCode: "4507",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008787"),
+    code: "450721",
+    name: "灵山县",
+    cityCode: "4507",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008788"),
+    code: "450722",
+    name: "浦北县",
+    cityCode: "4507",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008789"),
+    code: "450802",
+    name: "港北区",
+    cityCode: "4508",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300878a"),
+    code: "450803",
+    name: "港南区",
+    cityCode: "4508",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300878b"),
+    code: "450804",
+    name: "覃塘区",
+    cityCode: "4508",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300878c"),
+    code: "450821",
+    name: "平南县",
+    cityCode: "4508",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300878d"),
+    code: "450881",
+    name: "桂平市",
+    cityCode: "4508",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300878e"),
+    code: "450902",
+    name: "玉州区",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300878f"),
+    code: "450903",
+    name: "福绵区",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008790"),
+    code: "450921",
+    name: "容县",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008791"),
+    code: "450922",
+    name: "陆川县",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008792"),
+    code: "450923",
+    name: "博白县",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008793"),
+    code: "450924",
+    name: "兴业县",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008794"),
+    code: "450981",
+    name: "北流市",
+    cityCode: "4509",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008795"),
+    code: "451002",
+    name: "右江区",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008796"),
+    code: "451003",
+    name: "田阳区",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008797"),
+    code: "451022",
+    name: "田东县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008798"),
+    code: "451024",
+    name: "德保县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008799"),
+    code: "451026",
+    name: "那坡县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300879a"),
+    code: "451027",
+    name: "凌云县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300879b"),
+    code: "451028",
+    name: "乐业县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300879c"),
+    code: "451029",
+    name: "田林县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300879d"),
+    code: "451030",
+    name: "西林县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300879e"),
+    code: "451031",
+    name: "隆林各族自治县",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300879f"),
+    code: "451081",
+    name: "靖西市",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a0"),
+    code: "451082",
+    name: "平果市",
+    cityCode: "4510",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a1"),
+    code: "451102",
+    name: "八步区",
+    cityCode: "4511",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a2"),
+    code: "451103",
+    name: "平桂区",
+    cityCode: "4511",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a3"),
+    code: "451121",
+    name: "昭平县",
+    cityCode: "4511",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a4"),
+    code: "451122",
+    name: "钟山县",
+    cityCode: "4511",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a5"),
+    code: "451123",
+    name: "富川瑶族自治县",
+    cityCode: "4511",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a6"),
+    code: "451202",
+    name: "金城江区",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a7"),
+    code: "451203",
+    name: "宜州区",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a8"),
+    code: "451221",
+    name: "南丹县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087a9"),
+    code: "451222",
+    name: "天峨县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087aa"),
+    code: "451223",
+    name: "凤山县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ab"),
+    code: "451224",
+    name: "东兰县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ac"),
+    code: "451225",
+    name: "罗城仫佬族自治县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ad"),
+    code: "451226",
+    name: "环江毛南族自治县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ae"),
+    code: "451227",
+    name: "巴马瑶族自治县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087af"),
+    code: "451228",
+    name: "都安瑶族自治县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b0"),
+    code: "451229",
+    name: "大化瑶族自治县",
+    cityCode: "4512",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b1"),
+    code: "451302",
+    name: "兴宾区",
+    cityCode: "4513",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b2"),
+    code: "451321",
+    name: "忻城县",
+    cityCode: "4513",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b3"),
+    code: "451322",
+    name: "象州县",
+    cityCode: "4513",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b4"),
+    code: "451323",
+    name: "武宣县",
+    cityCode: "4513",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b5"),
+    code: "451324",
+    name: "金秀瑶族自治县",
+    cityCode: "4513",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b6"),
+    code: "451381",
+    name: "合山市",
+    cityCode: "4513",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b7"),
+    code: "451402",
+    name: "江州区",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b8"),
+    code: "451421",
+    name: "扶绥县",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087b9"),
+    code: "451422",
+    name: "宁明县",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ba"),
+    code: "451423",
+    name: "龙州县",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087bb"),
+    code: "451424",
+    name: "大新县",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087bc"),
+    code: "451425",
+    name: "天等县",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087bd"),
+    code: "451481",
+    name: "凭祥市",
+    cityCode: "4514",
+    provinceCode: "45"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087be"),
+    code: "460105",
+    name: "秀英区",
+    cityCode: "4601",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087bf"),
+    code: "460106",
+    name: "龙华区",
+    cityCode: "4601",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c0"),
+    code: "460107",
+    name: "琼山区",
+    cityCode: "4601",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c1"),
+    code: "460108",
+    name: "美兰区",
+    cityCode: "4601",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c2"),
+    code: "460202",
+    name: "海棠区",
+    cityCode: "4602",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c3"),
+    code: "460203",
+    name: "吉阳区",
+    cityCode: "4602",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c4"),
+    code: "460204",
+    name: "天涯区",
+    cityCode: "4602",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c5"),
+    code: "460205",
+    name: "崖州区",
+    cityCode: "4602",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c6"),
+    code: "460321",
+    name: "西沙群岛",
+    cityCode: "4603",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c7"),
+    code: "460322",
+    name: "南沙群岛",
+    cityCode: "4603",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c8"),
+    code: "460323",
+    name: "中沙群岛的岛礁及其海域",
+    cityCode: "4603",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087c9"),
+    code: "469001",
+    name: "五指山市",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ca"),
+    code: "469002",
+    name: "琼海市",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087cb"),
+    code: "469005",
+    name: "文昌市",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087cc"),
+    code: "469006",
+    name: "万宁市",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087cd"),
+    code: "469007",
+    name: "东方市",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ce"),
+    code: "469021",
+    name: "定安县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087cf"),
+    code: "469022",
+    name: "屯昌县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d0"),
+    code: "469023",
+    name: "澄迈县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d1"),
+    code: "469024",
+    name: "临高县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d2"),
+    code: "469025",
+    name: "白沙黎族自治县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d3"),
+    code: "469026",
+    name: "昌江黎族自治县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d4"),
+    code: "469027",
+    name: "乐东黎族自治县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d5"),
+    code: "469028",
+    name: "陵水黎族自治县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d6"),
+    code: "469029",
+    name: "保亭黎族苗族自治县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d7"),
+    code: "469030",
+    name: "琼中黎族苗族自治县",
+    cityCode: "4690",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d8"),
+    code: "500101",
+    name: "万州区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087d9"),
+    code: "500102",
+    name: "涪陵区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087da"),
+    code: "500103",
+    name: "渝中区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087db"),
+    code: "500104",
+    name: "大渡口区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087dc"),
+    code: "500105",
+    name: "江北区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087dd"),
+    code: "500106",
+    name: "沙坪坝区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087de"),
+    code: "500107",
+    name: "九龙坡区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087df"),
+    code: "500108",
+    name: "南岸区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e0"),
+    code: "500109",
+    name: "北碚区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e1"),
+    code: "500110",
+    name: "綦江区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e2"),
+    code: "500111",
+    name: "大足区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e3"),
+    code: "500112",
+    name: "渝北区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e4"),
+    code: "500113",
+    name: "巴南区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e5"),
+    code: "500114",
+    name: "黔江区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e6"),
+    code: "500115",
+    name: "长寿区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e7"),
+    code: "500116",
+    name: "江津区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e8"),
+    code: "500117",
+    name: "合川区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087e9"),
+    code: "500118",
+    name: "永川区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ea"),
+    code: "500119",
+    name: "南川区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087eb"),
+    code: "500120",
+    name: "璧山区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ec"),
+    code: "500151",
+    name: "铜梁区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ed"),
+    code: "500152",
+    name: "潼南区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ee"),
+    code: "500153",
+    name: "荣昌区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ef"),
+    code: "500154",
+    name: "开州区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f0"),
+    code: "500155",
+    name: "梁平区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f1"),
+    code: "500156",
+    name: "武隆区",
+    cityCode: "5001",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f2"),
+    code: "500229",
+    name: "城口县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f3"),
+    code: "500230",
+    name: "丰都县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f4"),
+    code: "500231",
+    name: "垫江县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f5"),
+    code: "500233",
+    name: "忠县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f6"),
+    code: "500235",
+    name: "云阳县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f7"),
+    code: "500236",
+    name: "奉节县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f8"),
+    code: "500237",
+    name: "巫山县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087f9"),
+    code: "500238",
+    name: "巫溪县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087fa"),
+    code: "500240",
+    name: "石柱土家族自治县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087fb"),
+    code: "500241",
+    name: "秀山土家族苗族自治县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087fc"),
+    code: "500242",
+    name: "酉阳土家族苗族自治县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087fd"),
+    code: "500243",
+    name: "彭水苗族土家族自治县",
+    cityCode: "5002",
+    provinceCode: "50"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087fe"),
+    code: "510104",
+    name: "锦江区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30087ff"),
+    code: "510105",
+    name: "青羊区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008800"),
+    code: "510106",
+    name: "金牛区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008801"),
+    code: "510107",
+    name: "武侯区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008802"),
+    code: "510108",
+    name: "成华区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008803"),
+    code: "510112",
+    name: "龙泉驿区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008804"),
+    code: "510113",
+    name: "青白江区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008805"),
+    code: "510114",
+    name: "新都区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008806"),
+    code: "510115",
+    name: "温江区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008807"),
+    code: "510116",
+    name: "双流区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008808"),
+    code: "510117",
+    name: "郫都区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008809"),
+    code: "510118",
+    name: "新津区",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300880a"),
+    code: "510121",
+    name: "金堂县",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300880b"),
+    code: "510129",
+    name: "大邑县",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300880c"),
+    code: "510131",
+    name: "蒲江县",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300880d"),
+    code: "510181",
+    name: "都江堰市",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300880e"),
+    code: "510182",
+    name: "彭州市",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300880f"),
+    code: "510183",
+    name: "邛崃市",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008810"),
+    code: "510184",
+    name: "崇州市",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008811"),
+    code: "510185",
+    name: "简阳市",
+    cityCode: "5101",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008812"),
+    code: "510302",
+    name: "自流井区",
+    cityCode: "5103",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008813"),
+    code: "510303",
+    name: "贡井区",
+    cityCode: "5103",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008814"),
+    code: "510304",
+    name: "大安区",
+    cityCode: "5103",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008815"),
+    code: "510311",
+    name: "沿滩区",
+    cityCode: "5103",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008816"),
+    code: "510321",
+    name: "荣县",
+    cityCode: "5103",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008817"),
+    code: "510322",
+    name: "富顺县",
+    cityCode: "5103",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008818"),
+    code: "510402",
+    name: "东区",
+    cityCode: "5104",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008819"),
+    code: "510403",
+    name: "西区",
+    cityCode: "5104",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300881a"),
+    code: "510411",
+    name: "仁和区",
+    cityCode: "5104",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300881b"),
+    code: "510421",
+    name: "米易县",
+    cityCode: "5104",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300881c"),
+    code: "510422",
+    name: "盐边县",
+    cityCode: "5104",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300881d"),
+    code: "510502",
+    name: "江阳区",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300881e"),
+    code: "510503",
+    name: "纳溪区",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300881f"),
+    code: "510504",
+    name: "龙马潭区",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008820"),
+    code: "510521",
+    name: "泸县",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008821"),
+    code: "510522",
+    name: "合江县",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008822"),
+    code: "510524",
+    name: "叙永县",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008823"),
+    code: "510525",
+    name: "古蔺县",
+    cityCode: "5105",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008824"),
+    code: "510603",
+    name: "旌阳区",
+    cityCode: "5106",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008825"),
+    code: "510604",
+    name: "罗江区",
+    cityCode: "5106",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008826"),
+    code: "510623",
+    name: "中江县",
+    cityCode: "5106",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008827"),
+    code: "510681",
+    name: "广汉市",
+    cityCode: "5106",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008828"),
+    code: "510682",
+    name: "什邡市",
+    cityCode: "5106",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008829"),
+    code: "510683",
+    name: "绵竹市",
+    cityCode: "5106",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300882a"),
+    code: "510703",
+    name: "涪城区",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300882b"),
+    code: "510704",
+    name: "游仙区",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300882c"),
+    code: "510705",
+    name: "安州区",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300882d"),
+    code: "510722",
+    name: "三台县",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300882e"),
+    code: "510723",
+    name: "盐亭县",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300882f"),
+    code: "510725",
+    name: "梓潼县",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008830"),
+    code: "510726",
+    name: "北川羌族自治县",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008831"),
+    code: "510727",
+    name: "平武县",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008832"),
+    code: "510781",
+    name: "江油市",
+    cityCode: "5107",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008833"),
+    code: "510802",
+    name: "利州区",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008834"),
+    code: "510811",
+    name: "昭化区",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008835"),
+    code: "510812",
+    name: "朝天区",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008836"),
+    code: "510821",
+    name: "旺苍县",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008837"),
+    code: "510822",
+    name: "青川县",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008838"),
+    code: "510823",
+    name: "剑阁县",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008839"),
+    code: "510824",
+    name: "苍溪县",
+    cityCode: "5108",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300883a"),
+    code: "510903",
+    name: "船山区",
+    cityCode: "5109",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300883b"),
+    code: "510904",
+    name: "安居区",
+    cityCode: "5109",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300883c"),
+    code: "510921",
+    name: "蓬溪县",
+    cityCode: "5109",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300883d"),
+    code: "510923",
+    name: "大英县",
+    cityCode: "5109",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300883e"),
+    code: "510981",
+    name: "射洪市",
+    cityCode: "5109",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300883f"),
+    code: "511002",
+    name: "市中区",
+    cityCode: "5110",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008840"),
+    code: "511011",
+    name: "东兴区",
+    cityCode: "5110",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008841"),
+    code: "511024",
+    name: "威远县",
+    cityCode: "5110",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008842"),
+    code: "511025",
+    name: "资中县",
+    cityCode: "5110",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008843"),
+    code: "511071",
+    name: "内江经济开发区",
+    cityCode: "5110",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008844"),
+    code: "511083",
+    name: "隆昌市",
+    cityCode: "5110",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008845"),
+    code: "511102",
+    name: "市中区",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008846"),
+    code: "511111",
+    name: "沙湾区",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008847"),
+    code: "511112",
+    name: "五通桥区",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008848"),
+    code: "511113",
+    name: "金口河区",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008849"),
+    code: "511123",
+    name: "犍为县",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300884a"),
+    code: "511124",
+    name: "井研县",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300884b"),
+    code: "511126",
+    name: "夹江县",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300884c"),
+    code: "511129",
+    name: "沐川县",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300884d"),
+    code: "511132",
+    name: "峨边彝族自治县",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300884e"),
+    code: "511133",
+    name: "马边彝族自治县",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300884f"),
+    code: "511181",
+    name: "峨眉山市",
+    cityCode: "5111",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008850"),
+    code: "511302",
+    name: "顺庆区",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008851"),
+    code: "511303",
+    name: "高坪区",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008852"),
+    code: "511304",
+    name: "嘉陵区",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008853"),
+    code: "511321",
+    name: "南部县",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008854"),
+    code: "511322",
+    name: "营山县",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008855"),
+    code: "511323",
+    name: "蓬安县",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008856"),
+    code: "511324",
+    name: "仪陇县",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008857"),
+    code: "511325",
+    name: "西充县",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008858"),
+    code: "511381",
+    name: "阆中市",
+    cityCode: "5113",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008859"),
+    code: "511402",
+    name: "东坡区",
+    cityCode: "5114",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300885a"),
+    code: "511403",
+    name: "彭山区",
+    cityCode: "5114",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300885b"),
+    code: "511421",
+    name: "仁寿县",
+    cityCode: "5114",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300885c"),
+    code: "511423",
+    name: "洪雅县",
+    cityCode: "5114",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300885d"),
+    code: "511424",
+    name: "丹棱县",
+    cityCode: "5114",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300885e"),
+    code: "511425",
+    name: "青神县",
+    cityCode: "5114",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300885f"),
+    code: "511502",
+    name: "翠屏区",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008860"),
+    code: "511503",
+    name: "南溪区",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008861"),
+    code: "511504",
+    name: "叙州区",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008862"),
+    code: "511523",
+    name: "江安县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008863"),
+    code: "511524",
+    name: "长宁县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008864"),
+    code: "511525",
+    name: "高县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008865"),
+    code: "511526",
+    name: "珙县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008866"),
+    code: "511527",
+    name: "筠连县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008867"),
+    code: "511528",
+    name: "兴文县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008868"),
+    code: "511529",
+    name: "屏山县",
+    cityCode: "5115",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008869"),
+    code: "511602",
+    name: "广安区",
+    cityCode: "5116",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300886a"),
+    code: "511603",
+    name: "前锋区",
+    cityCode: "5116",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300886b"),
+    code: "511621",
+    name: "岳池县",
+    cityCode: "5116",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300886c"),
+    code: "511622",
+    name: "武胜县",
+    cityCode: "5116",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300886d"),
+    code: "511623",
+    name: "邻水县",
+    cityCode: "5116",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300886e"),
+    code: "511681",
+    name: "华蓥市",
+    cityCode: "5116",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300886f"),
+    code: "511702",
+    name: "通川区",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008870"),
+    code: "511703",
+    name: "达川区",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008871"),
+    code: "511722",
+    name: "宣汉县",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008872"),
+    code: "511723",
+    name: "开江县",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008873"),
+    code: "511724",
+    name: "大竹县",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008874"),
+    code: "511725",
+    name: "渠县",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008875"),
+    code: "511771",
+    name: "达州经济开发区",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008876"),
+    code: "511781",
+    name: "万源市",
+    cityCode: "5117",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008877"),
+    code: "511802",
+    name: "雨城区",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008878"),
+    code: "511803",
+    name: "名山区",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008879"),
+    code: "511822",
+    name: "荥经县",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300887a"),
+    code: "511823",
+    name: "汉源县",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300887b"),
+    code: "511824",
+    name: "石棉县",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300887c"),
+    code: "511825",
+    name: "天全县",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300887d"),
+    code: "511826",
+    name: "芦山县",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300887e"),
+    code: "511827",
+    name: "宝兴县",
+    cityCode: "5118",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300887f"),
+    code: "511902",
+    name: "巴州区",
+    cityCode: "5119",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008880"),
+    code: "511903",
+    name: "恩阳区",
+    cityCode: "5119",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008881"),
+    code: "511921",
+    name: "通江县",
+    cityCode: "5119",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008882"),
+    code: "511922",
+    name: "南江县",
+    cityCode: "5119",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008883"),
+    code: "511923",
+    name: "平昌县",
+    cityCode: "5119",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008884"),
+    code: "511971",
+    name: "巴中经济开发区",
+    cityCode: "5119",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008885"),
+    code: "512002",
+    name: "雁江区",
+    cityCode: "5120",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008886"),
+    code: "512021",
+    name: "安岳县",
+    cityCode: "5120",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008887"),
+    code: "512022",
+    name: "乐至县",
+    cityCode: "5120",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008888"),
+    code: "513201",
+    name: "马尔康市",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008889"),
+    code: "513221",
+    name: "汶川县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300888a"),
+    code: "513222",
+    name: "理县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300888b"),
+    code: "513223",
+    name: "茂县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300888c"),
+    code: "513224",
+    name: "松潘县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300888d"),
+    code: "513225",
+    name: "九寨沟县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300888e"),
+    code: "513226",
+    name: "金川县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300888f"),
+    code: "513227",
+    name: "小金县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008890"),
+    code: "513228",
+    name: "黑水县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008891"),
+    code: "513230",
+    name: "壤塘县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008892"),
+    code: "513231",
+    name: "阿坝县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008893"),
+    code: "513232",
+    name: "若尔盖县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008894"),
+    code: "513233",
+    name: "红原县",
+    cityCode: "5132",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008895"),
+    code: "513301",
+    name: "康定市",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008896"),
+    code: "513322",
+    name: "泸定县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008897"),
+    code: "513323",
+    name: "丹巴县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008898"),
+    code: "513324",
+    name: "九龙县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008899"),
+    code: "513325",
+    name: "雅江县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300889a"),
+    code: "513326",
+    name: "道孚县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300889b"),
+    code: "513327",
+    name: "炉霍县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300889c"),
+    code: "513328",
+    name: "甘孜县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300889d"),
+    code: "513329",
+    name: "新龙县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300889e"),
+    code: "513330",
+    name: "德格县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300889f"),
+    code: "513331",
+    name: "白玉县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a0"),
+    code: "513332",
+    name: "石渠县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a1"),
+    code: "513333",
+    name: "色达县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a2"),
+    code: "513334",
+    name: "理塘县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a3"),
+    code: "513335",
+    name: "巴塘县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a4"),
+    code: "513336",
+    name: "乡城县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a5"),
+    code: "513337",
+    name: "稻城县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a6"),
+    code: "513338",
+    name: "得荣县",
+    cityCode: "5133",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a7"),
+    code: "513401",
+    name: "西昌市",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a8"),
+    code: "513402",
+    name: "会理市",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088a9"),
+    code: "513422",
+    name: "木里藏族自治县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088aa"),
+    code: "513423",
+    name: "盐源县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ab"),
+    code: "513424",
+    name: "德昌县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ac"),
+    code: "513426",
+    name: "会东县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ad"),
+    code: "513427",
+    name: "宁南县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ae"),
+    code: "513428",
+    name: "普格县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088af"),
+    code: "513429",
+    name: "布拖县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b0"),
+    code: "513430",
+    name: "金阳县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b1"),
+    code: "513431",
+    name: "昭觉县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b2"),
+    code: "513432",
+    name: "喜德县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b3"),
+    code: "513433",
+    name: "冕宁县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b4"),
+    code: "513434",
+    name: "越西县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b5"),
+    code: "513435",
+    name: "甘洛县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b6"),
+    code: "513436",
+    name: "美姑县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b7"),
+    code: "513437",
+    name: "雷波县",
+    cityCode: "5134",
+    provinceCode: "51"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b8"),
+    code: "520102",
+    name: "南明区",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088b9"),
+    code: "520103",
+    name: "云岩区",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ba"),
+    code: "520111",
+    name: "花溪区",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088bb"),
+    code: "520112",
+    name: "乌当区",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088bc"),
+    code: "520113",
+    name: "白云区",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088bd"),
+    code: "520115",
+    name: "观山湖区",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088be"),
+    code: "520121",
+    name: "开阳县",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088bf"),
+    code: "520122",
+    name: "息烽县",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c0"),
+    code: "520123",
+    name: "修文县",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c1"),
+    code: "520181",
+    name: "清镇市",
+    cityCode: "5201",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c2"),
+    code: "520201",
+    name: "钟山区",
+    cityCode: "5202",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c3"),
+    code: "520203",
+    name: "六枝特区",
+    cityCode: "5202",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c4"),
+    code: "520204",
+    name: "水城区",
+    cityCode: "5202",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c5"),
+    code: "520281",
+    name: "盘州市",
+    cityCode: "5202",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c6"),
+    code: "520302",
+    name: "红花岗区",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c7"),
+    code: "520303",
+    name: "汇川区",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c8"),
+    code: "520304",
+    name: "播州区",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088c9"),
+    code: "520322",
+    name: "桐梓县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ca"),
+    code: "520323",
+    name: "绥阳县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088cb"),
+    code: "520324",
+    name: "正安县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088cc"),
+    code: "520325",
+    name: "道真仡佬族苗族自治县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088cd"),
+    code: "520326",
+    name: "务川仡佬族苗族自治县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ce"),
+    code: "520327",
+    name: "凤冈县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088cf"),
+    code: "520328",
+    name: "湄潭县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d0"),
+    code: "520329",
+    name: "余庆县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d1"),
+    code: "520330",
+    name: "习水县",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d2"),
+    code: "520381",
+    name: "赤水市",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d3"),
+    code: "520382",
+    name: "仁怀市",
+    cityCode: "5203",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d4"),
+    code: "520402",
+    name: "西秀区",
+    cityCode: "5204",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d5"),
+    code: "520403",
+    name: "平坝区",
+    cityCode: "5204",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d6"),
+    code: "520422",
+    name: "普定县",
+    cityCode: "5204",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d7"),
+    code: "520423",
+    name: "镇宁布依族苗族自治县",
+    cityCode: "5204",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d8"),
+    code: "520424",
+    name: "关岭布依族苗族自治县",
+    cityCode: "5204",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088d9"),
+    code: "520425",
+    name: "紫云苗族布依族自治县",
+    cityCode: "5204",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088da"),
+    code: "520502",
+    name: "七星关区",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088db"),
+    code: "520521",
+    name: "大方县",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088dc"),
+    code: "520523",
+    name: "金沙县",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088dd"),
+    code: "520524",
+    name: "织金县",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088de"),
+    code: "520525",
+    name: "纳雍县",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088df"),
+    code: "520526",
+    name: "威宁彝族回族苗族自治县",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e0"),
+    code: "520527",
+    name: "赫章县",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e1"),
+    code: "520581",
+    name: "黔西市",
+    cityCode: "5205",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e2"),
+    code: "520602",
+    name: "碧江区",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e3"),
+    code: "520603",
+    name: "万山区",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e4"),
+    code: "520621",
+    name: "江口县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e5"),
+    code: "520622",
+    name: "玉屏侗族自治县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e6"),
+    code: "520623",
+    name: "石阡县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e7"),
+    code: "520624",
+    name: "思南县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e8"),
+    code: "520625",
+    name: "印江土家族苗族自治县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088e9"),
+    code: "520626",
+    name: "德江县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ea"),
+    code: "520627",
+    name: "沿河土家族自治县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088eb"),
+    code: "520628",
+    name: "松桃苗族自治县",
+    cityCode: "5206",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ec"),
+    code: "522301",
+    name: "兴义市",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ed"),
+    code: "522302",
+    name: "兴仁市",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ee"),
+    code: "522323",
+    name: "普安县",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ef"),
+    code: "522324",
+    name: "晴隆县",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f0"),
+    code: "522325",
+    name: "贞丰县",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f1"),
+    code: "522326",
+    name: "望谟县",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f2"),
+    code: "522327",
+    name: "册亨县",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f3"),
+    code: "522328",
+    name: "安龙县",
+    cityCode: "5223",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f4"),
+    code: "522601",
+    name: "凯里市",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f5"),
+    code: "522622",
+    name: "黄平县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f6"),
+    code: "522623",
+    name: "施秉县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f7"),
+    code: "522624",
+    name: "三穗县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f8"),
+    code: "522625",
+    name: "镇远县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088f9"),
+    code: "522626",
+    name: "岑巩县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088fa"),
+    code: "522627",
+    name: "天柱县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088fb"),
+    code: "522628",
+    name: "锦屏县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088fc"),
+    code: "522629",
+    name: "剑河县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088fd"),
+    code: "522630",
+    name: "台江县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088fe"),
+    code: "522631",
+    name: "黎平县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30088ff"),
+    code: "522632",
+    name: "榕江县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008900"),
+    code: "522633",
+    name: "从江县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008901"),
+    code: "522634",
+    name: "雷山县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008902"),
+    code: "522635",
+    name: "麻江县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008903"),
+    code: "522636",
+    name: "丹寨县",
+    cityCode: "5226",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008904"),
+    code: "522701",
+    name: "都匀市",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008905"),
+    code: "522702",
+    name: "福泉市",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008906"),
+    code: "522722",
+    name: "荔波县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008907"),
+    code: "522723",
+    name: "贵定县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008908"),
+    code: "522725",
+    name: "瓮安县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008909"),
+    code: "522726",
+    name: "独山县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300890a"),
+    code: "522727",
+    name: "平塘县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300890b"),
+    code: "522728",
+    name: "罗甸县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300890c"),
+    code: "522729",
+    name: "长顺县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300890d"),
+    code: "522730",
+    name: "龙里县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300890e"),
+    code: "522731",
+    name: "惠水县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300890f"),
+    code: "522732",
+    name: "三都水族自治县",
+    cityCode: "5227",
+    provinceCode: "52"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008910"),
+    code: "530102",
+    name: "五华区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008911"),
+    code: "530103",
+    name: "盘龙区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008912"),
+    code: "530111",
+    name: "官渡区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008913"),
+    code: "530112",
+    name: "西山区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008914"),
+    code: "530113",
+    name: "东川区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008915"),
+    code: "530114",
+    name: "呈贡区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008916"),
+    code: "530115",
+    name: "晋宁区",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008917"),
+    code: "530124",
+    name: "富民县",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008918"),
+    code: "530125",
+    name: "宜良县",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008919"),
+    code: "530126",
+    name: "石林彝族自治县",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300891a"),
+    code: "530127",
+    name: "嵩明县",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300891b"),
+    code: "530128",
+    name: "禄劝彝族苗族自治县",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300891c"),
+    code: "530129",
+    name: "寻甸回族彝族自治县",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300891d"),
+    code: "530181",
+    name: "安宁市",
+    cityCode: "5301",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300891e"),
+    code: "530302",
+    name: "麒麟区",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300891f"),
+    code: "530303",
+    name: "沾益区",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008920"),
+    code: "530304",
+    name: "马龙区",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008921"),
+    code: "530322",
+    name: "陆良县",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008922"),
+    code: "530323",
+    name: "师宗县",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008923"),
+    code: "530324",
+    name: "罗平县",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008924"),
+    code: "530325",
+    name: "富源县",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008925"),
+    code: "530326",
+    name: "会泽县",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008926"),
+    code: "530381",
+    name: "宣威市",
+    cityCode: "5303",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008927"),
+    code: "530402",
+    name: "红塔区",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008928"),
+    code: "530403",
+    name: "江川区",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008929"),
+    code: "530423",
+    name: "通海县",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300892a"),
+    code: "530424",
+    name: "华宁县",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300892b"),
+    code: "530425",
+    name: "易门县",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300892c"),
+    code: "530426",
+    name: "峨山彝族自治县",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300892d"),
+    code: "530427",
+    name: "新平彝族傣族自治县",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300892e"),
+    code: "530428",
+    name: "元江哈尼族彝族傣族自治县",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300892f"),
+    code: "530481",
+    name: "澄江市",
+    cityCode: "5304",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008930"),
+    code: "530502",
+    name: "隆阳区",
+    cityCode: "5305",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008931"),
+    code: "530521",
+    name: "施甸县",
+    cityCode: "5305",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008932"),
+    code: "530523",
+    name: "龙陵县",
+    cityCode: "5305",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008933"),
+    code: "530524",
+    name: "昌宁县",
+    cityCode: "5305",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008934"),
+    code: "530581",
+    name: "腾冲市",
+    cityCode: "5305",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008935"),
+    code: "530602",
+    name: "昭阳区",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008936"),
+    code: "530621",
+    name: "鲁甸县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008937"),
+    code: "530622",
+    name: "巧家县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008938"),
+    code: "530623",
+    name: "盐津县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008939"),
+    code: "530624",
+    name: "大关县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300893a"),
+    code: "530625",
+    name: "永善县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300893b"),
+    code: "530626",
+    name: "绥江县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300893c"),
+    code: "530627",
+    name: "镇雄县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300893d"),
+    code: "530628",
+    name: "彝良县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300893e"),
+    code: "530629",
+    name: "威信县",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300893f"),
+    code: "530681",
+    name: "水富市",
+    cityCode: "5306",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008940"),
+    code: "530702",
+    name: "古城区",
+    cityCode: "5307",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008941"),
+    code: "530721",
+    name: "玉龙纳西族自治县",
+    cityCode: "5307",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008942"),
+    code: "530722",
+    name: "永胜县",
+    cityCode: "5307",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008943"),
+    code: "530723",
+    name: "华坪县",
+    cityCode: "5307",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008944"),
+    code: "530724",
+    name: "宁蒗彝族自治县",
+    cityCode: "5307",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008945"),
+    code: "530802",
+    name: "思茅区",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008946"),
+    code: "530821",
+    name: "宁洱哈尼族彝族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008947"),
+    code: "530822",
+    name: "墨江哈尼族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008948"),
+    code: "530823",
+    name: "景东彝族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008949"),
+    code: "530824",
+    name: "景谷傣族彝族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300894a"),
+    code: "530825",
+    name: "镇沅彝族哈尼族拉祜族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300894b"),
+    code: "530826",
+    name: "江城哈尼族彝族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300894c"),
+    code: "530827",
+    name: "孟连傣族拉祜族佤族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300894d"),
+    code: "530828",
+    name: "澜沧拉祜族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300894e"),
+    code: "530829",
+    name: "西盟佤族自治县",
+    cityCode: "5308",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300894f"),
+    code: "530902",
+    name: "临翔区",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008950"),
+    code: "530921",
+    name: "凤庆县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008951"),
+    code: "530922",
+    name: "云县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008952"),
+    code: "530923",
+    name: "永德县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008953"),
+    code: "530924",
+    name: "镇康县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008954"),
+    code: "530925",
+    name: "双江拉祜族佤族布朗族傣族自治县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008955"),
+    code: "530926",
+    name: "耿马傣族佤族自治县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008956"),
+    code: "530927",
+    name: "沧源佤族自治县",
+    cityCode: "5309",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008957"),
+    code: "532301",
+    name: "楚雄市",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008958"),
+    code: "532302",
+    name: "禄丰市",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008959"),
+    code: "532322",
+    name: "双柏县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300895a"),
+    code: "532323",
+    name: "牟定县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300895b"),
+    code: "532324",
+    name: "南华县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300895c"),
+    code: "532325",
+    name: "姚安县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300895d"),
+    code: "532326",
+    name: "大姚县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300895e"),
+    code: "532327",
+    name: "永仁县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300895f"),
+    code: "532328",
+    name: "元谋县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008960"),
+    code: "532329",
+    name: "武定县",
+    cityCode: "5323",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008961"),
+    code: "532501",
+    name: "个旧市",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008962"),
+    code: "532502",
+    name: "开远市",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008963"),
+    code: "532503",
+    name: "蒙自市",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008964"),
+    code: "532504",
+    name: "弥勒市",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008965"),
+    code: "532523",
+    name: "屏边苗族自治县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008966"),
+    code: "532524",
+    name: "建水县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008967"),
+    code: "532525",
+    name: "石屏县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008968"),
+    code: "532527",
+    name: "泸西县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008969"),
+    code: "532528",
+    name: "元阳县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300896a"),
+    code: "532529",
+    name: "红河县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300896b"),
+    code: "532530",
+    name: "金平苗族瑶族傣族自治县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300896c"),
+    code: "532531",
+    name: "绿春县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300896d"),
+    code: "532532",
+    name: "河口瑶族自治县",
+    cityCode: "5325",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300896e"),
+    code: "532601",
+    name: "文山市",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300896f"),
+    code: "532622",
+    name: "砚山县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008970"),
+    code: "532623",
+    name: "西畴县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008971"),
+    code: "532624",
+    name: "麻栗坡县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008972"),
+    code: "532625",
+    name: "马关县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008973"),
+    code: "532626",
+    name: "丘北县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008974"),
+    code: "532627",
+    name: "广南县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008975"),
+    code: "532628",
+    name: "富宁县",
+    cityCode: "5326",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008976"),
+    code: "532801",
+    name: "景洪市",
+    cityCode: "5328",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008977"),
+    code: "532822",
+    name: "勐海县",
+    cityCode: "5328",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008978"),
+    code: "532823",
+    name: "勐腊县",
+    cityCode: "5328",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008979"),
+    code: "532901",
+    name: "大理市",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300897a"),
+    code: "532922",
+    name: "漾濞彝族自治县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300897b"),
+    code: "532923",
+    name: "祥云县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300897c"),
+    code: "532924",
+    name: "宾川县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300897d"),
+    code: "532925",
+    name: "弥渡县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300897e"),
+    code: "532926",
+    name: "南涧彝族自治县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300897f"),
+    code: "532927",
+    name: "巍山彝族回族自治县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008980"),
+    code: "532928",
+    name: "永平县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008981"),
+    code: "532929",
+    name: "云龙县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008982"),
+    code: "532930",
+    name: "洱源县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008983"),
+    code: "532931",
+    name: "剑川县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008984"),
+    code: "532932",
+    name: "鹤庆县",
+    cityCode: "5329",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008985"),
+    code: "533102",
+    name: "瑞丽市",
+    cityCode: "5331",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008986"),
+    code: "533103",
+    name: "芒市",
+    cityCode: "5331",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008987"),
+    code: "533122",
+    name: "梁河县",
+    cityCode: "5331",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008988"),
+    code: "533123",
+    name: "盈江县",
+    cityCode: "5331",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008989"),
+    code: "533124",
+    name: "陇川县",
+    cityCode: "5331",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300898a"),
+    code: "533301",
+    name: "泸水市",
+    cityCode: "5333",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300898b"),
+    code: "533323",
+    name: "福贡县",
+    cityCode: "5333",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300898c"),
+    code: "533324",
+    name: "贡山独龙族怒族自治县",
+    cityCode: "5333",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300898d"),
+    code: "533325",
+    name: "兰坪白族普米族自治县",
+    cityCode: "5333",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300898e"),
+    code: "533401",
+    name: "香格里拉市",
+    cityCode: "5334",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300898f"),
+    code: "533422",
+    name: "德钦县",
+    cityCode: "5334",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008990"),
+    code: "533423",
+    name: "维西傈僳族自治县",
+    cityCode: "5334",
+    provinceCode: "53"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008991"),
+    code: "540102",
+    name: "城关区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008992"),
+    code: "540103",
+    name: "堆龙德庆区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008993"),
+    code: "540104",
+    name: "达孜区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008994"),
+    code: "540121",
+    name: "林周县",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008995"),
+    code: "540122",
+    name: "当雄县",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008996"),
+    code: "540123",
+    name: "尼木县",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008997"),
+    code: "540124",
+    name: "曲水县",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008998"),
+    code: "540127",
+    name: "墨竹工卡县",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008999"),
+    code: "540171",
+    name: "格尔木藏青工业园区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300899a"),
+    code: "540172",
+    name: "拉萨经济技术开发区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300899b"),
+    code: "540173",
+    name: "西藏文化旅游创意园区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300899c"),
+    code: "540174",
+    name: "达孜工业园区",
+    cityCode: "5401",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300899d"),
+    code: "540202",
+    name: "桑珠孜区",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300899e"),
+    code: "540221",
+    name: "南木林县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e300899f"),
+    code: "540222",
+    name: "江孜县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a0"),
+    code: "540223",
+    name: "定日县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a1"),
+    code: "540224",
+    name: "萨迦县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a2"),
+    code: "540225",
+    name: "拉孜县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a3"),
+    code: "540226",
+    name: "昂仁县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a4"),
+    code: "540227",
+    name: "谢通门县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a5"),
+    code: "540228",
+    name: "白朗县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a6"),
+    code: "540229",
+    name: "仁布县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a7"),
+    code: "540230",
+    name: "康马县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a8"),
+    code: "540231",
+    name: "定结县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089a9"),
+    code: "540232",
+    name: "仲巴县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089aa"),
+    code: "540233",
+    name: "亚东县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ab"),
+    code: "540234",
+    name: "吉隆县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ac"),
+    code: "540235",
+    name: "聂拉木县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ad"),
+    code: "540236",
+    name: "萨嘎县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ae"),
+    code: "540237",
+    name: "岗巴县",
+    cityCode: "5402",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089af"),
+    code: "540302",
+    name: "卡若区",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b0"),
+    code: "540321",
+    name: "江达县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b1"),
+    code: "540322",
+    name: "贡觉县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b2"),
+    code: "540323",
+    name: "类乌齐县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b3"),
+    code: "540324",
+    name: "丁青县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b4"),
+    code: "540325",
+    name: "察雅县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b5"),
+    code: "540326",
+    name: "八宿县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b6"),
+    code: "540327",
+    name: "左贡县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b7"),
+    code: "540328",
+    name: "芒康县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b8"),
+    code: "540329",
+    name: "洛隆县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089b9"),
+    code: "540330",
+    name: "边坝县",
+    cityCode: "5403",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ba"),
+    code: "540402",
+    name: "巴宜区",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089bb"),
+    code: "540421",
+    name: "工布江达县",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089bc"),
+    code: "540422",
+    name: "米林县",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089bd"),
+    code: "540423",
+    name: "墨脱县",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089be"),
+    code: "540424",
+    name: "波密县",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089bf"),
+    code: "540425",
+    name: "察隅县",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c0"),
+    code: "540426",
+    name: "朗县",
+    cityCode: "5404",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c1"),
+    code: "540502",
+    name: "乃东区",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c2"),
+    code: "540521",
+    name: "扎囊县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c3"),
+    code: "540522",
+    name: "贡嘎县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c4"),
+    code: "540523",
+    name: "桑日县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c5"),
+    code: "540524",
+    name: "琼结县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c6"),
+    code: "540525",
+    name: "曲松县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c7"),
+    code: "540526",
+    name: "措美县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c8"),
+    code: "540527",
+    name: "洛扎县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089c9"),
+    code: "540528",
+    name: "加查县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ca"),
+    code: "540529",
+    name: "隆子县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089cb"),
+    code: "540530",
+    name: "错那县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089cc"),
+    code: "540531",
+    name: "浪卡子县",
+    cityCode: "5405",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089cd"),
+    code: "540602",
+    name: "色尼区",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ce"),
+    code: "540621",
+    name: "嘉黎县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089cf"),
+    code: "540622",
+    name: "比如县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d0"),
+    code: "540623",
+    name: "聂荣县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d1"),
+    code: "540624",
+    name: "安多县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d2"),
+    code: "540625",
+    name: "申扎县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d3"),
+    code: "540626",
+    name: "索县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d4"),
+    code: "540627",
+    name: "班戈县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d5"),
+    code: "540628",
+    name: "巴青县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d6"),
+    code: "540629",
+    name: "尼玛县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d7"),
+    code: "540630",
+    name: "双湖县",
+    cityCode: "5406",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d8"),
+    code: "542521",
+    name: "普兰县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089d9"),
+    code: "542522",
+    name: "札达县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089da"),
+    code: "542523",
+    name: "噶尔县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089db"),
+    code: "542524",
+    name: "日土县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089dc"),
+    code: "542525",
+    name: "革吉县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089dd"),
+    code: "542526",
+    name: "改则县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089de"),
+    code: "542527",
+    name: "措勤县",
+    cityCode: "5425",
+    provinceCode: "54"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089df"),
+    code: "610102",
+    name: "新城区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e0"),
+    code: "610103",
+    name: "碑林区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e1"),
+    code: "610104",
+    name: "莲湖区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e2"),
+    code: "610111",
+    name: "灞桥区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e3"),
+    code: "610112",
+    name: "未央区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e4"),
+    code: "610113",
+    name: "雁塔区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e5"),
+    code: "610114",
+    name: "阎良区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e6"),
+    code: "610115",
+    name: "临潼区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e7"),
+    code: "610116",
+    name: "长安区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e8"),
+    code: "610117",
+    name: "高陵区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089e9"),
+    code: "610118",
+    name: "鄠邑区",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ea"),
+    code: "610122",
+    name: "蓝田县",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089eb"),
+    code: "610124",
+    name: "周至县",
+    cityCode: "6101",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ec"),
+    code: "610202",
+    name: "王益区",
+    cityCode: "6102",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ed"),
+    code: "610203",
+    name: "印台区",
+    cityCode: "6102",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ee"),
+    code: "610204",
+    name: "耀州区",
+    cityCode: "6102",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ef"),
+    code: "610222",
+    name: "宜君县",
+    cityCode: "6102",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f0"),
+    code: "610302",
+    name: "渭滨区",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f1"),
+    code: "610303",
+    name: "金台区",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f2"),
+    code: "610304",
+    name: "陈仓区",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f3"),
+    code: "610305",
+    name: "凤翔区",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f4"),
+    code: "610323",
+    name: "岐山县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f5"),
+    code: "610324",
+    name: "扶风县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f6"),
+    code: "610326",
+    name: "眉县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f7"),
+    code: "610327",
+    name: "陇县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f8"),
+    code: "610328",
+    name: "千阳县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089f9"),
+    code: "610329",
+    name: "麟游县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089fa"),
+    code: "610330",
+    name: "凤县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089fb"),
+    code: "610331",
+    name: "太白县",
+    cityCode: "6103",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089fc"),
+    code: "610402",
+    name: "秦都区",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089fd"),
+    code: "610403",
+    name: "杨陵区",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089fe"),
+    code: "610404",
+    name: "渭城区",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e30089ff"),
+    code: "610422",
+    name: "三原县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a00"),
+    code: "610423",
+    name: "泾阳县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a01"),
+    code: "610424",
+    name: "乾县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a02"),
+    code: "610425",
+    name: "礼泉县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a03"),
+    code: "610426",
+    name: "永寿县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a04"),
+    code: "610428",
+    name: "长武县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a05"),
+    code: "610429",
+    name: "旬邑县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a06"),
+    code: "610430",
+    name: "淳化县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a07"),
+    code: "610431",
+    name: "武功县",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a08"),
+    code: "610481",
+    name: "兴平市",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a09"),
+    code: "610482",
+    name: "彬州市",
+    cityCode: "6104",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a0a"),
+    code: "610502",
+    name: "临渭区",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a0b"),
+    code: "610503",
+    name: "华州区",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a0c"),
+    code: "610522",
+    name: "潼关县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a0d"),
+    code: "610523",
+    name: "大荔县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a0e"),
+    code: "610524",
+    name: "合阳县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a0f"),
+    code: "610525",
+    name: "澄城县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a10"),
+    code: "610526",
+    name: "蒲城县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a11"),
+    code: "610527",
+    name: "白水县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a12"),
+    code: "610528",
+    name: "富平县",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a13"),
+    code: "610581",
+    name: "韩城市",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a14"),
+    code: "610582",
+    name: "华阴市",
+    cityCode: "6105",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a15"),
+    code: "610602",
+    name: "宝塔区",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a16"),
+    code: "610603",
+    name: "安塞区",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a17"),
+    code: "610621",
+    name: "延长县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a18"),
+    code: "610622",
+    name: "延川县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a19"),
+    code: "610625",
+    name: "志丹县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a1a"),
+    code: "610626",
+    name: "吴起县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a1b"),
+    code: "610627",
+    name: "甘泉县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a1c"),
+    code: "610628",
+    name: "富县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a1d"),
+    code: "610629",
+    name: "洛川县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a1e"),
+    code: "610630",
+    name: "宜川县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a1f"),
+    code: "610631",
+    name: "黄龙县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a20"),
+    code: "610632",
+    name: "黄陵县",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a21"),
+    code: "610681",
+    name: "子长市",
+    cityCode: "6106",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a22"),
+    code: "610702",
+    name: "汉台区",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a23"),
+    code: "610703",
+    name: "南郑区",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a24"),
+    code: "610722",
+    name: "城固县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a25"),
+    code: "610723",
+    name: "洋县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a26"),
+    code: "610724",
+    name: "西乡县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a27"),
+    code: "610725",
+    name: "勉县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a28"),
+    code: "610726",
+    name: "宁强县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a29"),
+    code: "610727",
+    name: "略阳县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a2a"),
+    code: "610728",
+    name: "镇巴县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a2b"),
+    code: "610729",
+    name: "留坝县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a2c"),
+    code: "610730",
+    name: "佛坪县",
+    cityCode: "6107",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a2d"),
+    code: "610802",
+    name: "榆阳区",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a2e"),
+    code: "610803",
+    name: "横山区",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a2f"),
+    code: "610822",
+    name: "府谷县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a30"),
+    code: "610824",
+    name: "靖边县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a31"),
+    code: "610825",
+    name: "定边县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a32"),
+    code: "610826",
+    name: "绥德县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a33"),
+    code: "610827",
+    name: "米脂县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a34"),
+    code: "610828",
+    name: "佳县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a35"),
+    code: "610829",
+    name: "吴堡县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a36"),
+    code: "610830",
+    name: "清涧县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a37"),
+    code: "610831",
+    name: "子洲县",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a38"),
+    code: "610881",
+    name: "神木市",
+    cityCode: "6108",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a39"),
+    code: "610902",
+    name: "汉滨区",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a3a"),
+    code: "610921",
+    name: "汉阴县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a3b"),
+    code: "610922",
+    name: "石泉县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a3c"),
+    code: "610923",
+    name: "宁陕县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a3d"),
+    code: "610924",
+    name: "紫阳县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a3e"),
+    code: "610925",
+    name: "岚皋县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a3f"),
+    code: "610926",
+    name: "平利县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a40"),
+    code: "610927",
+    name: "镇坪县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a41"),
+    code: "610929",
+    name: "白河县",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a42"),
+    code: "610981",
+    name: "旬阳市",
+    cityCode: "6109",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a43"),
+    code: "611002",
+    name: "商州区",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a44"),
+    code: "611021",
+    name: "洛南县",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a45"),
+    code: "611022",
+    name: "丹凤县",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a46"),
+    code: "611023",
+    name: "商南县",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a47"),
+    code: "611024",
+    name: "山阳县",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a48"),
+    code: "611025",
+    name: "镇安县",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a49"),
+    code: "611026",
+    name: "柞水县",
+    cityCode: "6110",
+    provinceCode: "61"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a4a"),
+    code: "620102",
+    name: "城关区",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a4b"),
+    code: "620103",
+    name: "七里河区",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a4c"),
+    code: "620104",
+    name: "西固区",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a4d"),
+    code: "620105",
+    name: "安宁区",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a4e"),
+    code: "620111",
+    name: "红古区",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a4f"),
+    code: "620121",
+    name: "永登县",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a50"),
+    code: "620122",
+    name: "皋兰县",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a51"),
+    code: "620123",
+    name: "榆中县",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a52"),
+    code: "620171",
+    name: "兰州新区",
+    cityCode: "6201",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a53"),
+    code: "620201",
+    name: "嘉峪关市",
+    cityCode: "6202",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a54"),
+    code: "620302",
+    name: "金川区",
+    cityCode: "6203",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a55"),
+    code: "620321",
+    name: "永昌县",
+    cityCode: "6203",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a56"),
+    code: "620402",
+    name: "白银区",
+    cityCode: "6204",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a57"),
+    code: "620403",
+    name: "平川区",
+    cityCode: "6204",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a58"),
+    code: "620421",
+    name: "靖远县",
+    cityCode: "6204",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a59"),
+    code: "620422",
+    name: "会宁县",
+    cityCode: "6204",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a5a"),
+    code: "620423",
+    name: "景泰县",
+    cityCode: "6204",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a5b"),
+    code: "620502",
+    name: "秦州区",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a5c"),
+    code: "620503",
+    name: "麦积区",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a5d"),
+    code: "620521",
+    name: "清水县",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a5e"),
+    code: "620522",
+    name: "秦安县",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a5f"),
+    code: "620523",
+    name: "甘谷县",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a60"),
+    code: "620524",
+    name: "武山县",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a61"),
+    code: "620525",
+    name: "张家川回族自治县",
+    cityCode: "6205",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a62"),
+    code: "620602",
+    name: "凉州区",
+    cityCode: "6206",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a63"),
+    code: "620621",
+    name: "民勤县",
+    cityCode: "6206",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a64"),
+    code: "620622",
+    name: "古浪县",
+    cityCode: "6206",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a65"),
+    code: "620623",
+    name: "天祝藏族自治县",
+    cityCode: "6206",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a66"),
+    code: "620702",
+    name: "甘州区",
+    cityCode: "6207",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a67"),
+    code: "620721",
+    name: "肃南裕固族自治县",
+    cityCode: "6207",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a68"),
+    code: "620722",
+    name: "民乐县",
+    cityCode: "6207",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a69"),
+    code: "620723",
+    name: "临泽县",
+    cityCode: "6207",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a6a"),
+    code: "620724",
+    name: "高台县",
+    cityCode: "6207",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a6b"),
+    code: "620725",
+    name: "山丹县",
+    cityCode: "6207",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a6c"),
+    code: "620802",
+    name: "崆峒区",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a6d"),
+    code: "620821",
+    name: "泾川县",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a6e"),
+    code: "620822",
+    name: "灵台县",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a6f"),
+    code: "620823",
+    name: "崇信县",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a70"),
+    code: "620825",
+    name: "庄浪县",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a71"),
+    code: "620826",
+    name: "静宁县",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a72"),
+    code: "620881",
+    name: "华亭市",
+    cityCode: "6208",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a73"),
+    code: "620902",
+    name: "肃州区",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a74"),
+    code: "620921",
+    name: "金塔县",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a75"),
+    code: "620922",
+    name: "瓜州县",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a76"),
+    code: "620923",
+    name: "肃北蒙古族自治县",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a77"),
+    code: "620924",
+    name: "阿克塞哈萨克族自治县",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a78"),
+    code: "620981",
+    name: "玉门市",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a79"),
+    code: "620982",
+    name: "敦煌市",
+    cityCode: "6209",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a7a"),
+    code: "621002",
+    name: "西峰区",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a7b"),
+    code: "621021",
+    name: "庆城县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a7c"),
+    code: "621022",
+    name: "环县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a7d"),
+    code: "621023",
+    name: "华池县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a7e"),
+    code: "621024",
+    name: "合水县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a7f"),
+    code: "621025",
+    name: "正宁县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a80"),
+    code: "621026",
+    name: "宁县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a81"),
+    code: "621027",
+    name: "镇原县",
+    cityCode: "6210",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a82"),
+    code: "621102",
+    name: "安定区",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a83"),
+    code: "621121",
+    name: "通渭县",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a84"),
+    code: "621122",
+    name: "陇西县",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a85"),
+    code: "621123",
+    name: "渭源县",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a86"),
+    code: "621124",
+    name: "临洮县",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a87"),
+    code: "621125",
+    name: "漳县",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a88"),
+    code: "621126",
+    name: "岷县",
+    cityCode: "6211",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a89"),
+    code: "621202",
+    name: "武都区",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a8a"),
+    code: "621221",
+    name: "成县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a8b"),
+    code: "621222",
+    name: "文县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a8c"),
+    code: "621223",
+    name: "宕昌县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a8d"),
+    code: "621224",
+    name: "康县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a8e"),
+    code: "621225",
+    name: "西和县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a8f"),
+    code: "621226",
+    name: "礼县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a90"),
+    code: "621227",
+    name: "徽县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a91"),
+    code: "621228",
+    name: "两当县",
+    cityCode: "6212",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a92"),
+    code: "622901",
+    name: "临夏市",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a93"),
+    code: "622921",
+    name: "临夏县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a94"),
+    code: "622922",
+    name: "康乐县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a95"),
+    code: "622923",
+    name: "永靖县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a96"),
+    code: "622924",
+    name: "广河县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a97"),
+    code: "622925",
+    name: "和政县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a98"),
+    code: "622926",
+    name: "东乡族自治县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a99"),
+    code: "622927",
+    name: "积石山保安族东乡族撒拉族自治县",
+    cityCode: "6229",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a9a"),
+    code: "623001",
+    name: "合作市",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a9b"),
+    code: "623021",
+    name: "临潭县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a9c"),
+    code: "623022",
+    name: "卓尼县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a9d"),
+    code: "623023",
+    name: "舟曲县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a9e"),
+    code: "623024",
+    name: "迭部县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008a9f"),
+    code: "623025",
+    name: "玛曲县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa0"),
+    code: "623026",
+    name: "碌曲县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa1"),
+    code: "623027",
+    name: "夏河县",
+    cityCode: "6230",
+    provinceCode: "62"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa2"),
+    code: "630102",
+    name: "城东区",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa3"),
+    code: "630103",
+    name: "城中区",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa4"),
+    code: "630104",
+    name: "城西区",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa5"),
+    code: "630105",
+    name: "城北区",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa6"),
+    code: "630106",
+    name: "湟中区",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa7"),
+    code: "630121",
+    name: "大通回族土族自治县",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa8"),
+    code: "630123",
+    name: "湟源县",
+    cityCode: "6301",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aa9"),
+    code: "630202",
+    name: "乐都区",
+    cityCode: "6302",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aaa"),
+    code: "630203",
+    name: "平安区",
+    cityCode: "6302",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aab"),
+    code: "630222",
+    name: "民和回族土族自治县",
+    cityCode: "6302",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aac"),
+    code: "630223",
+    name: "互助土族自治县",
+    cityCode: "6302",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aad"),
+    code: "630224",
+    name: "化隆回族自治县",
+    cityCode: "6302",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aae"),
+    code: "630225",
+    name: "循化撒拉族自治县",
+    cityCode: "6302",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aaf"),
+    code: "632221",
+    name: "门源回族自治县",
+    cityCode: "6322",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab0"),
+    code: "632222",
+    name: "祁连县",
+    cityCode: "6322",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab1"),
+    code: "632223",
+    name: "海晏县",
+    cityCode: "6322",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab2"),
+    code: "632224",
+    name: "刚察县",
+    cityCode: "6322",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab3"),
+    code: "632301",
+    name: "同仁市",
+    cityCode: "6323",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab4"),
+    code: "632322",
+    name: "尖扎县",
+    cityCode: "6323",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab5"),
+    code: "632323",
+    name: "泽库县",
+    cityCode: "6323",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab6"),
+    code: "632324",
+    name: "河南蒙古族自治县",
+    cityCode: "6323",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab7"),
+    code: "632521",
+    name: "共和县",
+    cityCode: "6325",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab8"),
+    code: "632522",
+    name: "同德县",
+    cityCode: "6325",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ab9"),
+    code: "632523",
+    name: "贵德县",
+    cityCode: "6325",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aba"),
+    code: "632524",
+    name: "兴海县",
+    cityCode: "6325",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008abb"),
+    code: "632525",
+    name: "贵南县",
+    cityCode: "6325",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008abc"),
+    code: "632621",
+    name: "玛沁县",
+    cityCode: "6326",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008abd"),
+    code: "632622",
+    name: "班玛县",
+    cityCode: "6326",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008abe"),
+    code: "632623",
+    name: "甘德县",
+    cityCode: "6326",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008abf"),
+    code: "632624",
+    name: "达日县",
+    cityCode: "6326",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac0"),
+    code: "632625",
+    name: "久治县",
+    cityCode: "6326",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac1"),
+    code: "632626",
+    name: "玛多县",
+    cityCode: "6326",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac2"),
+    code: "632701",
+    name: "玉树市",
+    cityCode: "6327",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac3"),
+    code: "632722",
+    name: "杂多县",
+    cityCode: "6327",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac4"),
+    code: "632723",
+    name: "称多县",
+    cityCode: "6327",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac5"),
+    code: "632724",
+    name: "治多县",
+    cityCode: "6327",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac6"),
+    code: "632725",
+    name: "囊谦县",
+    cityCode: "6327",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac7"),
+    code: "632726",
+    name: "曲麻莱县",
+    cityCode: "6327",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac8"),
+    code: "632801",
+    name: "格尔木市",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ac9"),
+    code: "632802",
+    name: "德令哈市",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aca"),
+    code: "632803",
+    name: "茫崖市",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008acb"),
+    code: "632821",
+    name: "乌兰县",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008acc"),
+    code: "632822",
+    name: "都兰县",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008acd"),
+    code: "632823",
+    name: "天峻县",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ace"),
+    code: "632857",
+    name: "大柴旦行政委员会",
+    cityCode: "6328",
+    provinceCode: "63"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008acf"),
+    code: "640104",
+    name: "兴庆区",
+    cityCode: "6401",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad0"),
+    code: "640105",
+    name: "西夏区",
+    cityCode: "6401",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad1"),
+    code: "640106",
+    name: "金凤区",
+    cityCode: "6401",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad2"),
+    code: "640121",
+    name: "永宁县",
+    cityCode: "6401",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad3"),
+    code: "640122",
+    name: "贺兰县",
+    cityCode: "6401",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad4"),
+    code: "640181",
+    name: "灵武市",
+    cityCode: "6401",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad5"),
+    code: "640202",
+    name: "大武口区",
+    cityCode: "6402",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad6"),
+    code: "640205",
+    name: "惠农区",
+    cityCode: "6402",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad7"),
+    code: "640221",
+    name: "平罗县",
+    cityCode: "6402",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad8"),
+    code: "640302",
+    name: "利通区",
+    cityCode: "6403",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ad9"),
+    code: "640303",
+    name: "红寺堡区",
+    cityCode: "6403",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ada"),
+    code: "640323",
+    name: "盐池县",
+    cityCode: "6403",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008adb"),
+    code: "640324",
+    name: "同心县",
+    cityCode: "6403",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008adc"),
+    code: "640381",
+    name: "青铜峡市",
+    cityCode: "6403",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008add"),
+    code: "640402",
+    name: "原州区",
+    cityCode: "6404",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ade"),
+    code: "640422",
+    name: "西吉县",
+    cityCode: "6404",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008adf"),
+    code: "640423",
+    name: "隆德县",
+    cityCode: "6404",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae0"),
+    code: "640424",
+    name: "泾源县",
+    cityCode: "6404",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae1"),
+    code: "640425",
+    name: "彭阳县",
+    cityCode: "6404",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae2"),
+    code: "640502",
+    name: "沙坡头区",
+    cityCode: "6405",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae3"),
+    code: "640521",
+    name: "中宁县",
+    cityCode: "6405",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae4"),
+    code: "640522",
+    name: "海原县",
+    cityCode: "6405",
+    provinceCode: "64"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae5"),
+    code: "650102",
+    name: "天山区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae6"),
+    code: "650103",
+    name: "沙依巴克区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae7"),
+    code: "650104",
+    name: "新市区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae8"),
+    code: "650105",
+    name: "水磨沟区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008ae9"),
+    code: "650106",
+    name: "头屯河区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aea"),
+    code: "650107",
+    name: "达坂城区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aeb"),
+    code: "650109",
+    name: "米东区",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aec"),
+    code: "650121",
+    name: "乌鲁木齐县",
+    cityCode: "6501",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aed"),
+    code: "650202",
+    name: "独山子区",
+    cityCode: "6502",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aee"),
+    code: "650203",
+    name: "克拉玛依区",
+    cityCode: "6502",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aef"),
+    code: "650204",
+    name: "白碱滩区",
+    cityCode: "6502",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af0"),
+    code: "650205",
+    name: "乌尔禾区",
+    cityCode: "6502",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af1"),
+    code: "650402",
+    name: "高昌区",
+    cityCode: "6504",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af2"),
+    code: "650421",
+    name: "鄯善县",
+    cityCode: "6504",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af3"),
+    code: "650422",
+    name: "托克逊县",
+    cityCode: "6504",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af4"),
+    code: "650502",
+    name: "伊州区",
+    cityCode: "6505",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af5"),
+    code: "650521",
+    name: "巴里坤哈萨克自治县",
+    cityCode: "6505",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af6"),
+    code: "650522",
+    name: "伊吾县",
+    cityCode: "6505",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af7"),
+    code: "652301",
+    name: "昌吉市",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af8"),
+    code: "652302",
+    name: "阜康市",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008af9"),
+    code: "652323",
+    name: "呼图壁县",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008afa"),
+    code: "652324",
+    name: "玛纳斯县",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008afb"),
+    code: "652325",
+    name: "奇台县",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008afc"),
+    code: "652327",
+    name: "吉木萨尔县",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008afd"),
+    code: "652328",
+    name: "木垒哈萨克自治县",
+    cityCode: "6523",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008afe"),
+    code: "652701",
+    name: "博乐市",
+    cityCode: "6527",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008aff"),
+    code: "652702",
+    name: "阿拉山口市",
+    cityCode: "6527",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b00"),
+    code: "652722",
+    name: "精河县",
+    cityCode: "6527",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b01"),
+    code: "652723",
+    name: "温泉县",
+    cityCode: "6527",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b02"),
+    code: "652801",
+    name: "库尔勒市",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b03"),
+    code: "652822",
+    name: "轮台县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b04"),
+    code: "652823",
+    name: "尉犁县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b05"),
+    code: "652824",
+    name: "若羌县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b06"),
+    code: "652825",
+    name: "且末县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b07"),
+    code: "652826",
+    name: "焉耆回族自治县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b08"),
+    code: "652827",
+    name: "和静县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b09"),
+    code: "652828",
+    name: "和硕县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b0a"),
+    code: "652829",
+    name: "博湖县",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b0b"),
+    code: "652871",
+    name: "库尔勒经济技术开发区",
+    cityCode: "6528",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b0c"),
+    code: "652901",
+    name: "阿克苏市",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b0d"),
+    code: "652902",
+    name: "库车市",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b0e"),
+    code: "652922",
+    name: "温宿县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b0f"),
+    code: "652924",
+    name: "沙雅县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b10"),
+    code: "652925",
+    name: "新和县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b11"),
+    code: "652926",
+    name: "拜城县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b12"),
+    code: "652927",
+    name: "乌什县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b13"),
+    code: "652928",
+    name: "阿瓦提县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b14"),
+    code: "652929",
+    name: "柯坪县",
+    cityCode: "6529",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b15"),
+    code: "653001",
+    name: "阿图什市",
+    cityCode: "6530",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b16"),
+    code: "653022",
+    name: "阿克陶县",
+    cityCode: "6530",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b17"),
+    code: "653023",
+    name: "阿合奇县",
+    cityCode: "6530",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b18"),
+    code: "653024",
+    name: "乌恰县",
+    cityCode: "6530",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b19"),
+    code: "653101",
+    name: "喀什市",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b1a"),
+    code: "653121",
+    name: "疏附县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b1b"),
+    code: "653122",
+    name: "疏勒县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b1c"),
+    code: "653123",
+    name: "英吉沙县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b1d"),
+    code: "653124",
+    name: "泽普县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b1e"),
+    code: "653125",
+    name: "莎车县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b1f"),
+    code: "653126",
+    name: "叶城县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b20"),
+    code: "653127",
+    name: "麦盖提县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b21"),
+    code: "653128",
+    name: "岳普湖县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b22"),
+    code: "653129",
+    name: "伽师县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b23"),
+    code: "653130",
+    name: "巴楚县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b24"),
+    code: "653131",
+    name: "塔什库尔干塔吉克自治县",
+    cityCode: "6531",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b25"),
+    code: "653201",
+    name: "和田市",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b26"),
+    code: "653221",
+    name: "和田县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b27"),
+    code: "653222",
+    name: "墨玉县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b28"),
+    code: "653223",
+    name: "皮山县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b29"),
+    code: "653224",
+    name: "洛浦县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b2a"),
+    code: "653225",
+    name: "策勒县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b2b"),
+    code: "653226",
+    name: "于田县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b2c"),
+    code: "653227",
+    name: "民丰县",
+    cityCode: "6532",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b2d"),
+    code: "654002",
+    name: "伊宁市",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b2e"),
+    code: "654003",
+    name: "奎屯市",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b2f"),
+    code: "654004",
+    name: "霍尔果斯市",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b30"),
+    code: "654021",
+    name: "伊宁县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b31"),
+    code: "654022",
+    name: "察布查尔锡伯自治县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b32"),
+    code: "654023",
+    name: "霍城县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b33"),
+    code: "654024",
+    name: "巩留县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b34"),
+    code: "654025",
+    name: "新源县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b35"),
+    code: "654026",
+    name: "昭苏县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b36"),
+    code: "654027",
+    name: "特克斯县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b37"),
+    code: "654028",
+    name: "尼勒克县",
+    cityCode: "6540",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b38"),
+    code: "654201",
+    name: "塔城市",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b39"),
+    code: "654202",
+    name: "乌苏市",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b3a"),
+    code: "654203",
+    name: "沙湾市",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b3b"),
+    code: "654221",
+    name: "额敏县",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b3c"),
+    code: "654224",
+    name: "托里县",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b3d"),
+    code: "654225",
+    name: "裕民县",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b3e"),
+    code: "654226",
+    name: "和布克赛尔蒙古自治县",
+    cityCode: "6542",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b3f"),
+    code: "654301",
+    name: "阿勒泰市",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b40"),
+    code: "654321",
+    name: "布尔津县",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b41"),
+    code: "654322",
+    name: "富蕴县",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b42"),
+    code: "654323",
+    name: "福海县",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b43"),
+    code: "654324",
+    name: "哈巴河县",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b44"),
+    code: "654325",
+    name: "青河县",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b45"),
+    code: "654326",
+    name: "吉木乃县",
+    cityCode: "6543",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b46"),
+    code: "659001",
+    name: "石河子市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b47"),
+    code: "659002",
+    name: "阿拉尔市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b48"),
+    code: "659003",
+    name: "图木舒克市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b49"),
+    code: "659004",
+    name: "五家渠市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b4a"),
+    code: "659005",
+    name: "北屯市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b4b"),
+    code: "659006",
+    name: "铁门关市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b4c"),
+    code: "659007",
+    name: "双河市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b4d"),
+    code: "659008",
+    name: "可克达拉市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b4e"),
+    code: "659009",
+    name: "昆玉市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b4f"),
+    code: "659010",
+    name: "胡杨河市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b50"),
+    code: "659011",
+    name: "新星市",
+    cityCode: "6590",
+    provinceCode: "65"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b51"),
+    code: "441900",
+    name: "东莞市",
+    cityCode: "4419",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b52"),
+    code: "442000",
+    name: "中山市",
+    cityCode: "4420",
+    provinceCode: "44"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b53"),
+    code: "460400",
+    name: "儋州市",
+    cityCode: "4604",
+    provinceCode: "46"
+} ]);
+db.getCollection("areas").insert([ {
+    _id: ObjectId("62fce54c77670000e3008b54"),
+    code: "350527",
+    name: "金门县",
+    cityCode: "3505",
+    provinceCode: "35"
+} ]);
+
+// ----------------------------
+// Collection structure for articlemanagements
+// ----------------------------
+db.getCollection("articlemanagements").drop();
+db.createCollection("articlemanagements");
+
+// ----------------------------
+// Documents of articlemanagements
+// ----------------------------
+
+// ----------------------------
+// Collection structure for cities
+// ----------------------------
+db.getCollection("cities").drop();
+db.createCollection("cities");
+
+// ----------------------------
+// Documents of cities
+// ----------------------------
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cab"),
+    code: "1101",
+    name: "市辖区",
+    provinceCode: "11"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cac"),
+    code: "1201",
+    name: "市辖区",
+    provinceCode: "12"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cad"),
+    code: "1301",
+    name: "石家庄市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cae"),
+    code: "1302",
+    name: "唐山市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008caf"),
+    code: "1303",
+    name: "秦皇岛市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb0"),
+    code: "1304",
+    name: "邯郸市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb1"),
+    code: "1305",
+    name: "邢台市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb2"),
+    code: "1306",
+    name: "保定市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb3"),
+    code: "1307",
+    name: "张家口市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb4"),
+    code: "1308",
+    name: "承德市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb5"),
+    code: "1309",
+    name: "沧州市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb6"),
+    code: "1310",
+    name: "廊坊市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb7"),
+    code: "1311",
+    name: "衡水市",
+    provinceCode: "13"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb8"),
+    code: "1401",
+    name: "太原市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cb9"),
+    code: "1402",
+    name: "大同市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cba"),
+    code: "1403",
+    name: "阳泉市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cbb"),
+    code: "1404",
+    name: "长治市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cbc"),
+    code: "1405",
+    name: "晋城市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cbd"),
+    code: "1406",
+    name: "朔州市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cbe"),
+    code: "1407",
+    name: "晋中市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cbf"),
+    code: "1408",
+    name: "运城市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc0"),
+    code: "1409",
+    name: "忻州市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc1"),
+    code: "1410",
+    name: "临汾市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc2"),
+    code: "1411",
+    name: "吕梁市",
+    provinceCode: "14"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc3"),
+    code: "1501",
+    name: "呼和浩特市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc4"),
+    code: "1502",
+    name: "包头市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc5"),
+    code: "1503",
+    name: "乌海市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc6"),
+    code: "1504",
+    name: "赤峰市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc7"),
+    code: "1505",
+    name: "通辽市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc8"),
+    code: "1506",
+    name: "鄂尔多斯市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cc9"),
+    code: "1507",
+    name: "呼伦贝尔市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cca"),
+    code: "1508",
+    name: "巴彦淖尔市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ccb"),
+    code: "1509",
+    name: "乌兰察布市",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ccc"),
+    code: "1522",
+    name: "兴安盟",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ccd"),
+    code: "1525",
+    name: "锡林郭勒盟",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cce"),
+    code: "1529",
+    name: "阿拉善盟",
+    provinceCode: "15"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ccf"),
+    code: "2101",
+    name: "沈阳市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd0"),
+    code: "2102",
+    name: "大连市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd1"),
+    code: "2103",
+    name: "鞍山市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd2"),
+    code: "2104",
+    name: "抚顺市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd3"),
+    code: "2105",
+    name: "本溪市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd4"),
+    code: "2106",
+    name: "丹东市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd5"),
+    code: "2107",
+    name: "锦州市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd6"),
+    code: "2108",
+    name: "营口市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd7"),
+    code: "2109",
+    name: "阜新市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd8"),
+    code: "2110",
+    name: "辽阳市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cd9"),
+    code: "2111",
+    name: "盘锦市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cda"),
+    code: "2112",
+    name: "铁岭市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cdb"),
+    code: "2113",
+    name: "朝阳市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cdc"),
+    code: "2114",
+    name: "葫芦岛市",
+    provinceCode: "21"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cdd"),
+    code: "2201",
+    name: "长春市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cde"),
+    code: "2202",
+    name: "吉林市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cdf"),
+    code: "2203",
+    name: "四平市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce0"),
+    code: "2204",
+    name: "辽源市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce1"),
+    code: "2205",
+    name: "通化市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce2"),
+    code: "2206",
+    name: "白山市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce3"),
+    code: "2207",
+    name: "松原市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce4"),
+    code: "2208",
+    name: "白城市",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce5"),
+    code: "2224",
+    name: "延边朝鲜族自治州",
+    provinceCode: "22"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce6"),
+    code: "2301",
+    name: "哈尔滨市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce7"),
+    code: "2302",
+    name: "齐齐哈尔市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce8"),
+    code: "2303",
+    name: "鸡西市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ce9"),
+    code: "2304",
+    name: "鹤岗市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cea"),
+    code: "2305",
+    name: "双鸭山市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ceb"),
+    code: "2306",
+    name: "大庆市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cec"),
+    code: "2307",
+    name: "伊春市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ced"),
+    code: "2308",
+    name: "佳木斯市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cee"),
+    code: "2309",
+    name: "七台河市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cef"),
+    code: "2310",
+    name: "牡丹江市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf0"),
+    code: "2311",
+    name: "黑河市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf1"),
+    code: "2312",
+    name: "绥化市",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf2"),
+    code: "2327",
+    name: "大兴安岭地区",
+    provinceCode: "23"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf3"),
+    code: "3101",
+    name: "市辖区",
+    provinceCode: "31"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf4"),
+    code: "3201",
+    name: "南京市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf5"),
+    code: "3202",
+    name: "无锡市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf6"),
+    code: "3203",
+    name: "徐州市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf7"),
+    code: "3204",
+    name: "常州市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf8"),
+    code: "3205",
+    name: "苏州市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cf9"),
+    code: "3206",
+    name: "南通市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cfa"),
+    code: "3207",
+    name: "连云港市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cfb"),
+    code: "3208",
+    name: "淮安市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cfc"),
+    code: "3209",
+    name: "盐城市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cfd"),
+    code: "3210",
+    name: "扬州市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cfe"),
+    code: "3211",
+    name: "镇江市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008cff"),
+    code: "3212",
+    name: "泰州市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d00"),
+    code: "3213",
+    name: "宿迁市",
+    provinceCode: "32"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d01"),
+    code: "3301",
+    name: "杭州市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d02"),
+    code: "3302",
+    name: "宁波市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d03"),
+    code: "3303",
+    name: "温州市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d04"),
+    code: "3304",
+    name: "嘉兴市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d05"),
+    code: "3305",
+    name: "湖州市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d06"),
+    code: "3306",
+    name: "绍兴市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d07"),
+    code: "3307",
+    name: "金华市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d08"),
+    code: "3308",
+    name: "衢州市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d09"),
+    code: "3309",
+    name: "舟山市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d0a"),
+    code: "3310",
+    name: "台州市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d0b"),
+    code: "3311",
+    name: "丽水市",
+    provinceCode: "33"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d0c"),
+    code: "3401",
+    name: "合肥市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d0d"),
+    code: "3402",
+    name: "芜湖市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d0e"),
+    code: "3403",
+    name: "蚌埠市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d0f"),
+    code: "3404",
+    name: "淮南市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d10"),
+    code: "3405",
+    name: "马鞍山市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d11"),
+    code: "3406",
+    name: "淮北市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d12"),
+    code: "3407",
+    name: "铜陵市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d13"),
+    code: "3408",
+    name: "安庆市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d14"),
+    code: "3410",
+    name: "黄山市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d15"),
+    code: "3411",
+    name: "滁州市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d16"),
+    code: "3412",
+    name: "阜阳市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d17"),
+    code: "3413",
+    name: "宿州市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d18"),
+    code: "3415",
+    name: "六安市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d19"),
+    code: "3416",
+    name: "亳州市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d1a"),
+    code: "3417",
+    name: "池州市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d1b"),
+    code: "3418",
+    name: "宣城市",
+    provinceCode: "34"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d1c"),
+    code: "3501",
+    name: "福州市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d1d"),
+    code: "3502",
+    name: "厦门市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d1e"),
+    code: "3503",
+    name: "莆田市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d1f"),
+    code: "3504",
+    name: "三明市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d20"),
+    code: "3505",
+    name: "泉州市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d21"),
+    code: "3506",
+    name: "漳州市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d22"),
+    code: "3507",
+    name: "南平市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d23"),
+    code: "3508",
+    name: "龙岩市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d24"),
+    code: "3509",
+    name: "宁德市",
+    provinceCode: "35"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d25"),
+    code: "3601",
+    name: "南昌市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d26"),
+    code: "3602",
+    name: "景德镇市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d27"),
+    code: "3603",
+    name: "萍乡市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d28"),
+    code: "3604",
+    name: "九江市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d29"),
+    code: "3605",
+    name: "新余市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d2a"),
+    code: "3606",
+    name: "鹰潭市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d2b"),
+    code: "3607",
+    name: "赣州市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d2c"),
+    code: "3608",
+    name: "吉安市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d2d"),
+    code: "3609",
+    name: "宜春市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d2e"),
+    code: "3610",
+    name: "抚州市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d2f"),
+    code: "3611",
+    name: "上饶市",
+    provinceCode: "36"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d30"),
+    code: "3701",
+    name: "济南市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d31"),
+    code: "3702",
+    name: "青岛市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d32"),
+    code: "3703",
+    name: "淄博市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d33"),
+    code: "3704",
+    name: "枣庄市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d34"),
+    code: "3705",
+    name: "东营市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d35"),
+    code: "3706",
+    name: "烟台市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d36"),
+    code: "3707",
+    name: "潍坊市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d37"),
+    code: "3708",
+    name: "济宁市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d38"),
+    code: "3709",
+    name: "泰安市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d39"),
+    code: "3710",
+    name: "威海市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d3a"),
+    code: "3711",
+    name: "日照市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d3b"),
+    code: "3713",
+    name: "临沂市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d3c"),
+    code: "3714",
+    name: "德州市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d3d"),
+    code: "3715",
+    name: "聊城市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d3e"),
+    code: "3716",
+    name: "滨州市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d3f"),
+    code: "3717",
+    name: "菏泽市",
+    provinceCode: "37"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d40"),
+    code: "4101",
+    name: "郑州市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d41"),
+    code: "4102",
+    name: "开封市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d42"),
+    code: "4103",
+    name: "洛阳市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d43"),
+    code: "4104",
+    name: "平顶山市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d44"),
+    code: "4105",
+    name: "安阳市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d45"),
+    code: "4106",
+    name: "鹤壁市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d46"),
+    code: "4107",
+    name: "新乡市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d47"),
+    code: "4108",
+    name: "焦作市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d48"),
+    code: "4109",
+    name: "濮阳市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d49"),
+    code: "4110",
+    name: "许昌市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d4a"),
+    code: "4111",
+    name: "漯河市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d4b"),
+    code: "4112",
+    name: "三门峡市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d4c"),
+    code: "4113",
+    name: "南阳市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d4d"),
+    code: "4114",
+    name: "商丘市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d4e"),
+    code: "4115",
+    name: "信阳市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d4f"),
+    code: "4116",
+    name: "周口市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d50"),
+    code: "4117",
+    name: "驻马店市",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d51"),
+    code: "4190",
+    name: "省直辖县级行政区划",
+    provinceCode: "41"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d52"),
+    code: "4201",
+    name: "武汉市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d53"),
+    code: "4202",
+    name: "黄石市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d54"),
+    code: "4203",
+    name: "十堰市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d55"),
+    code: "4205",
+    name: "宜昌市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d56"),
+    code: "4206",
+    name: "襄阳市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d57"),
+    code: "4207",
+    name: "鄂州市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d58"),
+    code: "4208",
+    name: "荆门市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d59"),
+    code: "4209",
+    name: "孝感市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d5a"),
+    code: "4210",
+    name: "荆州市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d5b"),
+    code: "4211",
+    name: "黄冈市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d5c"),
+    code: "4212",
+    name: "咸宁市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d5d"),
+    code: "4213",
+    name: "随州市",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d5e"),
+    code: "4228",
+    name: "恩施土家族苗族自治州",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d5f"),
+    code: "4290",
+    name: "省直辖县级行政区划",
+    provinceCode: "42"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d60"),
+    code: "4301",
+    name: "长沙市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d61"),
+    code: "4302",
+    name: "株洲市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d62"),
+    code: "4303",
+    name: "湘潭市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d63"),
+    code: "4304",
+    name: "衡阳市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d64"),
+    code: "4305",
+    name: "邵阳市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d65"),
+    code: "4306",
+    name: "岳阳市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d66"),
+    code: "4307",
+    name: "常德市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d67"),
+    code: "4308",
+    name: "张家界市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d68"),
+    code: "4309",
+    name: "益阳市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d69"),
+    code: "4310",
+    name: "郴州市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d6a"),
+    code: "4311",
+    name: "永州市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d6b"),
+    code: "4312",
+    name: "怀化市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d6c"),
+    code: "4313",
+    name: "娄底市",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d6d"),
+    code: "4331",
+    name: "湘西土家族苗族自治州",
+    provinceCode: "43"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d6e"),
+    code: "4401",
+    name: "广州市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d6f"),
+    code: "4402",
+    name: "韶关市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d70"),
+    code: "4403",
+    name: "深圳市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d71"),
+    code: "4404",
+    name: "珠海市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d72"),
+    code: "4405",
+    name: "汕头市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d73"),
+    code: "4406",
+    name: "佛山市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d74"),
+    code: "4407",
+    name: "江门市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d75"),
+    code: "4408",
+    name: "湛江市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d76"),
+    code: "4409",
+    name: "茂名市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d77"),
+    code: "4412",
+    name: "肇庆市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d78"),
+    code: "4413",
+    name: "惠州市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d79"),
+    code: "4414",
+    name: "梅州市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d7a"),
+    code: "4415",
+    name: "汕尾市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d7b"),
+    code: "4416",
+    name: "河源市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d7c"),
+    code: "4417",
+    name: "阳江市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d7d"),
+    code: "4418",
+    name: "清远市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d7e"),
+    code: "4419",
+    name: "东莞市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d7f"),
+    code: "4420",
+    name: "中山市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d80"),
+    code: "4451",
+    name: "潮州市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d81"),
+    code: "4452",
+    name: "揭阳市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d82"),
+    code: "4453",
+    name: "云浮市",
+    provinceCode: "44"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d83"),
+    code: "4501",
+    name: "南宁市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d84"),
+    code: "4502",
+    name: "柳州市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d85"),
+    code: "4503",
+    name: "桂林市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d86"),
+    code: "4504",
+    name: "梧州市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d87"),
+    code: "4505",
+    name: "北海市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d88"),
+    code: "4506",
+    name: "防城港市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d89"),
+    code: "4507",
+    name: "钦州市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d8a"),
+    code: "4508",
+    name: "贵港市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d8b"),
+    code: "4509",
+    name: "玉林市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d8c"),
+    code: "4510",
+    name: "百色市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d8d"),
+    code: "4511",
+    name: "贺州市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d8e"),
+    code: "4512",
+    name: "河池市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d8f"),
+    code: "4513",
+    name: "来宾市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d90"),
+    code: "4514",
+    name: "崇左市",
+    provinceCode: "45"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d91"),
+    code: "4601",
+    name: "海口市",
+    provinceCode: "46"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d92"),
+    code: "4602",
+    name: "三亚市",
+    provinceCode: "46"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d93"),
+    code: "4603",
+    name: "三沙市",
+    provinceCode: "46"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d94"),
+    code: "4604",
+    name: "儋州市",
+    provinceCode: "46"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d95"),
+    code: "4690",
+    name: "省直辖县级行政区划",
+    provinceCode: "46"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d96"),
+    code: "5001",
+    name: "市辖区",
+    provinceCode: "50"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d97"),
+    code: "5002",
+    name: "县",
+    provinceCode: "50"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d98"),
+    code: "5101",
+    name: "成都市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d99"),
+    code: "5103",
+    name: "自贡市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d9a"),
+    code: "5104",
+    name: "攀枝花市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d9b"),
+    code: "5105",
+    name: "泸州市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d9c"),
+    code: "5106",
+    name: "德阳市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d9d"),
+    code: "5107",
+    name: "绵阳市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d9e"),
+    code: "5108",
+    name: "广元市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008d9f"),
+    code: "5109",
+    name: "遂宁市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da0"),
+    code: "5110",
+    name: "内江市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da1"),
+    code: "5111",
+    name: "乐山市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da2"),
+    code: "5113",
+    name: "南充市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da3"),
+    code: "5114",
+    name: "眉山市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da4"),
+    code: "5115",
+    name: "宜宾市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da5"),
+    code: "5116",
+    name: "广安市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da6"),
+    code: "5117",
+    name: "达州市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da7"),
+    code: "5118",
+    name: "雅安市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da8"),
+    code: "5119",
+    name: "巴中市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008da9"),
+    code: "5120",
+    name: "资阳市",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008daa"),
+    code: "5132",
+    name: "阿坝藏族羌族自治州",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dab"),
+    code: "5133",
+    name: "甘孜藏族自治州",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dac"),
+    code: "5134",
+    name: "凉山彝族自治州",
+    provinceCode: "51"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dad"),
+    code: "5201",
+    name: "贵阳市",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dae"),
+    code: "5202",
+    name: "六盘水市",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008daf"),
+    code: "5203",
+    name: "遵义市",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db0"),
+    code: "5204",
+    name: "安顺市",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db1"),
+    code: "5205",
+    name: "毕节市",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db2"),
+    code: "5206",
+    name: "铜仁市",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db3"),
+    code: "5223",
+    name: "黔西南布依族苗族自治州",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db4"),
+    code: "5226",
+    name: "黔东南苗族侗族自治州",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db5"),
+    code: "5227",
+    name: "黔南布依族苗族自治州",
+    provinceCode: "52"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db6"),
+    code: "5301",
+    name: "昆明市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db7"),
+    code: "5303",
+    name: "曲靖市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db8"),
+    code: "5304",
+    name: "玉溪市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008db9"),
+    code: "5305",
+    name: "保山市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dba"),
+    code: "5306",
+    name: "昭通市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dbb"),
+    code: "5307",
+    name: "丽江市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dbc"),
+    code: "5308",
+    name: "普洱市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dbd"),
+    code: "5309",
+    name: "临沧市",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dbe"),
+    code: "5323",
+    name: "楚雄彝族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dbf"),
+    code: "5325",
+    name: "红河哈尼族彝族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc0"),
+    code: "5326",
+    name: "文山壮族苗族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc1"),
+    code: "5328",
+    name: "西双版纳傣族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc2"),
+    code: "5329",
+    name: "大理白族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc3"),
+    code: "5331",
+    name: "德宏傣族景颇族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc4"),
+    code: "5333",
+    name: "怒江傈僳族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc5"),
+    code: "5334",
+    name: "迪庆藏族自治州",
+    provinceCode: "53"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc6"),
+    code: "5401",
+    name: "拉萨市",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc7"),
+    code: "5402",
+    name: "日喀则市",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc8"),
+    code: "5403",
+    name: "昌都市",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dc9"),
+    code: "5404",
+    name: "林芝市",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dca"),
+    code: "5405",
+    name: "山南市",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dcb"),
+    code: "5406",
+    name: "那曲市",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dcc"),
+    code: "5425",
+    name: "阿里地区",
+    provinceCode: "54"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dcd"),
+    code: "6101",
+    name: "西安市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dce"),
+    code: "6102",
+    name: "铜川市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dcf"),
+    code: "6103",
+    name: "宝鸡市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd0"),
+    code: "6104",
+    name: "咸阳市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd1"),
+    code: "6105",
+    name: "渭南市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd2"),
+    code: "6106",
+    name: "延安市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd3"),
+    code: "6107",
+    name: "汉中市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd4"),
+    code: "6108",
+    name: "榆林市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd5"),
+    code: "6109",
+    name: "安康市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd6"),
+    code: "6110",
+    name: "商洛市",
+    provinceCode: "61"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd7"),
+    code: "6201",
+    name: "兰州市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd8"),
+    code: "6202",
+    name: "嘉峪关市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dd9"),
+    code: "6203",
+    name: "金昌市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dda"),
+    code: "6204",
+    name: "白银市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ddb"),
+    code: "6205",
+    name: "天水市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ddc"),
+    code: "6206",
+    name: "武威市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ddd"),
+    code: "6207",
+    name: "张掖市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dde"),
+    code: "6208",
+    name: "平凉市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ddf"),
+    code: "6209",
+    name: "酒泉市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de0"),
+    code: "6210",
+    name: "庆阳市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de1"),
+    code: "6211",
+    name: "定西市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de2"),
+    code: "6212",
+    name: "陇南市",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de3"),
+    code: "6229",
+    name: "临夏回族自治州",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de4"),
+    code: "6230",
+    name: "甘南藏族自治州",
+    provinceCode: "62"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de5"),
+    code: "6301",
+    name: "西宁市",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de6"),
+    code: "6302",
+    name: "海东市",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de7"),
+    code: "6322",
+    name: "海北藏族自治州",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de8"),
+    code: "6323",
+    name: "黄南藏族自治州",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008de9"),
+    code: "6325",
+    name: "海南藏族自治州",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dea"),
+    code: "6326",
+    name: "果洛藏族自治州",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008deb"),
+    code: "6327",
+    name: "玉树藏族自治州",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dec"),
+    code: "6328",
+    name: "海西蒙古族藏族自治州",
+    provinceCode: "63"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008ded"),
+    code: "6401",
+    name: "银川市",
+    provinceCode: "64"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dee"),
+    code: "6402",
+    name: "石嘴山市",
+    provinceCode: "64"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008def"),
+    code: "6403",
+    name: "吴忠市",
+    provinceCode: "64"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df0"),
+    code: "6404",
+    name: "固原市",
+    provinceCode: "64"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df1"),
+    code: "6405",
+    name: "中卫市",
+    provinceCode: "64"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df2"),
+    code: "6501",
+    name: "乌鲁木齐市",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df3"),
+    code: "6502",
+    name: "克拉玛依市",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df4"),
+    code: "6504",
+    name: "吐鲁番市",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df5"),
+    code: "6505",
+    name: "哈密市",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df6"),
+    code: "6523",
+    name: "昌吉回族自治州",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df7"),
+    code: "6527",
+    name: "博尔塔拉蒙古自治州",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df8"),
+    code: "6528",
+    name: "巴音郭楞蒙古自治州",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008df9"),
+    code: "6529",
+    name: "阿克苏地区",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dfa"),
+    code: "6530",
+    name: "克孜勒苏柯尔克孜自治州",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dfb"),
+    code: "6531",
+    name: "喀什地区",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dfc"),
+    code: "6532",
+    name: "和田地区",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dfd"),
+    code: "6540",
+    name: "伊犁哈萨克自治州",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dfe"),
+    code: "6542",
+    name: "塔城地区",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008dff"),
+    code: "6543",
+    name: "阿勒泰地区",
+    provinceCode: "65"
+} ]);
+db.getCollection("cities").insert([ {
+    _id: ObjectId("62fce7d877670000e3008e00"),
+    code: "6590",
+    name: "自治区直辖县级行政区划",
+    provinceCode: "65"
+} ]);
+
+// ----------------------------
+// Collection structure for datadictionaries
+// ----------------------------
+db.getCollection("datadictionaries").drop();
+db.createCollection("datadictionaries");
+
+// ----------------------------
+// Documents of datadictionaries
+// ----------------------------
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("630055268acad33d4dab3895"),
+    dicName: "文章分类",
+    dicType: NumberInt("1"),
+    dicCode: "DC0001",
+    remarks: "控制文章分类字典值",
+    addDate: ISODate("2022-08-20T03:29:42.53Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6301ddebbb91e87aed221c06"),
+    dicName: "广告位置",
+    dicType: NumberInt("1"),
+    dicCode: "DC0002",
+    remarks: "小程序广告位置",
+    addDate: ISODate("2022-08-21T07:25:31.456Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6301e12fbb91e87aed221c12"),
+    dicName: "默认位置",
+    dicType: NumberInt("2"),
+    dicClass: "DC0002",
+    dicCode: "DC00020001",
+    remarks: "",
+    addDate: ISODate("2022-08-21T07:39:27.51Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6303681a7c507c66b0763884"),
+    dicName: "短信参数设置",
+    dicType: NumberInt("1"),
+    dicCode: "DC0003",
+    remarks: "",
+    addDate: ISODate("2022-08-22T11:27:22.804Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6303682e7c507c66b0763899"),
+    dicName: "accessKeyId",
+    dicType: NumberInt("2"),
+    dicClass: "DC0003",
+    dicCode: "DC00030001",
+    remarks: "云片网accessKeyId",
+    addDate: ISODate("2022-08-22T11:27:42.433Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6303693a7c507c66b0763902"),
+    dicName: "小程序参数设置",
+    dicType: NumberInt("1"),
+    dicCode: "DC0004",
+    remarks: "",
+    addDate: ISODate("2022-08-22T11:32:10.501Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("630369817c507c66b076390e"),
+    dicName: "appID",
+    dicType: NumberInt("2"),
+    dicClass: "DC0004",
+    dicCode: "DC00040001",
+    remarks: "",
+    addDate: ISODate("2022-08-22T11:33:21.409Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("630389ef26d788ec69bf3fe5"),
+    dicName: "支付参数设置",
+    dicType: NumberInt("1"),
+    dicCode: "DC0005",
+    remarks: "",
+    addDate: ISODate("2022-08-22T13:51:43.197Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("630389fe26d788ec69bf3ff5"),
+    dicName: "应用appid",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050001",
+    remarks: "",
+    addDate: ISODate("2022-08-22T13:51:58.388Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("63038a0b26d788ec69bf3ffd"),
+    dicName: "商户号mchid",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050002",
+    remarks: "",
+    addDate: ISODate("2022-08-22T13:52:11.398Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("63038a8326d788ec69bf4042"),
+    dicName: "appSecret",
+    dicType: NumberInt("2"),
+    dicClass: "DC0004",
+    dicCode: "DC00040002",
+    remarks: "",
+    addDate: ISODate("2022-08-22T13:54:11.238Z"),
+    __v: NumberInt("0"),
+    isSystem: true,
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6316fcc297d4ce8d0d99d377"),
+    dicName: "api证书",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050003",
+    remarks: "apiclient_cert.pem",
+    addDate: ISODate("2022-09-06T07:54:42.537Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6316fcd297d4ce8d0d99d37f"),
+    dicName: "api密钥",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050004",
+    remarks: "apiclient_key.pem",
+    addDate: ISODate("2022-09-06T07:54:58.83Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("631723ea48fe1594bcd7cc56"),
+    dicName: "支付回调地址",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050005",
+    remarks: "",
+    addDate: ISODate("2022-09-06T10:41:46.415Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("63173d44c002649a0a4de57d"),
+    dicName: "退款回调地址",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050006",
+    remarks: "",
+    addDate: ISODate("2022-09-06T12:29:56.012Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("63174b52e41f05c623d27631"),
+    dicName: "APIv3密钥",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050007",
+    remarks: "",
+    addDate: ISODate("2022-09-06T13:29:54.538Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("63177473416e4217f35add21"),
+    dicName: "短信签名",
+    dicType: NumberInt("2"),
+    dicClass: "DC0003",
+    dicCode: "DC00030002",
+    remarks: "",
+    addDate: ISODate("2022-09-06T16:25:23.881Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6360d821ebfd8d545a5896e2"),
+    dicName: "短信模板",
+    dicType: NumberInt("1"),
+    dicCode: "DC0006",
+    remarks: "短信模板相关字典值",
+    addDate: ISODate("2022-11-01T08:26:09.727Z"),
+    isSystem: true,
+    __v: NumberInt("0"),
+    isSet: false
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("64060bba71608258d10d72ad"),
+    dicName: "树型分类数据类型",
+    dicType: NumberInt("1"),
+    dicCode: "DC0007",
+    remarks: "",
+    addDate: ISODate("2023-03-06T15:50:18.975Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6301fd62b9cf22a82c951057"),
+    dicName: "会员等级",
+    dicType: NumberInt("1"),
+    dicCode: "DC0008",
+    remarks: "会员等级设置",
+    addDate: ISODate("2022-08-21T09:39:46.26Z"),
+    __v: NumberInt("0"),
+    isSystem: true
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6304a7f26703ef5cd12cab8c"),
+    dicName: "游客",
+    dicType: NumberInt("2"),
+    dicClass: "DC0008",
+    dicCode: "DC00080001",
+    remarks: "",
+    addDate: ISODate("2022-08-23T10:12:02.982Z"),
+    __v: NumberInt("0"),
+    isSystem: true
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("642bc2e62a9737bbcb991782"),
+    dicName: "是否启用",
+    dicType: NumberInt("2"),
+    dicClass: "DC0003",
+    dicCode: "DC00030003",
+    remarks: "",
+    addDate: ISODate("2023-04-04T06:25:42.844Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("649d06f119f7f099fbd75633"),
+    dicName: "未分类",
+    dicType: NumberInt("2"),
+    dicClass: "DC0001",
+    dicCode: "DC00010001",
+    remarks: "",
+    addDate: ISODate("2023-06-29T04:22:09.309Z"),
+    isSystem: false,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("649d0a6819f7f099fbd75677"),
+    dicName: "服务区域管理",
+    dicType: NumberInt("2"),
+    dicClass: "DC0007",
+    dicCode: "DC00070001",
+    remarks: "值 = 最大层级",
+    addDate: ISODate("2023-06-29T04:36:56.536Z"),
+    isSystem: false,
+    __v: NumberInt("0"),
+    value: "2"
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("649d0a7219f7f099fbd75680"),
+    dicName: "默认模板",
+    dicType: NumberInt("2"),
+    dicClass: "DC0006",
+    dicCode: "DC00060001",
+    remarks: "",
+    addDate: ISODate("2023-06-29T04:37:06.343Z"),
+    isSystem: false,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a29fe21ea87bf8d72018"),
+    dicName: "七牛云",
+    dicType: NumberInt("1"),
+    dicCode: "DC0009",
+    remarks: "",
+    addDate: ISODate("2023-09-14T06:05:19.333Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a385e21ea87bf8d72028"),
+    dicName: "启用",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090001",
+    remarks: "",
+    addDate: ISODate("2023-09-14T06:09:09.43Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a66ce21ea87bf8d72055"),
+    dicName: "AccessKey",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090002",
+    remarks: "用户密钥",
+    addDate: ISODate("2023-09-14T06:21:32.558Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502a68ee21ea87bf8d72062"),
+    dicName: "SecretKey",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090003",
+    remarks: "加密密钥",
+    addDate: ISODate("2023-09-14T06:22:06.698Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b051e21ea87bf8d7206f"),
+    dicName: "公开空间",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090004",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:03:45.947Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b058e21ea87bf8d72077"),
+    dicName: "私有空间",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090005",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:03:52.443Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b0a1e21ea87bf8d72089"),
+    dicName: "私有空间域名",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090006",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:05:05.613Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6502b40de21ea87bf8d720a1"),
+    dicName: "公开空间域名",
+    dicType: NumberInt("2"),
+    dicClass: "DC0009",
+    dicCode: "DC00090007",
+    remarks: "",
+    addDate: ISODate("2023-09-14T07:19:41.755Z"),
+    isSystem: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527bdc18a9da7e13460ccdd"),
+    dicName: "钱包类型",
+    dicType: NumberInt("1"),
+    dicCode: "DC0010",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T09:34:57.851Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527bde18a9da7e13460ccfe"),
+    dicName: "会员钱包",
+    dicType: NumberInt("2"),
+    dicClass: "DC0010",
+    dicCode: "DC00100001",
+    value: "",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T09:35:29.343Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527be038a9da7e13460cd0e"),
+    dicName: "资金流向",
+    dicType: NumberInt("1"),
+    dicCode: "DC0011",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T09:36:03.014Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527be0a8a9da7e13460cd1e"),
+    dicName: "收入",
+    dicType: NumberInt("2"),
+    dicClass: "DC0011",
+    dicCode: "DC00110001",
+    value: "1",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T09:36:10.987Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527be0f8a9da7e13460cd26"),
+    dicName: "支出",
+    dicType: NumberInt("2"),
+    dicClass: "DC0011",
+    dicCode: "DC00110002",
+    value: "-1",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T09:36:15.534Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527c41d5de08ed576950c9b"),
+    dicName: "提现类型",
+    dicType: NumberInt("1"),
+    dicCode: "DC0012",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T10:02:05.879Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527c42a5de08ed576950cab"),
+    dicName: "会员提现",
+    dicType: NumberInt("2"),
+    dicClass: "DC0012",
+    dicCode: "DC00120001",
+    value: "",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T10:02:18.664Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527c48e5de08ed576950cbb"),
+    dicName: "审核状态",
+    dicType: NumberInt("1"),
+    dicCode: "DC0013",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T10:03:58.183Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527c49a5de08ed576950ccb"),
+    dicName: "待审核",
+    dicType: NumberInt("2"),
+    dicClass: "DC0013",
+    dicCode: "DC00130001",
+    value: "0",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T10:04:10.153Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527c49f5de08ed576950cd3"),
+    dicName: "通过",
+    dicType: NumberInt("2"),
+    dicClass: "DC0013",
+    dicCode: "DC00130002",
+    value: "1",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T10:04:15.932Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6527c4a35de08ed576950cdb"),
+    dicName: "拒绝",
+    dicType: NumberInt("2"),
+    dicClass: "DC0013",
+    dicCode: "DC00130003",
+    value: "2",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2023-10-12T10:04:19.8Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6561cec22dffb0adfd87eb28"),
+    dicName: "通知公告",
+    dicType: NumberInt("2"),
+    dicClass: "DC0001",
+    dicCode: "DC00010002",
+    value: "",
+    remarks: "",
+    isSystem: false,
+    addDate: ISODate("2023-11-25T10:38:58.135Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("65dda731d70d0728cf9f5ff0"),
+    dicName: "系统域名",
+    dicType: NumberInt("2"),
+    dicClass: "DC0005",
+    dicCode: "DC00050008",
+    value: "",
+    remarks: "",
+    isSystem: false,
+    addDate: ISODate("2024-02-27T09:11:13.126Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("65dda8db7c15186099d7eaec"),
+    dicName: "微信公众号配置",
+    dicType: NumberInt("1"),
+    dicCode: "DC0014",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2024-02-27T09:18:19.815Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("65dda8e27c15186099d7eb10"),
+    dicName: "appid",
+    dicType: NumberInt("2"),
+    dicClass: "DC0014",
+    dicCode: "DC00140001",
+    value: "",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2024-02-27T09:18:26.026Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("65dda8ec7c15186099d7eb18"),
+    dicName: "secret",
+    dicType: NumberInt("2"),
+    dicClass: "DC0014",
+    dicCode: "DC00140002",
+    value: "",
+    remarks: "",
+    isSystem: true,
+    addDate: ISODate("2024-02-27T09:18:36.506Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("datadictionaries").insert([ {
+    _id: ObjectId("6621fc9d860c1f3f563f31d9"),
+    dicName: "产品分类",
+    dicType: NumberInt("2"),
+    dicClass: "DC0007",
+    dicCode: "DC00070002",
+    value: "",
+    remarks: "",
+    isSystem: false,
+    addDate: ISODate("2024-04-19T05:09:49.902Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for fileuploads
+// ----------------------------
+db.getCollection("fileuploads").drop();
+db.createCollection("fileuploads");
+
+// ----------------------------
+// Documents of fileuploads
+// ----------------------------
+
+// ----------------------------
+// Collection structure for membermanagements
+// ----------------------------
+db.getCollection("membermanagements").drop();
+db.createCollection("membermanagements");
+
+// ----------------------------
+// Documents of membermanagements
+// ----------------------------
+db.getCollection("membermanagements").insert([ {
+    _id: ObjectId("66220aad1e10d6fc88fdbe2b"),
+    addDate: ISODate("2024-04-19T06:09:49.018Z"),
+    updateDate: ISODate("2024-04-19T08:01:03.099Z"),
+    fileIds: [ ],
+    UUID: "167d18147b554e1099efbb89da517e9c",
+    openId: "oxa9H4y2-Pe0aZgL9rzpfSCPg2-s",
+    unionID: "ooSkA69-mnj95falboln71stvfmU",
+    memberQR: "",
+    phoneNumber: "",
+    role: [
+        "66220635c070d9ac0942c62d"
+    ],
+    rank: "DC00080001",
+    __v: NumberInt("0"),
+    socketId: "brAOrFyfbFwVHIHmAABE"
+} ]);
+
+// ----------------------------
+// Collection structure for membermangers
+// ----------------------------
+db.getCollection("membermangers").drop();
+db.createCollection("membermangers");
+
+// ----------------------------
+// Documents of membermangers
+// ----------------------------
+
+// ----------------------------
+// Collection structure for moduleconfs
+// ----------------------------
+db.getCollection("moduleconfs").drop();
+db.createCollection("moduleconfs");
+
+// ----------------------------
+// Documents of moduleconfs
+// ----------------------------
+
+// ----------------------------
+// Collection structure for modulefields
+// ----------------------------
+db.getCollection("modulefields").drop();
+db.createCollection("modulefields");
+
+// ----------------------------
+// Documents of modulefields
+// ----------------------------
+
+// ----------------------------
+// Collection structure for modulesearches
+// ----------------------------
+db.getCollection("modulesearches").drop();
+db.createCollection("modulesearches");
+
+// ----------------------------
+// Documents of modulesearches
+// ----------------------------
+
+// ----------------------------
+// Collection structure for provinces
+// ----------------------------
+db.getCollection("provinces").drop();
+db.createCollection("provinces");
+
+// ----------------------------
+// Documents of provinces
+// ----------------------------
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c0"),
+    code: "11",
+    name: "北京市"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c1"),
+    code: "12",
+    name: "天津市"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c2"),
+    code: "13",
+    name: "河北省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c3"),
+    code: "14",
+    name: "山西省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c4"),
+    code: "15",
+    name: "内蒙古自治区"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c5"),
+    code: "21",
+    name: "辽宁省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c6"),
+    code: "22",
+    name: "吉林省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c7"),
+    code: "23",
+    name: "黑龙江省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c8"),
+    code: "31",
+    name: "上海市"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080c9"),
+    code: "32",
+    name: "江苏省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ca"),
+    code: "33",
+    name: "浙江省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080cb"),
+    code: "34",
+    name: "安徽省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080cc"),
+    code: "35",
+    name: "福建省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080cd"),
+    code: "36",
+    name: "江西省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080ce"),
+    code: "37",
+    name: "山东省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080cf"),
+    code: "41",
+    name: "河南省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d0"),
+    code: "42",
+    name: "湖北省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d1"),
+    code: "43",
+    name: "湖南省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d2"),
+    code: "44",
+    name: "广东省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d3"),
+    code: "45",
+    name: "广西壮族自治区"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d4"),
+    code: "46",
+    name: "海南省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d5"),
+    code: "50",
+    name: "重庆市"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d6"),
+    code: "51",
+    name: "四川省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d7"),
+    code: "52",
+    name: "贵州省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d8"),
+    code: "53",
+    name: "云南省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080d9"),
+    code: "54",
+    name: "西藏自治区"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080da"),
+    code: "61",
+    name: "陕西省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080db"),
+    code: "62",
+    name: "甘肃省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080dc"),
+    code: "63",
+    name: "青海省"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080dd"),
+    code: "64",
+    name: "宁夏回族自治区"
+} ]);
+db.getCollection("provinces").insert([ {
+    _id: ObjectId("62fce54b77670000e30080de"),
+    code: "65",
+    name: "新疆维吾尔自治区"
+} ]);
+
+// ----------------------------
+// Collection structure for rolepermissions
+// ----------------------------
+db.getCollection("rolepermissions").drop();
+db.createCollection("rolepermissions");
+
+// ----------------------------
+// Documents of rolepermissions
+// ----------------------------
+db.getCollection("rolepermissions").insert([ {
+    _id: ObjectId("6296bf0dffbc2d2b3cdf699f"),
+    roleName: "超级管理员",
+    permissionsList: [ ],
+    indexPath: "",
+    isSuper: true,
+    __v: NumberInt("0")
+} ]);
+db.getCollection("rolepermissions").insert([ {
+    _id: ObjectId("66220635c070d9ac0942c62d"),
+    roleName: "游客",
+    permissionsList: [
+        "division",
+        "6311a60b1df058152135dd67",
+        "6315e2f86660406757913efd",
+        "6319e43dafad973879082666",
+        "631c894eb13610fd22b96d3b",
+        "631c8ce35e0ca65855718f6c",
+        "631c955ddbd583657410d9e3",
+        "631c9c096ed3ac3bb54e8291",
+        "6416881979ab6351c8acbd8e",
+        "642450844be865c8aaa48c58",
+        "64365dc11a0db2e27c75e1a1",
+        "6317135348fe1594bcd7cbb9",
+        "6551bf77e938e9942ac3ec8f",
+        "6551bf77e938e9942ac3ec92",
+        "6551bf77e938e9942ac3ec94",
+        "6551bf77e938e9942ac3ec95",
+        "6551fad9c254cd0e53cb4364",
+        "6552ec26820d7a03e60b9873",
+        "6552ec36820d7a03e60b987c",
+        "6551bf7ae938e9942ac3ecae",
+        "6551bf7ae938e9942ac3ecb3",
+        "6551bf7ae938e9942ac3ecb2",
+        "6551bf7ae938e9942ac3ecb4",
+        "6317136648fe1594bcd7cbc2"
+    ],
+    indexPath: "",
+    isSuper: false,
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for systemconfigs
+// ----------------------------
+db.getCollection("systemconfigs").drop();
+db.createCollection("systemconfigs");
+
+// ----------------------------
+// Documents of systemconfigs
+// ----------------------------
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("64fee7b0d12e59ce60069fc1"),
+    confType: "DC0000",
+    confSelect: "DC00000001",
+    confValue: "{\"group\":[{\"name\":\"小程序用户角色绑定\",\"configItem\":[{\"confType\":\"DC0008\",\"confSelect\":\"DC00080001\",\"labelName\":\"游客\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"MoreSelect\",\"dataUrl\":\"/api/rolePermissions/getList\",\"dataLabel\":\"roleName\",\"dataValue\":\"_id\",\"sortAsc\":0}],\"sortAsc\":0},{\"name\":\"小程序相关配置\",\"configItem\":[{\"description\":\"appID\",\"sortAsc\":1,\"allowFetch\":true,\"dom\":\"Input\",\"confSelect\":\"DC00040001\",\"confType\":\"DC0004\",\"labelName\":\"appID\"},{\"confType\":\"DC0004\",\"confSelect\":\"DC00040002\",\"labelName\":\"appSecrt\",\"allowFetch\":false,\"description\":\"appSecrt，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":1}],\"sortDesc\":2,\"sortAsc\":2},{\"name\":\"微信公众号配置\",\"configItem\":[{\"confType\":\"DC0014\",\"confSelect\":\"DC00140001\",\"labelName\":\"appid\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0014\",\"confSelect\":\"DC00140002\",\"labelName\":\"secret\",\"allowFetch\":false,\"isOpen\":false,\"description\":\"\",\"dom\":\"Password\",\"sortAsc\":0}],\"sortAsc\":3},{\"name\":\"微信支付配置\",\"configItem\":[{\"confType\":\"DC0005\",\"confSelect\":\"DC00050002\",\"labelName\":\"商户号mchid\",\"allowFetch\":true,\"description\":\"商户号mchid\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050001\",\"labelName\":\"应用appid\",\"allowFetch\":true,\"description\":\"应用appid\",\"dom\":\"Input\",\"sortAsc\":1},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050007\",\"labelName\":\"APIv3密钥\",\"allowFetch\":false,\"description\":\"APIv3密钥，可设置不能查看\",\"dom\":\"Input\",\"sortAsc\":2},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050003\",\"labelName\":\"api证书\",\"allowFetch\":false,\"description\":\"apiclient_cert.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5},{\"confType\":\"DC0005\",\"confSelect\":\"DC00050004\",\"labelName\":\"api密钥\",\"allowFetch\":false,\"description\":\"apiclient_key.pem，可设置不能查看\",\"dom\":\"File\",\"sortAsc\":5}],\"sortDesc\":0,\"sortAsc\":3},{\"name\":\"短信参数配置\",\"configItem\":[{\"confType\":\"DC0003\",\"confSelect\":\"DC00030003\",\"labelName\":\"是否启用\",\"allowFetch\":true,\"description\":\"\",\"dom\":\"Swatch\",\"sortAsc\":1,\"defaultValue\":\"false\"},{\"confType\":\"DC0003\",\"confSelect\":\"DC00030001\",\"labelName\":\"accessKeyId\",\"allowFetch\":false,\"description\":\"云片网accessKeyId，可设置不能查看\",\"dom\":\"Password\",\"sortAsc\":2}],\"sortDesc\":0,\"sortAsc\":9,\"linkArr\":[{\"linkName\":\"云片网\",\"linkUrl\":\"https://www.yunpian.com/console/#/iframe?path=admin\"}]},{\"name\":\"七牛云设置\",\"linkArr\":[{\"linkName\":\"开发指南\",\"linkUrl\":\"https://developer.qiniu.com/kodo/8596/development-guidelines\"}],\"configItem\":[{\"confType\":\"DC0009\",\"confSelect\":\"DC00090001\",\"labelName\":\"启用\",\"allowFetch\":true,\"isOpen\":true,\"description\":\"\",\"dom\":\"Swatch\",\"sortAsc\":0,\"defaultValue\":\"false\"},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090002\",\"labelName\":\"AccessKey\",\"allowFetch\":false,\"description\":\"用户密钥\",\"dom\":\"Password\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090003\",\"labelName\":\"SecretKey\",\"allowFetch\":false,\"description\":\"加密密钥\",\"dom\":\"Password\",\"sortAsc\":0,\"isOpen\":true},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090004\",\"labelName\":\"公开空间\",\"allowFetch\":true,\"description\":\"公开空间名称\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090007\",\"labelName\":\"公开空间域名\",\"allowFetch\":true,\"description\":\"公开空间域名\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090005\",\"labelName\":\"私有空间\",\"allowFetch\":true,\"description\":\"私有空间\",\"dom\":\"Input\",\"sortAsc\":0},{\"confType\":\"DC0009\",\"confSelect\":\"DC00090006\",\"labelName\":\"私有空间域名\",\"allowFetch\":true,\"description\":\"私有空间域名\",\"dom\":\"Input\",\"sortAsc\":0}],\"sortAsc\":10}]}",
+    isSet: true,
+    allowFetch: true,
+    isOpen: false,
+    remarks: "页面dom配置信息，参考SystemConfigPage",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("650179f075835df967e48b0d"),
+    addDate: ISODate("2023-09-13T08:59:28.027Z"),
+    updateDate: ISODate("2024-04-16T06:11:25.32Z"),
+    fileIds: [ ],
+    confSelect: "DC00030003",
+    confValue: "true",
+    isSet: true,
+    allowFetch: true,
+    remarks: "",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65017a4075835df967e48b5e"),
+    addDate: ISODate("2023-09-13T09:00:48.884Z"),
+    updateDate: ISODate("2024-04-19T05:58:26.952Z"),
+    fileIds: [ ],
+    confSelect: "DC00040001",
+    isSet: true,
+    allowFetch: true,
+    remarks: "appID",
+    __v: NumberInt("0"),
+    updateUser: "baigao",
+    confValue: ""
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65018f1175835df967e48ce9"),
+    addDate: ISODate("2023-09-13T10:29:37.178Z"),
+    updateDate: ISODate("2024-01-29T07:19:36.717Z"),
+    fileIds: [ ],
+    confSelect: "DC00050001",
+    isSet: true,
+    allowFetch: true,
+    remarks: "应用appid",
+    __v: NumberInt("0"),
+    updateUser: "baigao",
+    confValue: ""
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65018f1a75835df967e48cf6"),
+    addDate: ISODate("2023-09-13T10:29:46.91Z"),
+    updateDate: ISODate("2024-01-29T07:19:36.677Z"),
+    fileIds: [ ],
+    confSelect: "DC00050002",
+    isSet: true,
+    allowFetch: true,
+    remarks: "商户号mchid",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("650294a2e057d6c348d61173"),
+    addDate: ISODate("2023-09-14T05:05:38.618Z"),
+    updateDate: ISODate("2024-04-19T05:58:26.962Z"),
+    fileIds: [ ],
+    confSelect: "DC00040002",
+    isSet: true,
+    allowFetch: false,
+    remarks: "appSecrt，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao",
+    confValue: ""
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502956fd53ce1b0a6f6416f"),
+    addDate: ISODate("2023-09-14T05:09:03.262Z"),
+    updateDate: ISODate("2024-04-16T06:11:25.341Z"),
+    fileIds: [ ],
+    confSelect: "DC00030001",
+    isSet: true,
+    allowFetch: false,
+    remarks: "云片网accessKeyId，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("650295dad53ce1b0a6f641ca"),
+    addDate: ISODate("2023-09-14T05:10:50.287Z"),
+    updateDate: ISODate("2024-01-29T07:19:36.702Z"),
+    fileIds: [ ],
+    confSelect: "DC00050007",
+    isSet: true,
+    allowFetch: false,
+    remarks: "APIv3密钥，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65029abd12bd145b9eb6f0ff"),
+    addDate: ISODate("2023-09-14T05:31:41.019Z"),
+    updateDate: ISODate("2023-12-29T07:33:54.028Z"),
+    fileIds: [ ],
+    confSelect: "DC00050003",
+    isSet: true,
+    allowFetch: false,
+    remarks: "apiclient_cert.pem，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("65029ad312bd145b9eb6f10c"),
+    addDate: ISODate("2023-09-14T05:32:03.964Z"),
+    updateDate: ISODate("2023-12-29T07:33:54.058Z"),
+    fileIds: [ ],
+    confSelect: "DC00050004",
+    isSet: true,
+    allowFetch: false,
+    remarks: "apiclient_key.pem，可设置不能查看",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b624e21ea87bf8d720d7"),
+    addDate: ISODate("2023-09-14T07:28:36.522Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.965Z"),
+    fileIds: [ ],
+    confSelect: "DC00090001",
+    confValue: "false",
+    isSet: true,
+    allowFetch: true,
+    isOpen: true,
+    remarks: "",
+    __v: NumberInt("0"),
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b63ce21ea87bf8d720f2"),
+    addDate: ISODate("2023-09-14T07:29:00.44Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.968Z"),
+    fileIds: [ ],
+    confSelect: "DC00090002",
+    isSet: false,
+    allowFetch: false,
+    remarks: "用户密钥",
+    __v: NumberInt("0"),
+    confValue: "",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b648e21ea87bf8d720ff"),
+    addDate: ISODate("2023-09-14T07:29:12.083Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.97Z"),
+    fileIds: [ ],
+    confSelect: "DC00090003",
+    isSet: false,
+    allowFetch: false,
+    remarks: "加密密钥",
+    __v: NumberInt("0"),
+    updateUser: "baigao",
+    isOpen: true,
+    confValue: ""
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b6d4e21ea87bf8d72151"),
+    addDate: ISODate("2023-09-14T07:31:32.418Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.987Z"),
+    fileIds: [ ],
+    confSelect: "DC00090004",
+    isSet: true,
+    allowFetch: true,
+    remarks: "公开空间名称",
+    __v: NumberInt("0"),
+    confValue: "project-public",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b6f8e21ea87bf8d7216b"),
+    addDate: ISODate("2023-09-14T07:32:08.97Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.983Z"),
+    fileIds: [ ],
+    confSelect: "DC00090007",
+    isSet: true,
+    allowFetch: true,
+    remarks: "公开空间域名",
+    __v: NumberInt("0"),
+    confValue: "cdn-public.domain.cn",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b715e21ea87bf8d72182"),
+    addDate: ISODate("2023-09-14T07:32:37.092Z"),
+    updateDate: ISODate("2023-09-14T07:37:40.991Z"),
+    fileIds: [ ],
+    confSelect: "DC00090005",
+    isSet: true,
+    allowFetch: true,
+    remarks: "私有空间",
+    __v: NumberInt("0"),
+    confValue: "project-private",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6502b724e21ea87bf8d7218f"),
+    addDate: ISODate("2023-09-14T07:32:52.075Z"),
+    updateDate: ISODate("2023-09-14T07:37:41.026Z"),
+    fileIds: [ ],
+    confSelect: "DC00090006",
+    isSet: true,
+    allowFetch: true,
+    remarks: "私有空间域名",
+    __v: NumberInt("0"),
+    confValue: "cdn-private.domain.cn",
+    updateUser: "baigao"
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("6622038ac070d9ac0942c589"),
+    addUser: "",
+    addDate: ISODate("2024-04-19T05:39:22.443Z"),
+    updateUser: "",
+    updateDate: ISODate("2024-04-19T05:39:22.443Z"),
+    fileIds: [ ],
+    confSelect: "DC00140001",
+    isSet: false,
+    allowFetch: true,
+    remarks: "",
+    __v: NumberInt("0")
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("66220392c070d9ac0942c596"),
+    addUser: "",
+    addDate: ISODate("2024-04-19T05:39:30.467Z"),
+    updateUser: "baigao",
+    updateDate: ISODate("2024-04-19T05:39:41.967Z"),
+    fileIds: [ ],
+    confSelect: "DC00140002",
+    isSet: false,
+    allowFetch: false,
+    remarks: "",
+    __v: NumberInt("0"),
+    isOpen: false
+} ]);
+db.getCollection("systemconfigs").insert([ {
+    _id: ObjectId("66220620c070d9ac0942c618"),
+    addUser: "",
+    addDate: ISODate("2024-04-19T05:50:24.386Z"),
+    updateUser: "baigao",
+    updateDate: ISODate("2024-04-19T05:50:57.888Z"),
+    fileIds: [ ],
+    confSelect: "DC00080001",
+    isSet: true,
+    allowFetch: true,
+    remarks: "",
+    __v: NumberInt("0"),
+    confValue: "66220635c070d9ac0942c62d"
+} ]);
+
+// ----------------------------
+// Collection structure for systemlogs
+// ----------------------------
+db.getCollection("systemlogs").drop();
+db.createCollection("systemlogs");
+
+// ----------------------------
+// Documents of systemlogs
+// ----------------------------
+
+// ----------------------------
+// Collection structure for treeclassifications
+// ----------------------------
+db.getCollection("treeclassifications").drop();
+db.createCollection("treeclassifications");
+
+// ----------------------------
+// Documents of treeclassifications
+// ----------------------------
+
+// ----------------------------
+// Collection structure for walletlogs
+// ----------------------------
+db.getCollection("walletlogs").drop();
+db.createCollection("walletlogs");
+
+// ----------------------------
+// Documents of walletlogs
+// ----------------------------
+
+// ----------------------------
+// Collection structure for walletmanagements
+// ----------------------------
+db.getCollection("walletmanagements").drop();
+db.createCollection("walletmanagements");
+
+// ----------------------------
+// Documents of walletmanagements
+// ----------------------------
+db.getCollection("walletmanagements").insert([ {
+    _id: ObjectId("66220aad1e10d6fc88fdbe2e"),
+    addDate: ISODate("2024-04-19T06:09:49.045Z"),
+    updateDate: ISODate("2024-04-19T06:09:49.045Z"),
+    fileIds: [ ],
+    UUID: "86f52e07a7294c288f0f65a11efeee28",
+    bindUserUUID: "167d18147b554e1099efbb89da517e9c",
+    balance: NumberInt("0"),
+    totalIncome: NumberInt("0"),
+    totalExpenditure: NumberInt("0"),
+    remarks: "会员【oxa9H4y2-Pe0aZgL9rzpfSCPg2-s】({\"UUID\":\"167d18147b554e1099efbb89da517e9c\",\"openId\":\"oxa9H4y2-Pe0aZgL9rzpfSCPg2-s\"})的钱包",
+    freeze: false,
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for withdrawalmanagements
+// ----------------------------
+db.getCollection("withdrawalmanagements").drop();
+db.createCollection("withdrawalmanagements");
+
+// ----------------------------
+// Documents of withdrawalmanagements
+// ----------------------------
+
+// ----------------------------
+// Collection structure for wxmpusers
+// ----------------------------
+db.getCollection("wxmpusers").drop();
+db.createCollection("wxmpusers");
+db.getCollection("wxmpusers").createIndex({
+    openid: NumberInt("1")
+}, {
+    name: "openid_1",
+    background: true,
+    unique: true
+});
+
+// ----------------------------
+// Documents of wxmpusers
+// ----------------------------

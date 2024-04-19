@@ -114,9 +114,9 @@ import { ref, reactive, toRefs, defineComponent, onMounted } from "vue";
 import { btnShow } from "@/utils/buttonShow";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import {
-  AdMangerControllerCreate,
-  AdMangerControllerUpdate,
-} from "@/api/AdMangerControllerApi";
+  AdManagementControllerCreate,
+  AdManagementControllerUpdate,
+} from "@/api/AdManagementControllerApi";
 import type { UploadProps } from "element-plus";
 import { Delete, Edit, Plus } from "@element-plus/icons-vue";
 import type { FormInstance, FormRules } from "element-plus";
@@ -276,7 +276,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate(async (valid, fields) => {
     if (valid) {
       console.log("验证通过", form.value);
-      if (form.value._id) editAdManger(form.value);
+      if (form.value._id) editAdManagement(form.value);
       else Create(form.value);
     } else {
       console.log("校验失败", fields);
@@ -338,7 +338,7 @@ const Create = async (params: any) => {
       release,
       sort,
     } = params;
-    let result = await AdMangerControllerCreate({
+    let result = await AdManagementControllerCreate({
       name,
       photo,
       linkType,
@@ -362,7 +362,7 @@ const Create = async (params: any) => {
 };
 
 // 编辑广告
-const editAdManger = async (params: any) => {
+const editAdManagement = async (params: any) => {
   try {
     const {
       name,
@@ -376,7 +376,7 @@ const editAdManger = async (params: any) => {
       _id,
       sort,
     } = params;
-    let result = await AdMangerControllerUpdate(_id, {
+    let result = await AdManagementControllerUpdate(_id, {
       name,
       photo,
       linkType,
@@ -404,7 +404,7 @@ onMounted(() => {
 });
 defineExpose({ open });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .avatar-uploader .el-upload:hover {
   border-color: var(--el-color-primary);
 }

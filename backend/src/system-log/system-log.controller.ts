@@ -19,7 +19,7 @@ export class SystemLogController {
     @ApiOperation({ description: 'getSystemLogPage:获取系统日志分页' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async getPage(@Query() pageForm: PageForm, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<SystemLogDto>>> {
-        const info = new ResponseInfoDto<PageResponseDto<SystemLogDto>>();
+        const info = new ResponseInfoDto<PageResponseDto<SystemLogDto>>(req);
         try {
             info.success(`成功`, await this.systemLogService.getPage(pageForm));
         } catch (e) {

@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const fs = require('fs');
-const url = 'http://localhost:3001/apiDoc.json';
-// const url = 'http://211.149.135.249:888/api/apiDoc.json';
+//const url = 'http://qiancui.qixiankeji.cn/swagger-json';
+const url = 'http://localhost:3001/swagger-json';
 const apiPath = './src/api';
 const apiTag = '/api';
 const dtoPath = './src/api/dto';
@@ -15,7 +15,8 @@ function getFiled (name, typeObj, required) {
     `
 }
 function getClass (name, filedText) {
-    return `export class ${name}Dto {
+
+    return `export class ${name}${name.endsWith("Dto")?"":"Dto"} {
 
 ${filedText}
 }`
@@ -110,7 +111,7 @@ export const ${apiName} = (${pathParam}${query !== '' ? 'query: { ' + query + ' 
 * ${description}
 * @returns 
 */
-export const ${apiName} = (${pathParam}${dtoName ? 'data: ' + dtoName + 'Dto,' : ''} config?: any) => {
+export const ${apiName} = (${pathParam}${dtoName ? 'data: ' + (dtoName.endsWith("Dto")?dtoName+',':dtoName+'Dto,') : ''} config?: any) => {
    return axios.post(\`${apiTag}${apiUrl}\`, ${dtoName ? 'data,' : '{},'} config);
 }`
         },
@@ -161,7 +162,7 @@ function start () {
                 filedText += getFiled(j, dto.properties[j], dto.required?.includes(j));
             }
             const classText = getClass(i, filedText);
-            fs.writeFileSync(`${dtoPath}/${i}Dto.ts`, classText);
+            fs.writeFileSync(`${dtoPath}/${i}${i.endsWith("Dto")?"":"Dto"}.ts`, classText);
         }
         //组织api文件内容
         const apiObj = res.data.paths;
@@ -183,7 +184,7 @@ function start () {
                 if (!apiClassifyDtoList[className]) {
                     apiClassifyDtoList[className] = {};
                 }
-                apiClassifyDtoList[className][dtoName] = `import type { ${dtoName}Dto } from './dto/${dtoName}Dto';
+                apiClassifyDtoList[className][dtoName] = `import type { ${dtoName}${dtoName.endsWith("Dto")?"":"Dto"} } from './dto/${dtoName}${dtoName.endsWith("Dto")?"":"Dto"}';
 `;
             }
         }

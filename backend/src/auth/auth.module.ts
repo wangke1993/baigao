@@ -11,16 +11,17 @@ import { AdminMenuModule } from 'src/admin-menu/admin-menu.module';
 import { SystemLogModule } from 'src/system-log/system-log.module';
 import { RedisCacheModule } from 'src/redis-cache/redis-cache.module';
 import { SystemConfigModule } from 'src/system-config/system-config.module';
-import { MemberMangerModule } from 'src/member-manger/member-manger.module';
-const configService = new ConfigService();
+import { MemberManagementModule } from 'src/member-management/member-management.module';
+import { EnvConfig } from 'src/utils/env-config';
+const envConfig = new EnvConfig;
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true
     }),
     JwtModule.register({
-      secret: configService.get<string>('JWT_SECRET'),
-      signOptions: { expiresIn: configService.get<string>('JWT_EXPIRES_IN') },  //s,m,h,d
+      secret: envConfig.JWT_SECRET,
+      signOptions: { expiresIn: envConfig.JWT_EXPIRES_IN },  //s,m,h,d
     }),
     AdminUserModule,
     RolePermissionsModule,
@@ -29,7 +30,7 @@ const configService = new ConfigService();
     SystemLogModule,
     RedisCacheModule,
     SystemConfigModule,
-    MemberMangerModule],
+    MemberManagementModule],
   providers: [AuthService, jwtStrategy],
   exports: [AuthService],
   controllers: [AuthController],

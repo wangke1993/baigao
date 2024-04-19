@@ -53,6 +53,16 @@ export class ModuleConf extends BaseSchema {
         type: String
     })
     remakes: string;
+    @ApiProperty({
+        description: '生成次数',
+        required: false
+    })
+    @Prop({
+        required: false,
+        default: 0,
+        type: Number
+    })
+    createCount: number;
 }
 
 export type ModuleConfDocument = ModuleConf & Document;

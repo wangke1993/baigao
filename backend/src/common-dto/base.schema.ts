@@ -31,7 +31,7 @@ export class BaseSchema extends Document {
 
     @ApiProperty({
         required: false,
-        description: '文件id数组，只要文章上传文件，保留原有数据且把上传的文件id都push到该数组中。',
+        description: '文件UUID数组，只要文章上传文件，保留原有数据且把上传的文件UUID都push到该数组中。',
     })
     @Prop()
     fileIds: string[];

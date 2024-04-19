@@ -11,6 +11,7 @@ import { UpdatePasswordDto } from './dto/update-password.dto';
 import * as crypto from 'crypto';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 import { PowerGuard } from 'src/auth/guard/power.guard';
+import { AdminUserPageDto } from './dto/admin-user-page.dto';
 
 @ApiTags('后台用户管理')
 @Controller('adminUser')
@@ -25,7 +26,7 @@ export class AdminUserController {
     @UseGuards(JwtAuthGuard, PowerGuard)
     async create(@Body() form: AdminUser, @Req() req: any): Promise<ResponseInfoDto<AdminUser>> {
         form.password = crypto.createHash('md5').update(form.password + this.SALT_CODE).digest('hex');
-        const info = new ResponseInfoDto<AdminUser>();
+        const info = new ResponseInfoDto<AdminUser>(req);
         try {
             info.success('成功', await this.adminUserService.create(form));
             this.systemLogService.create('后台用户管理', `新增用户${JSON.stringify(form)}`, req);
@@ -34,13 +35,13 @@ export class AdminUserController {
         }
         return info;
     }
-    
+
     // FIXME 仅用于修改密码盐值后，初始化管理员账号的密码；初始化后记得注释和修改管理员密码
     // @Post('initAdminUser')
     // @ApiOperation({ description: '仅用于修改密码盐值后，初始化管理员账号的密码；初始化后记得注释和修改管理员密码,默认账号:baigao 密码:123456' })
-    // async initAdminUser(): Promise<ResponseInfoDto<any>> {
+    // async initAdminUser(@Req() req:any): Promise<ResponseInfoDto<any>> {
     //     const password = crypto.createHash('md5').update(`123456${this.SALT_CODE}`).digest('hex');
-    //     const info = new ResponseInfoDto<AdminUser>();
+    //     const info = new ResponseInfoDto<AdminUser>(req);
     //     try {
     //         info.success('成功', await this.adminUserService.initAdminUser(password));
     //     } catch (e) {
@@ -55,7 +56,7 @@ export class AdminUserController {
     @UseGuards(JwtAuthGuard, PowerGuard)
     async update(@Body() form: AdminUser, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<AdminUser>> {
         delete form.password;
-        const info = new ResponseInfoDto<AdminUser>();
+        const info = new ResponseInfoDto<AdminUser>(req);
         try {
             info.success('成功', await this.adminUserService.update(form, id));
             this.systemLogService.create('后台用户管理', `修改用户${JSON.stringify(form)};id:${id}`, req);
@@ -64,6 +65,7 @@ export class AdminUserController {
         }
         return info;
     }
+    
     @Post('updatePassword/:id')
     @AuthTag('updateAdminUserPassword')
     @ApiOperation({ description: 'updateAdminUserPassword:后台用户密码修改' })
@@ -75,10 +77,10 @@ export class AdminUserController {
             const password = crypto.createHash('md5').update(updatePasswordDto.newPassword + this.SALT_CODE).digest('hex');
             await this.adminUserService.updatePassword(password, id);
             this.systemLogService.create('后台用户管理', `修改密码成功：id:${id}`, req);
-            return new ResponseInfoDto<string>(INFO_STATUS.success, `修改成功`);
+            return new ResponseInfoDto<string>(req, INFO_STATUS.success, `修改成功`);
         } else {
             this.systemLogService.create('后台用户管理', `修改密码失败：原密码输入错误;id:${id}`, req);
-            return new ResponseInfoDto<string>(INFO_STATUS.error, `原密码输入错误`);
+            return new ResponseInfoDto<string>(req, INFO_STATUS.error, `原密码输入错误`);
         }
     }
     @Post('resetPassword/:id')
@@ -86,7 +88,7 @@ export class AdminUserController {
     @ApiOperation({ description: 'resetAdminUserPassword:后台用户密码重置' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async resetPassword(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<string>> {
-        const info = new ResponseInfoDto<string>();
+        const info = new ResponseInfoDto<string>(req);
         try {
             const newPassword = await this.adminUserService.resetPassword(id);
             info.success(`重置成功，新密码为：${newPassword}`, newPassword);
@@ -103,7 +105,7 @@ export class AdminUserController {
     @ApiOperation({ description: 'deleteAdminUser:删除后台用户' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<string>> {
-        const info = new ResponseInfoDto<string>();
+        const info = new ResponseInfoDto<string>(req);
         try {
             await this.adminUserService.deleteById(id);
             info.success(`成功`);
@@ -119,10 +121,23 @@ export class AdminUserController {
     @AuthTag('getAdminUserPage')
     @ApiOperation({ description: 'getAdminUserPage:获取后台用户分页' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getPage(@Query() pageForm: PageRequestDto, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<AdminUser>>> {
-        const info = new ResponseInfoDto<PageResponseDto<AdminUser>>();
+    async getPage(@Query() pageForm: AdminUserPageDto, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<AdminUser>>> {
+        const info = new ResponseInfoDto<PageResponseDto<AdminUser>>(req);
         try {
             info.success(`成功`, await this.adminUserService.getPage(pageForm));
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }
+    @Get("getList")
+    @AuthTag('getAdminUserList')
+    @ApiOperation({ description: 'getAdminUserList:获取后台用户分页' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async getList(@Req() req: any): Promise<ResponseInfoDto<AdminUser[]>> {
+        const info = new ResponseInfoDto<AdminUser[]>(req);
+        try {
+            info.success(`成功`, await this.adminUserService.getList());
         } catch (e) {
             info.warring(e.toString());
         }

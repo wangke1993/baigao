@@ -88,9 +88,9 @@ import { ref, reactive } from "vue";
 import { btnShow } from "../../utils/buttonShow";
 import { Delete, Edit } from "@element-plus/icons-vue";
 import {
-  AdMangerControllerGetPage,
-  AdMangerControllerDelete,
-} from "@/api/AdMangerControllerApi";
+  AdManagementControllerGetPage,
+  AdManagementControllerDelete,
+} from "@/api/AdManagementControllerApi";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import addAdvertisement from "@/views/advertisement/components/addAdvertisement.vue";
 const types = [
@@ -142,7 +142,7 @@ const linkTypeFun = (type: string | number) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getList = async (params: any) => {
   try {
-    let result = await AdMangerControllerGetPage(params);
+    let result = await AdManagementControllerGetPage(params);
     let data = result.data;
     if (data.status === 1) {
       state.userListData = data.data.list;
@@ -157,7 +157,7 @@ getList(state.params);
 // 删除广告
 const deleteDictionary = async (id: string) => {
   try {
-    let result = await AdMangerControllerDelete(id);
+    let result = await AdManagementControllerDelete(id);
     let data = result.data;
     if (data.status === 1) {
       console.log("删除广告", data);
@@ -199,7 +199,7 @@ const dicCodeName = (articleClass: string) => {
   return title;
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .list-box {
   padding: 20px;
 }

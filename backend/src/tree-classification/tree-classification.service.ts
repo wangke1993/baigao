@@ -20,7 +20,7 @@ export class TreeClassificationService {
 
     async deleteById(id: string): Promise<any> {
         const data = await this.TreeClassificationModel.findById(id);
-        await this.redisCacheService.del(`${this.TREE_CACHE_KEY}${data.dataClass}`);
+        this.clearCache(data.dataClass);
         const session = await this.transaction.startTransactionAuto();
         const deleteData = () => new Promise<TreeClassification>((res, rej) => {
             session.withTransaction(async () => {
@@ -33,20 +33,26 @@ export class TreeClassificationService {
                     { $inc: { breathCount: - 1 } },
                     { session });
                 res(await this.TreeClassificationModel.findByIdAndDelete(id, { session }))
-            }).catch(err => rej(err));
+            }).catch(err => {
+                console.log(err);
+                rej(err)
+            });
         });
         return await deleteData();
     }
     async create(treeClassification: TreeClassification): Promise<TreeClassification> {
         treeClassification.addDate = new Date();
         treeClassification.UUID = randomUUID().replace(/-/g, "");
-        await this.redisCacheService.del(`${this.TREE_CACHE_KEY}${treeClassification.dataClass}`);
+        await this.clearCache(treeClassification.dataClass);
         const session = await this.transaction.startTransactionAuto();
         const createData = () => new Promise<TreeClassification>((res, rej) => {
             session.withTransaction(async () => {
                 await this.TreeClassificationModel.updateMany({ parent: treeClassification.parent, UUID: { $ne: treeClassification.UUID } }, { breathCount: treeClassification.breathCount }, { session });
                 res(await new this.TreeClassificationModel(treeClassification).save({ session }))
-            }).catch(err => rej(err));
+            }).catch(err => {
+                console.log(err);
+                rej(err)
+            });
         });
         return await createData();
     }
@@ -55,7 +61,7 @@ export class TreeClassificationService {
         treeClassification.updateDate = new Date();
         delete treeClassification.addDate;
         delete treeClassification.addUser;
-        await this.redisCacheService.del(`${this.TREE_CACHE_KEY}${treeClassification.dataClass}`);
+        await this.clearCache(treeClassification.dataClass);
         return await this.TreeClassificationModel.updateOne({ _id: new ObjectId(id) }, { $set: { ...treeClassification } });
     }
     async getLastList(dataClass: string, parent?: string): Promise<any[]> {
@@ -102,16 +108,58 @@ export class TreeClassificationService {
         }
 
     }
-    async getTree(dataClass: String, keyWord: String): Promise<TreeClassificationDto[]> {
-        let tree = await this.redisCacheService.get(`${this.TREE_CACHE_KEY}${dataClass}`);
+    async getFirstList(dataClass: string): Promise<TreeClassification[]> {
+        return await this.TreeClassificationModel.find({
+            $or: [
+                { parent: "0" },
+                { parent: undefined },
+                { parent: null }
+            ],
+            dataClass
+        }).sort({ sort: 1 });
+    }
+    getCacheKey(dataClass: String, isOpen?: boolean): string {
+        let cacheKey = `${this.TREE_CACHE_KEY}${dataClass}`;
+        if (isOpen) {
+            cacheKey = `${this.TREE_CACHE_KEY}${dataClass}Open`;
+        }
+        return cacheKey;
+    }
+    async getByCache(dataClass: String, isOpen?: boolean): Promise<any> {
+        return await this.redisCacheService.get(this.getCacheKey(dataClass, isOpen));
+    }
+    async clearCache(dataClass: String) {
+        await this.redisCacheService.del(this.getCacheKey(dataClass, false));
+        await this.redisCacheService.del(this.getCacheKey(dataClass, true));
+    }
+    async setCache(dataClass: String, data: String, isOpen?: boolean) {
+        await this.redisCacheService.set(this.getCacheKey(dataClass, isOpen), data, 60 * 60);
+    }
+    /**
+     * 
+     * @param dataClass 
+     * @param keyWord 
+     * @param isOpen true:获取所有启用的数据；为空则获取所有数据
+     * @returns 
+     */
+    async getTree(dataClass: String, keyWord: String, isOpen?: boolean): Promise<TreeClassificationDto[]> {
+        let tree: any = null;
+        if (!keyWord) {
+            tree = await this.getByCache(dataClass, isOpen)
+        }
         if (!tree) {
             tree = [];
             let map: any = {
-                $or: [
-                    { name: { $regex: keyWord } }
-                ],
                 dataClass
             };
+            if (keyWord) {
+                map.$or = [
+                    { name: { $regex: `${keyWord}` } }
+                ]
+            }
+            if (isOpen) {
+                map.isOpen = true;
+            }
             const list = await this.TreeClassificationModel.find(map).sort({ sort: 1 });
             const top = list.filter(i => !i.parent || i.parent == "0");
             let tempList = list.filter(i => i.parent || i.parent != "0")
@@ -134,7 +182,8 @@ export class TreeClassificationService {
                 }
             }
             if (top.length > 0) {
-                await this.redisCacheService.set(`${this.TREE_CACHE_KEY}${dataClass}`, JSON.stringify(tree));
+                await this.setCache(dataClass, JSON.stringify(tree), isOpen);
+
             }
         } else {
             tree = JSON.parse(tree);
@@ -148,7 +197,7 @@ export class TreeClassificationService {
         if (direction == 1 && treeClassification.sort <= 1) {
             throw new Error("已经排到第一了");
         }
-        await this.redisCacheService.del(`${this.TREE_CACHE_KEY}${treeClassification.dataClass}`);
+        this.clearCache(treeClassification.dataClass);
         const session = await this.transaction.startTransactionAuto();
         const moveItem = () => new Promise(async (res, rej) => {
             session.withTransaction(async () => {
@@ -203,6 +252,7 @@ export class TreeClassificationService {
                 }
                 res(await this.TreeClassificationModel.findByIdAndUpdate(treeClassification._id, { $set: { ...treeClassification } }, { session }));
             }).catch(err => {
+                console.log(err);
                 rej(err);
             })
 

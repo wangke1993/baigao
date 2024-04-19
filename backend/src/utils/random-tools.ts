@@ -1,4 +1,6 @@
 import { randomUUID } from "crypto";
+import { SnowflakeIdv1 } from 'simple-flakeid';
+import * as os from 'os';
 
 /**
  * 生成数字随机数
@@ -52,4 +54,32 @@ export const randomXNumberRepeatable = (n: number, minNum: number, maxNum: numbe
  */
 export const UUID = () => {
     return randomUUID().replace(/-/g, "");
+}
+/**
+ * 获取一个对外的ip地址
+ */
+export const getLocalIPAddress = () => {
+    const interfaces = os.networkInterfaces();
+    for (const interfaceName in interfaces) {
+        const interfaceInfo = interfaces[interfaceName];
+        for (const inf of interfaceInfo) {
+            if (inf.family === 'IPv4' && !inf.internal) {
+                return inf.address
+            }
+        }
+    }
+}
+
+// FIXME:在大型分布式系统中，应单独将本模块取出，作为独立的服务生成雪花ID
+/**
+ * 获取雪花ID
+ */
+export const SnowflakeID = (): string => {
+    const ip = getLocalIPAddress();
+    const num = Number(ip.split('\.').pop());
+    // 创建Snowflake实例，传入机器ID或数据中心ID
+    const snowflake = new SnowflakeIdv1({
+        workerId: num,
+    });
+    return snowflake.NextId().toString();
 }

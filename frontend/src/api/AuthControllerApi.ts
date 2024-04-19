@@ -24,6 +24,14 @@ export const AuthControllerWeChatLogin = (code: string, config?: any) => {
    return axios.post(`/api/auth/weChat/login/${code}`, {}, config);
 }
 /**
+* 小程序用户登录
+* code：code;
+* @returns 
+*/
+export const AuthControllerWeChatLoginRegistration = (code: string, config?: any) => {
+   return axios.post(`/api/auth/weChat/loginRegistration/${code}`, {}, config);
+}
+/**
 * 小程序用户登录刷新
 * 
 * @returns 

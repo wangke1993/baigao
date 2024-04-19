@@ -7,6 +7,11 @@ export class WeChatRegisterDto {
     openId!: string;
     
     /**
+     * unionid
+     */
+    unionid!: string;
+    
+    /**
      * 用户名称
      */
     userName!: string;

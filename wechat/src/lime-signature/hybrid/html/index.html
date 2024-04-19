@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<style type="text/css">
+			html,
+			body,
+			canvas {
+				padding: 0;
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow-y: hidden;
+				background-color: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="lime-signature"></canvas>
+		<script type="text/javascript" src="./uni.webview.1.5.3.js"></script>
+		<script type="text/javascript" src="./signature.js"></script>
+		<script>
+			var signature = null;
+			var timer = null;
+			var isStart = false;
+			var options = null
+			console.log = function(...args) {
+				postMessage(args);
+			};
+			// function stringify(key, value) {
+			// 	if (typeof value === 'object' && value !== null) {
+			// 		if (cache.indexOf(value) !== -1) {
+			// 			return;
+			// 		}
+			// 		cache.push(value);
+			// 	}
+			// 	return value;
+			// };
+			function emit(event, data) {
+				postMessage({
+					event,
+					data: typeof data !== "object" && data !== null ? data : JSON.stringify(data),
+				});
+				// cache = [];
+			}
+
+			function postMessage(data) {
+				uni.postMessage({
+					data
+				});
+			}
+
+			function update(v = {}) {
+				if (signature) {
+					options = v
+					signature.pen.setOption(v);
+				} else {
+					signature = new Signature.Signature({el: "lime-signature"});
+					canvasEl = signature.canvas.get("el");
+					options = v
+					signature.pen.setOption(v)
+					const width = signature.canvas.get("width");
+					const height = signature.canvas.get("height");
+					
+					emit({changeSize: {width,height}})
+				}
+			}
+
+			function clear() {
+				signature.clear()
+			}
+
+			function undo() {
+				signature.undo()
+			}
+			function restore() {
+				signature.restore()
+			}
+			function isEmpty() {
+				const isEmpty = signature.isEmpty()
+				emit({isEmpty});
+			}
+			function isTransparent(color) {
+			  // 判断颜色是否为 transparent
+			  if (color === 'transparent') {
+			    return true;
+			  }
+			
+			  // 判断颜色是否为 rgba 的 a 为 0
+			  if (color.startsWith('rgba')) {
+			    const regex = /\d+(\.\d+)?/g;
+			    const matches = color.match(regex);
+			    if (matches !== null) {
+			      const alpha = parseFloat(matches[3]);
+			      if (alpha === 0) {
+			        return true;
+			      }
+			    }
+			  }
+			  return false;
+			}
+			function save(param) {
+				// delete param.success;
+				// delete param.fail;
+				clearTimeout(timer);
+				timer = setTimeout(() => {
+					let {fileType = 'png', quality = 1, n} = param
+					const type = `image/${fileType}`.replace(/jpg/, 'jpeg');
+					const {backgroundColor, landscape, boundingBox} = options
+					const flag = backgroundColor || landscape || boundingBox
+					let path = canvasEl.toDataURL(!flag && type, !flag && quality)
+					if(flag) {
+						const canvas = document.createElement('canvas')
+						const pixelRatio = signature.canvas.get('pixelRatio')
+						let width = signature.canvas.get('width')
+						let height = signature.canvas.get('height')
+						let x = 0
+						let y = 0
+						
+						const next = () => {
+							const size = [width, height]
+							if(landscape) {size.reverse()}
+							canvas.width = size[0] * pixelRatio
+							canvas.height = size[1] * pixelRatio
+							const param = [x, y, width, height, 0 , 0, width, height].map(item => item * pixelRatio)
+							const context = canvas.getContext('2d')
+							// context.scale(pixelRatio, pixelRatio)
+							if (landscape) {
+								context.translate(0, width * pixelRatio)
+								context.rotate(-Math.PI / 2)
+							}
+							if (backgroundColor && !isTransparent(backgroundColor)) {
+								context.fillStyle = backgroundColor
+								context.fillRect(0, 0, width * pixelRatio, height * pixelRatio)
+							}
+							// param
+							context.drawImage(signature.canvas.get('el'), ...param)
+							path = canvas.toDataURL(type, quality)
+							canvas.remove()
+						}
+						if(boundingBox) {
+							const res = signature.getContentBoundingBox()
+							width = res.width
+							height = res.height
+							x = res.startX
+							y = res.startY
+							next()
+						} else {
+							next()
+						}
+					} 
+					if (typeof path == "string") {
+						const index = Math.ceil(path.length / 8);
+						for (var i = 0; i < 8; i++) {
+							if (i == 7) {
+								emit({"success": path.substr(i * index, index)});
+							} else {
+								emit({"file": path.substr(i * index, index)});
+							}
+						}
+					} else {
+						console.error("canvas no data");
+						emit({"fail": "canvas no data"});
+					}
+				}, 30);
+			}
+		</script>
+	</body>
+</html>

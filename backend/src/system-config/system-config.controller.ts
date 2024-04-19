@@ -17,7 +17,7 @@ export class SystemConfigController {
     @AuthTag('createBindSystemConfig')
     @ApiOperation({ description: 'createBindSystemConfig:创建业务参数配置绑定' })
     async create(@Body() form: SystemConfig, @Req() req: any): Promise<ResponseInfoDto<SystemConfig>> {
-        const rsp = new ResponseInfoDto<SystemConfig>();
+        const rsp = new ResponseInfoDto<SystemConfig>(req);
         try {
             rsp.success('保存成功', await this.systemConfigService.create(form, req));
         } catch (e) {
@@ -32,7 +32,7 @@ export class SystemConfigController {
     @ApiOperation({ description: 'updateSystemConfig:编辑业务参数配置绑定,data只传confValue即可' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async update(@Body() form: SystemConfig, @Param("confSelect") confSelect: string, @Req() req: any): Promise<ResponseInfoDto<SystemConfig>> {
-        const rsp = new ResponseInfoDto<SystemConfig>();
+        const rsp = new ResponseInfoDto<SystemConfig>(req);
         try {
             rsp.success('更新成功', await this.systemConfigService.update(form, confSelect, req));
         } catch (e) {
@@ -46,7 +46,7 @@ export class SystemConfigController {
     @ApiOperation({ description: 'deleteSystemConfig:删除业务参数配置绑定' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("confSelect") confSelect: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.systemConfigService.deleteByConfSelect(confSelect));
         } catch (e) {
@@ -59,8 +59,8 @@ export class SystemConfigController {
     @AuthTag('getAllSystemConfig')
     @ApiOperation({ description: 'getAllSystemConfig:获取所有配置信息' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getAll(): Promise<ResponseInfoDto<SystemConfig[]>> {
-        const info = new ResponseInfoDto<SystemConfig[]>();
+    async getAll(@Req() req: any): Promise<ResponseInfoDto<SystemConfig[]>> {
+        const info = new ResponseInfoDto<SystemConfig[]>(req);
         try {
             info.success(`成功`, await this.systemConfigService.getAll());
         } catch (e) {
@@ -70,10 +70,23 @@ export class SystemConfigController {
     }
     @Get("getOpenAll")
     @ApiOperation({ description: '获取所有对外开放的配置信息' })
-    async getOpenAll(): Promise<ResponseInfoDto<SystemConfig[]>> {
-        const info = new ResponseInfoDto<SystemConfig[]>();
+    async getOpenAll(@Req() req: any): Promise<ResponseInfoDto<SystemConfig[]>> {
+        const info = new ResponseInfoDto<SystemConfig[]>(req);
         try {
             info.success(`成功`, await this.systemConfigService.getAll(true));
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }
+    @Get("getSystemConfigDetail/:code")
+    @ApiOperation({ description: 'getSystemConfigDetail: 根据字典code获取系统配置详情,多个code用逗号隔开' })
+    @AuthTag('getSystemConfigDetail')
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async getSystemConfigDetail(@Param('code') code: string, @Req() req: any): Promise<ResponseInfoDto<SystemConfig[]>> {
+        const info = new ResponseInfoDto<SystemConfig[]>(req);
+        try {
+            info.success(`成功`, await this.systemConfigService.getDetailByCode(code.split(',')));
         } catch (e) {
             info.warring(e.toString());
         }
@@ -83,8 +96,8 @@ export class SystemConfigController {
     @AuthTag('getSystemPageConfig')
     @ApiOperation({ description: 'getSystemPageConfig:获取【参数配置】页面配置信息' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getSystemPageConfig(): Promise<ResponseInfoDto<String>> {
-        const info = new ResponseInfoDto<String>();
+    async getSystemPageConfig(@Req() req: any): Promise<ResponseInfoDto<String>> {
+        const info = new ResponseInfoDto<String>(req);
         try {
             info.success(`成功`, await this.systemConfigService.getSystemPageConfig());
         } catch (e) {
@@ -97,7 +110,7 @@ export class SystemConfigController {
     @ApiOperation({ description: 'updateSystemPageConfig:更新【参数配置】页面配置信息' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async updateSystemPageConfig(@Body() form: SystemConfig, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const info = new ResponseInfoDto<any>();
+        const info = new ResponseInfoDto<any>(req);
         try {
             info.success(`成功`, await this.systemConfigService.updateSystemPageConfig(form.confValue));
             this.systemLogService.create('业务参数配置-成功', `(更新【参数配置】页面配置信息):${JSON.stringify(form.confValue)}`, req);

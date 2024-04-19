@@ -14,6 +14,9 @@ export class TreeClassificationDto extends BaseDTO {
         this.breathCount = treeClassification.breathCount;
         this.remarks = treeClassification.remarks;
         this.dataClass = treeClassification.dataClass;
+        this.administrativeDivision = treeClassification.administrativeDivision;
+        this.administrativeDivisionName = treeClassification.administrativeDivisionName;
+        this.isOpen = treeClassification.isOpen;
     }
     @ApiProperty({
         description: 'id',
@@ -50,7 +53,18 @@ export class TreeClassificationDto extends BaseDTO {
         description: '数据分类：存储数据字典值',
     })
     dataClass: String;
-
+    @ApiProperty({
+        description: '行政区划',
+    })
+    administrativeDivision: String;
+    @ApiProperty({
+        description: '行政区划名称',
+    })
+    administrativeDivisionName: String;
+    @ApiProperty({
+        description: '是否启用',
+    })
+    isOpen: Boolean;
     @ApiProperty({
         description: '孩子节点',
     })

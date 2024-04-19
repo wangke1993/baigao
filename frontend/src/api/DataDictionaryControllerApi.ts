@@ -48,10 +48,18 @@ export const DataDictionaryControllerGetPage = (query: { pageSize: number,pageIn
    return axios.get(`/api/admin/dic/getPage`, { params: query,...config });
 }
 /**
-* getDicTree:获取数据字典分页
+* getDicTree:获取数据字典树
 * 
 * @returns 
 */
 export const DataDictionaryControllerGetTree = ( config?: any) => {
    return axios.get(`/api/admin/dic/getTree`, { ...config });
+}
+/**
+* createDicEnum:创建数据字典枚举文件
+* 
+* @returns 
+*/
+export const DataDictionaryControllerCreateDicEnum = ( config?: any) => {
+   return axios.post(`/api/admin/dic/createDicEnum`, {}, config);
 }

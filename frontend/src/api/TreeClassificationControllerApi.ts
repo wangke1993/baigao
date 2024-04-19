@@ -40,6 +40,14 @@ export const TreeClassificationControllerGetTree = (dataClass: string,query: { k
    return axios.get(`/api/treeClassification/getTree/${dataClass}`, { params: query,...config });
 }
 /**
+* 获取开放的树形分类管理树
+* dataClass：dataClass;keyWord：undefined;
+* @returns 
+*/
+export const TreeClassificationControllerGetOpenTree = (dataClass: string,query: { keyWord: string }, config?: any) => {
+   return axios.get(`/api/treeClassification/getOpenTree/${dataClass}`, { params: query,...config });
+}
+/**
 * moveTreeClassification:移动树形;direction==1上移,direction==-1下移
 * direction：direction;
 * @returns 
@@ -54,4 +62,12 @@ export const TreeClassificationControllerMove = (direction: number,data: TreeCla
 */
 export const TreeClassificationControllerGetLastList = (dataClass: string, config?: any) => {
    return axios.post(`/api/treeClassification/getLastList/${dataClass}`, {}, config);
+}
+/**
+* getTreeFirstList:获取一级分类
+* dataClass：dataClass;
+* @returns 
+*/
+export const TreeClassificationControllerGetFirstList = (dataClass: string, config?: any) => {
+   return axios.post(`/api/treeClassification/getFirstList/${dataClass}`, {}, config);
 }

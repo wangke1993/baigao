@@ -5,7 +5,7 @@
       <div class="title">
         <span>欢迎进入</span>
         <p class="x">/</p>
-        <p class="t">柏高系统</p>
+        <p class="t">柏高</p>
       </div>
       <div class="right">
         <div class="form">

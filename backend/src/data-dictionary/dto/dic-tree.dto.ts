@@ -23,6 +23,11 @@ export class DicTree {
     dicCode: string;
     @ApiProperty({
         required: false,
+        description: '值',
+    })
+    value: string;
+    @ApiProperty({
+        required: false,
         description: '备注',
     })
     remarks: string;

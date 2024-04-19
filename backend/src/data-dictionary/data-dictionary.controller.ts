@@ -20,7 +20,7 @@ export class DataDictionaryController {
     @ApiOperation({ description: 'createDic:新增字典,dicType等于1时添加分类等于2时添加字典值' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async create(@Body() form: DataDictionary, @Req() req: any): Promise<ResponseInfoDto<DataDictionary>> {
-        const rsp = new ResponseInfoDto<DataDictionary>();
+        const rsp = new ResponseInfoDto<DataDictionary>(req);
         try {
             rsp.success('保存成功', await this.dataDictionaryService.create(form));
         } catch (e) {
@@ -35,7 +35,7 @@ export class DataDictionaryController {
     @ApiOperation({ description: 'updateDic：编辑数据字典' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async update(@Body() form: DataDictionary, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<DataDictionary>> {
-        const rsp = new ResponseInfoDto<DataDictionary>();
+        const rsp = new ResponseInfoDto<DataDictionary>(req);
         try {
             rsp.success('更新成功', await this.dataDictionaryService.update(form, id));
         } catch (e) {
@@ -49,8 +49,8 @@ export class DataDictionaryController {
     // @AuthTag('getListByDicClass')
     @ApiOperation({ description: '根据字典分类(分类dicCode)获取字典值,无需权限校验' })
     // @UseGuards(JwtAuthGuard, PowerGuard)
-    async getListByDicClass(@Param("dicClass") dicClass: string): Promise<ResponseInfoDto<DataDictionary[]>> {
-        const rsp = new ResponseInfoDto<DataDictionary[]>();
+    async getListByDicClass(@Param("dicClass") dicClass: string, @Req() req: any): Promise<ResponseInfoDto<DataDictionary[]>> {
+        const rsp = new ResponseInfoDto<DataDictionary[]>(req);
         try {
             rsp.success('获取成功', await this.dataDictionaryService.getListByDicClass(dicClass));
         } catch (e) {
@@ -63,7 +63,7 @@ export class DataDictionaryController {
     @ApiOperation({ description: 'deleteDic:删除字典' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("dicCode") dicCode: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.dataDictionaryService.deleteByCode(dicCode));
         } catch (e) {
@@ -77,7 +77,7 @@ export class DataDictionaryController {
     @ApiOperation({ description: 'getDicPage:获取数据字典分页' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async getPage(@Query() pageForm: DicPageForm, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<DataDictionary>>> {
-        const info = new ResponseInfoDto<PageResponseDto<DataDictionary>>();
+        const info = new ResponseInfoDto<PageResponseDto<DataDictionary>>(req);
         try {
             if (pageForm.dicClass) {
                 info.success(`成功`, await this.dataDictionaryService.getPage(pageForm, DIC_TYPE.value));
@@ -91,12 +91,25 @@ export class DataDictionaryController {
     }
     @Get("getTree")
     @AuthTag('getDicTree')
-    @ApiOperation({ description: 'getDicTree:获取数据字典分页' })
+    @ApiOperation({ description: 'getDicTree:获取数据字典树' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getTree(): Promise<ResponseInfoDto<DicTree[]>> {
-        const info = new ResponseInfoDto<DicTree[]>();
+    async getTree(@Req() req: any): Promise<ResponseInfoDto<DicTree[]>> {
+        const info = new ResponseInfoDto<DicTree[]>(req);
         try {
             info.success(`成功`, await this.dataDictionaryService.getTree());
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }
+    @Post("createDicEnum")
+    @AuthTag('createDicEnum')
+    @ApiOperation({ description: 'createDicEnum:创建数据字典枚举文件' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async createDicEnum(@Req() req: any): Promise<ResponseInfoDto<any>> {
+        const info = new ResponseInfoDto<any>(req);
+        try {
+            info.success(`成功`, await this.dataDictionaryService.createDic());
         } catch (e) {
             info.warring(e.toString());
         }

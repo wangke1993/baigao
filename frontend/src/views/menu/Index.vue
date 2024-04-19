@@ -29,9 +29,17 @@
       </el-table-column>
       <el-table-column prop="menuActive" label="路由" />
       <el-table-column prop="menuPowerTag" label="权限标识" />
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="400">
         <template #default="scope">
           <el-button-group class="ml-4">
+            <el-button
+              v-if="btnShow('menu_edit')"
+              @click="move(scope.row)"
+              type="primary"
+              :icon="Edit"
+            >
+              移动
+            </el-button>
             <el-button
               v-if="btnShow('menu_edit')"
               @click="edit(scope.row)"
@@ -66,6 +74,7 @@
     </el-table>
   </div>
   <EditMenu @getMenuTree="getMenuTree" ref="editMenu" />
+  <Move @getMenuTree="getMenuTree" ref="moveMenu" />
 </template>
 
 <script lang="ts" setup>
@@ -82,11 +91,14 @@ import {
 } from "@/utils/enum/menuType";
 import { Delete, Edit, Plus } from "@element-plus/icons-vue";
 import EditMenu from "@/views/menu/components/EditMenu.vue";
+import Move from "@/views/menu/components/Move.vue";
 import { btnShow } from "@/utils/buttonShow";
 // 参数
 const menuTree = ref([]);
 const load = ref(false);
 const editMenu = ref();
+const moveMenu = ref();
+
 // 方法
 const getMenuTree = async () => {
   load.value = true;
@@ -106,6 +118,10 @@ const add = (row?: any) => {
 const edit = (row: any) => {
   editMenu.value.open(row, false);
 };
+const move = (row: any) => {
+  console.log("点击了移动")
+  moveMenu.value.open(row);
+};
 const del = async (row: any) => {
   const { data: res } = await AdminMenuControllerDelete(row._id);
   if (res.status === 1) {
@@ -118,7 +134,7 @@ const del = async (row: any) => {
 </script>
 <script lang="ts">
 export default {
-  name: "menuManage",
+  name: "menuManagement",
 };
 </script>
 <style lang="scss" scoped>

@@ -73,13 +73,16 @@ export class SystemConfigService {
         let map: any = { _id: new ObjectId(id) }
         return await this.SystemConfigModel.findOne(map);
     }
+    async getDetailByCode(confSelect: string[]): Promise<SystemConfig[]> {
+        return await this.SystemConfigModel.find({ confSelect: { $in: confSelect }, allowFetch: true });
+    }
     async getDetailByConfSelect(confSelect: string): Promise<SystemConfig> {
         let map: any = { confSelect: confSelect }
         return await this.SystemConfigModel.findOne(map);
     }
     // 通过配置类型，获取配置对象{confCode:confValue}
     async getConfigObjByConfType(confType: string): Promise<any> {
-        const configList = await this.SystemConfigModel.find({ confType: confType });
+        const configList = await this.SystemConfigModel.find({ confSelect: { $regex: confType } });
         const config: any = {};
         if (configList.length > 0) {
             configList.forEach(c => {

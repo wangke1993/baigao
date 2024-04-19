@@ -24,7 +24,7 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Controller {
     @ApiOperation({ description: 'create<%=getBigModuleTitle(moduleConf.nameEn) %>:创建<%=moduleConf.name %>' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async create(@Body() form: <%=getBigModuleTitle(moduleConf.nameEn) %>, @Req() req: any): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
-        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
+        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>(req);
         try {
             rsp.success('保存成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.create(form, req));
         } catch (e) {
@@ -39,7 +39,7 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Controller {
     @ApiOperation({ description: 'update<%=getBigModuleTitle(moduleConf.nameEn) %>:编辑<%=moduleConf.name %>' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async update(@Body() form: <%=getBigModuleTitle(moduleConf.nameEn) %>, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
-        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
+        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>(req);
         try {
             rsp.success('更新成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.update(form, id, req));
         } catch (e) {
@@ -54,7 +54,7 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Controller {
     @ApiOperation({ description: 'delete<%=getBigModuleTitle(moduleConf.nameEn) %>:删除<%=moduleConf.name %>' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.deleteById(id));
         } catch (e) {
@@ -68,8 +68,8 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Controller {
     @AuthTag('get<%=getBigModuleTitle(moduleConf.nameEn) %>ById')
     @ApiOperation({ description: 'get<%=getBigModuleTitle(moduleConf.nameEn) %>ById:根据id获取<%=moduleConf.name %>详情' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getDetailById(@Param("id") id: string): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
-        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
+    async getDetailById(@Param("id") id: string,@Req() req: any): Promise<ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>> {
+        const rsp = new ResponseInfoDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>(req);
         try {
             rsp.success('获取成功', await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.getDetailById(id));
         } catch (e) {
@@ -83,7 +83,7 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Controller {
     @ApiOperation({ description: 'get<%=getBigModuleTitle(moduleConf.nameEn) %>Page:获取<%=moduleConf.name %>分页' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async getPage(@Query() page: <%=!usePageDto?`PageRequestDto`:`${getBigModuleTitle(moduleConf.nameEn)}PageDto` %>, @Req() req: any): Promise<ResponseInfoDto<PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>>> {
-        const info = new ResponseInfoDto<PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>>();
+        const info = new ResponseInfoDto<PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>>(req);
         try {
             info.success(`成功`, await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Service.getPage(page));
         } catch (e) {

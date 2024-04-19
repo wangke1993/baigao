@@ -21,7 +21,7 @@ export class TransferDetailDto {
      */
     openid: string;
     /**
-     * 收款人姓名crypto,对微信昵称进行加密,名字传入时需要进行加密否则接口无法使用
+     * 收款人姓名crypto,对用户真实姓名进行加密,名字传入时需要进行加密否则接口无法使用
      */
     user_name?: string;
 }

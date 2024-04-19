@@ -6,7 +6,7 @@ import axios from 'axios';
 import type { ModuleConfDto } from './dto/ModuleConfDto';
 import type { ModuleFieldDto } from './dto/ModuleFieldDto';
 import type { ModuleSearchDto } from './dto/ModuleSearchDto';
-import type { CreateCodeConfDtoDto } from './dto/CreateCodeConfDtoDto';
+import type { CreateCodeConfDto } from './dto/CreateCodeConfDto';
 
 
 /**
@@ -113,6 +113,22 @@ export const SystemDevControllerGetModuleSearchList = (moduleUUID: string, confi
 * UUID：UUID;
 * @returns 
 */
-export const SystemDevControllerCreateCode = (UUID: string,data: CreateCodeConfDtoDto, config?: any) => {
+export const SystemDevControllerCreateCode = (UUID: string,data: CreateCodeConfDto, config?: any) => {
    return axios.post(`/api/systemDev/createCode/${UUID}`, data, config);
+}
+/**
+* 挂载菜单
+* UUID：UUID;
+* @returns 
+*/
+export const SystemDevControllerCreateMenu = (UUID: string, config?: any) => {
+   return axios.post(`/api/systemDev/createMenu/${UUID}`, {}, config);
+}
+/**
+* 中文翻译成英文
+* keyWord：undefined;
+* @returns 
+*/
+export const SystemDevControllerTranslateZhToEn = (query: { keyWord: string }, config?: any) => {
+   return axios.get(`/api/systemDev/translateZhToEn`, { params: query,...config });
 }

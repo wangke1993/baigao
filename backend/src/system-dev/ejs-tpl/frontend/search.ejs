@@ -16,14 +16,15 @@
 	</el-form>
 </template>
 <script lang="ts" setup>
-import { ref, defineEmits, watch } from 'vue';
+import { ref, watch } from 'vue';
+import axios from "axios";
+import { alertSuccess,alertWarning } from "@/utils/message";
 <%if(searchNoLike.filter(item=>["MoreSelect","Select","Radio","Checkbox"].includes(item.dom)).length) {%>
 import { SelectDto } from '@/common/CommonDto';
 <%}%>
 class SearchDto {
 	keyWord?: string;
-  	<% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>?: <%=searchNoLike[i].fieldType %><%} %>;
-}
+  	<% for (let i = 0; i < searchNoLike.length; i++) {%><%=searchNoLike[i].fieldEnName %>?: <%=searchNoLike[i].fieldType %>;<%} %>}
 const searchForm = ref(new SearchDto());
 const emit = defineEmits(['search']);
 

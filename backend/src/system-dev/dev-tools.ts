@@ -5,6 +5,7 @@ import * as ejs from 'ejs';
 import { ModuleConf } from "./dto/module-conf.schema";
 import { ModuleField } from "./dto/module-field.schema";
 import { ModuleSearch } from "./dto/module-search.schema";
+import { DicTree } from "src/data-dictionary/dto/dic-tree.dto";
 
 const PATH_CONF = {
     backend: __dirname.replace('dist\\system-dev', 'src'),
@@ -17,6 +18,7 @@ const TEMP_PATH_CONF = {
 const EJS_PATH = `${PATH_CONF.backend}/system-dev/ejs-tpl`
 const BACKEND_TPL = {
     "DTO": `${EJS_PATH}/backend/dto.ejs`,
+    "DIC": `${EJS_PATH}/backend/dic.ejs`,
     "PAGE": `${EJS_PATH}/backend/page.ejs`,
     "MODULE": `${EJS_PATH}/backend/module.ejs`,
     "SERVICE": `${EJS_PATH}/backend/service.ejs`,
@@ -41,7 +43,7 @@ export class DevTools {
         frontendApi: string,
         frontendDto: string,
     }
-    constructor(conf: CreateCodeConfDto) {
+    constructor(conf?: CreateCodeConfDto) {
         if (!existsSync(PATH_CONF.backend)) {
             throw new Error("仅在本地开发环境可用");
         }
@@ -57,6 +59,18 @@ export class DevTools {
         this.big = {};
         this.small = {};
     }
+    createDic(dicTree: DicTree[]) {
+        this.render(
+            BACKEND_TPL.DIC,
+            { dicTree },
+            `${PATH_CONF.backend}/data-dictionary/dic-enum.ts`
+        );
+        this.render(
+            BACKEND_TPL.DIC,
+            { dicTree },
+            `${PATH_CONF.frontend.replace('views','common')}/dic-enum.ts`
+        );
+    }
     createDto(moduleConf: ModuleConf, fieldList: ModuleField[], searchOldList: ModuleSearch[]) {
         if (this.conf.backendFile.dto) {
             // 生成数据模型
@@ -66,7 +80,7 @@ export class DevTools {
                 `${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`
             );
         } else {
-            deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`);
+            // deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}.schema.ts`);
         }
         if (this.conf.backendFile.pageDto) {
             // 生成分页模型，排除模糊搜索项目
@@ -78,10 +92,10 @@ export class DevTools {
                     `${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`
                 );
             } else {
-                deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`);
+                // deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`);
             }
         } else {
-            deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`);
+            // deleteFolderRecursive(`${this.savePath.backendDto}/${moduleConf.nameEn}-page.dto.ts`);
         }
 
     }
@@ -97,7 +111,7 @@ export class DevTools {
                 `${this.savePath.backend}/${moduleConf.nameEn}.service.ts`
             );
         } else {
-            deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.service.ts`);
+            // deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.service.ts`);
         }
     }
     getMethodString = (item: ModuleSearch) => {
@@ -130,7 +144,7 @@ export class DevTools {
                 `${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`);
+            // deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.controller.ts`);
         }
     }
     createModule(moduleConf: ModuleConf) {
@@ -141,7 +155,7 @@ export class DevTools {
                 `${this.savePath.backend}/${moduleConf.nameEn}.module.ts`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.module.ts`);
+            // deleteFolderRecursive(`${this.savePath.backend}/${moduleConf.nameEn}.module.ts`);
         }
     }
     createFrontendDto(moduleConf: ModuleConf, fieldList: ModuleField[],) {
@@ -152,7 +166,7 @@ export class DevTools {
                 `${this.savePath.frontendDto}/${this.getBigModuleTitle(moduleConf.nameEn)}Dto.ts`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.frontendDto}/${this.getBigModuleTitle(moduleConf.nameEn)}Dto.ts`);
+            // deleteFolderRecursive(`${this.savePath.frontendDto}/${this.getBigModuleTitle(moduleConf.nameEn)}Dto.ts`);
         }
     }
     createFrontendApi(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
@@ -166,7 +180,7 @@ export class DevTools {
                 `${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`);
+            // deleteFolderRecursive(`${this.savePath.frontendApi}/${this.getBigModuleTitle(moduleConf.nameEn)}ControllerApi.ts`);
         }
     }
     createListPage(moduleConf: ModuleConf, fieldList: ModuleField[], searchList: ModuleSearch[]) {
@@ -181,7 +195,7 @@ export class DevTools {
                 `${this.savePath.frontend}/Index.vue`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
+            // deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
         }
     }
     createSearchPage(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
@@ -220,7 +234,7 @@ export class DevTools {
                 `${this.savePath.frontendComponents}/${this.getBigModuleTitle(moduleConf.nameEn)}Search.vue`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
+            // deleteFolderRecursive(`${this.savePath.frontendComponents}/${this.getBigModuleTitle(moduleConf.nameEn)}Search.vue`);
         }
     }
     createFormPage(moduleConf: ModuleConf, fieldList: ModuleField[],) {
@@ -258,7 +272,7 @@ export class DevTools {
                 `${this.savePath.frontendComponents}/${this.getBigModuleTitle(moduleConf.nameEn)}Form.vue`
             )
         } else {
-            deleteFolderRecursive(`${this.savePath.frontend}/Index.vue`);
+            // deleteFolderRecursive(`${this.savePath.frontendComponents}/${this.getBigModuleTitle(moduleConf.nameEn)}Form.vue`);
         }
     }
     render(tplPath: string, data: any, filePath?: string) {
@@ -295,6 +309,8 @@ export class DevTools {
         if (this.conf.frontend) {
             // 小驼峰命名
             this.savePath.frontend = `${path.frontend}/${this.getSmallModuleTitle(moduleName)}`
+            // 前端大驼峰命名
+            // this.savePath.frontend = `${path.frontend}/${this.getBigModuleTitle(moduleName)}`
             this.savePath.frontendComponents = `${path.frontend}/${this.getSmallModuleTitle(moduleName)}/components`
             this.savePath.frontendApi = `${PATH_CONF.frontend.replace("views", "")}api`;
             this.savePath.frontendDto = `${PATH_CONF.frontend.replace("views", "")}api/dto`;

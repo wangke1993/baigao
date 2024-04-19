@@ -291,7 +291,7 @@ export default {
   name: "parameter",
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .list-box {
   padding: 20px;
 

@@ -20,7 +20,7 @@ export class TreeClassificationController {
     @ApiOperation({ description: 'createTreeClassification:新增树形分类' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async Create(@Body() form: TreeClassification, @Req() req: any): Promise<ResponseInfoDto<TreeClassification>> {
-        const rsp = new ResponseInfoDto<TreeClassification>();
+        const rsp = new ResponseInfoDto<TreeClassification>(req);
         try {
             rsp.success('保存成功', await this.TreeClassificationService.create(form));
         } catch (e) {
@@ -35,7 +35,7 @@ export class TreeClassificationController {
     @ApiOperation({ description: 'updateTreeClassification：编辑树形分类管理' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async Update(@Body() form: TreeClassification, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<TreeClassification>> {
-        const rsp = new ResponseInfoDto<TreeClassification>();
+        const rsp = new ResponseInfoDto<TreeClassification>(req);
         try {
             rsp.success('更新成功', await this.TreeClassificationService.update(form, id, req));
         } catch (e) {
@@ -49,7 +49,7 @@ export class TreeClassificationController {
     @ApiOperation({ description: 'deleteTreeClassification:删除树形分类' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async Delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.TreeClassificationService.deleteById(id));
         } catch (e) {
@@ -63,9 +63,21 @@ export class TreeClassificationController {
     @ApiOperation({ description: 'getTreeClassificationTree:获取树形分类管理树' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async getTree(@Param("dataClass") dataClass: String, @Query("keyWord") keyWord: String, @Req() req: any): Promise<ResponseInfoDto<TreeClassificationDto[]>> {
-        const info = new ResponseInfoDto<TreeClassificationDto[]>();
+        const info = new ResponseInfoDto<TreeClassificationDto[]>(req);
         try {
             info.success(`成功`, await this.TreeClassificationService.getTree(dataClass, keyWord));
+        } catch (e) {
+            info.warring(e.toString());
+        }
+        return info;
+    }
+    @Get("getOpenTree/:dataClass")
+    @ApiOperation({ description: '获取开放的树形分类管理树' })
+    @UseGuards(JwtAuthGuard)
+    async getOpenTree(@Param("dataClass") dataClass: String, @Query("keyWord") keyWord: String, @Req() req: any): Promise<ResponseInfoDto<TreeClassificationDto[]>> {
+        const info = new ResponseInfoDto<TreeClassificationDto[]>(req);
+        try {
+            info.success(`成功`, await this.TreeClassificationService.getTree(dataClass, keyWord, true));
         } catch (e) {
             info.warring(e.toString());
         }
@@ -82,7 +94,7 @@ export class TreeClassificationController {
     @ApiOperation({ description: 'moveTreeClassification:移动树形;direction==1上移,direction==-1下移' })
     @UseGuards(JwtAuthGuard, PowerGuard)
     async move(@Body() form: TreeClassification, @Param("direction") direction: Number, @Req() req: any): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('移动成功', await this.TreeClassificationService.move(form, direction, req));
         } catch (e) {
@@ -95,10 +107,23 @@ export class TreeClassificationController {
     @AuthTag('getTreeLastList')
     @ApiOperation({ description: 'getTreeLastList:获取末级分类' })
     @UseGuards(JwtAuthGuard, PowerGuard)
-    async getLastList(@Param("dataClass") dataClass: string): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+    async getLastList(@Param("dataClass") dataClass: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('获取成功', await this.TreeClassificationService.getLastList(dataClass));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        return rsp;
+    }
+    @Post('getFirstList/:dataClass')
+    @AuthTag('getTreeFirstList')
+    @ApiOperation({ description: 'getTreeFirstList:获取一级分类' })
+    // @UseGuards(JwtAuthGuard, PowerGuard)
+    async getFirstList(@Param("dataClass") dataClass: string, @Req() req: any): Promise<ResponseInfoDto<TreeClassification[]>> {
+        const rsp = new ResponseInfoDto<TreeClassification[]>(req);
+        try {
+            rsp.success('获取成功', await this.TreeClassificationService.getFirstList(dataClass));
         } catch (e) {
             rsp.warring(e.toString());
         }

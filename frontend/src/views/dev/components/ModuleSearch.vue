@@ -117,7 +117,7 @@ import { ModuleConfDto } from "@/api/dto/ModuleConfDto";
 import type { ModuleFieldDto } from "@/api/dto/ModuleFieldDto";
 import { ModuleSearchDto } from "@/api/dto/ModuleSearchDto";
 import { alertSuccess, alertWarning } from "@/utils/message";
-import { ref, defineExpose, defineProps } from "vue";
+import { ref } from "vue";
 import { domType, methodConf } from "../confData";
 
 const props = defineProps({

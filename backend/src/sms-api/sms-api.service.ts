@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import UniSMS from 'unisms';
-import { CONF_TYPE, DC0003 } from '../system-config/dto/system-config.schema';
+import { CONF_TYPE } from '../system-config/dto/system-config.schema';
 import { SystemConfigService } from '../system-config/system-config.service';
 import axios from 'axios';
 import { ResStatusData, YunPianTplReq, YunPianTplRes } from './dto/yunpian-tpl-send.dto';
 import { SystemLogService } from 'src/system-log/system-log.service';
+import { DC0003 } from 'src/data-dictionary/dic-enum';
 @Injectable()
 export class SmsApiService {
     private client: UniSMS;
@@ -25,12 +26,12 @@ export class SmsApiService {
      */
     async send(phone: string[], templateId: string, templateData: any, req?: any): Promise<YunPianTplRes> {
         this.smsConf = await this.systemConfigService.getConfigObjByConfType(CONF_TYPE.短信参数设置);
-        if (this.smsConf[DC0003.是否启用短信] == '0') {
+        if (this.smsConf[DC0003.是否启用] == '0') {
             console.warn('短信发送未开启');
-            return null;
+            throw new Error("短信发送未开启");
         }
         const yunPianTplReq = new YunPianTplReq(phone, templateId, templateData);
-        yunPianTplReq.apikey = this.smsConf[DC0003.短信API密钥];
+        yunPianTplReq.apikey = this.smsConf[DC0003.accessKeyId];
         console.log('【发送短信】', JSON.stringify(yunPianTplReq));
         const res: YunPianTplRes = await yunPianTplReq.send();
         yunPianTplReq.apikey = '****';
@@ -38,10 +39,10 @@ export class SmsApiService {
         return res;
     }
     async init() {
-        console.log('初始化短信');
         this.smsConf = await this.systemConfigService.getConfigObjByConfType(CONF_TYPE.短信参数设置);
+        console.log('初始化短信', this.smsConf);
         this.client = new UniSMS({
-            accessKeyId: this.smsConf[DC0003.短信API密钥]
+            accessKeyId: this.smsConf[DC0003.accessKeyId]
         })
     }
     /**
@@ -55,9 +56,9 @@ export class SmsApiService {
         if (!this.client) {
             await this.init();
         }
-        if (this.smsConf[DC0003.是否启用短信] == '0') {
+        if (this.smsConf[DC0003.是否启用] == '0') {
             console.warn('短信发送未开启');
-            return null;
+            throw new Error('短信发送未开启');
         }
         console.log('【发送短信】', phone, templateId, JSON.stringify(templateData));
         try {
@@ -74,7 +75,7 @@ export class SmsApiService {
             return res;
         } catch (error) {
             console.error('短信发送异常', error);
-            return null;
+            throw new Error(error);
         }
     }
 

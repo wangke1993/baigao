@@ -12,6 +12,7 @@ import { ModuleConf } from './dto/module-conf.schema';
 import { ModuleField } from './dto/module-field.schema';
 import { ModuleSearch } from './dto/module-search.schema';
 import { CreateCodeConfDto } from './dto/create-code-conf.dto';
+import { translateZhToEn } from './fanyi';
 
 @ApiTags("开发工具")
 @Controller('/systemDev')
@@ -25,7 +26,7 @@ export class SystemDevController {
     @ApiOperation({ description: 'DevCreateModule:新增模型' })
     @UseGuards(JwtAuthGuard)
     async CreateModule(@Body() form: ModuleConf, @Req() req: any): Promise<ResponseInfoDto<ModuleConf>> {
-        const rsp = new ResponseInfoDto<ModuleConf>();
+        const rsp = new ResponseInfoDto<ModuleConf>(req);
         try {
             rsp.success('保存成功', await this.systemDev.createConf(form, req));
         } catch (e) {
@@ -37,7 +38,7 @@ export class SystemDevController {
     @ApiOperation({ description: 'DevCreateModuleField:新增模型字段' })
     @UseGuards(JwtAuthGuard)
     async CreateModuleField(@Body() form: ModuleField, @Req() req: any): Promise<ResponseInfoDto<ModuleField>> {
-        const rsp = new ResponseInfoDto<ModuleField>();
+        const rsp = new ResponseInfoDto<ModuleField>(req);
         try {
             rsp.success('保存成功', await this.systemDev.createField(form, req));
         } catch (e) {
@@ -49,7 +50,7 @@ export class SystemDevController {
     @ApiOperation({ description: '新增模型搜索配置' })
     @UseGuards(JwtAuthGuard)
     async CreateModuleSearch(@Body() form: ModuleSearch, @Req() req: any): Promise<ResponseInfoDto<ModuleSearch>> {
-        const rsp = new ResponseInfoDto<ModuleSearch>();
+        const rsp = new ResponseInfoDto<ModuleSearch>(req);
         try {
             rsp.success('保存成功', await this.systemDev.createSearch(form, req));
         } catch (e) {
@@ -62,7 +63,7 @@ export class SystemDevController {
     @ApiOperation({ description: 'DevUpdateModule:更新模型' })
     @UseGuards(JwtAuthGuard)
     async DevUpdateModule(@Body() form: ModuleConf, @Param("UUID") UUID: string, @Req() req: any): Promise<ResponseInfoDto<ModuleConf>> {
-        const rsp = new ResponseInfoDto<ModuleConf>();
+        const rsp = new ResponseInfoDto<ModuleConf>(req);
         try {
             rsp.success('更新成功', await this.systemDev.updateConf(form, UUID, req));
         } catch (e) {
@@ -74,7 +75,7 @@ export class SystemDevController {
     @ApiOperation({ description: '更新模型字段' })
     @UseGuards(JwtAuthGuard)
     async DevUpdateModuleField(@Body() form: ModuleField, @Param("UUID") UUID: string, @Req() req: any): Promise<ResponseInfoDto<ModuleField>> {
-        const rsp = new ResponseInfoDto<ModuleField>();
+        const rsp = new ResponseInfoDto<ModuleField>(req);
         try {
             rsp.success('更新成功', await this.systemDev.updateField(form, UUID, req));
         } catch (e) {
@@ -86,7 +87,7 @@ export class SystemDevController {
     @ApiOperation({ description: '更新模型搜索配置' })
     @UseGuards(JwtAuthGuard)
     async DevUpdateModuleSearch(@Body() form: ModuleSearch, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<ModuleSearch>> {
-        const rsp = new ResponseInfoDto<ModuleSearch>();
+        const rsp = new ResponseInfoDto<ModuleSearch>(req);
         try {
             rsp.success('保存成功', await this.systemDev.updateSearch(form, id, req));
         } catch (e) {
@@ -97,8 +98,8 @@ export class SystemDevController {
     @Delete('DeleteModule/:id')
     @ApiOperation({ description: '删除模型' })
     @UseGuards(JwtAuthGuard)
-    async DeleteModule(@Param("id") id: string): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+    async DeleteModule(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.systemDev.deleteConfById(id));
         } catch (e) {
@@ -109,8 +110,8 @@ export class SystemDevController {
     @Delete('DeleteModuleField/:id')
     @ApiOperation({ description: '删除模型字段' })
     @UseGuards(JwtAuthGuard)
-    async DeleteModuleField(@Param("id") id: string): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+    async DeleteModuleField(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.systemDev.deleteFieldById(id));
         } catch (e) {
@@ -121,8 +122,8 @@ export class SystemDevController {
     @Delete('DeleteModuleSearch/:id')
     @ApiOperation({ description: '删除模型搜索配置' })
     @UseGuards(JwtAuthGuard)
-    async DeleteModuleSearch(@Param("id") id: string): Promise<ResponseInfoDto<any>> {
-        const rsp = new ResponseInfoDto<any>();
+    async DeleteModuleSearch(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.systemDev.deleteSearchById(id));
         } catch (e) {
@@ -134,8 +135,8 @@ export class SystemDevController {
     @AuthTag('getModuleList')
     @ApiOperation({ description: '获取模型列表' })
     @UseGuards(JwtAuthGuard)
-    async getModuleList(@Query('keyWord') keyWord: String): Promise<ResponseInfoDto<ModuleConf[]>> {
-        const rsp = new ResponseInfoDto<any>();
+    async getModuleList(@Query('keyWord') keyWord: String, @Req() req: any): Promise<ResponseInfoDto<ModuleConf[]>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('获取成功', await this.systemDev.getModuleList(keyWord));
         } catch (e) {
@@ -146,8 +147,8 @@ export class SystemDevController {
     @Get('getModuleFieldList/:moduleUUID')
     @ApiOperation({ description: '获取模型字段列表' })
     @UseGuards(JwtAuthGuard)
-    async getModuleFieldList(@Query('keyWord') keyWord: String, @Param("moduleUUID") moduleUUID: String): Promise<ResponseInfoDto<ModuleConf[]>> {
-        const rsp = new ResponseInfoDto<any>();
+    async getModuleFieldList(@Query('keyWord') keyWord: String, @Param("moduleUUID") moduleUUID: String, @Req() req: any): Promise<ResponseInfoDto<ModuleConf[]>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('获取成功', await this.systemDev.getModuleFieldList(moduleUUID, keyWord));
         } catch (e) {
@@ -158,8 +159,8 @@ export class SystemDevController {
     @Get('getModuleSearchList/:moduleUUID')
     @ApiOperation({ description: '获取模型搜索列表' })
     @UseGuards(JwtAuthGuard)
-    async getModuleSearchList(@Param("moduleUUID") moduleUUID: String): Promise<ResponseInfoDto<ModuleConf[]>> {
-        const rsp = new ResponseInfoDto<any>();
+    async getModuleSearchList(@Param("moduleUUID") moduleUUID: String, @Req() req: any): Promise<ResponseInfoDto<ModuleConf[]>> {
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('获取成功', await this.systemDev.getModuleSearchList(moduleUUID));
         } catch (e) {
@@ -171,10 +172,34 @@ export class SystemDevController {
     @Post('createCode/:UUID')
     @ApiOperation({ description: '生成代码' })
     @UseGuards(JwtAuthGuard)
-    async createCode(@Param('UUID') UUID: String, @Body() conf: CreateCodeConfDto): Promise<ResponseInfoDto<any>> {
-        const info = new ResponseInfoDto<any>();
+    async createCode(@Param('UUID') UUID: String, @Body() conf: CreateCodeConfDto, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const info = new ResponseInfoDto<any>(req);
         try {
-            info.success("成功",await this.systemDev.createCode(UUID, conf));
+            info.success("成功", await this.systemDev.createCode(UUID, conf));
+        } catch (e) {
+            info.error(e.toString());
+        }
+        return info;
+    }
+    @Post('createMenu/:UUID')
+    @ApiOperation({ description: '挂载菜单' })
+    @UseGuards(JwtAuthGuard)
+    async createMenu(@Param('UUID') UUID: String, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const info = new ResponseInfoDto<any>(req);
+        try {
+            info.success("成功", await this.systemDev.createMenu(UUID));
+        } catch (e) {
+            info.error(e.toString());
+        }
+        return info;
+    }
+    @Get('translateZhToEn')
+    @ApiOperation({ description: '中文翻译成英文' })
+    @UseGuards(JwtAuthGuard)
+    async translateZhToEn(@Query('keyWord') keyWord: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        const info = new ResponseInfoDto<any>(req);
+        try {
+            info.success("成功", await translateZhToEn(keyWord));
         } catch (e) {
             info.error(e.toString());
         }

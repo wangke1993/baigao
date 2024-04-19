@@ -1,0 +1,79 @@
+{
+  "id": "lime-signature",
+  "displayName": "手写板-签名签字-lime-signature",
+  "version": "1.2.4",
+  "description": "手写板签名插件：一款能跑在uniapp各端中的签名插件，支持横屏、背景色、笔画颜色、笔画大小等功能,可生成有内容的区域，减小图片尺寸，节省空间",
+  "keywords": [
+    "写字",
+    "签名",
+    "电子签名",
+    "签字",
+    "横屏"
+],
+  "repository": "",
+  "engines": {
+    "HBuilderX": "^3.5.4"
+  },
+"dcloudext": {
+    "sale": {
+      "regular": {
+        "price": "0.00"
+      },
+      "sourcecode": {
+        "price": "0.00"
+      }
+    },
+    "contact": {
+      "qq": ""
+    },
+    "declaration": {
+      "ads": "无",
+      "data": "无",
+      "permissions": "无"
+    },
+    "npmurl": "",
+    "type": "component-vue"
+  },
+  "uni_modules": {
+    "dependencies": [
+		"uni-popup"
+	],
+    "encrypt": [],
+    "platforms": {
+      "cloud": {
+        "tcb": "y",
+        "aliyun": "y"
+      },
+      "client": {
+        "App": {
+          "app-vue": "y",
+          "app-nvue": "y"
+        },
+        "H5-mobile": {
+          "Safari": "y",
+          "Android Browser": "y",
+          "微信浏览器(Android)": "y",
+          "QQ浏览器(Android)": "y"
+        },
+        "H5-pc": {
+          "Chrome": "y",
+          "IE": "u",
+          "Edge": "u",
+          "Firefox": "y",
+          "Safari": "y"
+        },
+        "小程序": {
+          "微信": "y",
+          "阿里": "y",
+          "百度": "u",
+          "字节跳动": "y",
+          "QQ": "y"
+        },
+        "快应用": {
+          "华为": "u",
+          "联盟": "u"
+        }
+      }
+    }
+  }
+}

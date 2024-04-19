@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 //依赖
 import type { FormInstance, FormRules } from "element-plus";
-import { reactive, ref, defineEmits, defineProps } from "vue";
+import { reactive, ref } from "vue";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 const searchFormRef = ref<FormInstance>();
 const searchForm = ref({

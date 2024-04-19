@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 import { PowerGuard } from 'src/auth/guard/power.guard';
@@ -19,7 +19,7 @@ export class AdminMenuController {
     @UseGuards(JwtAuthGuard, PowerGuard)
     async create(@Body() form: AdminMenu, @Req() req: any): Promise<ResponseInfoDto<AdminMenu>> {
         this.systemLogService.create('菜单管理', `新增菜单${JSON.stringify(form)}`, req);
-        const rsp = new ResponseInfoDto<AdminMenu>();
+        const rsp = new ResponseInfoDto<AdminMenu>(req);
         try {
             rsp.success('保存成功', await this.adminMenuService.create(form));
         } catch (e) {
@@ -34,7 +34,7 @@ export class AdminMenuController {
     @UseGuards(JwtAuthGuard, PowerGuard)
     async update(@Body() form: AdminMenu, @Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<AdminMenu>> {
         this.systemLogService.create('菜单管理', `修改菜单${JSON.stringify(form)};id:${id}`, req);
-        const rsp = new ResponseInfoDto<AdminMenu>();
+        const rsp = new ResponseInfoDto<AdminMenu>(req);
         try {
             rsp.success('更新成功', await this.adminMenuService.update(form, id));
         } catch (e) {
@@ -48,7 +48,7 @@ export class AdminMenuController {
     @ApiOperation({ description: 'getMenu：获取菜单树' })
     @UseGuards(JwtAuthGuard)
     async getTree(@Req() req: any): Promise<ResponseInfoDto<AdminMenuTreeDto[]>> {
-        const rsp = new ResponseInfoDto<AdminMenuTreeDto[]>();
+        const rsp = new ResponseInfoDto<AdminMenuTreeDto[]>(req);
         try {
             if (req.user.isSuper) {
                 rsp.success('获取成功', await this.adminMenuService.getTree(0));
@@ -65,7 +65,7 @@ export class AdminMenuController {
     @ApiOperation({ description: 'getTreeByMenuType：根据菜单资源属性获取菜单树' })
     @UseGuards(JwtAuthGuard)
     async getTreeByMenuType(@Param("menuType") menuType: number, @Req() req: any): Promise<ResponseInfoDto<AdminMenuTreeDto[]>> {
-        const rsp = new ResponseInfoDto<AdminMenuTreeDto[]>();
+        const rsp = new ResponseInfoDto<AdminMenuTreeDto[]>(req);
         try {
             if (req.user.isSuper) {
                 rsp.success('获取成功', await this.adminMenuService.getTree(menuType));
@@ -83,9 +83,23 @@ export class AdminMenuController {
     @UseGuards(JwtAuthGuard, PowerGuard)
     async delete(@Param("id") id: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
         this.systemLogService.create('菜单管理', `删除菜单${id}`, req);
-        const rsp = new ResponseInfoDto<any>();
+        const rsp = new ResponseInfoDto<any>(req);
         try {
             rsp.success('删除成功', await this.adminMenuService.deleteById(id));
+        } catch (e) {
+            rsp.warring(e.toString());
+        }
+        return rsp;
+    }
+    @Post('changeParent/:id/:pId')
+    @AuthTag('changeMenuParent')
+    @ApiOperation({ description: 'changeMenuParent:移动菜单' })
+    @UseGuards(JwtAuthGuard, PowerGuard)
+    async changeParent(@Param("id") id: string, @Param("pId") pId: string, @Req() req: any): Promise<ResponseInfoDto<any>> {
+        this.systemLogService.create('菜单管理', `移动菜单${JSON.stringify({ id, pId })}`, req);
+        const rsp = new ResponseInfoDto<any>(req);
+        try {
+            rsp.success('成功', await this.adminMenuService.changeParent(id, pId));
         } catch (e) {
             rsp.warring(e.toString());
         }

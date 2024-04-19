@@ -18,9 +18,34 @@ const rotes = [
         children: [
             {
                 path: 'member',
-                component: () => import('@/views/member/Index.vue'),
+                component: () => import('@/views/memberManagement/Index.vue'),
                 name: 'member',
                 meta: { title: '会员管理' }
+            },
+            {
+                path: 'memberAddress',
+                component: () => import('@/views/memberAddress/Index.vue'),
+                name: 'memberAddress',
+                meta: { title: '收货地址管理' }
+            },
+            
+            {
+                path: 'walletManagement',
+                component: () => import('@/views/walletManagement/Index.vue'),
+                name: 'walletManagement',
+                meta: { title: '钱包管理' }
+            },
+            {
+                path: 'walletLog',
+                component: () => import('@/views/walletLog/Index.vue'),
+                name: 'walletLog',
+                meta: { title: '钱包流水' }
+            },
+            {
+                path: 'withdrawalManagement',
+                component: () => import('@/views/withdrawalManagement/Index.vue'),
+                name: 'withdrawalManagement',
+                meta: { title: '提现管理' }
             },
         ]
     }]

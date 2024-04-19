@@ -1,0 +1,9 @@
+<% for (let i = 0; i < dicTree.length; i++) { %>
+/**
+ * <%=dicTree[i].dicName%>
+ * <%=dicTree[i].remarks%>
+*/
+export enum <%=dicTree[i].dicCode%> {
+    <% for (let j = 0; j < dicTree[i].children.length; j++) { %>'<%=dicTree[i].children[j].dicName%>' = '<%=dicTree[i].children[j].value?dicTree[i].children[j].value:dicTree[i].children[j].dicCode%>',
+    <%}%>
+}<% } %>
