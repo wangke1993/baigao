@@ -69,17 +69,15 @@ export const getLocalIPAddress = () => {
         }
     }
 }
-
+const workerId = randomNumber(100000, 999999);
 // FIXME:在大型分布式系统中，应单独将本模块取出，作为独立的服务生成雪花ID
 /**
  * 获取雪花ID
  */
 export const SnowflakeID = (): string => {
-    const ip = getLocalIPAddress();
-    const num = Number(ip.split('\.').pop());
     // 创建Snowflake实例，传入机器ID或数据中心ID
     const snowflake = new SnowflakeIdv1({
-        workerId: num,
+        workerId,
     });
     return snowflake.NextId().toString();
 }
