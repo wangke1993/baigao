@@ -7,6 +7,7 @@ import { EnvConfig } from 'src/utils/env-config';
 import { CreateTaskService } from './create-task.service';
 import { MemberManagementModule } from 'src/member-management/member-management.module';
 import { WeChatApiModule } from 'src/wechat-api/wechat-api.module';
+import { RedisCacheModule } from 'src/redis-cache/redis-cache.module';
 const envConfig = new EnvConfig();
 @Module({
     imports: [
@@ -20,7 +21,8 @@ const envConfig = new EnvConfig();
             },
         }),
         MemberManagementModule,
-        WeChatApiModule
+        WeChatApiModule,
+        RedisCacheModule
     ],
     providers: [CronTaskService, CreateTaskService, RunTaskService],
     exports: [CronTaskService, RunTaskService],
