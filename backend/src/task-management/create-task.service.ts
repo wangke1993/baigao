@@ -2,7 +2,8 @@ import { AmqpConnection } from '@golevelup/nestjs-rabbitmq';
 import { Injectable, Logger } from '@nestjs/common';
 import { TaskDto } from './dto/task.dto';
 import { formatDate } from 'src/utils/date-tools';
-
+import { EnvConfig } from 'src/utils/env-config';
+const envConfig = new EnvConfig();
 @Injectable()
 export class CreateTaskService {
     private readonly logger = new Logger(CreateTaskService.name);
@@ -16,7 +17,7 @@ export class CreateTaskService {
      * @param expiration 延迟时间（秒）
      * @param routeKey 队列路由键
      */
-    async createTask(data: TaskDto<any>, expiration?: number, routeKey: string = "bg-task",) {
+    async createTask(data: TaskDto<any>, expiration?: number, routeKey: string = `bg-task-${envConfig.ENV}`,) {
         if (expiration) {
             expiration = Math.ceil(expiration);
             const runTime = new Date((new Date().getTime() + Number(expiration * 1000)));
@@ -27,7 +28,7 @@ export class CreateTaskService {
         }
         if (expiration) {
             this.amqpConnection.publish(
-                'baigao-task-exchange',
+                `baigao-task-exchange-${envConfig.ENV}`,
                 routeKey,
                 data,
                 {
@@ -35,7 +36,7 @@ export class CreateTaskService {
                 })
         } else {
             this.amqpConnection.publish(
-                'baigao-task-exchange',
+                `baigao-task-exchange-${envConfig.ENV}`,
                 routeKey,
                 data
             )

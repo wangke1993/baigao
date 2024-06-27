@@ -15,8 +15,8 @@ const envConfig = new EnvConfig();
                 return {
                     exchanges: [
                         {
-                            name: 'baigao-task-exchange',
-                            type: 'x-delayed-message',
+                            name: `baigao-task-exchange-${envConfig.ENV}`,
+                            type: `x-delayed-message`,
                             options: {
                                 arguments: { 'x-delayed-type': 'direct' }
                             }
