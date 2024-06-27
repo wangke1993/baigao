@@ -15,6 +15,7 @@ import { CONF_TYPE } from 'src/system-config/dto/system-config.schema';
 import { PayResDto } from './dto/payRes.dto';
 import { TransferToChangeResultDto } from './dto/transfer-to-change-result.dto';
 import { UUID } from 'src/utils/random-tools';
+import { removeNonUtf8Chars } from 'src/utils/common-tools';
 const WxPay = require('wechatpay-node-v3');
 /**
  * 
@@ -139,7 +140,7 @@ export class WeChatApiService {
         const pay = await this.init();
         console.log({ notify_url })
         const params = {
-            description: orderDescription,
+            description: removeNonUtf8Chars(orderDescription).substring(0, 127),
             out_trade_no: orderNo,
             notify_url: notify_url,
             amount: {
@@ -213,7 +214,7 @@ export class WeChatApiService {
         const params = {
             out_trade_no: orderNo,
             out_refund_no: refundNo,
-            reason: reason,
+            reason: removeNonUtf8Chars(reason),
             notify_url: notify_url ?? this.payConfig[DC0005.退款回调地址],
             amount: {
                 refund: refund,
@@ -278,8 +279,8 @@ export class WeChatApiService {
         const total_num = transferDetail.length;
         const result = await pay.batches_transfer({
             out_batch_no: outBatchNo,
-            batch_name: batchName,
-            batch_remark: batchRemark,
+            batch_name: removeNonUtf8Chars(batchName).substring(0, 32),
+            batch_remark: removeNonUtf8Chars(batchRemark).substring(0, 32),
             total_amount,
             wx_serial_no,
             total_num,
