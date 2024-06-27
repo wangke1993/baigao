@@ -209,7 +209,7 @@ module.exports = {
 ```
 // 第一次启动
 pm2 start ecosystem.config.js
-// 后续代码更新
+// 后续代码更新。注意！！！1.需变更backend的package.json版本号；2.2个副本以上即可实现滚动更新
 pm2 restart ecosystem.config.js
 ```
 ## 本机免密登录到服务器
