@@ -200,7 +200,8 @@ module.exports = {
       // 副本数量
       instances: 2, 
       exec_mode: 'cluster',
-      env: {},
+      // 这里env，跟.env文件有冲突，使用pm2部署的时候需要在这里单独配置
+      env: { env: 'prod' },
     },
   ],
 };
@@ -209,7 +210,9 @@ module.exports = {
 ```
 // 第一次启动
 pm2 start ecosystem.config.js
-// 后续代码更新。注意！！！1.需变更backend的package.json版本号；2.2个副本以上即可实现滚动更新
+// 后续代码更新。注意！！！注意！！！注意！！！
+// 1.需变更backend的package.json版本号；
+// 2.两个副本以上即可实现滚动更新；
 pm2 restart ecosystem.config.js
 ```
 ## 本机免密登录到服务器

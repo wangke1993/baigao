@@ -11,7 +11,7 @@ module.exports = {
       // 副本数量（推荐于cpu核心数相同）
       instances: 4,
       exec_mode: 'cluster',
-      env: {},
+      env: { env: 'prod' },
     },
   ],
 };
