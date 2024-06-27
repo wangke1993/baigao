@@ -8,7 +8,9 @@
           </div>
           <div class="title">柏高</div>
         </div>
-        <div class="tips" v-if="!supplemented && isAgree">请您完善信息后登录</div>
+        <div class="tips" v-if="!supplemented && isAgree">
+          请您完善信息后登录
+        </div>
         <div
           class="tips login-ok"
           v-else-if="!bindPhone && isAgree && (!needAuthorization || isAgree)"
@@ -18,7 +20,9 @@
         <div class="tips login-ok" v-else-if="QRLoginKey">授权登录pc端</div>
         <div
           class="tips login-ok"
-          v-else-if="supplemented && bindPhone && (!needAuthorization || isAgree)"
+          v-else-if="
+            supplemented && bindPhone && (!needAuthorization || isAgree)
+          "
         >
           已登录并已绑定手机号
         </div>
@@ -54,7 +58,8 @@
         <div
           class="agree-box"
           v-if="
-            (!supplemented && !isAgree) || (supplemented && needAuthorization && !isAgree)
+            (!supplemented && !isAgree) ||
+            (supplemented && needAuthorization && !isAgree)
           "
         >
           <label class="radio">
@@ -72,7 +77,8 @@
           open-type="agreePrivacyAuthorization"
           @click="agree()"
           v-if="
-            (!supplemented && !isAgree) || (supplemented && needAuthorization && !isAgree)
+            (!supplemented && !isAgree) ||
+            (supplemented && needAuthorization && !isAgree)
           "
         >
           同意
@@ -166,21 +172,24 @@ export default {
     await weChatLogin();
   },
   mounted() {
-    wx.getPrivacySetting({
-      success: (res) => {
-        // res = { needAuthorization: true/false, privacyContractName: '《xxx隐私保护指引》' }
-        const { needAuthorization, privacyContractName } = res;
-        if (needAuthorization) {
-          // 需要弹出隐私协议
+    // 本页面最低要求版本库2.21.4
+    if (this.CheckSdkVersion("2.32.3")) {
+      wx.getPrivacySetting({
+        success: (res) => {
+          // res = { needAuthorization: true/false, privacyContractName: '《xxx隐私保护指引》' }
+          const { needAuthorization, privacyContractName } = res;
           this.privacyContractName = privacyContractName;
           this.needAuthorization = needAuthorization;
-        } else {
-          this.isAgree = true;
-        }
-      },
-      fail: () => {},
-      complete: () => {},
-    });
+          // if (!needAuthorization) {
+          //   this.isAgree = true;
+          // }
+        },
+        fail: () => {},
+        complete: () => {},
+      });
+    } else {
+      this.isAgree = true;
+    }
   },
   onLoad(query) {
     console.log("加载登录页面-----", { query });

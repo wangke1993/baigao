@@ -152,3 +152,28 @@ Vue.prototype.getUserPhoneNumber = async function (e) {
     });
   }
 };
+// 判断当前sdk版本号是否大于指定版本号
+Vue.prototype.CheckSdkVersion = function (v2) {
+  // 本方法最低要求版本库2.21.4
+  let v1 = wx.getAppBaseInfo().SDKVersion;
+  console.log("当前版本------------", v1);
+  v1 = v1.split(".");
+  v2 = v2.split(".");
+  // 同步版本号长度
+  const len = Math.max(v1.length, v2.length);
+  while (v1.length < len) {
+    v1.push("0");
+  }
+  while (v2.length < len) {
+    v2.push("0");
+  }
+  // 对比版本号
+  for (let i = 0; i < len; i++) {
+    const num1 = parseInt(v1[i]);
+    const num2 = parseInt(v2[i]);
+    if (num1 < num2) {
+      return false;
+    }
+  }
+  return true;
+};
