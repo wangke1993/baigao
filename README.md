@@ -98,8 +98,10 @@ echo '-----------------------build backend------------------------------'
 cd baigao/backend
 # 第一次拉取代码后，后续均用pull拉取最新代码
 # git pull -f
-yarn
-yarn build
+# 没有pnpm 执行 下面一行命令
+# npm install -g pnpm
+pnpm i
+pnpm build
 # 注意！注意！：这里的env请存储到服务器，不要把生成环境相关密钥放到git仓库
 cp docker/.env dist
 cp -r node_modules dist

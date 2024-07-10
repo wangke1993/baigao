@@ -48,6 +48,7 @@
     "helmet": "^5.0.2",
     "ioredis": "^5.0.4",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
     "mongoose": "^6.3.3",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
@@ -56,14 +57,15 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "sharp": "^0.33.2",
+    "sharp": "^0.33.4",
     "simple-flakeid": "^0.0.5",
     "string-random": "^0.1.3",
     "swagger-ui-express": "^4.3.0",
     "unisms": "^0.0.6",
     "utf8": "^3.0.0",
     "uuid": "^8.3.2",
-    "wechatpay-node-v3": "2.1.8"
+    "wechatpay-node-v3": "2.1.8",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -107,5 +109,18 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": [
+        "win32",
+        "darwin",
+        "current"
+      ],
+      "cpu": [
+        "x64",
+        "arm64"
+      ]
+    }
   }
 }
