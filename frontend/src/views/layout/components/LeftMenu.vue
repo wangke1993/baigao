@@ -1,16 +1,8 @@
 <template>
   <div class="sidebar-container">
-    <el-menu
-      class="el-menu-vertical-demo"
-      active-text-color="#47a0fa"
-      background-color="#304156"
-      text-color="#fff"
-      :collapse="collapse"
-      :default-openeds="permissionStore.defaultOpeneds"
-      :router="true"
-      :unique-opened="true"
-      @open="menuOpen"
-    >
+    <el-menu class="el-menu-vertical-demo" active-text-color="#47a0fa" background-color="#304156" text-color="#fff"
+      :collapse="collapse" :default-openeds="permissionStore.defaultOpeneds" :router="true" :unique-opened="true"
+      @open="menuOpen">
       <template v-for="menu in menuTree" :key="menu._id">
         <el-sub-menu :index="menu._id" v-if="menu.children.length > 0 && menu.isShow === '1'">
           <template #title>

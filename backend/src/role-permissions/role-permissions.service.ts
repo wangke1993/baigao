@@ -66,6 +66,25 @@ export class RolePermissionsService {
         return permissionsList;
     }
     /**
+     * 根据角色id数组获取菜单功能id数组
+     * @param ids 
+     * @returns 
+     */
+    async getRoleHidePermissionsListByIds(ids: string[]): Promise<string[]> {
+        const objectIds: ObjectId[] = [];
+        let hidePermissionsList: string[] = [];
+        ids.forEach((id: string) => {
+            objectIds.push(new ObjectId(id));
+        });
+        const roleList = await this.RolePermissionsModel.find({ _id: { $in: objectIds } });
+        // 合并隐藏范围
+        hidePermissionsList = roleList.pop().hidePermissionsList;
+        roleList.forEach((role: RolePermissions) => {
+            hidePermissionsList = hidePermissionsList.concat(role.hidePermissionsList)
+        });
+        return hidePermissionsList;
+    }
+    /**
      * 根据角色Ids判断是否存在是超级用户
      * @param ids 
      * @returns 

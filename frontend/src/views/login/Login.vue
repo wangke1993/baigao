@@ -132,7 +132,6 @@ body {
   background: url(./bj.jpg) no-repeat;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  mix-blend-mode: overlay;
 }
 
 .container {

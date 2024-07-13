@@ -9,7 +9,7 @@ export class RolePermissions extends Document {
         角色名称：
         权限列表：objectID[]
      */
-    
+
     @ApiProperty({
         description: '角色名称',
     })
@@ -24,13 +24,22 @@ export class RolePermissions extends Document {
         required: false
     })
     permissionsList: string[];
+
     @ApiProperty({
-        description:"角色首页"
+        description: '隐藏显示菜单',
+    })
+    @Prop({
+        required: false
+    })
+    hidePermissionsList: string[];
+
+    @ApiProperty({
+        description: "角色首页"
     })
     @Prop()
     indexPath: string;
     @ApiProperty({
-        description:"是否是超级管理员"
+        description: "是否是超级管理员"
     })
     @Prop()
     isSuper: boolean;
