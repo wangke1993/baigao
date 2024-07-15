@@ -36,6 +36,27 @@ node --max_old_space_size=250 index.js
     ```
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     ```
-
+# 常用命令
+    ```
+    # 打包已有的镜像进行使用
+    # rabbitmq-delayed
+    docker save -o rabbitmq-delayed.tar rabbitmq-delayed:latest
+    docker load -i rabbitmq-delayed.tar
+    # redis
+    docker save -o redis.tar redis:alpine
+    docker load -i redis.tar
+    # nginx stable-alpine3.17
+    docker save -o nginx.tar nginx:stable-alpine3.17
+    docker load -i nginx.tar
+    # mongo 6.0.5
+    docker save -o mongo.tar mongo:6.0.5
+    docker load -i mongo.tar
+    # chishin/nginx-proxy-manager-zh  latest
+    docker save -o nginx-proxy-manager-zh.tar chishin/nginx-proxy-manager-zh:latest
+    docker load -i nginx-proxy-manager-zh.tar
+    # rabbitmq 3.9-management
+    docker save -o rabbitmq.tar rabbitmq:3.9-management
+    docker load -i rabbitmq.tar
+    ```
 ## 搭建openvpn参考如下博客
     https://blog.csdn.net/qq_37510195/article/details/130777785
