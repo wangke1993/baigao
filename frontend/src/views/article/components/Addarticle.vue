@@ -123,10 +123,10 @@ import type { IDomEditor } from "@wangeditor/editor";
 import { btnShow } from "../../../utils/buttonShow";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import {
-  ArticleMangerControllerCreate,
-  ArticleMangerControllerGetDetailByArticleId,
-  ArticleMangerControllerUpdate,
-} from "@/api/ArticleMangerControllerApi";
+  ArticleManagementControllerCreate,
+  ArticleManagementControllerGetDetailByArticleId,
+  ArticleManagementControllerUpdate,
+} from "@/api/ArticleManagementControllerApi";
 import { Delete, Edit, Plus, Download, ZoomIn } from "@element-plus/icons-vue";
 import type {
   FormInstance,
@@ -135,10 +135,10 @@ import type {
   UploadUserFile,
 } from "element-plus";
 import "@wangeditor/editor/dist/css/style.css"; // 引入 css
-import { ArticleMangerDto } from "@/api/dto/ArticleMangerDto";
+import { ArticleManagementDto } from "@/api/dto/ArticleManagementDto";
 
 const emit = defineEmits(["Refresh"]);
-const form = ref({ _id: "", ...new ArticleMangerDto() });
+const form = ref({ _id: "", ...new ArticleManagementDto() });
 const ruleFormRef = ref<FormInstance>();
 const rules = reactive<FormRules>({
   articleName: [
@@ -209,7 +209,7 @@ getArticleDictionary("DC0001");
 // 获取文章详情
 const getDetail = async (id: string) => {
   try {
-    let result = await ArticleMangerControllerGetDetailByArticleId(id);
+    let result = await ArticleManagementControllerGetDetailByArticleId(id);
     let data = result.data;
     if (data.status === 1) {
       const { articleName, cover, articleClass, syn, content, release } =
@@ -230,7 +230,7 @@ const getDetail = async (id: string) => {
 // 编辑文章
 const editArticle = async (id: string, params: any) => {
   try {
-    let result = await ArticleMangerControllerUpdate(id, params);
+    let result = await ArticleManagementControllerUpdate(id, params);
     let data = result.data;
     if (data.status === 1) {
       closeForm(ruleFormRef.value);
@@ -242,10 +242,10 @@ const editArticle = async (id: string, params: any) => {
 };
 
 // 发布文章接口
-const postArticleMangerControllerCreate = async (params: any) => {
+const postArticleManagementControllerCreate = async (params: any) => {
   try {
     const { articleName, cover, articleClass, syn, content, release } = params;
-    let result = await ArticleMangerControllerCreate({
+    let result = await ArticleManagementControllerCreate({
       articleName,
       cover,
       articleClass,
@@ -269,7 +269,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate(async (valid, fields) => {
     if (valid) {
       if (form.value._id) editArticle(form.value._id, form.value);
-      else postArticleMangerControllerCreate(form.value);
+      else postArticleManagementControllerCreate(form.value);
     } else {
       console.log("校验失败", fields);
     }
