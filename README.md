@@ -1,5 +1,6 @@
 ![logo](./logo.png)
 # 柏高（BaiGao）
+   nest-admin/nestjs-admin
 ## 介绍
 基于nestJs+mongoDB+vue3+element-plus+uni-app技术栈的大前端后台管理系统；可基于当前系统快速构建toG、toB、toC常见业务系统；经过商业项目验证，可放心食用，如果喜欢，你也可以用你发财的小手点个star，以资鼓励；
 ## 性能测试（低配性能不缩水）
