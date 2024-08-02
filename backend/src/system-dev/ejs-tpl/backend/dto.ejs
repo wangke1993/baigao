@@ -31,9 +31,9 @@ export class <%= getBigModuleTitle(moduleConf.nameEn) %> extends BaseSchema {
         required: false,<% } %><% if (fieldList[i].notRepeat) { %>
         unique: true,<% }%><% if (fieldList[i].defaultValue) { %>
         default: <%=fieldList[i].defaultValue%>,<% } %>
-        type: <%=getBigModuleTitle(fieldList[i].type)%>
+        type: <%-getBigModuleTitle(fieldList[i].type)%>
     })
-    <%=fieldList[i].nameEn %>: <%=fieldList[i].type %>;
+    <%=fieldList[i].nameEn %>: <%-fieldList[i].type%>;
     <% if(["Select","MoreSelect","Radio","Checkbox","TreeSelect","MoreTreeSelect","AdministrativeDivision"].includes(fieldList[i].dom)){ %>
     /**
     * <%=fieldList[i].name %>名称
@@ -45,7 +45,7 @@ export class <%= getBigModuleTitle(moduleConf.nameEn) %> extends BaseSchema {
     @Prop({<% if (fieldList[i].notNull) { %>
         required: [true,"<%=fieldList[i].name %>名称(<%=fieldList[i].nameEn %>Text)不能为空"],<% } else { %>
         required: false,<% } %>
-        type: <%=getBigModuleTitle(fieldList[i].type)%>
+        type: <%-getBigModuleTitle(fieldList[i].type)%>
     })
     <%=fieldList[i].nameEn %>Text: string;
     <% } %>
