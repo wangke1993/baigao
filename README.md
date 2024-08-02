@@ -17,7 +17,7 @@
    docker 
       前端
       nginx-manger
-      mongodb：主从集群
+      mongodb：主从集群（单副本性能提升三倍左右，无特殊情况，推荐使用单副本）
       redis
 ### 3.测试结果：mongo双副本主从
    总耗时：4分28秒  10000个请求产生2万条数据 
@@ -32,7 +32,7 @@
 
 ![性能](./stress-testing.png)
 ### 4.性能参考
-   mongodb单副本【相同环境】 最大内存占用80%
+   (推荐使用) mongodb单副本【相同环境】 最大内存占用80%
 ![性能](./mongo.png)
    mysql单副本【相同环境】 最大内存占用83% 
    ![性能](./mysql.png)
@@ -67,17 +67,19 @@ mongoDB：高性能、分布式noSql数据库
 ![功能清单及规划](./detail.png)
 ## 怎么部署
 ### 1.安装docker（windows请打开wsl功能，并升级到wsl2，然后再安装docker）,警告！警告！警告！（生产环境请先将数据盘挂载到/var/lib/docker）
-### 2.部署mongoDB，主从部署（mongoDB事务必须采用主从方式），警告！警告！警告！（mongoDB正式环境请不要暴露到公网，不要使用默认端口27017，数据无价记得定期备份）
+### 2.部署mongoDB，主从部署（mongoDB事务必须采用副本集的方式），警告！警告！警告！（mongoDB正式环境请不要暴露到公网，不要使用默认端口27017，数据无价记得定期备份）
 ```
 	# 启动主节点
 	docker run -d -p 8017:27017 --name mongodb-primary -v ./primary-data:/data/db mongo:6.0.5 --replSet mongo-rep
-	# 启动从节点
+	# 启动从节点 （单副本时，无需启动从节点）
 	docker run -d -p 8018:27017 --name mongodb-secondary -v ./secondary-data:/data/db mongo:6.0.5 --replSet mongo-rep
 	# 进入主节点，并配置主从、用户及数据库等
 	docker exec -it mongodb-primary /bin/bash
 	mongosh
 	# 配置主从节点，此处ip换成自己宿主机的ip
 	rs.initiate({_id:"mongo-rep", version:1, members:[{_id:0, host:"172.22.11.118:27017", priority:6}, {_id:1, host:"172.22.11.118:27018", priority:3}]})
+   # （推荐）配置【单副本】节点，【仅需部署一个mongodb镜像】即可，此处ip换成自己宿主机的ip
+	rs.initiate({_id:"mongo-rep", version:1, members:[{_id:0, host:"172.22.11.118:27017", priority:6}]})
    # 更新使用
    rs.reconfig({_id:"mongo-rep", version:1, members:[{_id:0, host:"172.22.11.118:27017", priority:6}, {_id:1, host:"172.22.11.118:27018", priority:3}]})
    # 重置
