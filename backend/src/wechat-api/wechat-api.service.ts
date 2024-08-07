@@ -144,7 +144,7 @@ export class WeChatApiService {
             out_trade_no: orderNo,
             notify_url: notify_url,
             amount: {
-                total: money,
+                total: Number(money),
             },
             payer: {
                 openid: memberOpenId,
