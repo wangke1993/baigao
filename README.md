@@ -293,6 +293,12 @@ chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
    set_real_ip_from 172.18.0.2;
    real_ip_header X-Forwarded-For;
    ```
+## 解决http2最大并发报错net::ERR_HTTP2_SERVER_REFUSED_STREAM问题
+   1.一级代理中server中新增如下配置，nginx-proxy-manager直接配置在高级->自定义配置即可
+   ```
+   http2_max_requests 2000;
+   keepalive_requests 2000;
+   ```
 ## 版本说明
 当前版本：1.5.0 \
 发布时间：2024-4-19 \
