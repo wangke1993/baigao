@@ -9,28 +9,27 @@ import { TransferDetailDto } from './dto/transfer-detail.dto';
 import { v4 as uuidV4 } from 'uuid';
 import { TransactionHelper } from 'src/transaction/transaction.helper';
 import { RedisCacheService } from 'src/redis-cache/redis-cache.service';
-import { LOGIN_QR_STATUS } from './dto/enum.dto';
-import { DC0005, DC0014 } from 'src/data-dictionary/dic-enum';
+import { LOGIN_QR_STATUS, TRANSFER_SCENE_ID } from './dto/enum.dto';
+import { DC0005 } from 'src/data-dictionary/dic-enum';
 import { CONF_TYPE } from 'src/system-config/dto/system-config.schema';
 import { PayResDto } from './dto/payRes.dto';
 import { TransferToChangeResultDto } from './dto/transfer-to-change-result.dto';
 import { UUID } from 'src/utils/random-tools';
-import { WxMpUserService } from './wx-mp-user.service';
-import { MpTplMsgRequestDto } from './dto/mp-tpl-msg-request.dto';
-import { WxMpDto } from './dto/wx-mp.dto';
-import { WxMpUserDto } from './dto/wx-mp-user.dto';
+import { removeNonUtf8Chars } from 'src/utils/common-tools';
 const WxPay = require('wechatpay-node-v3');
 /**
  * 
- * 微信公众号相关api
+ * 微信支付参考文档
+ * https://github.com/klover2/wechatpay-node-v3-ts?tab=readme-ov-file
  */
 @Injectable()
-export class WxMPApiService {
-    private readonly logger = new Logger(WxMPApiService.name);
+export class WeChatApiService {
+    private readonly logger = new Logger(WeChatApiService.name);
     private payConfig: any;
     constructor(
+        private fileUploadService: FileUploadService,
+        private authService: AuthService,
         private memberManagementService: MemberManagementService,
-        private wxMpUserService: WxMpUserService,
         private systemConfigService: SystemConfigService,
         private transaction: TransactionHelper,
         private redisCacheService: RedisCacheService,
@@ -38,134 +37,360 @@ export class WxMPApiService {
     ) {
 
     };
-    async init(): Promise<WxMpDto> {
-        const mpConf = await this.systemConfigService.getConfigObjByConfType('DC0014');
-        if (mpConf[DC0014.appid] && mpConf[DC0014.secret]) {
-            const key = mpConf[DC0014.appid];
-            const access_token = await this.redisCacheService.get(key);
-            // const access_token = "";
-            if (access_token) {
-                return new WxMpDto(
-                    mpConf[DC0014.appid],
-                    mpConf[DC0014.secret],
-                    access_token
-                );
+    async init(config?: any) {
+        this.payConfig = await this.systemConfigService.getConfigObjByConfType(CONF_TYPE.支付参数设置);
+        if (!this.payConfig[DC0005.api证书] || !this.payConfig[DC0005.api密钥]) {
+            throw new Error("请上传api证书和api密钥");
+        }
+        const publicKeyPath: string = JSON.parse(this.payConfig[DC0005.api证书]).path;
+        const privateKeyPath: string = JSON.parse(this.payConfig[DC0005.api密钥]).path;
+        if (publicKeyPath && privateKeyPath) {
+            if (config) {
+                return new WxPay(config);
             } else {
-                // 获取accessToken
-                const wxMpDto = new WxMpDto(
-                    mpConf[DC0014.appid],
-                    mpConf[DC0014.secret]
-                );
-                const { access_token, expires_in } = await wxMpDto.getAccessToken();
-                await this.redisCacheService.set(key, access_token, expires_in);
-                return wxMpDto.setAccessToken(access_token);
-            }
-        } else {
-            throw new Error("请配置appid和secret后再使用");
-        }
-    }
-    /**
-     * 获取微信公众号用户信息,并写入数据库
-     */
-    async getAllMpUserInfo(req: any): Promise<any> {
-        const wxMpApi = await this.init();
-        const getAll = async (next_openid = ""): Promise<string[]> => {
-            // 查询微信公众号的用户，并存储
-            const { total, count, data, next_openid: n_openid } = await wxMpApi.getUserList(next_openid);
-            let res = [];
-            if (data.openid) {
-                res = res.concat(data.openid);
-            }
-            if (total > 10000 && data?.openid && data.openid.length == 10000) {
-                res = res.concat(await getAll(n_openid));
-            }
-            return res;
-        }
-        let openids: string[] = await getAll();
-        console.log('总数', openids.length);
-        if (openids.length > 0) {
-            // 清理取消关注的用户
-            await this.wxMpUserService.deleteNotInOpenIds(openids);
-            // 计算需要插入的用户
-            openids = await this.wxMpUserService.getNewUser(openids);
-            console.log('新用户', openids);
-            let start = 0;
-            let end = 99;
-            let now = new Date();
-            let userInfoList = [];
-            const install = async () => {
-                console.log('批次', start + '-' + end);
-                const hundred = openids.slice(start, end);
-                now = new Date(now.getTime() + start);
-                // 查询微信公众号用户的，详情并存储
-                const { user_info_list } = await wxMpApi.batchGetUserDetails({ user_list: hundred.map(str => { return { openid: str, lang: 'zh_CN' } }) })
-                user_info_list.map((item, i) => {
-                    const d = new WxMpUserDto(item, req);
-                    d.addDate = new Date(now.getTime() + i);
-                    d.updateDate = new Date(now.getTime() + i);
-                    // console.log(d);
-                    userInfoList.push(d);
+                return new WxPay({
+                    appid: this.payConfig[DC0005.应用appid],
+                    mchid: this.payConfig[DC0005.商户号mchid],
+                    publicKey: readFileSync(publicKeyPath),
+                    privateKey: readFileSync(privateKeyPath),
                 });
-                if (openids.length > (end + 1)) {
-                    start = end;
-                    end += 100;
-                    await install();
-                }
-                return '完成';
-            }
-            if (openids.length > 0) {
-                await install();
-                return await this.wxMpUserService.installMany(userInfoList);
-            }
-        }
-    }
-    /**
-     * 验证用户是否关注了微信公众号
-     */
-    async verifyWeChatBinding(unionid: string, req: any): Promise<Boolean> {
-        let wxMpUser = await this.wxMpUserService.getDetailByUnionid(unionid);
-        if (wxMpUser) {
-            // 原来有数据，查询最新的数据
-            const { user_info_list } = await (await this.init()).batchGetUserDetails({ user_list: [{ openid: wxMpUser.openid, lang: 'zh_CN' }] })
-            const newUserInfo = user_info_list.pop();
-            if (newUserInfo.subscribe == 1) {
-                // 有订阅则更新
-                this.wxMpUserService.updateByOpenId(
-                    new WxMpUserDto(newUserInfo, req),
-                    newUserInfo.openid,
-                    req
-                );
-                return true;
-            } else {
-                // 无订阅则删除
-                this.wxMpUserService.deleteByOpenIds([wxMpUser.openid]);
-                return false;
             }
         } else {
-            // 原来没有数据，重新获取所有数据再查询是否存在
-            await this.getAllMpUserInfo(req);
-            wxMpUser = await this.wxMpUserService.getDetailByUnionid(unionid);
-            if (wxMpUser) {
-                return true;
+            this.logger.error('------------------------------没有上传商户支付公钥或私钥，支付功能无法使用------------------------------');
+        }
+    }
+    // 生成太阳码：会员二维码，经销商二维码
+    async createQR(openId: string, memberId: string, page: string): Promise<string> {
+        const access_token = await this.authService.getAccessToken(openId);
+        const { data } = await axios.post(`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${access_token}`, {
+            scene: `${openId}`,
+            page,
+            check_path: false,
+        }, { proxy: false, responseType: "arraybuffer" });
+        const enc = new TextDecoder("utf-8");
+        const uint8Msg = new Uint8Array(data);
+        let resJson: any = {};
+        try {
+            resJson = JSON.parse(enc.decode(uint8Msg));
+        } catch (error) { }
+        if (resJson?.errcode) {
+            throw new Error(`${resJson.errcode}-${resJson.errmsg}`);
+        }
+        const fileName = `userQR_${openId}.jpeg`;
+        const QRFile = await this.fileUploadService.createByBlob(fileName, data, false);
+        await this.memberManagementService.setMemberQR(memberId, QRFile.url, QRFile._id);
+        return QRFile.url;
+    }
+    async getQR(scene: string, openId: string, page: string, tow = false): Promise<any> {
+        const access_token = await this.authService.getAccessToken(openId, tow);
+        const { data } = await axios.post(`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${access_token}`, {
+            scene,
+            page,
+            check_path: false,
+        }, { proxy: false, responseType: "arraybuffer" });
+        const enc = new TextDecoder("utf-8");
+        const uint8Msg = new Uint8Array(data);
+        let resJson: any = {};
+        try {
+            resJson = JSON.parse(enc.decode(uint8Msg));
+        } catch (error) { }
+        if (resJson?.errcode) {
+            /**
+             * 尝试2次
+             */
+            if (tow) {
+                throw new Error(`${resJson.errcode}-${resJson.errmsg}`);
             } else {
-                return false;
+                // 重置access_token后再尝试一次
+                return await this.getQR(scene, openId, page, true);
             }
         }
-    };
-    /**
-     * 根据unionid来发送模板消息
-     */
-    async sendTplMsg(unionid: string, req: MpTplMsgRequestDto) {
-        const wxMpDto = await this.init();
-        const wxMpUser = await this.wxMpUserService.getDetailByUnionid(unionid);
-        if (!wxMpUser) {
-            throw new Error("该用户没有关注公众号，无法进行通知");
+        return `data:image/png;base64,${Buffer.from(data).toString("base64")}`;
+    }
+    async createLoginQR(page: string): Promise<LoginQrDto> {
+        const access_token = await this.authService.getAccessToken();
+        const loginId = `${UUID()}`.toLowerCase().substring(0, 16);
+        const { data } = await axios.post(`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${access_token}`, {
+            scene: `${loginId}`,
+            page,
+            check_path: false,
+        }, { proxy: false, responseType: "arraybuffer" });
+        const enc = new TextDecoder("utf-8");
+        const uint8Msg = new Uint8Array(data);
+        let resJson: any = {};
+        try {
+            resJson = JSON.parse(enc.decode(uint8Msg));
+        } catch (error) { }
+        if (resJson?.errcode) {
+            throw new Error(`${resJson.errcode}-${resJson.errmsg}`);
         }
-        req.to(wxMpUser.openid);
-        const mpConf = await this.systemConfigService.getConfigObjByConfType("DC0005");
-        req.setMiniProgramAppid(mpConf[DC0005.应用appid]);
-        const res = await wxMpDto.sendTplMsg(req);
-        this.logger.log('模板消息发送结果', { res });
+        const loginQrDto: LoginQrDto = {
+            QR: `data:image/png;base64,${Buffer.from(data).toString("base64")}`,
+            key: loginId
+        };
+        this.redisCacheService.set(loginId, LOGIN_QR_STATUS.待扫码, 15 * 60); // 15分钟过期
+        return loginQrDto;
+    }
+    // 文档地址https://github.com/klover2/wechatpay-node-v3-ts
+    /**
+     * 
+     * @param memberOpenId 支付用户openId
+     * @param orderNo 订单编号
+     * @param orderDescription 订单描述
+     * @param money 支付金额
+     * @returns 
+     */
+    async jsapiPay(memberOpenId: string, orderNo: string, orderDescription: string, money: number, notify_url?: string): Promise<any> {
+        const pay = await this.init();
+        this.logger.debug('付款金额', { money })
+        console.log({ notify_url })
+        const params = {
+            description: orderDescription,
+            out_trade_no: orderNo,
+            notify_url: notify_url,
+            amount: {
+                total: Number(money.toFixed(0)),
+            },
+            payer: {
+                openid: memberOpenId,
+            },
+        };
+        // this.logger.log(params);
+        const result = await pay.transactions_jsapi(params);
+        // this.logger.log(result);
+        // {
+        //     appId: 'appid',
+        //     timeStamp: '1609918952',
+        //     nonceStr: 'y8aw9vrmx8c',
+        //     package: 'prepay_id=wx0615423208772665709493edbb4b330000',
+        //     signType: 'RSA',
+        //     paySign: 'JnFXsT4VNzlcamtmgOHhziw7JqdnUS9qJ5W6vmAluk3Q2nska7rxYB4hvcl0BTFAB1PBEnHEhCsUbs5zKPEig=='
+        // }
+        if (result.message) {
+            throw Error(result.message);
+        }
+        // FIXME 正常应该是number类型；这里转换是为了兼容uni支付时，timeStamp需为string类型
+        result.timeStamp = `${result.timeStamp}`;
+        return result;
+    }
+    /**
+     * 查询支付结果
+     * @param out_trade_no 
+     */
+    async queryPayOrder(out_trade_no: string): Promise<PayResDto> {
+        const pay = await this.init();
+        const result: PayResDto = await pay.query({ out_trade_no });
+        console.log('支付结果查询', { result });
+        return new PayResDto(result);
+    }
+    /**
+     * 关闭支付订单
+     * 商户订单支付失败需要生成新单号重新发起支付，要对原订单号调用关单，避免重复支付；
+     * 系统下单后，用户支付超时，系统退出不再受理，避免用户继续，请调用关单接口。
+     * @param out_trade_no 
+     */
+    async closePayOrder(out_trade_no: string) {
+        const pay = await this.init();
+        const res = await pay.close(out_trade_no);
+        this.logger.warn('支付订单取消', out_trade_no, res);
+    }
+
+    /**
+     * 订单退款
+     * @param id 
+     * @param refundsCause 
+     * @param req 
+     * @param isWallet 是否仅为解除钱包冻结资金
+     */
+    async refundsOrder(id: string, refundsCause: string, req?: any, isWallet?: Boolean): Promise<any> {
+        let refundsNo = `${UUID()}`.toUpperCase();
+        const { message } = await this.refunds("orderNo", refundsNo, refundsCause, 10, 10);
+        // return this.OrderManagementModel.updateOne({ orderNo: orderNo }, { orderStatus, refundId, refundContent });
+    }
+    /**
+     * 退款
+     * @param orderNo 订单号：支付的时候使用的订单号
+     * @param refundNo 退款单号：系统内部生成
+     * @param reason 退款原因
+     * @param refund 退款金额
+     * @param total 原订单金额
+     * @returns 
+     */
+    async refunds(orderNo: string, refundNo: string, reason: string, refund: number, total: number, notify_url?: string): Promise<any> {
+        const pay = await this.init();
+        const params = {
+            out_trade_no: orderNo,
+            out_refund_no: refundNo,
+            reason: reason,
+            notify_url: notify_url ?? this.payConfig[DC0005.退款回调地址],
+            amount: {
+                refund: refund,
+                total: total,
+                currency: 'CNY',
+            },
+        };
+        this.logger.log('退款请求参数', params);
+        const result = await pay.refunds(params);
+        this.logger.log('退款返回结果', result);
+        return result;
+    }
+    /**
+     * 查询退款
+     * @param refundsNo 退款单号
+     * @returns 
+     */
+    async findRefunds(refundsNo: string): Promise<any> {
+        const pay = await this.init();
+        const result = await pay.find_refunds(refundsNo);
+        this.logger.log('退款查询', result);
+        return result;
+    }
+    /**
+     * 转账到零钱
+     * 微信支付文档
+     * https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter4_3_1.shtml
+     * nodeApi文档
+     * https://github.com/klover2/wechatpay-node-v3-ts/blob/master/docs/batches_transfer.md
+     * @param outBatchNo 转账批次编号
+     * @param batchName 转账批次名称
+     * @param batchRemark 转账批次备注
+     * @param transferDetail 转账明细
+     * @param transfer_scene_id 转账场景ID
+     * @returns 
+     */
+    async batchesTransfer(outBatchNo: string, batchName: string, batchRemark: string, transferDetail: TransferDetailDto[], transfer_scene_id: TRANSFER_SCENE_ID): Promise<TransferToChangeResultDto> {
+        const pay = await this.init();
+        // 使用最新的平台证书（即：证书启用时间较晚的证书）
+        // 获取3次证书,获取失败则报错，否则正常进行下一步
+        let count = 3;
+        const getCertificate = async () => {
+            try {
+                return await pay.get_certificates(this.payConfig[DC0005.APIv3密钥]);
+            } catch (e) {
+                if (count <= 0) {
+                    throw new Error(e.message);
+                } else {
+                    count--;
+                    return await getCertificate();
+                }
+            }
+        }
+        const certificates = await getCertificate();
+        const certificate = certificates.pop();
+        if (transferDetail.length < 1) {
+            throw new Error("至少一条提现明细");
+        }
+        if (transferDetail.length > 1) {
+            throw new Error("最多一条提现明细");
+        }
+        let total_amount: number = 0;
+        const wx_serial_no = certificate.serial_no;
+        transferDetail.forEach(td => {
+            if (td.user_name) {
+                // 解决姓名加密问题后，最大金额可以大于2000元
+                td.user_name = pay.publicEncrypt(td.user_name, Buffer.from(certificate.publicKey));
+            } else {
+                if (td.transfer_amount / 100 >= 2000) {
+                    throw new Error('单笔提现金额需小于2000元');
+                }
+            }
+            total_amount += Number(td.transfer_amount);
+        })
+        const total_num = transferDetail.length;
+        const param = {
+            out_batch_no: outBatchNo,
+            batch_name: removeNonUtf8Chars(batchName).substring(0, 32),
+            batch_remark: removeNonUtf8Chars(batchRemark).substring(0, 32),
+            total_amount,
+            wx_serial_no,
+            total_num,
+            transfer_detail_list: transferDetail,
+            transfer_scene_id: `${transfer_scene_id}`
+        }
+        const result = await pay.batches_transfer(param);
+        console.log('转账结果', { result });
+        if (result.status == 400) {
+            const resDto = new TransferToChangeResultDto();
+            resDto.success = false;
+            resDto.resultStr = result;
+            resDto.message = JSON.parse(result.error).message
+            return resDto;
+        }
+        // 转账申请后需要查询确定转账结果；
+        const queryResults = () => new Promise<any>(async (res, rej) => {
+            const getTransferResult = async () => {
+                let results = await pay.query_batches_transfer_detail(
+                    {
+                        out_batch_no: outBatchNo,
+                        out_detail_no: transferDetail[0].out_detail_no
+                    }
+                );
+                if (typeof results == 'string') {
+                    results = JSON.parse(results);
+                }
+                console.log('查询转账结果', { results });
+                if (results.data && ['SUCCESS', 'FAIL'].includes(results.data.detail_status)) {
+                    res(results.data);
+                    return;
+                } else if (results.status != 404) {
+                    // 1秒后再次查询
+                    setTimeout(async () => {
+                        await getTransferResult();
+                    }, 1000);
+                } else {
+                    const { error: { message } } = results;
+                    throw new Error(message);
+                }
+            };
+            try {
+                await getTransferResult();
+            } catch (e) {
+                rej(e);
+            }
+        })
+        const queryTransferResults = await queryResults();
+        return new TransferToChangeResultDto(queryTransferResults);
+    }
+    async queryResults(out_batch_no: string): Promise<any> {
+        const pay = await this.init();
+        let results = await pay.query_batches_transfer_list(
+            {
+                out_batch_no,
+                need_query_detail: false
+            }
+        );
+        if (typeof results == 'string') {
+            results = JSON.parse(results);
+        }
+        return results;
+    }
+    /**
+     * 会员提现
+     * @returns 
+     */
+    async withdrawal(memberUUID: string, money: number, req: any): Promise<any> {
+        const withdrawalNo = UUID().toUpperCase();
+        const transferDetailDto = new TransferDetailDto();
+        transferDetailDto.openid = req.user.openId;
+        transferDetailDto.out_detail_no = withdrawalNo;
+        transferDetailDto.transfer_amount = money;
+        transferDetailDto.transfer_remark = `会员发起提现`;
+        // transferDetailDto.user_name = req.user.userName;
+        const res = await this.batchesTransfer(withdrawalNo, '会员提现', `${req.user.openId}`, [transferDetailDto], TRANSFER_SCENE_ID.分销返佣);
         return res;
+    }
+    /**
+     * 根据回调参数resource的子参数或平台证书encrypt_certificate的子参数来对回调数据进行解密
+     * @param ciphertext 数据密文
+     * @param associated_data 附加数据
+     * @param nonce 随机串
+     * @returns 
+     */
+    async decipherGcm(ciphertext: string, associated_data: string, nonce: string): Promise<any> {
+        const apiV3 = this.payConfig[DC0005.APIv3密钥];
+        const pay = await this.init();
+        const result = pay.decipher_gcm(ciphertext, associated_data, nonce, apiV3);
+        this.logger.log('解密结果', result);
+        return result;
     }
 }
