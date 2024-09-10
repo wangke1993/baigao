@@ -28,6 +28,7 @@ import { TaskRunModule } from './task-management/task-run.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { WSModule } from './web-socket/ws.module';
 import { WithdrawalManagementModule } from './withdrawal-management/withdrawal-management.module';
+import { BullTaskModule } from './task-management/bull-task.module';
 const envConfig = new EnvConfig();
 @Module({
   imports: [
@@ -50,6 +51,7 @@ const envConfig = new EnvConfig();
       socketTimeoutMS: 0,
       useNewUrlParser: true,
     }),
+    BullTaskModule,
     RedisCacheModule,
     WSModule,
     AuthModule,
