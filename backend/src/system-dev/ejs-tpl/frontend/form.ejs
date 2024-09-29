@@ -120,9 +120,9 @@ const initOtherValue = (data: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto) => 
     <%}%>
     <%if(fieldList[i].dom=='MoreText'){%>
       if (data.<%=fieldList[i].nameEn %>) {
-    <%=fieldList[i].nameEn %>Html.value = data.<%=fieldList[i].nameEn %>;
+        <%=fieldList[i].nameEn %>EditorRef.value?.setHtml(data.<%=fieldList[i].nameEn %>);
       }else{
-        <%=fieldList[i].nameEn %>Html.value = "";
+        <%=fieldList[i].nameEn %>EditorRef.value?.setHtml("");
       }
     <%}%>
     <%if(['File','Image'].includes(fieldList[i].dom)){%>
@@ -172,6 +172,13 @@ const close = (formEl: FormInstance | undefined) => {
   show.value = false;
   form.value = new <%=getBigModuleTitle(moduleConf.nameEn) %>Dto();
   initOtherValue(form.value);
+  <% for(let i=0;i<fieldList.length;i++) {%>
+    <%if(fieldList[i].dom=='MoreText'){%>
+      const <%=fieldList[i].nameEn %>Editor = <%=fieldList[i].nameEn %>EditorRef.value;
+      if (<%=fieldList[i].nameEn %>Editor == null) return;
+      <%=fieldList[i].nameEn %>Editor.destroy();
+    <%}%><%}%>
+  
 };
 
 defineExpose({ open });

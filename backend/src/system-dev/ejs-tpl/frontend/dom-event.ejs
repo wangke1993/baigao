@@ -1,178 +1,174 @@
 <% if(["MoreSelect","Select","Radio","Checkbox"].includes(dom)) {%>
-// 获取select数据
-const <%=fieldEnName %>Select = ref(new Array<SelectDto<any>>());
-const get<%=getBigModuleTitle(fieldEnName) %>Select = async () => {
-    const {
-        data:{ status, data, message }
-    } = await axios.get('<%=data.domDataUrl %>');
-    if( status === 1 ){
-        data.map( (item: any) => {
-            <%=fieldEnName %>Select.value.push(new SelectDto<any>(item['<%=data.dataLabelField %>'],item['<%=data.dataValueField %>']))
-        })
-    }else{
-        alertWarning(message);
+    // 获取select数据
+    const <%=fieldEnName %>Select = ref(new Array<SelectDto<any>>());
+    const get<%=getBigModuleTitle(fieldEnName) %>Select = async () => {
+        const {
+            data:{ status, data, message }
+        } = await axios.get('<%=data.domDataUrl %>');
+        if( status === 1 ){
+            data.map( (item: any) => {
+                <%=fieldEnName %>Select.value.push(new SelectDto<any>(item['<%=data.dataLabelField %>'],item['<%=data.dataValueField %>']))
+            })
+        }else{
+            alertWarning(message);
+        }
     }
-}
-get<%=getBigModuleTitle(fieldEnName) %>Select();<% } if(["Select","Radio"].includes(dom)&&!search){%> 
-const <%=fieldEnName %>SelectChange = (value: string) => {
-    form.value.<%=fieldEnName %>Text = <%=fieldEnName %>Select.value.filter(item => item.value == value)[0].label;
-};<%}  if(dom=="MoreSelect") {%>
-const <%=fieldEnName %>SelectValue = ref(new Array<any>());
-const <%=fieldEnName %>SelectChange = ( value:any ) => {
-    <%=VModule %> = value.join();
-}<% }  if(dom=="Checkbox") {%>
-const <%=fieldEnName %>CheckboxValue = ref(new Array<any>());
-const <%=fieldEnName %>CheckboxChange = ( value:any ) => {
-    <%=VModule %> = value.join();
-    if (<%=VModule %>) {
-        const tempName: string[] = [];
-        <%=fieldEnName %>Select.value.map((item: any) => {
-          if (value.includes(item.value)) {
-            tempName.push(item.label);
-          }
-        });
-        <%=VModule %>Text = tempName.join();
+    get<%=getBigModuleTitle(fieldEnName) %>Select();<% } if(["Select","Radio"].includes(dom)&&!search){%> 
+    const <%=fieldEnName %>SelectChange = (value: string) => {
+        form.value.<%=fieldEnName %>Text = <%=fieldEnName %>Select.value.filter(item => item.value == value)[0].label;
+    };<%}  if(dom=="MoreSelect") {%>
+    const <%=fieldEnName %>SelectValue = ref(new Array<any>());
+    const <%=fieldEnName %>SelectChange = ( value:any ) => {
+        <%=VModule %> = value.join();
+    }<% }  if(dom=="Checkbox") {%>
+    const <%=fieldEnName %>CheckboxValue = ref(new Array<any>());
+    const <%=fieldEnName %>CheckboxChange = ( value:any ) => {
+        <%=VModule %> = value.join();
+        if (<%=VModule %>) {
+            const tempName: string[] = [];
+            <%=fieldEnName %>Select.value.map((item: any) => {
+              if (value.includes(item.value)) {
+                tempName.push(item.label);
+              }
+            });
+            <%=VModule %>Text = tempName.join();
+        }
+    }<% }  if(["TreeSelect","MoreTreeSelect","AdministrativeDivision"].includes(dom)) { if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
+    const <%=fieldEnName %>TreeValue = ref(new Array<any>());<%} %>
+    const <%=fieldEnName %>TreeRef = ref();
+    const <%=fieldEnName %>TreeOptions = ref(new Array<any>());
+    <%if("AdministrativeDivision"==dom){%>
+    const <%=fieldEnName %>TreeProps: CascaderProps = {
+      expandTrigger: ExpandTrigger.HOVER,
+      value: "code",
+      label: "name",
+      lazy: true,
+      checkStrictly: true,
+      lazyLoad: async (node: any, resolve) => {
+        const code = node.value || "0";
+        const { data: res } =
+          await AdministrativeDivisionsControllerGetListByDicClass(code);
+        if (res.status == 1) {
+          resolve(
+            res.data.map((item: any) => {
+              <%=fieldEnName %>SelectName[item.code] = item.name;
+              item.leaf = node.level >= 2;
+              return item;
+            })
+          );
+        } else {
+          resolve();
+        }
+      },
+    };
+    <%} else {%>
+    const <%=fieldEnName %>TreeProps = {
+        emitPath: false,
+    <% if(dom=="MoreTreeSelect") {%>
+        multiple: true,
+    <% } %>
+        checkStrictly: true,
+        value: "<%=data.dataValueField %>",
+        label: "<%=data.dataLabelField %>",
+        children: "<%=data.dataChildField %>"
+    };
+    const get<%=getBigModuleTitle(fieldEnName) %>Tree = async () => {
+        const {
+          data: { status, data, message },
+        } = await axios.get('<%=data.domDataUrl %>');;
+        if (status === 1) {
+          <%=fieldEnName %>TreeOptions.value = data;
+        } else {
+          alertWarning(message);
+        }
+      };
+    get<%=getBigModuleTitle(fieldEnName) %>Tree();<%}%>
+    
+    const <%=fieldEnName %>TreeChange = ( value:any ) => {
+        console.log(value);
+        <% if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
+        <%=VModule %> = value.join();
+        <%if(!search){%><%=VModule %>Text = <%=fieldEnName %>TreeRef.value.getCheckedNodes(true).map((node: any) => node.text).join();<%}%>
+        <% } else if(!search){%>
+            <%=VModule %>Text = <%=fieldEnName %>SelectName[value]
+        <%} %>
+    }<% }  if(dom=="MoreText") {%>
+    const <%=fieldEnName %>EditorRef = shallowRef();
+    const <%=fieldEnName %>Html = ref("");
+    const <%=fieldEnName %>EditorConfig: any = {
+        placeholder: "请输入内容...",
+        MENU_CONF,
+    };
+    const <%=fieldEnName %>EditorCreated = (editor: any) => {
+        <%=fieldEnName %>EditorRef.value = editor;
     }
-}<% }  if(["TreeSelect","MoreTreeSelect","AdministrativeDivision"].includes(dom)) { if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
-const <%=fieldEnName %>TreeValue = ref(new Array<any>());<%} %>
-const <%=fieldEnName %>TreeRef = ref();
-const <%=fieldEnName %>TreeOptions = ref(new Array<any>());
-<%if("AdministrativeDivision"==dom){%>
-const <%=fieldEnName %>TreeProps: CascaderProps = {
-  expandTrigger: ExpandTrigger.HOVER,
-  value: "code",
-  label: "name",
-  lazy: true,
-  checkStrictly: true,
-  lazyLoad: async (node: any, resolve) => {
-    const code = node.value || "0";
-    const { data: res } =
-      await AdministrativeDivisionsControllerGetListByDicClass(code);
-    if (res.status == 1) {
-      resolve(
-        res.data.map((item: any) => {
-          <%=fieldEnName %>SelectName[item.code] = item.name;
-          item.leaf = node.level >= 2;
-          return item;
-        })
-      );
-    } else {
-      resolve();
-    }
-  },
-};
-<%} else {%>
-const <%=fieldEnName %>TreeProps = {
-    emitPath: false,
-<% if(dom=="MoreTreeSelect") {%>
-    multiple: true,
-<% } %>
-    checkStrictly: true,
-    value: "<%=data.dataValueField %>",
-    label: "<%=data.dataLabelField %>",
-    children: "<%=data.dataChildField %>"
-};
-const get<%=getBigModuleTitle(fieldEnName) %>Tree = async () => {
-    const {
-      data: { status, data, message },
-    } = await axios.get('<%=data.domDataUrl %>');;
-    if (status === 1) {
-      <%=fieldEnName %>TreeOptions.value = data;
-    } else {
-      alertWarning(message);
-    }
-  };
-get<%=getBigModuleTitle(fieldEnName) %>Tree();<%}%>
-
-const <%=fieldEnName %>TreeChange = ( value:any ) => {
-    console.log(value);
-    <% if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
-    <%=VModule %> = value.join();
-    <%if(!search){%><%=VModule %>Text = <%=fieldEnName %>TreeRef.value.getCheckedNodes(true).map((node: any) => node.text).join();<%}%>
-    <% } else if(!search){%>
-        <%=VModule %>Text = <%=fieldEnName %>SelectName[value]
-    <%} %>
-}<% }  if(dom=="MoreText") {%>
-const <%=fieldEnName %>EditorRef = shallowRef();
-const <%=fieldEnName %>Html = ref("");
-const <%=fieldEnName %>EditorConfig: any = {
-    placeholder: "请输入内容...",
-    MENU_CONF,
-};
-const <%=fieldEnName %>EditorCreated = (editor: any) => {
-    <%=fieldEnName %>EditorRef.value = editor;
-}
-onBeforeUnmount(() => {
-    if (<%=fieldEnName %>EditorRef.value){
-        <%=fieldEnName %>EditorRef.value.destroy();
-    }
-});<% }  if(dom=="File") {%>
-const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
-const <%=fieldEnName %>UploadSuccess = (
-    response: any
-) => {
-    const { data, status, message } = response;
-    if (status == 1) {
-        const { UUID, fileName: name, url } = data;
-        form.value.fileIds?.push(UUID);
-        <%=VModule %> += `${name},${url};`;
-    } else {
-        alertWarning(message);
-    }
-};
-const <%=fieldEnName %>Remove = (file: any) => {
-    console.log("handleRemove", file);
-    <%=fieldEnName %>FileList.value = <%=fieldEnName %>FileList.value.filter(
-        (item: any) => item.uid != file.uid
-    );
-    if (<%=VModule %>) {
-        let temp = "";
-        <%=VModule %>.split(";").map((item, i) => {
-            if (item) {
-                if (item.indexOf(file.name) == -1) {
-                temp += `${item};`;
+    <% }  if(dom=="File") {%>
+    const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
+    const <%=fieldEnName %>UploadSuccess = (
+        response: any
+    ) => {
+        const { data, status, message } = response;
+        if (status == 1) {
+            const { UUID, fileName: name, url } = data;
+            form.value.fileIds?.push(UUID);
+            <%=VModule %> += `${name},${url};`;
+        } else {
+            alertWarning(message);
+        }
+    };
+    const <%=fieldEnName %>Remove = (file: any) => {
+        console.log("handleRemove", file);
+        <%=fieldEnName %>FileList.value = <%=fieldEnName %>FileList.value.filter(
+            (item: any) => item.uid != file.uid
+        );
+        if (<%=VModule %>) {
+            let temp = "";
+            <%=VModule %>.split(";").map((item, i) => {
+                if (item) {
+                    if (item.indexOf(file.name) == -1) {
+                    temp += `${item};`;
+                    }
                 }
-            }
-        });
-        <%=VModule %> = temp;
-    }
-};
-const <%=fieldEnName %>Preview = (file: any) => {
-    console.log("handlePreview",file);
-};
-const <%=fieldEnName %>Exceed = (files: any, fileList: any): any => {
-    console.log("handleExceed", fileList);
-};
-const <%=fieldEnName %>BeforeRemove = (file: any, fileList: any) => {
-    return alertConfirm(`确定移除 ${file.name}？`);
-};<% }  if(dom=="Image") {%>
-const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
-const <%=fieldEnName %>OnSuccess = (
-    response: any,
-) => {
-    const { data, status, message } = response;
-    if (status == 1) {
-        const { UUID, fileName: name, url } = data;
-        form.value.fileIds?.push(UUID);
-        <%=VModule %> += `${name},${url};`;
-    } else {
-        alertWarning(message);
-    }
-};
-const <%=fieldEnName %>Remove = (file: UploadFile) => {
-    console.log("handleRemove", file);
-    <%=fieldEnName %>FileList.value = <%=fieldEnName %>FileList.value.filter(
-        (item: any) => item.uid != file.uid
-    );
-    if (<%=VModule %>) {
-        let temp = "";
-        <%=VModule %>.split(";").map((item, i) => {
-            if (item) {
-                if (item.indexOf(file.name) == -1) {
-                temp += `${item};`;
+            });
+            <%=VModule %> = temp;
+        }
+    };
+    const <%=fieldEnName %>Preview = (file: any) => {
+        console.log("handlePreview",file);
+    };
+    const <%=fieldEnName %>Exceed = (files: any, fileList: any): any => {
+        console.log("handleExceed", fileList);
+    };
+    const <%=fieldEnName %>BeforeRemove = (file: any, fileList: any) => {
+        return alertConfirm(`确定移除 ${file.name}？`);
+    };<% }  if(dom=="Image") {%>
+    const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
+    const <%=fieldEnName %>OnSuccess = (
+        response: any,
+    ) => {
+        const { data, status, message } = response;
+        if (status == 1) {
+            const { UUID, fileName: name, url } = data;
+            form.value.fileIds?.push(UUID);
+            <%=VModule %> += `${name},${url};`;
+        } else {
+            alertWarning(message);
+        }
+    };
+    const <%=fieldEnName %>Remove = (file: UploadFile) => {
+        console.log("handleRemove", file);
+        <%=fieldEnName %>FileList.value = <%=fieldEnName %>FileList.value.filter(
+            (item: any) => item.uid != file.uid
+        );
+        if (<%=VModule %>) {
+            let temp = "";
+            <%=VModule %>.split(";").map((item, i) => {
+                if (item) {
+                    if (item.indexOf(file.name) == -1) {
+                    temp += `${item};`;
+                    }
                 }
-            }
-        });
-        <%=VModule %> = temp;
-    }
-};<% } %>
+            });
+            <%=VModule %> = temp;
+        }
+    };<% } %>

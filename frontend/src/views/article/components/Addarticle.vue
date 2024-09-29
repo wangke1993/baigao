@@ -43,6 +43,13 @@
                       <Delete />
                     </el-icon>
                   </span>
+                  <el-image
+                    :src="viewIcon"
+                    preview-teleported
+                    style="width: 32px; margin-left: 10px"
+                    :preview-src-list="[file.url]"
+                  >
+                  </el-image>
                 </span>
               </div>
             </template>
@@ -81,15 +88,8 @@
       <el-form-item label="是否发布" prop="release">
         <el-switch v-model="form.release" />
       </el-form-item>
-      <el-form-item label="有效期" prop="expirationDate">
-        <el-date-picker
-          v-model="form.expirationDate"
-          type="datetime"
-          placeholder="请选择有效期"
-        />
-      </el-form-item>
       <el-form-item label="内容" prop="content">
-        <div style="border: 1px solid #ccc" v-if="state.dialogFormVisible">
+        <div style="border: 1px solid #ccc">
           <Toolbar
             style="border-bottom: 1px solid #ccc"
             :editor="editorRef"
@@ -97,6 +97,7 @@
             :mode="mode"
           />
           <Editor
+            v-if="state.dialogFormVisible"
             style="height: 500px; overflow-y: hidden"
             v-model="valueHtml"
             :defaultConfig="editorConfig"
@@ -121,6 +122,7 @@ import { ref, reactive, onBeforeUnmount, shallowRef } from "vue";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
 import type { IDomEditor } from "@wangeditor/editor";
 import { btnShow } from "../../../utils/buttonShow";
+import { viewIcon } from "@/utils/enum/iconBase64";
 import { DataDictionaryControllerGetListByDicClass } from "@/api/DataDictionaryControllerApi";
 import {
   ArticleManagementControllerCreate,
@@ -216,7 +218,8 @@ const getDetail = async (id: string) => {
         data.data;
       // 设置表单
       form.value = data.data;
-      valueHtml.value = content;
+      // valueHtml.value = content;
+      editorRef.value.setHtml(content);
       if (cover) {
         // 封面
         fileList.value = [{ name: "", url: "/api/" + cover }];
@@ -293,6 +296,9 @@ const closeForm = (formEl: FormInstance | undefined) => {
   };
   valueHtml.value = "";
   fileList.value = [];
+  const editor = editorRef.value;
+  if (editor == null) return;
+  editor.destroy();
 };
 
 // 编辑框工具配置
@@ -345,11 +351,12 @@ editorConfig.MENU_CONF["uploadVideo"] = {
 };
 
 // 组件销毁时，也及时销毁编辑器
-onBeforeUnmount(() => {
-  const editor = editorRef.value;
-  if (editor == null) return;
-  editor.destroy();
-});
+// onBeforeUnmount(() => {
+//   const editor = editorRef.value;
+//   if (editor == null) return;
+//   console.log("销毁编辑器", editor);
+//   editor.destroy();
+// });
 const handleCreated = (editor: any) => {
   editorRef.value = editor; // 记录 editor 实例，重要！
 };
