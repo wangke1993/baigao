@@ -36,7 +36,11 @@
             fit="cover"
             loading="lazy"
           />
-          <% } else { %>
+          <% } else if(fieldList[i].dom == "PrivateImage") { %>
+            <PrivateImage
+            :srcArr="scope.row.<%=fieldList[i].nameEn %>.split(';').map((item: string) => item.split(',')[1] ? `/api${item.split(',')[1]}` : '').filter((item: any) => Boolean(item))"
+          />
+            <% } else { %>
           {{ scope.row.<%=fieldList[i].nameEn %> }}<% } %>
         </template>
       </el-table-column><% } %><% } %>
@@ -125,6 +129,7 @@ export default {
 <script lang="ts" setup>
 import { ref } from "vue";
 import axios from "axios";
+import PrivateImage from "@/views/components/PrivateImage.vue";
 import { Delete, Edit } from "@element-plus/icons-vue";
 import { btnShow } from "@/utils/buttonShow";
 import <%=getBigModuleTitle(moduleConf.nameEn) %>Form from "@/views/<%=getSmallModuleTitle(moduleConf.nameEn) %>/components/<%=getBigModuleTitle(moduleConf.nameEn) %>Form.vue";

@@ -34,6 +34,7 @@
 <script lang="ts" setup>
 import { ref, reactive, <%if(fieldList.filter(item => item.dom == 'MoreText').length) {%> onBeforeUnmount, shallowRef <%}%>} from "vue";
 import axios from "axios";
+import PrivateImage from "@/views/components/PrivateImage.vue";
 import { btnShow } from "@/utils/buttonShow";
 import { getToken } from "@/utils/authTokenUtil";
 import { viewIcon } from "@/utils/enum/iconBase64";
@@ -54,7 +55,7 @@ import type {
   
    FormInstance,
    CascaderProps,
-   FormRules,<%if(fieldList.filter(item=>["Image","File"].includes(item.dom)).length) {%>
+   FormRules,<%if(fieldList.filter(item=>["PrivateImage","Image","File"].includes(item.dom)).length) {%>
    UploadFile,
    UploadUserFile,<%}%>
 } from "element-plus";
@@ -125,7 +126,7 @@ const initOtherValue = (data: <%=getBigModuleTitle(moduleConf.nameEn) %>Dto) => 
         <%=fieldList[i].nameEn %>EditorRef.value?.setHtml("");
       }
     <%}%>
-    <%if(['File','Image'].includes(fieldList[i].dom)){%>
+    <%if(['File','Image','PrivateImage'].includes(fieldList[i].dom)){%>
     if(data.<%=fieldList[i].nameEn %>) {
       const <%=fieldList[i].nameEn %>FileArr = data.<%=fieldList[i].nameEn %>.split(";");
       <%=fieldList[i].nameEn %>FileArr.map(item => {

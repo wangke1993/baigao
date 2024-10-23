@@ -101,6 +101,11 @@ export const domType = [
         needData: false,
     },
     {
+        name: "私有图片",
+        value: "PrivateImage",
+        needData: false,
+    },
+    {
         name: "附件上传",
         value: "MoreFile",
         needData: false,

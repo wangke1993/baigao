@@ -51,7 +51,6 @@
         if (res.status == 1) {
           resolve(
             res.data.map((item: any) => {
-              <%=fieldEnName %>SelectName[item.code] = item.name;
               item.leaf = node.level >= 2;
               return item;
             })
@@ -89,9 +88,7 @@
         <% if(["MoreTreeSelect","AdministrativeDivision"].includes(dom)) {%>
         <%=VModule %> = value.join();
         <%if(!search){%><%=VModule %>Text = <%=fieldEnName %>TreeRef.value.getCheckedNodes(true).map((node: any) => node.text).join();<%}%>
-        <% } else if(!search){%>
-            <%=VModule %>Text = <%=fieldEnName %>SelectName[value]
-        <%} %>
+        <% } %>
     }<% }  if(dom=="MoreText") {%>
     const <%=fieldEnName %>EditorRef = shallowRef();
     const <%=fieldEnName %>Html = ref("");
@@ -141,7 +138,7 @@
     };
     const <%=fieldEnName %>BeforeRemove = (file: any, fileList: any) => {
         return alertConfirm(`确定移除 ${file.name}？`);
-    };<% }  if(dom=="Image") {%>
+    };<% }  if(["Image","PrivateImage"].includes(dom)) {%>
     const <%=fieldEnName %>FileList = ref<UploadUserFile[]>([]);
     const <%=fieldEnName %>OnSuccess = (
         response: any,

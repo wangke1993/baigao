@@ -154,5 +154,47 @@
                 </div>
             </template>
         </el-upload>
-    </div><% }  if(dom=="Rate") {%>
+    </div><% }  if(dom=="PrivateImage") {%>
+        <div>
+            <el-upload
+                v-model:file-list="<%=fieldEnName %>FileList"
+                list-type="picture-card"
+                action="/api/file/uploadPrivate"
+                name="file"
+                :auto-upload="true"
+                :headers="{ Authorization: `Bearer ${getToken()}` }"
+                :limit="1"
+                :on-success="<%=fieldEnName %>OnSuccess"
+                >
+                <el-icon>
+                    <Plus />
+                </el-icon>
+                <template #file="{ file }">
+                    <div>
+                        <PrivateImage :src="file.url">
+                            <template #default="data">
+                              <span class="el-upload-list__item-actions">
+                                <span
+                                  class="el-upload-list__item-delete"
+                                  @click="<%=fieldEnName %>Remove(file)"
+                                >
+                                  <el-icon>
+                                    <Delete />
+                                  </el-icon>
+                                </span>
+                                <el-image
+                                  :src="viewIcon"
+                                  preview-teleported
+                                  style="width: 32px; margin-left: 10px"
+                                  :preview-src-list="[data.url]"
+                                >
+                                </el-image>
+                                
+                              </span>
+                            </template>
+                          </PrivateImage>
+                    </div>
+                </template>
+            </el-upload>
+        </div><% }  if(dom=="Rate") {%>
     <el-rate v-model="<%=VModule %>" size="large" :max="5"/><% } %>
