@@ -72,7 +72,8 @@ mongoDB：高性能、分布式noSql数据库
 ### 2.部署mongoDB，主从部署（mongoDB事务必须采用副本集的方式），警告！警告！警告！（mongoDB正式环境请不要暴露到公网，不要使用默认端口27017，数据无价记得定期备份）
 ```
 	# 启动主节点
-	docker run -d -p 8017:27017 --name mongodb-primary -v ./primary-data:/data/db mongo:6.0.5 --replSet mongo-rep
+	docker run -d -p 8017:27017 --name mongodb-primary -v ./primary-data:/data/db 
+   --network=BAIGAO --ip=172.18.0.2  mongo:6.0.5 --replSet mongo-rep
 	# 启动从节点 （单副本时，无需启动从节点）
 	docker run -d -p 8018:27017 --name mongodb-secondary -v ./secondary-data:/data/db mongo:6.0.5 --replSet mongo-rep
 	# 进入主节点，并配置主从、用户及数据库等
@@ -205,6 +206,9 @@ services:
           - ./data:/data
           - ./letsencrypt:/etc/letsencrypt
 2.docker-compose up -d
+默认账号密码
+用户名: admin@example.com
+密码: changeme
 ```
 
 ### 8.如何给容器固定ip
