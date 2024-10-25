@@ -107,7 +107,7 @@ export const domType = [
     },
     {
         name: "附件上传",
-        value: "MoreFile",
+        value: "File",
         needData: false,
     },
     {
