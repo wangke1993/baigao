@@ -12,6 +12,11 @@ export class RolePermissionsDto {
     permissionsList!: string[];
     
     /**
+     * 隐藏显示菜单
+     */
+    hidePermissionsList!: string[];
+    
+    /**
      * 角色首页
      */
     indexPath!: string;

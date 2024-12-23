@@ -39,10 +39,19 @@
           <!-- <li>个人中心</li>
           <li>重置密码</li> -->
           <li v-if="isDev" @click="toDev">开发工具</li>
+          <li @click="editUserInfo">个人信息</li>
+          <li @click="updatePassword">修改密码</li>
           <li @click="loginOut">退出登录</li>
         </ul>
       </div>
     </div>
+    <EditUserInfo
+      :accountOwnership="userInfo.accountOwnership"
+      :remarksPrefix="remarksPrefix"
+      :editPersonalInformation="true"
+      ref="editUserRef"
+    />
+    <EditUserPassword ref="editUserPasswordRef" />
   </div>
 </template>
 
@@ -52,10 +61,18 @@ import { usePermissionStore } from "@/stores/permission";
 import { deleteToken, getUserInfoByToken } from "@/utils/authTokenUtil";
 import { useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
+import EditUserInfo from "@/views/adminUser/components/EditUserInfo.vue";
+import EditUserPassword from "@/views/adminUser/components/EditUserPassword.vue";
+
 const router = useRouter();
 const route = useRoute();
 const userInfo = getUserInfoByToken();
 console.log("用户信息", userInfo);
+const remarksPrefix = ref("");
+const remarksArr = userInfo.remarks.split("-");
+if (remarksArr.length > 1) {
+  remarksPrefix.value = remarksArr[0];
+}
 const emit = defineEmits(["openOffMenu"]);
 const openOffMenu = () => {
   emit("openOffMenu");
@@ -68,6 +85,14 @@ const loginOut = () => {
   tabsStore.clean();
   permissionStore.clean();
   router.replace("/login");
+};
+const editUserRef = ref();
+const editUserInfo = () => {
+  editUserRef.value.open(userInfo, false);
+};
+const editUserPasswordRef = ref();
+const updatePassword = async () => {
+  editUserPasswordRef.value.open(userInfo, false);
 };
 const isDev = ref(window.location.hostname == "localhost");
 const toDev = () => {

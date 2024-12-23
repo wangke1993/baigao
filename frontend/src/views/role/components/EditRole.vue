@@ -1,41 +1,80 @@
 <template>
-  <el-dialog v-model="dialogFormVisible" :title="title" @closed="closeForm(ruleFormRef)">
-    <el-form :model="form" label-width="120px" :rules="rules" ref="ruleFormRef" @keyup.enter="submitForm(ruleFormRef)">
+  <el-dialog
+    v-model="dialogFormVisible"
+    :title="title"
+    @closed="closeForm(ruleFormRef)"
+  >
+    <el-form
+      :model="form"
+      label-width="120px"
+      :rules="rules"
+      ref="ruleFormRef"
+      @keyup.enter="submitForm(ruleFormRef)"
+    >
       <el-form-item label="角色名称" prop="roleName">
         <el-input v-model="form.roleName" placeholder="请输入角色名称" />
       </el-form-item>
       <el-form-item label="超级管理员" prop="isSuper">
-        <el-switch v-model="form.isSuper" class="ml-2"
-          style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" />
+        <el-switch
+          v-model="form.isSuper"
+          class="ml-2"
+          style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
+        />
       </el-form-item>
       <el-form-item label="用户首页" prop="indexPath">
-        <el-input v-model="form.indexPath" placeholder="选填：缺省值为第一个角色的【用户首页】" />
+        <el-input
+          v-model="form.indexPath"
+          placeholder="选填：缺省值为第一个角色的【用户首页】"
+        />
       </el-form-item>
-      <el-form-item v-if="!form.isSuper" label="权限列表" prop="permissionsList">
-        <el-tree :data="treeByMenuTypeListData" show-checkbox node-key="_id" style="width: 100%"
-          :default-checked-keys="defaultCheckedKeys" :props="{ label: 'menuName', children: 'children' }"
-          @check="handleCheckChange" ref="permissionsTreeRef">
+      <el-form-item
+        v-if="!form.isSuper"
+        label="权限列表"
+        prop="permissionsList"
+      >
+        <el-tree
+          :data="treeByMenuTypeListData"
+          show-checkbox
+          node-key="_id"
+          style="width: 100%"
+          :default-checked-keys="defaultCheckedKeys"
+          :props="{ label: 'menuName', children: 'children' }"
+          @check="handleCheckChange"
+          ref="permissionsTreeRef"
+        >
           <template #default="{ node, data }">
             <span class="custom-tree-node">
-              <span :style="{
-                color: MENU_TYPE_TRANSLATE_COLOR[data.menuType],
-              }">
+              <span
+                :style="{
+                  color: MENU_TYPE_TRANSLATE_COLOR[data.menuType],
+                }"
+              >
                 {{ node.label }}
               </span>
             </span>
           </template>
         </el-tree>
       </el-form-item>
-      <el-form-item v-if="!form.isSuper" label="隐藏菜单" prop="hidePermissionsList">
-        <el-cascader :options="treeByMenuTypeListData" v-model="form.hidePermissionsList" filterable
-          :show-all-levels="false" :props="{
+      <el-form-item
+        v-if="!form.isSuper"
+        label="隐藏菜单"
+        prop="hidePermissionsList"
+      >
+        <el-cascader
+          :options="treeByMenuTypeListData"
+          v-model="form.hidePermissionsList"
+          filterable
+          :show-all-levels="false"
+          :props="{
             multiple: true,
             checkStrictly: true,
             label: 'menuName',
             value: '_id',
             children: 'children',
             emitPath: false,
-          }" clearable />
+          }"
+          clearable
+        />
       </el-form-item>
     </el-form>
     <template #footer>

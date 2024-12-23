@@ -24,11 +24,11 @@ export const AdminMenuControllerUpdate = (id: string,data: AdminMenuDto, config?
 }
 /**
 * getMenu：获取菜单树
-* 
+* keyWord：undefined;
 * @returns 
 */
-export const AdminMenuControllerGetTree = ( config?: any) => {
-   return axios.get(`/api/admin/menu/getMenu`, { ...config });
+export const AdminMenuControllerGetTree = (query: { keyWord: string }, config?: any) => {
+   return axios.get(`/api/admin/menu/getMenu`, { params: query,...config });
 }
 /**
 * getTreeByMenuType：根据菜单资源属性获取菜单树

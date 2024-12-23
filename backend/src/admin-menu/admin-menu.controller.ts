@@ -47,13 +47,13 @@ export class AdminMenuController {
     @AuthTag('getMenu')
     @ApiOperation({ description: 'getMenu：获取菜单树' })
     @UseGuards(JwtAuthGuard)
-    async getTree(@Req() req: any): Promise<ResponseInfoDto<AdminMenuTreeDto[]>> {
+    async getTree(@Query('keyWord') keyWord: string, @Req() req: any): Promise<ResponseInfoDto<AdminMenuTreeDto[]>> {
         const rsp = new ResponseInfoDto<AdminMenuTreeDto[]>(req);
         try {
             if (req.user.isSuper) {
-                rsp.success('获取成功', await this.adminMenuService.getTree(0));
+                rsp.success('获取成功', await this.adminMenuService.getTree(0, null, null, keyWord));
             } else {
-                rsp.success('获取成功', await this.adminMenuService.getTree(0, req.user.menuIds));
+                rsp.success('获取成功', await this.adminMenuService.getTree(0, req.user.menuIds, req.user.role, keyWord));
             }
         } catch (e) {
             rsp.warring(e.toString());

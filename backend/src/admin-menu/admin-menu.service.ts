@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { AdminMenuTreeDto } from './dto/admin-menu-tree.dto';
 import { AdminMenu, AdminMenuDocument } from './dto/admin-menu.schema';
 import { AdminMenuDto } from './dto/admin-menu.dto';
+import { RolePermissionsService } from 'src/role-permissions/role-permissions.service';
 
 @Injectable()
 export class AdminMenuService {
@@ -13,11 +14,14 @@ export class AdminMenuService {
      * 获取当前登录用户的菜单树
      * 新增菜单/删除菜单/修改菜单/查询菜单
      */
-    constructor(@InjectModel(AdminMenu.name) private adminMenuModel: Model<AdminMenuDocument>) { };
+    constructor(
+        @InjectModel(AdminMenu.name) private adminMenuModel: Model<AdminMenuDocument>,
+        private rolePermissionsService: RolePermissionsService
+    ) { };
     async getById(id: string): Promise<AdminMenu> {
         return this.adminMenuModel.findById(id);
     }
-    async getTree(menuType: number, menuIds?: string[]): Promise<AdminMenuTreeDto[]> {
+    async getTree(menuType: number, menuIds?: string[], role?: string[], keyWord?: string): Promise<AdminMenuTreeDto[]> {
         const tree: AdminMenuTreeDto[] = [];
         const menuListTree: AdminMenuTreeDto[] = [];
         let list: any[] = [];
@@ -33,8 +37,19 @@ export class AdminMenuService {
                 _id: { $in: objectIds }
             }
         }
+        let hiddenMenu: string[] = [];
         if (menuType > 0) {
             map.menuType = menuType;
+        }
+        if (role) {
+            hiddenMenu = await this.rolePermissionsService.getRoleHidePermissionsListByIds(role);
+        }
+        if (keyWord) {
+            map.$or = [
+                { menuName: { $regex: keyWord } },
+                { menuActive: { $regex: keyWord } },
+                { menuPowerTag: { $regex: keyWord } },
+            ]
         }
         list = await this.adminMenuModel.find(map).sort({ sort: 1, menuType: 1 });
         const getChild = (parentId: string) => {
@@ -45,6 +60,9 @@ export class AdminMenuService {
                 const children = getChild(item._id.toString());
                 let adminMenuTreeDto = new AdminMenuTreeDto(item);
                 adminMenuTreeDto.children = children;
+                if (hiddenMenu.includes(item._id)) {
+                    adminMenuTreeDto.isShow = '0';
+                }
                 childrenTree.push(adminMenuTreeDto);
             });
             return childrenTree;
@@ -55,9 +73,11 @@ export class AdminMenuService {
             const adminMenuTreeDto = new AdminMenuTreeDto(item);
             const children = getChild(item._id.toString());
             adminMenuTreeDto.children = children;
+            if (hiddenMenu.includes(item._id)) {
+                adminMenuTreeDto.isShow = '0';
+            }
             tree.push(adminMenuTreeDto);
         });
-
         return tree;
     }
     async deleteById(id: string): Promise<any> {

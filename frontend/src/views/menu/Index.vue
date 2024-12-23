@@ -1,9 +1,20 @@
 <template>
-  <div class="list-box" v-loading="load">
-    <el-button type="primary" @click="add(null)" v-if="btnShow('menu_add_top')"
-      >添加一级菜单</el-button
+  <div class="list-box">
+    <el-button type="primary" @click="add(null)" v-if="btnShow('menu_add_top')">
+      添加一级菜单
+    </el-button>
+
+    <el-input
+      v-model="keyWord"
+      style="width: 220px; margin-left: 28px"
+      placeholder="请输入关键词搜索"
+    />
+    <el-table
+      v-loading="load"
+      :data="menuTree"
+      row-key="_id"
+      empty-text="无数据"
     >
-    <el-table :data="menuTree" row-key="_id" empty-text="无数据">
       <el-table-column prop="menuName" label="名称">
         <template #default="scope">
           <span>
@@ -84,7 +95,7 @@ import {
   AdminMenuControllerGetTree,
 } from "@/api/AdminMenuControllerApi";
 import { alertSuccess, alertWarning } from "@/utils/message";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import {
   MENU_TYPE_TRANSLATE,
   MENU_TYPE_TRANSLATE_COLOR,
@@ -98,11 +109,16 @@ const menuTree = ref([]);
 const load = ref(false);
 const editMenu = ref();
 const moveMenu = ref();
-
+const keyWord = ref("");
+watch(keyWord, () => {
+  getMenuTree();
+});
 // 方法
 const getMenuTree = async () => {
   load.value = true;
-  const { data: res } = await AdminMenuControllerGetTree();
+  const { data: res } = await AdminMenuControllerGetTree({
+    keyWord: keyWord.value,
+  });
   load.value = false;
   if (res.status === 1) {
     menuTree.value = res.data;
@@ -119,7 +135,7 @@ const edit = (row: any) => {
   editMenu.value.open(row, false);
 };
 const move = (row: any) => {
-  console.log("点击了移动")
+  console.log("点击了移动");
   moveMenu.value.open(row);
 };
 const del = async (row: any) => {
