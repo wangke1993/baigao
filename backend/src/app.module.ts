@@ -70,7 +70,7 @@ const envConfig = new EnvConfig();
     SmsApiModule,
     TreeClassificationModule,
     SystemDevModule,
-    TaskManagementModule,
+    // TaskManagementModule,
     TaskRunModule,
     WithdrawalManagementModule
   ],

@@ -6,7 +6,7 @@ import { TaskManagementModule } from 'src/task-management/task-management.module
 @Module({
     imports: [
         MemberManagementModule,
-        TaskManagementModule
+        // TaskManagementModule
     ],
     providers: [WsGateway],
     exports: [WsGateway],

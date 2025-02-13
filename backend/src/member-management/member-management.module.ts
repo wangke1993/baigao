@@ -20,7 +20,7 @@ import { RedisCacheModule } from 'src/redis-cache/redis-cache.module';
         WalletManagementModule,
         SystemConfigModule,
         FileUploadModule,
-        TaskManagementModule,
+        // TaskManagementModule,
         RedisCacheModule
     ],
     providers: [MemberManagementService, MemberTaskService],

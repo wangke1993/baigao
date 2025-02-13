@@ -29,7 +29,7 @@ export class WsGateway implements OnGatewayConnection {
 
     constructor(
         private memberManagementService: MemberManagementService,
-        private createTaskService: CreateTaskService
+        // private createTaskService: CreateTaskService
     ) {
         this.memberManagementService.allOffline();
     }
@@ -37,20 +37,20 @@ export class WsGateway implements OnGatewayConnection {
     async handleConnection(client: Socket, req: any) {
         console.log('客户端连接成功', client.id);
         // 用户上线 根据userUUID，设置上线的socket.id;
-        await this.createTaskService.createTask(new MemberTaskDto(
-            req.user.UUID,
-            MEMBER_TASK_TYPE.上线,
-            client.id
-        ))
+        // await this.createTaskService.createTask(new MemberTaskDto(
+        //     req.user.UUID,
+        //     MEMBER_TASK_TYPE.上线,
+        //     client.id
+        // ))
 
         client.on('disconnect', async () => {
             console.log('客户端连接销毁', client.id);
             // 用户下线 根据userUUID，删除下线的socket.id
-            await this.createTaskService.createTask(new MemberTaskDto(
-                req.user.UUID,
-                MEMBER_TASK_TYPE.下线,
-                ""
-            ))
+            // await this.createTaskService.createTask(new MemberTaskDto(
+            //     req.user.UUID,
+            //     MEMBER_TASK_TYPE.下线,
+            //     ""
+            // ))
             // TODO: 消息模块 {userUUID,client:[miniProgram,admin],message:JSON,状态：已发送，未发送};
         });
         client.emit('message', "连接成功");
