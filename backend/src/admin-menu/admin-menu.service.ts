@@ -60,7 +60,7 @@ export class AdminMenuService {
                 const children = getChild(item._id.toString());
                 let adminMenuTreeDto = new AdminMenuTreeDto(item);
                 adminMenuTreeDto.children = children;
-                if (hiddenMenu.includes(item._id)) {
+                if (hiddenMenu.includes(item._id.toString())) {
                     adminMenuTreeDto.isShow = '0';
                 }
                 childrenTree.push(adminMenuTreeDto);
@@ -73,7 +73,7 @@ export class AdminMenuService {
             const adminMenuTreeDto = new AdminMenuTreeDto(item);
             const children = getChild(item._id.toString());
             adminMenuTreeDto.children = children;
-            if (hiddenMenu.includes(item._id)) {
+            if (hiddenMenu.includes(item._id.toString())) {
                 adminMenuTreeDto.isShow = '0';
             }
             tree.push(adminMenuTreeDto);
