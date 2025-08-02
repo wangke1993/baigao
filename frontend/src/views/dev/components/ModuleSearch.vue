@@ -11,6 +11,7 @@
         <el-table-column label="绑定字段" prop="fieldUUID">
           <template #default="scope">
             <el-select
+              style="width: 160px"
               v-model="scope.row.fieldUUID"
               placeholder="请选择绑定字段"
               @change="(v: string) => searchFieldChange(v,scope.row)"
@@ -26,7 +27,11 @@
         </el-table-column>
         <el-table-column label="检索方式" prop="method">
           <template #default="scope">
-            <el-select v-model="scope.row.method" placeholder="请选择检索方式">
+            <el-select
+              style="width: 160px"
+              v-model="scope.row.method"
+              placeholder="请选择检索方式"
+            >
               <el-option
                 v-for="item in methodConf"
                 :key="item.value"
@@ -38,7 +43,11 @@
         </el-table-column>
         <el-table-column label="展示组件" prop="dom">
           <template #default="scope">
-            <el-select v-model="scope.row.dom" placeholder="请选择展示组件">
+            <el-select
+              style="width: 160px"
+              v-model="scope.row.dom"
+              placeholder="请选择展示组件"
+            >
               <el-option
                 v-for="item in domType"
                 :key="item.value"
@@ -50,8 +59,9 @@
               v-if="domType.filter((d) => d.value == scope.row.dom)[0].needData"
               @click="openDataSource(scope.row)"
               type="text"
-              >配置数据源</el-button
             >
+              配置数据源
+            </el-button>
           </template>
         </el-table-column>
         <el-table-column label="自动检索" prop="isAuto">
@@ -67,8 +77,9 @@
                   type="primary"
                   v-loading="searchListSaveLoading === scope.$index"
                   @click="saveSearch(scope.row, scope.$index)"
-                  >更新</el-button
                 >
+                  更新
+                </el-button>
                 <el-popconfirm
                   confirm-button-text="确定"
                   cancel-button-text="取消"
@@ -91,11 +102,12 @@
                   type="primary"
                   v-loading="searchListSaveLoading === scope.$index"
                   @click="saveSearch(scope.row, scope.$index)"
-                  >保存</el-button
                 >
-                <el-button type="danger" @click="cancelAddSearch()"
-                  >取消</el-button
-                >
+                  保存
+                </el-button>
+                <el-button type="danger" @click="cancelAddSearch()">
+                  取消
+                </el-button>
               </div>
             </div>
           </template>

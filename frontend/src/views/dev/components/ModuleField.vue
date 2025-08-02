@@ -8,79 +8,88 @@
         :data="moduleFieldList"
         style="width: 100%"
       >
-        <el-table-column label="中文名" prop="name" width="188px">
+        <el-table-column label="字段配置" prop="name" width="220px">
           <template #default="scope">
-            <el-input
-              v-model="scope.row.name"
-              @blur="translateZhToEn(scope.row)"
-              placeholder="中文名称"
-            ></el-input>
+            <div class="item">
+              <el-input
+                v-model="scope.row.name"
+                @blur="translateZhToEn(scope.row)"
+                placeholder="中文名称"
+              ></el-input>
+            </div>
+            <div class="item">
+              <el-input
+                v-model="scope.row.nameEn"
+                placeholder="英文名称"
+              ></el-input>
+            </div>
+            <div class="item">
+              <el-select
+                style="width: 198px"
+                v-model="scope.row.type"
+                placeholder="请选择数据类型"
+              >
+                <el-option
+                  v-for="item in dataType"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.value"
+                ></el-option>
+              </el-select>
+            </div>
           </template>
         </el-table-column>
-        <el-table-column label="英文名称" prop="nameEn" width="188px">
+        <el-table-column width="180px" label="展示组件" prop="dom">
           <template #default="scope">
-            <el-input
-              v-model="scope.row.nameEn"
-              placeholder="英文名称"
-            ></el-input>
+            <div class="item">
+              列表展示：<el-switch v-model="scope.row.listShow" />
+            </div>
+            <div class="item">
+              <el-select
+                style="width: 150px"
+                v-model="scope.row.dom"
+                placeholder="请选择展示组件"
+              >
+                <el-option
+                  v-for="item in domType"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.value"
+                ></el-option>
+              </el-select>
+              <el-button
+                v-if="
+                  domType.filter((d) => d.value == scope.row.dom)[0].needData
+                "
+                @click="openDataSource(scope.row)"
+                type="text"
+              >
+                配置数据源
+              </el-button>
+            </div>
           </template>
         </el-table-column>
-        <el-table-column label="类型" prop="type">
+        <el-table-column label="约束规则" prop="notRepeat">
           <template #default="scope">
-            <el-select v-model="scope.row.type" placeholder="请选择数据类型">
-              <el-option
-                v-for="item in dataType"
-                :key="item.value"
-                :label="item.name"
-                :value="item.value"
-              ></el-option>
-            </el-select>
+            <div class="item">
+              唯一：<el-switch v-model="scope.row.notRepeat" />
+            </div>
+            <div class="item">
+              必填：<el-switch v-model="scope.row.notNull" />
+            </div>
           </template>
         </el-table-column>
-        <el-table-column label="展示组件" prop="dom">
+        <el-table-column label="其它配置" prop="defaultValue">
           <template #default="scope">
-            <el-select v-model="scope.row.dom" placeholder="请选择展示组件">
-              <el-option
-                v-for="item in domType"
-                :key="item.value"
-                :label="item.name"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-            <el-button
-              v-if="domType.filter((d) => d.value == scope.row.dom)[0].needData"
-              @click="openDataSource(scope.row)"
-              type="text"
-              >配置数据源</el-button
-            >
-          </template>
-        </el-table-column>
-        <el-table-column label="是否唯一" prop="notRepeat">
-          <template #default="scope">
-            <el-switch v-model="scope.row.notRepeat" />
-          </template>
-        </el-table-column>
-        <el-table-column label="必填" prop="notRepeat">
-          <template #default="scope">
-            <el-switch v-model="scope.row.notNull" />
-          </template>
-        </el-table-column>
-        <el-table-column label="列表显示" prop="listShow">
-          <template #default="scope">
-            <el-switch v-model="scope.row.listShow" />
-          </template>
-        </el-table-column>
-        <el-table-column label="默认值" prop="defaultValue">
-          <template #default="scope">
-            <el-input
-              v-model="scope.row.defaultValue"
-              placeholder="默认值"
-            ></el-input>
-          </template>
-        </el-table-column>
-        <el-table-column label="排序" prop="sort" width="80px">
-          <template #default="scope">
-            <el-input v-model="scope.row.sort" placeholder="排序"></el-input>
+            <div class="item">
+              <el-input
+                v-model="scope.row.defaultValue"
+                placeholder="默认值"
+              ></el-input>
+            </div>
+            <div class="item">
+              <el-input v-model="scope.row.sort" placeholder="排序"></el-input>
+            </div>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="200px">
@@ -117,14 +126,19 @@
                   @click="saveField(scope.row, scope.$index)"
                   >保存</el-button
                 >
-                <el-button type="danger" @click="cancelAddField()"
-                  >取消</el-button
-                >
+                <el-button type="danger" @click="cancelAddField()">
+                  取消
+                </el-button>
               </div>
             </div>
           </template>
         </el-table-column>
       </el-table>
+      <div class="bottom-box">
+        <el-button style="width: 288px" type="primary" @click="addField()">
+          新增
+        </el-button>
+      </div>
     </div>
     <DataSourceConf ref="DataSourceConfRef" />
   </div>
@@ -164,7 +178,8 @@ const addField = () => {
   dto.notRepeat = false;
   dto.dom = "Input";
   dto.notNull = false;
-  moduleFieldList.value.unshift(dto);
+  // moduleFieldList.value.unshift(dto);
+  moduleFieldList.value.push(dto);
 };
 const translateZhToEn = async (row: ModuleFieldDto) => {
   if (!row.name || row.nameEn) {
@@ -187,7 +202,8 @@ const translateZhToEn = async (row: ModuleFieldDto) => {
   }
 };
 const cancelAddField = () => {
-  moduleFieldList.value.shift();
+  // moduleFieldList.value.shift();
+  moduleFieldList.value.pop();
 };
 const fieldListLoading = ref(false);
 const getList = async () => {
@@ -242,3 +258,13 @@ const delField = async (item: ModuleFieldDto, index: number) => {
 };
 defineExpose({ getList });
 </script>
+<style lang="scss" scoped>
+.item {
+  margin-bottom: 5px;
+}
+.bottom-box {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+</style>
