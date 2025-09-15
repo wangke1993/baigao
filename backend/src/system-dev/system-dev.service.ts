@@ -272,7 +272,7 @@ export class SystemDevService {
         devTools.createModuleDir(moduleConf.nameEn);
         if (devTools.conf.backend) {
             devTools.createDto(moduleConf, fieldList, searchList);
-            devTools.createService(moduleConf, searchList);
+            devTools.createService(moduleConf, searchList, fieldList);
             devTools.createController(moduleConf, searchList);
             devTools.createModule(moduleConf);
         }

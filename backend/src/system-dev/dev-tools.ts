@@ -68,7 +68,7 @@ export class DevTools {
         this.render(
             BACKEND_TPL.DIC,
             { dicTree },
-            `${PATH_CONF.frontend.replace('views','common')}/dic-enum.ts`
+            `${PATH_CONF.frontend.replace('views', 'common')}/dic-enum.ts`
         );
     }
     createDto(moduleConf: ModuleConf, fieldList: ModuleField[], searchOldList: ModuleSearch[]) {
@@ -99,14 +99,24 @@ export class DevTools {
         }
 
     }
-    createService(moduleConf: ModuleConf, searchList: ModuleSearch[]) {
+    createService(moduleConf: ModuleConf, searchList: ModuleSearch[], filedList: ModuleField[]) {
         if (this.conf.backendFile.service) {
+            // 生成列表展示内容
+            let listShow = filedList.filter(item => {
+                return item.listShow && item.nameEn;
+            }).map(item => `${item.nameEn}:1`).join(',');
+            if (listShow && listShow.length > 0) {
+                listShow = `,{${listShow}}`
+            } else {
+                listShow = ''
+            }
             this.render(
                 BACKEND_TPL.SERVICE,
                 {
                     moduleConf,
                     searchListForLike: searchList.filter(item => item.method == 'like'),
-                    searchListForOther: searchList.filter(item => item.method != 'like')
+                    searchListForOther: searchList.filter(item => item.method != 'like'),
+                    listShow
                 },
                 `${this.savePath.backend}/${moduleConf.nameEn}.service.ts`
             );

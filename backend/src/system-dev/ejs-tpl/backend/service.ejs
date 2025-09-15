@@ -91,8 +91,8 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Service {
         }<% } else { %>map.<%=searchListForOther[index].fieldEnName %> = <%=getMethodString(searchListForOther[index]) %>;
         <% } %><% } %>
         const pageData = new PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
-        pageData.total = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.countDocuments(map, { content: 0 });
-        pageData.list = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.find(map, { content: 0 }).limit(page.pageSize).skip((page.pageIndex - 1) * page.pageSize).sort({ updateDate: -1 });
+        pageData.total = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.countDocuments(map <%=listShow %>);
+        pageData.list = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.find(map <%=listShow %>).limit(page.pageSize).skip((page.pageIndex - 1) * page.pageSize).sort({ updateDate: -1 });
         return pageData;
     }
     <% }else{ %>
@@ -110,8 +110,8 @@ export class <%=getBigModuleTitle(moduleConf.nameEn) %>Service {
         const map: any = {}
         <% } %>
         const pageData = new PageResponseDto<<%=getBigModuleTitle(moduleConf.nameEn) %>>();
-        pageData.total = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.countDocuments(map, { content: 0 });
-        pageData.list = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.find(map, { content: 0 }).limit(page.pageSize).skip((page.pageIndex - 1) * page.pageSize).sort({ updateDate: -1 });
+        pageData.total = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.countDocuments(map <%=listShow %>);
+        pageData.list = await this.<%=getSmallModuleTitle(moduleConf.nameEn) %>Model.find(map <%=listShow %>).limit(page.pageSize).skip((page.pageIndex - 1) * page.pageSize).sort({ updateDate: -1 });
         return pageData;
     }
 <% } %>
