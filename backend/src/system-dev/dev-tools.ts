@@ -101,10 +101,10 @@ export class DevTools {
     }
     createService(moduleConf: ModuleConf, searchList: ModuleSearch[], filedList: ModuleField[]) {
         if (this.conf.backendFile.service) {
-            // 生成列表展示内容
+            // 生成列表隐藏字段内容
             let listShow = filedList.filter(item => {
-                return item.listShow && item.nameEn;
-            }).map(item => `${item.nameEn}:1`).join(',');
+                return !item.listShow && item.nameEn;
+            }).map(item => `${item.nameEn}:0`).join(',');
             if (listShow && listShow.length > 0) {
                 listShow = `,{${listShow}}`
             } else {
