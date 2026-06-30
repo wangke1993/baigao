@@ -266,12 +266,13 @@ pm2 restart ecosystem.config.js
    ```
 ## 工具推荐
 源切换：nrm \
-node版本管理：nvm
-nvm安装出现网络问题怎么办
-   1.去掉install.sh中的install_nvm_from_git，随便输出点什么
+node版本管理：nvm,frm \
+vscode插件：Vue Template Jump （跳转vue模板方法）\
+nvm安装出现网络问题怎么办 \
+   1.去掉install.sh中的 install_nvm_from_git，随便输出点什么 \
    2.手动下载github的zip，解压到.nvm中
-   3.运行install.sh
-   4.source /root/.bashrc
+   3.运行install.sh \
+   4.source /root/.bashrc \
    5.设置nvm默认版本nvm alias default 18.14.2
 yarn中有依赖一直在下载问题
    在.yarnrc中添加如下代码即可
